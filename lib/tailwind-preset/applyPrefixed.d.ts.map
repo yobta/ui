@@ -1,0 +1,1 @@
+{"version":3,"file":"applyPrefixed.d.ts","sourceRoot":"","sources":["../../src/tailwind-preset/applyPrefixed.ts"],"names":[],"mappings":"AAAA,UAAU,QAAQ;IAChB,CAAC,KAAK,EAAE,MAAM,GAAG,MAAM,CAAA;CACxB;AAMD,UAAU,aAAa;IACrB,CAAC,MAAM,EAAE,QAAQ,EAAE,GAAG,OAAO,EAAE,MAAM,EAAE,GAAG,MAAM,CAAC,MAAM,EAAE,OAAO,CAAC,CAAA;CAClE;AAED,eAAO,MAAM,aAAa,EAAE,aAW3B,CAAA"}

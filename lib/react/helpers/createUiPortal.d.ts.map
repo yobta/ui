@@ -1,0 +1,1 @@
+{"version":3,"file":"createUiPortal.d.ts","sourceRoot":"","sources":["../../../src/react/helpers/createUiPortal.tsx"],"names":[],"mappings":"AAAA,OAAO,EAIL,SAAS,EACT,WAAW,EACZ,MAAM,OAAO,CAAA;AAGd,aAAK,OAAO,GAAG;IAAE,WAAW,CAAC,QAAQ,EAAE,SAAS,GAAG,IAAI,CAAA;CAAE,CAAA;AAEzD,eAAO,MAAM,OAAO,kCAAwC,CAAA;AAI5D,eAAO,MAAM,cAAc,aACf,SAAS,kCAElB,WAAW,GAAG,SAmBhB,CAAA"}

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "esnext"],
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noLib": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "pretty": true,
+    "suppressImplicitAnyIndexErrors": true,
+
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "types": ["@types/jest"]
+  },
+  "include": ["src"],
+  "exclude": ["lib"]
+}

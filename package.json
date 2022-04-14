@@ -10,7 +10,7 @@
     "build": "tsc --build tsconfig.build.json",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "test": "echo \"Error: no test specified\" && exit 1 jest --coverage && eslint . && check-dts && size-limit && yaspeller *.md",
+    "test": "jest --coverage && eslint src && check-dts && size-limit && yaspeller *.md",
     "typecheck": "tsc --noEmit"
   },
   "sideEffects": false,

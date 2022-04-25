@@ -9,7 +9,8 @@ tsconfig.json
 coverage/
 
 .github
-.vitebook
+.storybook
+coverage
 node_modules
 src
 .editorconfig

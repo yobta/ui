@@ -26,5 +26,5 @@
     "types": ["@types/jest"]
   },
   "include": ["src"],
-  "exclude": ["lib"]
+  "exclude": ["lib", "stories"]
 }

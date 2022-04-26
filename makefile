@@ -2,7 +2,7 @@ build:
 	npm run build
 
 dev:
-	npm run dev
+	npm run storybook
 
 lint:
 	npm run lint:fix

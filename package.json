@@ -12,7 +12,7 @@
     "lint:fix": "eslint src --fix",
     "test": "jest --coverage && eslint src && check-dts && size-limit && yaspeller *.md",
     "typecheck": "tsc --noEmit",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook"
   },
   "sideEffects": false,

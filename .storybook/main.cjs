@@ -1,19 +1,20 @@
 const path = require('path')
+const tailwind = require('tailwindcss')
 // import implementation from 'postcss'
 
 module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions'
-    // {
-    //   name: '@storybook/addon-postcss',
-    //   options: {
-    //     postcssLoaderOptions: {
-    //       implementation: require('postcss')
-    //     }
-    //   }
-    // }
+    '@storybook/addon-interactions',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss')
+        }
+      }
+    }
   ],
   framework: '@storybook/react',
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -28,7 +29,7 @@ module.exports = {
           loader: 'postcss-loader',
           options: {
             postcssOptions: {
-              plugins: [require('tailwindcss'), require('autoprefixer')]
+              plugins: [() => tailwind(), require('autoprefixer')]
             }
           }
         }

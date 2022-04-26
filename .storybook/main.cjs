@@ -1,6 +1,5 @@
 const path = require('path')
 const tailwind = require('tailwindcss')
-// import implementation from 'postcss'
 
 module.exports = {
   addons: [

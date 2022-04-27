@@ -1,5 +1,7 @@
 build:
 	npm run build
+	rm -rf ./lib/tailwind-preset
+	cp -R ./src/tailwind-preset ./lib/tailwind-preset
 
 dev:
 	npm run storybook

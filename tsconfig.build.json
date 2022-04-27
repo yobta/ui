@@ -1,6 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["**/*.test.ts", "**/*.spec.ts", "**/*.stories.mdx"],
   "compilerOptions": {
     "outDir": "lib"
   }

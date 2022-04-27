@@ -1,8 +1,11 @@
+/* eslint-disable node/no-unpublished-require */
+const preset = require('./src/tailwind-preset/index.cjs')
+
 module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.tsx', './src/**/*.story.tsx'],
-  presets: ['./src/tailwind-preset/index.ts'],
   plugins: [],
+  presets: [preset],
   theme: {
     extend: {}
   }

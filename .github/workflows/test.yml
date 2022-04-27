@@ -1,5 +1,5 @@
 name: Test
-"on":
+'on':
   push: null
   pull_request: null
 jobs:
@@ -13,11 +13,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 17
-          cache: yarn
+          cache: npm
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm i --frozen-lockfile
       - name: Run tests
-        run: yarn test
+        run: npm run test
         env:
           FORCE_COLOR: 2
   short:
@@ -36,9 +36,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
+          cache: npm
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm i --frozen-lockfile
       - name: Run unit tests
         run: npx jest
         env:

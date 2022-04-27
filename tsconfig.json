@@ -34,6 +34,6 @@
     "useDefineForClassFields": true
   },
   "include": ["src"],
-  "exclude": ["lib", "**/*.test.ts", "**/*.spec.ts", "**/*.stories.mdx"],
+  "exclude": ["lib", "**/*.test.ts", "**/*.spec.ts", "**/*.stories.*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

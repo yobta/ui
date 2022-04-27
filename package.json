@@ -10,6 +10,7 @@
     "build": "tsc --build tsconfig.build.json",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
+    "jest": "jest --coverage",
     "test": "jest --coverage && eslint src && check-dts && size-limit && yaspeller *.md",
     "typecheck": "tsc --noEmit",
     "storybook": "start-storybook -p 6006 --no-manager-cache",

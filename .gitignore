@@ -106,3 +106,5 @@ dist
 .DS_STORE
 .temp
 dist/
+
+lib

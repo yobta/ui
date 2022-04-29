@@ -6,5 +6,6 @@ export * from './PolymorphicComponent'
 export * from './Spinner'
 export * from './TextArea'
 
+export * from './entypo'
 export * from './helpers'
 export * from './hooks'

@@ -108,3 +108,4 @@ dist
 dist/
 
 lib
+storybook-static

@@ -19,7 +19,15 @@ test:
 typecheck:
 	npm run typecheck
 
-check: typecheck lint test
+check: typecheck test lint
 
 update:
 	npm run update
+
+bump:
+	npm version patch
+	git add .
+	git push
+
+publish: check build docs bump
+	npm publish

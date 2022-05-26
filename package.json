@@ -3,6 +3,9 @@
   "version": "0.0.4",
   "description": "ui",
   "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
     "lint": "eslint src",

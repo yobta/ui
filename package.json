@@ -114,6 +114,9 @@
   "clean-publish": {
     "cleanDocs": true
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "yaspeller": {
     "lang": "en",
     "ignoreCapitalization": true,

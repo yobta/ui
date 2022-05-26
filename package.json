@@ -3,9 +3,6 @@
   "version": "0.0.3",
   "description": "ui",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
     "lint": "eslint src",
@@ -30,7 +27,7 @@
   },
   "exports": {
     ".": "./lib/index.js",
-    "./react": "./lib/react/index.js",
+    "./tailwind-preset": "./lib/tailwind-preset/index.cjs",
     "./package.json": "./package.json"
   },
   "engines": {

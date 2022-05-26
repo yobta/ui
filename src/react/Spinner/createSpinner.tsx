@@ -3,14 +3,13 @@ import clsx from 'clsx'
 
 import {
   PolymorphicComponent,
-  PolymorphicComponentProps,
-} from '../PolymorphicComponent'
+  PolymorphicComponentProps
+} from '../PolymorphicComponent/index.js'
 
 export type SpinnerProps = { children?: never }
 
-export type SpinnerConfig<
-  E extends ElementType = typeof defaultElement
-> = PolymorphicComponentProps<E, Partial<SpinnerProps>>
+export type SpinnerConfig<E extends ElementType = typeof defaultElement> =
+  PolymorphicComponentProps<E, Partial<SpinnerProps>>
 
 const defaultElement = 'span'
 

@@ -1,2 +1,2 @@
-export * from './createSpinner'
-export * from './Spinner'
+export * from './createSpinner.js'
+export * from './Spinner.js'

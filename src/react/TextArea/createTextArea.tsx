@@ -11,7 +11,7 @@ import {
 } from 'react'
 import clsx from 'clsx'
 
-import { getRefCurrent } from '../helpers'
+import { getRefCurrent } from '../helpers/index.js'
 
 type BaseProps = Omit<ComponentProps<'textarea'>, 'children'>
 

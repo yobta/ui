@@ -103,10 +103,7 @@
     "trailingComma": "none"
   },
   "eslintConfig": {
-    "extends": "@logux/eslint-config/ts",
-    "rules": {
-      "import/extensions": 0
-    }
+    "extends": "@logux/eslint-config/ts"
   },
   "eslintIgnore": [
     "**/errors.ts"

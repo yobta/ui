@@ -1,11 +1,11 @@
 import { forwardRef, ElementType, Ref, ReactNode } from 'react'
 import clsx from 'clsx'
 
-import { Spinner } from '../Spinner'
+import { Spinner } from '../Spinner/index.js'
 import {
   PolymorphicComponent,
-  PolymorphicComponentProps,
-} from '../PolymorphicComponent'
+  PolymorphicComponentProps
+} from '../PolymorphicComponent/index.js'
 
 export type ButtonProps = {
   busy?: boolean
@@ -13,9 +13,8 @@ export type ButtonProps = {
   className?: string
 }
 
-export type ButtonConfig<
-  E extends ElementType = typeof defaultElement
-> = PolymorphicComponentProps<E, Partial<ButtonProps>>
+export type ButtonConfig<E extends ElementType = typeof defaultElement> =
+  PolymorphicComponentProps<E, Partial<ButtonProps>>
 
 const defaultElement = 'button'
 

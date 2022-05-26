@@ -1,3 +1,3 @@
-import { createButton } from './createButton'
+import { createButton } from './createButton.js'
 
 export const Button = createButton({})

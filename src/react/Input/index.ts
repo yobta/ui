@@ -1,2 +1,2 @@
-export * from './Input'
-export * from './createInput'
+export * from './Input.js'
+export * from './createInput.js'

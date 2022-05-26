@@ -1,4 +1,4 @@
-import { createEntypo, CreateEntypo } from '../createEntypo'
+import { createEntypo, CreateEntypo } from '../createEntypo.js'
 
 export const Flickr: CreateEntypo = createEntypo(
   <>

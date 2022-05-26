@@ -1,2 +1,2 @@
-export * from './createUiPortal'
-export * from './getRefCurrent'
+export * from './createUiPortal.js'
+export * from './getRefCurrent.js'

@@ -3,8 +3,8 @@ import clsx from 'clsx'
 
 import {
   PolymorphicComponent,
-  PolymorphicComponentProps,
-} from '../PolymorphicComponent'
+  PolymorphicComponentProps
+} from '../PolymorphicComponent/index.js'
 
 export type LinearProgressProps = { children?: never }
 

@@ -1,2 +1,2 @@
-export * from './TextArea'
-export * from './createTextArea'
+export * from './TextArea.js'
+export * from './createTextArea.js'

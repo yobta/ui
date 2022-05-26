@@ -1,4 +1,4 @@
-import { createEntypo, CreateEntypo } from '../createEntypo'
+import { createEntypo, CreateEntypo } from '../createEntypo.js'
 
 export const ArrowBoldLeft: CreateEntypo = createEntypo(
   <path d="M10,2.5V6h7v8h-7v3.5L2.5,10L10,2.5z" />

@@ -1,3 +1,3 @@
-import { createLinearProgress } from './createLinearProgress'
+import { createLinearProgress } from './createLinearProgress.js'
 
 export const LinearProgress = createLinearProgress({})

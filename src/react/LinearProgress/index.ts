@@ -1,2 +1,2 @@
-export * from './createLinearProgress'
-export * from './LinearProgress'
+export * from './createLinearProgress.js'
+export * from './LinearProgress.js'

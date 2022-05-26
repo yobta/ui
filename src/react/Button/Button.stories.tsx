@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Button } from './Button'

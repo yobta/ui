@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { ComponentStory } from '@storybook/react'
 import { useState, useEffect } from 'react'
 

@@ -1,1 +1,1 @@
-export * from './PolymorphicComponent'
+export * from './PolymorphicComponent.js'

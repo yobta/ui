@@ -1,4 +1,4 @@
-import { createEntypo, CreateEntypo } from '../createEntypo'
+import { createEntypo, CreateEntypo } from '../createEntypo.js'
 
 export const LabFlask: CreateEntypo = createEntypo(
   <path

@@ -13,9 +13,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 17
-          cache: npm
+          cache: pnpm
       - name: Install dependencies
-        run: npm i --frozen-lockfile
+        run: pnpm i --frozen-lockfile
       - name: Run tests
         run: make check
         env:
@@ -35,9 +35,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: npm
+          cache: pnpm
       - name: Install dependencies
-        run: npm i --frozen-lockfile
+        run: pnpm i --frozen-lockfile
       - name: Run unit tests
         run: make test
         env:

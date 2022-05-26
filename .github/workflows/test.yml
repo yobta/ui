@@ -9,6 +9,10 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
@@ -31,6 +35,10 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 7
       - name: Install Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:

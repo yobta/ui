@@ -10,9 +10,12 @@ lint:
 	npm run lint
 
 test:
-	npm run jest
+	npm run test
 
 typecheck:
 	npm run typecheck
 
 check: typecheck lint test
+
+update:
+	npm run update

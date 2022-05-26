@@ -29,7 +29,6 @@
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es6",
-    "types": ["@types/jest"],
     "useDefineForClassFields": true
   },
   "include": ["src"],

@@ -3,6 +3,10 @@ build:
 	rm -rf ./lib/tailwind-preset
 	cp -R ./src/tailwind-preset ./lib/tailwind-preset
 
+docs:
+	npm run build-storybook
+	npm run deploy-storybook
+
 dev:
 	npm run storybook
 

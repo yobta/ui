@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@babel/core': ^7.18.2
   '@logux/eslint-config': ^47.2.0
-  '@logux/sharec-config': ^0.13.1
   '@storybook/addon-actions': ^6.5.5
   '@storybook/addon-essentials': ^6.5.5
   '@storybook/addon-interactions': ^6.5.5
@@ -46,7 +45,6 @@ dependencies:
 devDependencies:
   '@babel/core': 7.18.2
   '@logux/eslint-config': 47.2.0_lhtz73wfehni54bazjfts5soxa
-  '@logux/sharec-config': 0.13.1
   '@storybook/addon-actions': 6.5.5_ef5jwxihqo6n7gxfmzogljlgcm
   '@storybook/addon-essentials': 6.5.5_2q66qogiwlu3og53mtgxr3h23y
   '@storybook/addon-interactions': 6.5.5_lgiz43rw3qxbkqi6ccalvcy2nm
@@ -1804,14 +1802,6 @@ packages:
       eslint-plugin-n: 15.2.0_eslint@8.16.0
       eslint-plugin-prefer-let: 3.0.1
       eslint-plugin-promise: 6.0.0_eslint@8.16.0
-    dev: true
-
-  /@logux/sharec-config/0.13.1:
-    resolution: {integrity: sha512-2v+U5Z8xzOwGu2TBQT4tyRJxBwkpUjr6fEvUEuI1WfJrsCVSYETotoprDhABOmqZa0GO/5cj8uvnT3M7Wz92Tw==}
-    engines: {node: '>=8.0.0'}
-    requiresBuild: true
-    dependencies:
-      sharec: 2.10.7
     dev: true
 
   /@mdx-js/mdx/1.6.22:
@@ -4178,11 +4168,6 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /ansi-colors/4.1.3:
-    resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
-    engines: {node: '>=6'}
-    dev: true
-
   /ansi-html-community/0.0.8:
     resolution: {integrity: sha512-1APHAyr3+PCamwNw3bXCPp4HFLONZt/yIH0sZp0/469KWNTEy+qN5jQ3GVX6DMZ1UXAi34yVwtTeaG/HpBuuzw==}
     engines: {'0': node >= 0.8.0}
@@ -5850,11 +5835,6 @@ packages:
       repeat-string: 1.6.1
     dev: true
 
-  /detect-indent/6.1.0:
-    resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
-    engines: {node: '>=8'}
-    dev: true
-
   /detect-package-manager/2.0.1:
     resolution: {integrity: sha512-j/lJHyoLlWi6G1LDdLgvUtz60Zo5GEj+sVYtTVXnYLDPuzgC3llMxonXym9zIwhhUII8vjdw0LXxavpLqTbl1A==}
     engines: {node: '>=12'}
@@ -6009,16 +5989,6 @@ packages:
       stream-shift: 1.0.1
     dev: true
 
-  /editorconfig/0.15.3:
-    resolution: {integrity: sha512-M9wIMFx96vq0R4F+gRpY3o2exzb8hEj/n9S8unZtHSvYjibBp/iMufSzvmOcV/laG0ZtuTVGtiJggPOSW2r93g==}
-    hasBin: true
-    dependencies:
-      commander: 2.20.3
-      lru-cache: 4.1.5
-      semver: 5.7.1
-      sigmund: 1.0.1
-    dev: true
-
   /ee-first/1.1.1:
     resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
     dev: true
@@ -6094,13 +6064,6 @@ packages:
     dependencies:
       graceful-fs: 4.2.10
       tapable: 2.2.1
-    dev: true
-
-  /enquirer/2.3.6:
-    resolution: {integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==}
-    engines: {node: '>=8.6'}
-    dependencies:
-      ansi-colors: 4.1.3
     dev: true
 
   /entities/2.2.0:
@@ -8289,11 +8252,6 @@ packages:
       side-channel: 1.0.4
     dev: true
 
-  /interpret/1.4.0:
-    resolution: {integrity: sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==}
-    engines: {node: '>= 0.10'}
-    dev: true
-
   /interpret/2.2.0:
     resolution: {integrity: sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==}
     engines: {node: '>= 0.10'}
@@ -8918,11 +8876,6 @@ packages:
     hasBin: true
     dev: true
 
-  /json8/1.0.5:
-    resolution: {integrity: sha512-TnyzPW+84OwR9znGJ1DeJkucxkCEP37vNLoPuK7p0VJ3MrjhxgW+t+AbkW9vfNzxMv0tIDvzOYS1rJ7eUdcTwA==}
-    engines: {node: '>= 7.6.0'}
-    dev: true
-
   /jsonfile/4.0.0:
     resolution: {integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=}
     optionalDependencies:
@@ -8996,13 +8949,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       package-json: 6.5.0
-    dev: true
-
-  /lazy-cache/2.0.2:
-    resolution: {integrity: sha1-uRkKT5EzVGlIQIWfio9whNiCImQ=}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      set-getter: 0.1.1
     dev: true
 
   /lazy-universal-dotenv/3.0.1:
@@ -9178,13 +9124,6 @@ packages:
     dependencies:
       fault: 1.0.4
       highlight.js: 10.7.3
-    dev: true
-
-  /lru-cache/4.1.5:
-    resolution: {integrity: sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==}
-    dependencies:
-      pseudomap: 1.0.2
-      yallist: 2.1.2
     dev: true
 
   /lru-cache/5.1.1:
@@ -9704,12 +9643,6 @@ packages:
       to-regex: 3.0.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /nanospinner/0.3.2:
-    resolution: {integrity: sha512-ToZuxmiRuuNe3McB7CVzP7PCOhzWAy4qx6ndb5QWxJFp6INdg3n0mVm8f7HR6Fz8raRg3/vzglIZYrOSna8vkg==}
-    dependencies:
-      picocolors: 1.0.0
     dev: true
 
   /natural-compare/1.4.0:
@@ -10883,10 +10816,6 @@ packages:
     resolution: {integrity: sha1-0/wRS6BplaRexok/SEzrHXj19HY=}
     dev: true
 
-  /pseudomap/1.0.2:
-    resolution: {integrity: sha1-8FKijacOYYkX7wqKw0wa5aaChrM=}
-    dev: true
-
   /public-encrypt/4.0.3:
     resolution: {integrity: sha512-zVpa8oKZSz5bTMTFClc1fQOnyyEzpl5ozpi1B5YcvBrdohMjH2rfsBtyXcuNuwjsDIXmBYlF2N5FlJYhR29t8Q==}
     dependencies:
@@ -11251,13 +11180,6 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
-    dev: true
-
-  /rechoir/0.6.2:
-    resolution: {integrity: sha1-hSBLVNuoLVdC4oyWdW70OvUOM4Q=}
-    engines: {node: '>= 0.10'}
-    dependencies:
-      resolve: 1.22.0
     dev: true
 
   /redent/1.0.0:
@@ -11759,13 +11681,6 @@ packages:
     resolution: {integrity: sha1-BF+XgtARrppoA93TgrJDkrPYkPc=}
     dev: true
 
-  /set-getter/0.1.1:
-    resolution: {integrity: sha512-9sVWOy+gthr+0G9DzqqLaYNA7+5OKkSmcqjL9cBpDEaZrr3ShQlyX2cZ/O/ozE41oxn/Tt0LGEM/w4Rub3A3gw==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      to-object-path: 0.3.0
-    dev: true
-
   /set-value/2.0.1:
     resolution: {integrity: sha512-JxHc1weCN68wRY0fhCoXpyK55m/XPHafOmK4UWD7m2CI14GMcFypt4w/0+NV5f/ZMby2F6S2wwA7fgynh9gWSw==}
     engines: {node: '>=0.10.0'}
@@ -11799,64 +11714,6 @@ packages:
       kind-of: 6.0.3
     dev: true
 
-  /sharec-nanomatch/2.10.7:
-    resolution: {integrity: sha512-jTGpWz6Z6zeGOVn5Tsz4fQLLOyr0rwDecweHOJAOoavtF/1B/HZWar8HdZY+SOKnfTLrb2nKLh/X9/Gq04CWlA==}
-    engines: {node: '>=4.0.0'}
-    deprecated: No longer needed
-    dependencies:
-      arr-diff: 4.0.0
-      array-unique: 0.3.2
-      define-property: 2.0.2
-      fragment-cache: 0.2.1
-      is-windows: 1.0.2
-      kind-of: 6.0.3
-      object.pick: 1.3.0
-      regex-not: 1.0.2
-      snapdragon: 0.12.1
-      snapdragon-capture: 0.2.0
-      to-regex: 3.0.2
-    dev: true
-
-  /sharec-schema/2.10.7:
-    resolution: {integrity: sha512-FQ6bq63akf0/Gph3j+EJY+eCgvCHxFNkX7Ny+WLMJKcsHvJEwv6lCnCNbT7M7aXRA/Jrunh+/rbpcFsWmh50Jw==}
-    dependencies:
-      js-yaml: 4.1.0
-      json8: 1.0.5
-      lodash: 4.17.21
-      sharec-utils: 2.10.7
-    dev: true
-
-  /sharec-utils/2.10.7:
-    resolution: {integrity: sha512-elAALHH6yWhJaXol5ZlOTVB4sQX3pimFI6rxocWRpyD1cbmegT8SME87eIrTy0KNt4OmkCnm+lJbSwsSjA9T+A==}
-    dependencies:
-      detect-indent: 6.1.0
-      lodash: 4.17.21
-      minimatch: 3.1.2
-      sharec-nanomatch: 2.10.7
-      slash: 3.0.0
-    dev: true
-
-  /sharec/2.10.7:
-    resolution: {integrity: sha512-b/B03SvEP5Mw4KS20nP4v6xNdMvD2W6NG07/GsasBeYRqyeHOuwf0jB9x5h/MWswikjmi1Q6ec5RWpyCQKYjHw==}
-    hasBin: true
-    dependencies:
-      detect-indent: 6.1.0
-      editorconfig: 0.15.3
-      enquirer: 2.3.6
-      js-yaml: 4.1.0
-      json8: 1.0.5
-      lodash: 4.17.21
-      minimatch: 3.1.2
-      minimist: 1.2.6
-      nanospinner: 0.3.2
-      picocolors: 1.0.0
-      sharec-nanomatch: 2.10.7
-      sharec-schema: 2.10.7
-      sharec-utils: 2.10.7
-      shelljs: 0.8.5
-      slash: 3.0.0
-    dev: true
-
   /shebang-command/1.2.0:
     resolution: {integrity: sha1-RKrGW2lbAzmJaMOfNj/uXer98eo=}
     engines: {node: '>=0.10.0'}
@@ -11881,26 +11738,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shelljs/0.8.5:
-    resolution: {integrity: sha512-TiwcRcrkhHvbrZbnRcFYMLl30Dfov3HKqzp5tO5b4pt6G/SezKcYhmDg15zXVBswHmctSAQKznqNW2LO5tTDow==}
-    engines: {node: '>=4'}
-    hasBin: true
-    dependencies:
-      glob: 7.2.3
-      interpret: 1.4.0
-      rechoir: 0.6.2
-    dev: true
-
   /side-channel/1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.1.1
       object-inspect: 1.12.1
-    dev: true
-
-  /sigmund/1.0.1:
-    resolution: {integrity: sha1-P/IfGYytIXX587eBhT/ZTQ0ZtZA=}
     dev: true
 
   /signal-exit/3.0.7:
@@ -11926,21 +11769,6 @@ packages:
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
     dev: true
 
-  /snapdragon-capture/0.2.0:
-    resolution: {integrity: sha1-IWFgI4hKOwGSyNNH8jivSeqh6mc=}
-    engines: {node: '>=4'}
-    dev: true
-
-  /snapdragon-node/1.0.6:
-    resolution: {integrity: sha1-JEjV72/qf16P1TJqChFIVNonE1Y=}
-    engines: {node: '>=4.7'}
-    dependencies:
-      define-property: 0.2.5
-      isobject: 3.0.1
-      lazy-cache: 2.0.2
-      snapdragon-util: 1.0.6
-    dev: true
-
   /snapdragon-node/2.1.1:
     resolution: {integrity: sha512-O27l4xaMYt/RSQ5TR3vpWCAB5Kb/czIcqUFOM/C4fYcLnbZUc1PkjTAMjof2pBWaSTwOUd6qUHcFGVGj7aIwnw==}
     engines: {node: '>=0.10.0'}
@@ -11950,45 +11778,11 @@ packages:
       snapdragon-util: 3.0.1
     dev: true
 
-  /snapdragon-util/1.0.6:
-    resolution: {integrity: sha1-iz0tbeyJMMkOBUugUuViyhs6Yh4=}
-    engines: {node: '>=4.7'}
-    dependencies:
-      define-property: 0.2.5
-      kind-of: 3.2.2
-      lazy-cache: 2.0.2
-      snapdragon-node: 1.0.6
-    dev: true
-
   /snapdragon-util/3.0.1:
     resolution: {integrity: sha512-mbKkMdQKsjX4BAL4bRYTj21edOf8cN7XHdYUJEe+Zn99hVEYcMvKPct1IqNe7+AZPirn8BCDOQBHQZknqmKlZQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
       kind-of: 3.2.2
-    dev: true
-
-  /snapdragon-util/4.0.0:
-    resolution: {integrity: sha512-EthB2f44R7/fdbUrGmlOIJ15k5nkC3/LvWaD6u7wu9fo4Eabk7qq1MTkSGoTWWm1hxb2lxG/r9H3KKhhNOGkgw==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      kind-of: 6.0.3
-    dev: true
-
-  /snapdragon/0.12.1:
-    resolution: {integrity: sha512-tx1/y64FQypLGStl7vJlqy3KflqZQ8cmRshrTquByxbjhTusjclsFZ+M3MpwirkF0lxcejpI4dIfNOQ+3Hshyw==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      component-emitter: 1.3.0
-      define-property: 2.0.2
-      extend-shallow: 3.0.2
-      get-value: 2.0.6
-      isobject: 3.0.1
-      map-cache: 0.2.2
-      snapdragon-node: 1.0.6
-      snapdragon-util: 4.0.0
-      source-map: 0.5.7
-      source-map-resolve: 0.6.0
-      use: 3.1.1
     dev: true
 
   /snapdragon/0.8.2:
@@ -12044,14 +11838,6 @@ packages:
       resolve-url: 0.2.1
       source-map-url: 0.4.1
       urix: 0.1.0
-    dev: true
-
-  /source-map-resolve/0.6.0:
-    resolution: {integrity: sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w==}
-    deprecated: See https://github.com/lydell/source-map-resolve#deprecated
-    dependencies:
-      atob: 2.1.2
-      decode-uri-component: 0.2.0
     dev: true
 
   /source-map-support/0.5.21:
@@ -13597,10 +13383,6 @@ packages:
   /y18n/5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
     engines: {node: '>=10'}
-    dev: true
-
-  /yallist/2.1.2:
-    resolution: {integrity: sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI=}
     dev: true
 
   /yallist/3.1.1:

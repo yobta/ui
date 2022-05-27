@@ -1,7 +1,6 @@
 # Yobta UI
 
-A UI library for React and Railwind
-work in progress...
+A ESM UI library for React and Tailwind
 
 ## Installation
 
@@ -12,11 +11,14 @@ work in progress...
    pnpm i @yobta/ui
    ```
 
-3. Add Yobta Tailwind preset to `tailwind.config.js`
+3. Add Yobta UI to **content** and **presets** to sections of `tailwind.config.js`
 
    ```js
    module.exports = {
-     content: ['./src/**/*.{js,ts,jsx,tsx}'],
+     content: [
+       './src/**/*.{js,ts,jsx,tsx}',
+       './node_modules/@yobta/ui/**/*.{js,jsx}'
+     ],
      theme: {
        extend: {}
      },
@@ -25,7 +27,12 @@ work in progress...
    }
    ```
 
-4. See components [`documentation`]
+4. Yobta UI is an ECMAScript module, and you need to configure your application for ESM.
+
+   For Next.js you can configure it with [`esmExternals`].
+
+5. See components [`documentation`]
 
 [`documentation`]: https://yobta.github.io/ui/
 [`tailwind`]: https://tailwindcss.com/docs/installation
+[`esmexternals`]: https://nextjs.org/blog/next-11-1#es-modules-support

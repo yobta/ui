@@ -1,33 +1,34 @@
 build:
-	npm run build
+	pnpm run build
 	rm -rf ./lib/tailwind-preset
 	cp -R ./src/tailwind-preset ./lib/tailwind-preset
 
 docs:
-	npm run build-storybook
-	npm run deploy-storybook
+	pnpm run build-storybook
+	pnpm run deploy-storybook
 
 dev:
-	npm run storybook
+	pnpm run storybook
 
 lint:
-	npm run lint
+	pnpm run lint
 
 test:
-	npm run test
+	pnpm run test
 
 typecheck:
-	npm run typecheck
+	pnpm run typecheck
 
 check: typecheck test lint
+	pnpm run spellcheck
 
 update:
-	npm run update
+	pnpm run update
 
 bump:
-	npm version patch
+	pnpm version patch
 	git add .
 	git push
 
 publish: check build docs bump
-	npm publish
+	pnpm publish

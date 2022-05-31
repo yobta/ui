@@ -1,34 +1,39 @@
+i:
+	npm i --legacy-peer-deps
+
 build:
-	pnpm run build
+	npm run build
 	rm -rf ./lib/tailwind-preset
 	cp -R ./src/tailwind-preset ./lib/tailwind-preset
 
 docs:
-	pnpm run build-storybook
-	pnpm run deploy-storybook
+	npm run build-storybook
+	npm run deploy-storybook
 
 dev:
-	pnpm run storybook
+	npm run storybook
 
 lint:
-	pnpm run lint
+	npm run lint
 
 test:
-	pnpm run test
+	npm run test
 
 typecheck:
-	pnpm run typecheck
+	npm run typecheck
 
-check: typecheck test lint
-	pnpm run spellcheck
+spellcheck:
+	npm run spellcheck
+
+check: typecheck test lint spellcheck
 
 update:
-	pnpm run update
+	npm run update
 
 bump:
-	pnpm version patch
+	npm version patch
 	git add .
 	git push
 
 publish: check build docs bump
-	pnpm publish
+	npm publish

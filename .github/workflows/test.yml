@@ -9,17 +9,13 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 7
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 17
-          cache: pnpm
+          cache: npm
       - name: Install dependencies
-        run: pnpm i --frozen-lockfile
+        run: npm i --frozen-lockfile
       - name: Run tests
         run: make check
         env:
@@ -35,17 +31,13 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 7
       - name: Install Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: pnpm
+          cache: npm
       - name: Install dependencies
-        run: pnpm i --frozen-lockfile
+        run: npm i --frozen-lockfile
       - name: Run unit tests
         run: make test
         env:

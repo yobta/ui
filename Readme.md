@@ -33,7 +33,7 @@ A ESM UI library for React and Tailwind
 
 5. See components [`documentation`]
 
-## Dev Installation
+## Development Installation
 
 1. `make i`
 2. `make dev`

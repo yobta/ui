@@ -33,6 +33,11 @@ A ESM UI library for React and Tailwind
 
 5. See components [`documentation`]
 
+## Dev Installation
+
+1. `make i`
+2. `make dev`
+
 [`documentation`]: https://yobta.github.io/ui/
 [`tailwind`]: https://tailwindcss.com/docs/installation
 [`esmexternals`]: https://nextjs.org/blog/next-11-1#es-modules-support

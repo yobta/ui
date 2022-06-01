@@ -24,6 +24,7 @@ module.exports = {
     info: { DEFAULT: '#3784CB', dark: '#5A86AF' },
     border: { DEFAULT: '#29292916', dark: '#FFFFFF16' }
   },
+
   link: {
     DEFAULT: '#120EED',
     dark: '#9C9AFF',

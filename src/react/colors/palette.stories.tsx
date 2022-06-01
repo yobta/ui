@@ -46,10 +46,58 @@ const Template: ComponentStory<() => JSX.Element> = () => (
         </tr>
         <tr>
           <td>
+            <Color value="bg-paper-3" />
+          </td>
+          <td>
+            <Color value="bg-paper-3-dark" />
+          </td>
+        </tr>
+        <tr>
+          <td>
             <Color value="bg-paper-primary" />
           </td>
           <td>
             <Color value="bg-paper-primary-dark" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Color value="bg-paper-secondary" />
+          </td>
+          <td>
+            <Color value="bg-paper-secondary-dark" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Color value="bg-paper-error" />
+          </td>
+          <td>
+            <Color value="bg-paper-error-dark" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Color value="bg-success-info" />
+          </td>
+          <td>
+            <Color value="bg-success-info-dark" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Color value="bg-paper-warning" />
+          </td>
+          <td>
+            <Color value="bg-paper-warning-dark" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Color value="bg-paper-info" />
+          </td>
+          <td>
+            <Color value="bg-paper-info-dark" />
           </td>
         </tr>
       </tbody>

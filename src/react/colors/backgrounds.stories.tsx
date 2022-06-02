@@ -1,22 +1,9 @@
 import { ComponentStory } from '@storybook/react'
 import clsx from 'clsx'
-import { ReactNode } from 'react'
 
 export default {
   title: 'Colors/Background Plugin'
 }
-
-const Fill = ({ value }: { value: string }): JSX.Element => (
-  <div className="flex items-center gap-4">
-    <div
-      className={clsx(
-        'w-7 h-7 rounded-full border border-ink-border dark:border-ink-border-dark',
-        value
-      )}
-    />
-    .{value}
-  </div>
-)
 
 const Template: ComponentStory<
   (props: { classNames: string[] }) => JSX.Element

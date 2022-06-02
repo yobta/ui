@@ -43,7 +43,7 @@ const Template: ComponentStory<() => JSX.Element> = () => (
     <h2 className="text-4xl mb-4 ml-4">Fill Colors</h2>
     <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
-        <h4 className="font-bold ml-4">Normal</h4>
+        <h4 className="font-bold ml-4">Light</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">
           <Fill value="bg-paper" />
           <Fill value="bg-paper-2" />
@@ -74,7 +74,7 @@ const Template: ComponentStory<() => JSX.Element> = () => (
     <h2 className="text-4xl mb-4 ml-4">Stroke Colors</h2>
     <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
-        <h4 className="font-bold ml-4">Normal</h4>
+        <h4 className="font-bold ml-4">Light</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">
           <Stroke value="border-ink" />
           <Stroke value="border-ink-2" />
@@ -105,7 +105,7 @@ const Template: ComponentStory<() => JSX.Element> = () => (
     <h2 className="text-4xl mb-4 ml-4">Link Colors</h2>
     <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
-        <h4 className="font-bold ml-4">Normal</h4>
+        <h4 className="font-bold ml-4">Light</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">
           <span className="text-link">text-link</span>
           <span className="text-link-hover">text-link-hover</span>
@@ -126,45 +126,45 @@ const Template: ComponentStory<() => JSX.Element> = () => (
     <h2 className="text-4xl mb-4 ml-4">Extra Fill Colors</h2>
     <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
-        <h4 className="font-bold ml-4">Normal</h4>
+        <h4 className="font-bold ml-4">Light</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">
-          <ExtraFill value="bg-1" />
-          <ExtraFill value="bg-2" />
-          <ExtraFill value="bg-3" />
-          <ExtraFill value="bg-4" />
-          <ExtraFill value="bg-5" />
-          <ExtraFill value="bg-6" />
-          <ExtraFill value="bg-7" />
-          <ExtraFill value="bg-8" />
-          <ExtraFill value="bg-9" />
-          <ExtraFill value="bg-10" />
-          <ExtraFill value="bg-11" />
-          <ExtraFill value="bg-12" />
-          <ExtraFill value="bg-13" />
-          <ExtraFill value="bg-14" />
-          <ExtraFill value="bg-15" />
-          <ExtraFill value="bg-16" />
+          <ExtraFill value="bg-color-1" />
+          <ExtraFill value="bg-color-2" />
+          <ExtraFill value="bg-color-3" />
+          <ExtraFill value="bg-color-4" />
+          <ExtraFill value="bg-color-5" />
+          <ExtraFill value="bg-color-6" />
+          <ExtraFill value="bg-color-7" />
+          <ExtraFill value="bg-color-8" />
+          <ExtraFill value="bg-color-9" />
+          <ExtraFill value="bg-color-10" />
+          <ExtraFill value="bg-color-11" />
+          <ExtraFill value="bg-color-12" />
+          <ExtraFill value="bg-color-13" />
+          <ExtraFill value="bg-color-14" />
+          <ExtraFill value="bg-color-15" />
+          <ExtraFill value="bg-color-16" />
         </div>
       </div>
       <div>
         <h4 className="font-bold ml-4">Dark</h4>
         <div className="p-4 bg-paper-dark text-ink-dark rounded grid gap-2">
-          <ExtraFill value="bg-1-dark" />
-          <ExtraFill value="bg-2-dark" />
-          <ExtraFill value="bg-3-dark" />
-          <ExtraFill value="bg-4-dark" />
-          <ExtraFill value="bg-5-dark" />
-          <ExtraFill value="bg-6-dark" />
-          <ExtraFill value="bg-7-dark" />
-          <ExtraFill value="bg-8-dark" />
-          <ExtraFill value="bg-9-dark" />
-          <ExtraFill value="bg-10-dark" />
-          <ExtraFill value="bg-11-dark" />
-          <ExtraFill value="bg-12-dark" />
-          <ExtraFill value="bg-13-dark" />
-          <ExtraFill value="bg-14-dark" />
-          <ExtraFill value="bg-15-dark" />
-          <ExtraFill value="bg-16-dark" />
+          <ExtraFill value="bg-color-1-dark" />
+          <ExtraFill value="bg-color-2-dark" />
+          <ExtraFill value="bg-color-3-dark" />
+          <ExtraFill value="bg-color-4-dark" />
+          <ExtraFill value="bg-color-5-dark" />
+          <ExtraFill value="bg-color-6-dark" />
+          <ExtraFill value="bg-color-7-dark" />
+          <ExtraFill value="bg-color-8-dark" />
+          <ExtraFill value="bg-color-9-dark" />
+          <ExtraFill value="bg-color-10-dark" />
+          <ExtraFill value="bg-color-11-dark" />
+          <ExtraFill value="bg-color-12-dark" />
+          <ExtraFill value="bg-color-13-dark" />
+          <ExtraFill value="bg-color-14-dark" />
+          <ExtraFill value="bg-color-15-dark" />
+          <ExtraFill value="bg-color-16-dark" />
         </div>
       </div>
     </div>

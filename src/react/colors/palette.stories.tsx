@@ -39,9 +39,9 @@ const ExtraFill = ({ value }: { value: string }): JSX.Element => (
 )
 
 const Template: ComponentStory<() => JSX.Element> = () => (
-  <div>
+  <div className="dark:text-ink-dark">
     <h2 className="text-4xl mb-4 ml-4">Fill Colors</h2>
-    <div className="sm:grid grid-cols-2">
+    <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
         <h4 className="font-bold ml-4">Normal</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">
@@ -72,7 +72,7 @@ const Template: ComponentStory<() => JSX.Element> = () => (
       </div>
     </div>
     <h2 className="text-4xl mb-4 ml-4">Stroke Colors</h2>
-    <div className="sm:grid grid-cols-2">
+    <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
         <h4 className="font-bold ml-4">Normal</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">
@@ -103,7 +103,7 @@ const Template: ComponentStory<() => JSX.Element> = () => (
       </div>
     </div>
     <h2 className="text-4xl mb-4 ml-4">Link Colors</h2>
-    <div className="sm:grid grid-cols-2">
+    <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
         <h4 className="font-bold ml-4">Normal</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">
@@ -124,7 +124,7 @@ const Template: ComponentStory<() => JSX.Element> = () => (
       </div>
     </div>
     <h2 className="text-4xl mb-4 ml-4">Extra Fill Colors</h2>
-    <div className="sm:grid grid-cols-2">
+    <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
         <h4 className="font-bold ml-4">Normal</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">

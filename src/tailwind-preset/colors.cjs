@@ -32,20 +32,22 @@ module.exports = {
     active: { DEFAULT: '#B92AFD', dark: '#CD63FF' },
     visited: { DEFAULT: '#8B2E9A', dark: '#BD9FC1' }
   },
-  1: { DEFAULT: '#FAD8C2', dark: '#4C474B' },
-  2: { DEFAULT: '#FFE7CE', dark: '#48474B' },
-  3: { DEFAULT: '#FFF6C0', dark: '#4D4F4A' },
-  4: { DEFAULT: '#FFFDF1', dark: '#373A3F' },
-  5: { DEFAULT: '#E9F2CE', dark: '#474E4F' },
-  6: { DEFAULT: '#D6E8CF', dark: '#424B4F' },
-  7: { DEFAULT: '#C3C9C4', dark: '#3D424C' },
-  8: { DEFAULT: '#E8EEE9', dark: '#474D58' },
-  9: { DEFAULT: '#D8EDEF', dark: '#424D5A' },
-  10: { DEFAULT: '#ECF5F7', dark: '#3D434F' },
-  11: { DEFAULT: '#F8FDFE', dark: '#2D323B' },
-  12: { DEFAULT: '#C5E7F7', dark: '#3D4B5C' },
-  13: { DEFAULT: '#B0B9BF', dark: '#373E4A' },
-  14: { DEFAULT: '#E9DDEB', dark: '#474858' },
-  15: { DEFAULT: '#F8E0EB', dark: '#4B4958' },
-  16: { DEFAULT: '#C6E0F4', dark: '#3D495B' }
+  color: {
+    1: { DEFAULT: '#FAD8C2', dark: '#4C474B' },
+    2: { DEFAULT: '#FFE7CE', dark: '#48474B' },
+    3: { DEFAULT: '#FFF6C0', dark: '#4D4F4A' },
+    4: { DEFAULT: '#FFFDF1', dark: '#373A3F' },
+    5: { DEFAULT: '#E9F2CE', dark: '#474E4F' },
+    6: { DEFAULT: '#D6E8CF', dark: '#424B4F' },
+    7: { DEFAULT: '#C3C9C4', dark: '#3D424C' },
+    8: { DEFAULT: '#E8EEE9', dark: '#474D58' },
+    9: { DEFAULT: '#D8EDEF', dark: '#424D5A' },
+    10: { DEFAULT: '#ECF5F7', dark: '#3D434F' },
+    11: { DEFAULT: '#F8FDFE', dark: '#2D323B' },
+    12: { DEFAULT: '#C5E7F7', dark: '#3D4B5C' },
+    13: { DEFAULT: '#C6E0F4', dark: '#3D495B' },
+    14: { DEFAULT: '#B0B9BF', dark: '#373E4A' },
+    15: { DEFAULT: '#E9DDEB', dark: '#474858' },
+    16: { DEFAULT: '#F8E0EB', dark: '#4B4958' }
+  }
 }

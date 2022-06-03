@@ -5,171 +5,219 @@ export default {
   title: 'Colors/Palette'
 }
 
-const Fill = ({
-  dark,
-  value
-}: {
-  dark?: boolean
-  value: string
-}): JSX.Element => (
-  <div className="flex items-center gap-4">
-    <div
-      className={clsx(
-        'w-7 h-7 rounded-full border',
-        value,
-        dark ? 'border-ink-border-dark' : 'border-ink-border'
-      )}
-    />
-    {value}
-  </div>
-)
+// const Stroke = ({ value }: { value: string }): JSX.Element => (
+//   <div className="flex items-center gap-4">
+//     <div className={clsx('w-7 h-7 rounded border-2', value)} />
+//     {value}
+//   </div>
+// )
 
-const Stroke = ({ value }: { value: string }): JSX.Element => (
-  <div className="flex items-center gap-4">
-    <div className={clsx('w-7 h-7 rounded border-2', value)} />
-    {value}
-  </div>
-)
+type Template = ComponentStory<
+  (props: {
+    classNamesLight: string[]
+    classNamesDark: string[]
+  }) => JSX.Element
+>
 
-const ExtraFill = ({ value }: { value: string }): JSX.Element => (
-  <div className="flex items-center gap-4">
-    <div className={clsx('w-7 h-7 rounded', value)} />
-    {value}
-  </div>
-)
-
-const Template: ComponentStory<() => JSX.Element> = () => (
+const FillsTemplate: Template = ({ classNamesLight, classNamesDark }) => (
   <div className="dark:text-ink-dark">
-    <h2 className="text-4xl mb-4 ml-4">Fill Colors</h2>
     <div className="sm:grid grid-cols-2 gap-2 mb-12">
       <div>
         <h4 className="font-bold ml-4">Light</h4>
         <div className="p-4 grid gap-2 bg-paper text-ink rounded">
-          <Fill value="bg-paper" />
-          <Fill value="bg-paper-2" />
-          <Fill value="bg-paper-3" />
-          <Fill value="bg-paper-primary" />
-          <Fill value="bg-paper-secondary" />
-          <Fill value="bg-paper-error" />
-          <Fill value="bg-paper-success" />
-          <Fill value="bg-paper-warning" />
-          <Fill value="bg-paper-info" />
+          {classNamesLight.map(value => (
+            <div className="flex items-center gap-4" key={value}>
+              <div
+                className={clsx(
+                  value,
+                  'w-7 h-7 rounded-full border border-ink-border'
+                )}
+              />
+              .{value}
+            </div>
+          ))}
         </div>
       </div>
       <div>
         <h4 className="font-bold ml-4">Dark</h4>
         <div className="p-4 bg-paper-dark text-ink-dark rounded grid gap-2">
-          <Fill dark value="bg-paper-dark" />
-          <Fill dark value="bg-paper-2-dark" />
-          <Fill value="bg-paper-3-dark" />
-          <Fill value="bg-paper-primary-dark" />
-          <Fill value="bg-paper-secondary-dark" />
-          <Fill value="bg-paper-error-dark" />
-          <Fill value="bg-paper-success-dark" />
-          <Fill value="bg-paper-warning-dark" />
-          <Fill value="bg-paper-info-dark" />
-        </div>
-      </div>
-    </div>
-    <h2 className="text-4xl mb-4 ml-4">Stroke Colors</h2>
-    <div className="sm:grid grid-cols-2 gap-2 mb-12">
-      <div>
-        <h4 className="font-bold ml-4">Light</h4>
-        <div className="p-4 grid gap-2 bg-paper text-ink rounded">
-          <Stroke value="border-ink" />
-          <Stroke value="border-ink-2" />
-          <Stroke value="border-ink-primary" />
-          <Stroke value="border-ink-secondary" />
-          <Stroke value="border-ink-error" />
-          <Stroke value="border-ink-success" />
-          <Stroke value="border-ink-warning" />
-          <Stroke value="border-ink-info" />
-          <Stroke value="border-ink-border" />
-        </div>
-      </div>
-      <div>
-        <h4 className="font-bold ml-4">Dark</h4>
-        <div className="p-4 bg-paper-dark text-ink-dark rounded grid gap-2">
-          <Stroke value="border-ink-dark" />
-          <Stroke value="border-ink-2-dark" />
-          <Stroke value="border-ink-primary-dark" />
-          <Stroke value="border-ink-secondary-dark" />
-          <Stroke value="border-ink-error-dark" />
-          <Stroke value="border-ink-success-dark" />
-          <Stroke value="border-ink-warning-dark" />
-          <Stroke value="border-ink-info-dark" />
-          <Stroke value="border-ink-border-dark" />
-        </div>
-      </div>
-    </div>
-    <h2 className="text-4xl mb-4 ml-4">Link Colors</h2>
-    <div className="sm:grid grid-cols-2 gap-2 mb-12">
-      <div>
-        <h4 className="font-bold ml-4">Light</h4>
-        <div className="p-4 grid gap-2 bg-paper text-ink rounded">
-          <span className="text-link">text-link</span>
-          <span className="text-link-hover">text-link-hover</span>
-          <span className="text-link-active">text-link-active</span>
-          <span className="text-link-visited">text-link-visited</span>
-        </div>
-      </div>
-      <div>
-        <h4 className="font-bold ml-4">Dark</h4>
-        <div className="p-4 bg-paper-dark text-ink-dark rounded grid gap-2">
-          <span className="text-link-dark">text-link-dark</span>
-          <span className="text-link-hover-dark">text-link-hover-dark</span>
-          <span className="text-link-active-dark">text-link-active-dark</span>
-          <span className="text-link-visited-dark">text-link-visited-dark</span>
-        </div>
-      </div>
-    </div>
-    <h2 className="text-4xl mb-4 ml-4">Extra Fill Colors</h2>
-    <div className="sm:grid grid-cols-2 gap-2 mb-12">
-      <div>
-        <h4 className="font-bold ml-4">Light</h4>
-        <div className="p-4 grid gap-2 bg-paper text-ink rounded">
-          <ExtraFill value="bg-color-1" />
-          <ExtraFill value="bg-color-2" />
-          <ExtraFill value="bg-color-3" />
-          <ExtraFill value="bg-color-4" />
-          <ExtraFill value="bg-color-5" />
-          <ExtraFill value="bg-color-6" />
-          <ExtraFill value="bg-color-7" />
-          <ExtraFill value="bg-color-8" />
-          <ExtraFill value="bg-color-9" />
-          <ExtraFill value="bg-color-10" />
-          <ExtraFill value="bg-color-11" />
-          <ExtraFill value="bg-color-12" />
-          <ExtraFill value="bg-color-13" />
-          <ExtraFill value="bg-color-14" />
-          <ExtraFill value="bg-color-15" />
-          <ExtraFill value="bg-color-16" />
-        </div>
-      </div>
-      <div>
-        <h4 className="font-bold ml-4">Dark</h4>
-        <div className="p-4 bg-paper-dark text-ink-dark rounded grid gap-2">
-          <ExtraFill value="bg-color-1-dark" />
-          <ExtraFill value="bg-color-2-dark" />
-          <ExtraFill value="bg-color-3-dark" />
-          <ExtraFill value="bg-color-4-dark" />
-          <ExtraFill value="bg-color-5-dark" />
-          <ExtraFill value="bg-color-6-dark" />
-          <ExtraFill value="bg-color-7-dark" />
-          <ExtraFill value="bg-color-8-dark" />
-          <ExtraFill value="bg-color-9-dark" />
-          <ExtraFill value="bg-color-10-dark" />
-          <ExtraFill value="bg-color-11-dark" />
-          <ExtraFill value="bg-color-12-dark" />
-          <ExtraFill value="bg-color-13-dark" />
-          <ExtraFill value="bg-color-14-dark" />
-          <ExtraFill value="bg-color-15-dark" />
-          <ExtraFill value="bg-color-16-dark" />
+          {classNamesDark.map(value => (
+            <div className="flex items-center gap-4" key={value}>
+              <div
+                className={clsx(
+                  value,
+                  'w-7 h-7 rounded-full border border-ink-border-dark'
+                )}
+              />
+              .{value}
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </div>
 )
 
-export const Primary = Template.bind({})
-Primary.args = {}
+const LinksTemplate: Template = ({ classNamesLight, classNamesDark }) => (
+  <div className="dark:text-ink-dark">
+    <div className="sm:grid grid-cols-2 gap-2 mb-12">
+      <div>
+        <h4 className="font-bold ml-4">Light</h4>
+        <div className="p-4 grid gap-2 bg-paper text-ink rounded">
+          {classNamesLight.map(value => (
+            <span className={value} key={value}>
+              .{value}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h4 className="font-bold ml-4">Dark</h4>
+        <div className="p-4 bg-paper-dark text-ink-dark rounded grid gap-2">
+          {classNamesDark.map(value => (
+            <span className={value} key={value}>
+              .{value}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+const StrokeTemplate: Template = ({ classNamesLight, classNamesDark }) => (
+  <div className="dark:text-ink-dark">
+    <div className="sm:grid grid-cols-2 gap-2 mb-12">
+      <div>
+        <h4 className="font-bold ml-4">Light</h4>
+        <div className="p-4 grid gap-2 bg-paper text-ink rounded">
+          {classNamesLight.map(value => (
+            <div className="flex items-center gap-4" key={value}>
+              <div className={clsx(value, 'w-7 h-7 rounded border-2')} />.
+              {value}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h4 className="font-bold ml-4">Dark</h4>
+        <div className="p-4 bg-paper-dark text-ink-dark rounded grid gap-2">
+          {classNamesDark.map(value => (
+            <div className="flex items-center gap-4" key={value}>
+              <div className={clsx(value, 'w-7 h-7 rounded border-2')} />.
+              {value}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+export const FillColors = FillsTemplate.bind({})
+FillColors.args = {
+  classNamesLight: [
+    'bg-paper',
+    'bg-paper-2',
+    'bg-paper-3',
+    'bg-paper-primary',
+    'bg-paper-secondary',
+    'bg-paper-error',
+    'bg-paper-success',
+    'bg-paper-warning',
+    'bg-paper-info'
+  ],
+  classNamesDark: [
+    'bg-paper-dark',
+    'bg-paper-2-dark',
+    'bg-paper-3-dark',
+    'bg-paper-primary-dark',
+    'bg-paper-secondary-dark',
+    'bg-paper-error-dark',
+    'bg-paper-success-dark',
+    'bg-paper-warning-dark',
+    'bg-paper-info-dark'
+  ]
+}
+
+export const AdditionalFillColors = FillsTemplate.bind({})
+AdditionalFillColors.args = {
+  classNamesLight: [
+    'bg-color-1',
+    'bg-color-2',
+    'bg-color-3',
+    'bg-color-4',
+    'bg-color-5',
+    'bg-color-6',
+    'bg-color-7',
+    'bg-color-8',
+    'bg-color-9',
+    'bg-color-10',
+    'bg-color-11',
+    'bg-color-12',
+    'bg-color-13',
+    'bg-color-14',
+    'bg-color-15',
+    'bg-color-16'
+  ],
+  classNamesDark: [
+    'bg-color-1-dark',
+    'bg-color-2-dark',
+    'bg-color-3-dark',
+    'bg-color-4-dark',
+    'bg-color-5-dark',
+    'bg-color-6-dark',
+    'bg-color-7-dark',
+    'bg-color-8-dark',
+    'bg-color-9-dark',
+    'bg-color-10-dark',
+    'bg-color-11-dark',
+    'bg-color-12-dark',
+    'bg-color-13-dark',
+    'bg-color-14-dark',
+    'bg-color-15-dark',
+    'bg-color-16-dark'
+  ]
+}
+
+export const StrokeColors = StrokeTemplate.bind({})
+StrokeColors.args = {
+  classNamesLight: [
+    'border-ink',
+    'border-ink-2',
+    'border-ink-primary',
+    'border-ink-secondary',
+    'border-ink-error',
+    'border-ink-success',
+    'border-ink-warning',
+    'border-ink-info',
+    'border-ink-border'
+  ],
+  classNamesDark: [
+    'border-ink-dark',
+    'border-ink-2-dark',
+    'border-ink-primary-dark',
+    'border-ink-secondary-dark',
+    'border-ink-error-dark',
+    'border-ink-success-dark',
+    'border-ink-warning-dark',
+    'border-ink-info-dark',
+    'border-ink-border-dark'
+  ]
+}
+
+export const LinkColors = LinksTemplate.bind({})
+LinkColors.args = {
+  classNamesLight: [
+    'text-link',
+    'text-link-hover',
+    'text-link-active',
+    'text-link-visited'
+  ],
+  classNamesDark: [
+    'text-link-dark',
+    'text-link-hover-dark',
+    'text-link-active-dark',
+    'text-link-visited-dark'
+  ]
+}

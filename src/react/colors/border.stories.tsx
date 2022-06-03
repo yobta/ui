@@ -40,11 +40,33 @@ Paper.args = {
     'ui-border-paper',
     'ui-border-paper-2',
     'ui-border-paper-3',
-    'ui-border-paper-primary'
+    'ui-border-paper-primary',
+    'ui-border-paper-secondary',
+    'ui-border-paper-error',
+    'ui-border-paper-success',
+    'ui-border-paper-warning',
+    'ui-border-paper-info'
   ]
 }
 
 export const Additional = Template.bind({})
 Additional.args = {
-  classNames: ['ui-border-color-1', 'ui-border-color-2', 'ui-border-color-3']
+  classNames: [
+    'ui-border-color-1',
+    'ui-border-color-2',
+    'ui-border-color-3',
+    'ui-border-color-4',
+    'ui-border-color-5',
+    'ui-border-color-6',
+    'ui-border-color-7',
+    'ui-border-color-8',
+    'ui-border-color-9',
+    'ui-border-color-10',
+    'ui-border-color-11',
+    'ui-border-color-12',
+    'ui-border-color-13',
+    'ui-border-color-14',
+    'ui-border-color-15',
+    'ui-border-color-16'
+  ]
 }

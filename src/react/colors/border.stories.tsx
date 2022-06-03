@@ -19,6 +19,21 @@ const Template: TemplateFC = ({ classNames }) => (
   </div>
 )
 
+export const Ink = Template.bind({})
+Ink.args = {
+  classNames: [
+    'ui-border-ink',
+    'ui-border-ink-2',
+    'ui-border-ink-primary',
+    'ui-border-ink-secondary',
+    'ui-border-ink-error',
+    'ui-border-ink-success',
+    'ui-border-ink-warning',
+    'ui-border-ink-info',
+    'ui-border-ink-border'
+  ]
+}
+
 export const Paper = Template.bind({})
 Paper.args = {
   classNames: [
@@ -29,12 +44,7 @@ Paper.args = {
   ]
 }
 
-export const Ink = Template.bind({})
-Ink.args = {
-  classNames: ['ui-border-ink', 'ui-border-ink-2', 'ui-border-ink-primary']
-}
-
 export const Additional = Template.bind({})
 Additional.args = {
-  classNames: ['ui-border-1', 'ui-border-2', 'ui-border-3']
+  classNames: ['ui-border-color-1', 'ui-border-color-2', 'ui-border-color-3']
 }

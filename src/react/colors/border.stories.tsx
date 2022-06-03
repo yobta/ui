@@ -10,7 +10,7 @@ type TemplateFC = ComponentStory<
 >
 
 const Template: TemplateFC = ({ classNames }) => (
-  <div className="grid gap-2">
+  <div className="grid gap-2 dark:text-ink-dark">
     {classNames.map(value => (
       <div className="flex items-center gap-4" key={value}>
         <div className={clsx(value, 'w-7 h-7 rounded-full border-2')} />.{value}

@@ -2,13 +2,27 @@ const plugin = require('tailwindcss/plugin')
 
 const applyPrefixed = require('./applyPrefixed.cjs')
 
-module.exports = plugin(({ addUtilities, prefix }) => {
+function createClasses(base, colors, prefix) {
+  let { DEFAULT, dark, ...restColors } = colors
+  let result =
+    DEFAULT && dark
+      ? {
+          [`.ui-${base}`]: {
+            ...applyPrefixed(prefix, `.${base}`, `.dark:${base}-dark`)
+          }
+        }
+      : {}
+  console.log('colors: ', restColors, result)
+  // let restColors = omit(colors, ['DEFAULT', 'dark'])
+  return result
+}
+
+module.exports = plugin(({ addUtilities, prefix, theme }) => {
+  let colors = theme('colors')
   addUtilities(
     {
+      ...createClasses('border-paper', colors.paper, prefix),
       // Paper
-      '.ui-border-paper': {
-        ...applyPrefixed(prefix, '.border-paper', '.dark:border-paper-dark')
-      },
       '.ui-border-paper-2': {
         ...applyPrefixed(prefix, '.border-paper-2', '.dark:border-paper-2-dark')
       },

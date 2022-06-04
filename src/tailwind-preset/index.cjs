@@ -60,7 +60,8 @@ module.exports = {
     require('./scrollBoxPlugin.cjs'),
     require('./spinnerPlugin.cjs'),
     require('./switchPlugin.cjs'),
-    require('./textAreaPlugin.cjs')
+    require('./textAreaPlugin.cjs'),
+    require('./textColorPlugin.cjs')
   ],
   variants: {
     extend: {

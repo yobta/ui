@@ -8,14 +8,19 @@ const prefix = (str: string): string => str
 test('color', async () => {
   let addUtilities = vi.fn()
   let colors = {
-    paper: {
-      DEFAULT: '#FCFCFC',
-      dark: '#2A2D35',
-      2: { DEFAULT: '#EBEBEB', dark: '#4F5462' },
-      primary: { DEFAULT: '#FADC4F', dark: '#E2C438' }
+    ink: {
+      DEFAULT: '#414141',
+      dark: '#FCFCFC',
+      2: { DEFAULT: '#7B8B99', dark: '#5B6772' },
+      primary: { DEFAULT: '#C7A713', dark: '#DCCA76' },
+    },
+    link: {
+      DEFAULT: '#120EED',
+      dark: '#9C9AFF',
+      hover: { DEFAULT: '#5F5CFF', dark: '#ACAAF0' },
     },
     color: {
-      1: { DEFAULT: '#FAD8C2', dark: '#4C474B' }
+      1: { DEFAULT: '#FAD8C2', dark: '#4C474B' },
     },
     thisUserColorShouldBeFiltered: '#ccc',
     thisUserColorSetShouldBeFiltered: {},
@@ -39,6 +44,12 @@ test('color', async () => {
       },
       '.ui-text-ink-primary': {
         '@apply text-ink-primary dark:text-ink-primary-dark': {}
+      },
+      '.ui-text-link': {
+        '@apply text-link dark:text-link-dark': {}
+      },
+      '.ui-text-link-hover': {
+        '@apply text-link-hover dark:text-link-hover-dark': {}
       },
       '.ui-text-color-1': {
         '@apply text-color-1 dark:text-color-1-dark': {}

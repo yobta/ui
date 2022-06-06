@@ -14,8 +14,8 @@ function createClasses(base, colors, prefix) {
       : {}
   let result = Object.entries(restColors)
     .filter(
-      ([, obj]) =>
-        typeof obj.DEFAULT === 'string' && typeof obj.dark === 'string'
+      ([, value]) =>
+        typeof value?.DEFAULT === 'string' && typeof value?.dark === 'string'
     )
     .reduce(
       (acc, [key]) => ({

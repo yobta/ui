@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import { usePortalNode } from '../hooks/usePortalNode.js'
 
 export type TooltipProps = {
+  animate?: boolean
   children: ReactNode
   label: ReactNode
   portalNodeId?: string
@@ -12,15 +13,20 @@ export type TooltipProps = {
 }
 
 export interface TooltipFC {
-  (propd: TooltipProps): JSX.Element
+  (props: TooltipProps): JSX.Element
+  defaultProps: {
+    animate: boolean
+  }
 }
 
 export const Tooltip: TooltipFC = ({
+  animate,
   children,
   label,
   portalNodeId,
   visible
 }) => {
+  console.log('animate: ', animate)
   let portalNode = usePortalNode(portalNodeId)
   let [producerNode, setProducerNode] = useState<ChildNode | null>(null)
   let consumerRef = useRef<HTMLDivElement>(null)
@@ -29,6 +35,12 @@ export const Tooltip: TooltipFC = ({
   let [hasCursor, setHasCursor] = useState(false)
 
   let isVisible = visible || hasFocus || hasCursor
+
+  // TODO:
+  // position attachment
+  // animation
+  // plugun
+  // color settings
 
   useEffect(() => {
     let node = consumerRef.current?.previousSibling
@@ -109,4 +121,8 @@ export const Tooltip: TooltipFC = ({
       {producerNode && portalNode ? createPortal(tooltip, portalNode) : tooltip}
     </>
   )
+}
+
+Tooltip.defaultProps = {
+  animate: true
 }

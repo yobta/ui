@@ -1,3 +1,4 @@
+/* eslint-disable n/global-require */
 /* eslint-disable node/no-missing-require */
 /* eslint-disable node/global-require */
 
@@ -45,6 +46,7 @@ module.exports = {
     require('./badgePlugin.cjs'),
     require('./basePlugin.cjs'),
     require('./bgPlugin.cjs'),
+    require('./borderPlugin.cjs'),
     require('./buttonPlugin.cjs'),
     require('./checkboxPlugin.cjs'),
     require('./dividerPlugin.cjs'),

@@ -1,14 +1,8 @@
+import { AlignOptions, getPositionAlign } from '../helpers/getPositionAlign.js'
+
 interface PositionAttachmentHook {
   (args: {
-    align?:
-      | 'top'
-      | 'top-left'
-      | 'top-right'
-      | 'bottom'
-      | 'bottom-left'
-      | 'bottom-right'
-      | 'right'
-      | 'left'
+    align?: AlignOptions
     // | 'auto'
     consumerNode: HTMLElement | null
     producerNode: HTMLElement | null
@@ -16,15 +10,7 @@ interface PositionAttachmentHook {
   }): {
     x: number
     y: number
-    align:
-      | 'top'
-      | 'top-left'
-      | 'top-right'
-      | 'bottom'
-      | 'bottom-left'
-      | 'bottom-right'
-      | 'right'
-      | 'left'
+    align: AlignOptions
   } | null
 }
 
@@ -38,7 +24,7 @@ export const usePositionAttachment: PositionAttachmentHook = ({
     return null
   }
   let rect = producerNode.getBoundingClientRect()
-  let finalAlign = align || 'bottom'
+  let finalAlign = align || getPositionAlign(producerNode, consumerNode)
 
   switch (finalAlign) {
     case 'top-left':

@@ -46,6 +46,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
     align,
     animate,
     children,
+    className,
     label,
     portalNodeId,
     visible
@@ -131,7 +132,8 @@ export const createTooltip: TooltipFactory = defaultProps => {
         <div
           className={clsx(
             'ui-tooltip__spot',
-            isActive && 'ui-tooltip__spot--visible'
+            isActive && 'ui-tooltip__spot--visible',
+            className
           )}
           ref={spotRef}
           style={{
@@ -142,9 +144,9 @@ export const createTooltip: TooltipFactory = defaultProps => {
         <div
           className={clsx(
             'ui-tooltip__content',
-            isActive && 'ui-tooltip__content--active',
+            isActive && 'ui-tooltip__content--visible',
             animate && 'ui-tooltip--animated',
-            '-translate-x-1/2'
+            className
           )}
           ref={tooltipRef}
           style={{

@@ -10,8 +10,8 @@ interface PositionAttachmentHook {
       | 'right'
       | 'left'
     // | 'auto'
-    producerNode: HTMLElement | null
     consumerNode: HTMLElement | null
+    producerNode: HTMLElement | null
     offset: number
   }): {
     x: number
@@ -30,10 +30,11 @@ interface PositionAttachmentHook {
 
 export const usePositionAttachment: PositionAttachmentHook = ({
   align,
+  consumerNode,
   producerNode,
   offset
 }) => {
-  if (!producerNode) {
+  if (!producerNode || !consumerNode) {
     return null
   }
   let rect = producerNode.getBoundingClientRect()

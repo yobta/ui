@@ -38,7 +38,8 @@ export const createTooltip: TooltipFactory = defaultProps => {
   }) => {
     let portalNode = usePortalNode(portalNodeId)
     let [producerNode, setProducerNode] = useState<HTMLElement | null>(null)
-    let consumerRef = useRef<HTMLDivElement>(null)
+    let spotRef = useRef<HTMLDivElement>(null)
+    let tooltipRef = useRef<HTMLDivElement>(null)
 
     let [hasFocus, setHasFocus] = useState(false)
     let [hasCursor, setHasCursor] = useState(false)
@@ -46,7 +47,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
     let position = usePositionAttachment({
       align: 'bottom',
       producerNode,
-      consumerNode: consumerRef.current,
+      consumerNode: tooltipRef.current,
       offset: 8
     })
 
@@ -59,7 +60,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
     // color settings
 
     useEffect(() => {
-      let node = consumerRef.current?.previousSibling
+      let node = spotRef.current?.previousSibling
       if (node) {
         setProducerNode(node as HTMLElement)
       }
@@ -114,26 +115,31 @@ export const createTooltip: TooltipFactory = defaultProps => {
     let tooltip = (
       <>
         <div
-          ref={consumerRef}
           className={clsx(
             'ui-tooltip__spot',
             isActive && 'ui-tooltip__spot--visible'
           )}
+          ref={spotRef}
           style={{
             top: position?.y,
             left: position?.x
           }}
         />
-        {/* <div
+        <div
           className={clsx(
             'ui-tooltip__content',
             isActive && 'ui-tooltip__content--active',
             animate && 'ui-tooltip--animated',
             '-translate-x-1/2'
           )}
+          ref={tooltipRef}
+          style={{
+            top: Number(position?.y) + 8,
+            left: position?.x
+          }}
         >
           {label}
-        </div> */}
+        </div>
       </>
     )
 

@@ -35,13 +35,11 @@ module.exports = plugin(({ addBase, addComponents, prefix }) => {
         '.text-center',
         '.text-xs',
         '.select-none',
-        '.opacity-0',
-        '.left-1',
-        '.top-3'
+        '.opacity-0'
       )
     },
     '.ui-tooltip__content--active': {
-      ...applyPrefixed(prefix, '.opacity-90')
+      ...applyPrefixed(prefix, '.opacity-0')
     }
   })
 

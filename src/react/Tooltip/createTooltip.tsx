@@ -6,6 +6,19 @@ import { usePortalNode } from '../hooks/usePortalNode.js'
 import { usePositionAttachment } from '../hooks/usePositionAttachment.js'
 
 export type TooltipProps = {
+  align?:
+    | 'top'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom'
+    | 'bottom-left'
+    | 'bottom-right'
+    | 'right'
+    | 'right-top'
+    | 'right-bottom'
+    | 'left'
+    | 'left-top'
+    | 'left-bottom'
   animate?: boolean
   children: ReactNode
   className?: string
@@ -30,6 +43,7 @@ export interface TooltipFactory {
 export const createTooltip: TooltipFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
   const Tooltip: TooltipFC = ({
+    align,
     animate,
     children,
     label,
@@ -45,7 +59,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
     let [hasCursor, setHasCursor] = useState(false)
 
     let position = usePositionAttachment({
-      align: 'bottom',
+      align,
       producerNode,
       consumerNode: tooltipRef.current,
       offset: 8

@@ -25,5 +25,17 @@ Default.args = {
       </Button>
     </>
   ),
+  // align: 'top',
+  // align: 'top-left',
+  // align: 'top-right',
+  // align: 'bottom',
+  // align: 'bottom-left',
+  // align: 'bottom-right',
+  // align: 'right',
+  // align: 'right-top',
+  // align: 'right-bottom',
+  align: 'left',
+  // align: 'left-top',
+  // align: 'left-bottom',
   label: 'My tooltip'
 }

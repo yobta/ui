@@ -1,18 +1,18 @@
 interface PositionAttachmentHook {
   (args: {
-    align:
-    | 'top'
-    | 'top-left'
-    | 'top-right'
-    | 'bottom'
-    | 'bottom-left'
-    | 'bottom-right'
-    | 'right'
-    | 'right-top'
-    | 'right-bottom'
-    | 'left'
-    | 'left-top'
-    | 'left-bottom'
+    align?:
+      | 'top'
+      | 'top-left'
+      | 'top-right'
+      | 'bottom'
+      | 'bottom-left'
+      | 'bottom-right'
+      | 'right'
+      | 'right-top'
+      | 'right-bottom'
+      | 'left'
+      | 'left-top'
+      | 'left-bottom'
     // | 'auto'
     consumerNode: HTMLElement | null
     producerNode: HTMLElement | null
@@ -21,18 +21,18 @@ interface PositionAttachmentHook {
     x: number
     y: number
     align:
-    | 'top'
-    | 'top-left'
-    | 'top-right'
-    | 'bottom'
-    | 'bottom-left'
-    | 'bottom-right'
-    | 'right'
-    | 'right-top'
-    | 'right-bottom'
-    | 'left'
-    | 'left-top'
-    | 'left-bottom'
+      | 'top'
+      | 'top-left'
+      | 'top-right'
+      | 'bottom'
+      | 'bottom-left'
+      | 'bottom-right'
+      | 'right'
+      | 'right-top'
+      | 'right-bottom'
+      | 'left'
+      | 'left-top'
+      | 'left-bottom'
   } | null
 }
 
@@ -46,7 +46,7 @@ export const usePositionAttachment: PositionAttachmentHook = ({
     return null
   }
   let rect = producerNode.getBoundingClientRect()
-  let finalAlign = align
+  let finalAlign = align || 'top'
 
   switch (finalAlign) {
     case 'top':
@@ -62,10 +62,11 @@ export const usePositionAttachment: PositionAttachmentHook = ({
         y: rect.y - offset
       }
     case 'top-right':
+    case 'right-top':
       return {
         align: finalAlign,
-        x: rect.x + rect.width,
-        y: rect.y - offset
+        x: rect.x + rect.width + offset / 2,
+        y: rect.y - offset / 2
       }
     case 'bottom':
       return {

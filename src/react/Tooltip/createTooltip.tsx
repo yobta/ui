@@ -29,7 +29,7 @@ export interface TooltipFactory {
 export const createTooltip: TooltipFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
   const Tooltip: TooltipFC = ({
-    // animate,
+    animate,
     children,
     label,
     portalNodeId,
@@ -42,7 +42,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
     let [hasFocus, setHasFocus] = useState(false)
     let [hasCursor, setHasCursor] = useState(false)
 
-    let isVisible = visible || hasFocus || hasCursor
+    let isActive = visible || hasFocus || hasCursor
 
     // TODO:
     // position attachment
@@ -106,15 +106,17 @@ export const createTooltip: TooltipFactory = defaultProps => {
     let tooltip = (
       <div
         ref={consumerRef}
-        className={clsx(
-          'ui-bg-tooltip opacity-90 rounded-full w-2 h-2 relative pointer-events-none',
-          'fixed top-3 left-8',
-          !isVisible && 'hidden'
-        )}
+        className={clsx('ui-tooltip', isActive && 'ui-tooltip--active')}
+        style={{
+          top: 8,
+          left: 60
+        }}
       >
         <div
           className={clsx(
-            'ui-bg-tooltip ui-text-ink-tooltip rounded px-2 py-1 absolute left-1 top-3 text-center text-sm select-none',
+            'ui-tooltip__content',
+            isActive && 'ui-tooltip__content--active',
+            animate && 'ui-tooltip--animated',
             '-translate-x-1/2'
           )}
         >

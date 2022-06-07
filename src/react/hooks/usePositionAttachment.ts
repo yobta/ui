@@ -46,15 +46,9 @@ export const usePositionAttachment: PositionAttachmentHook = ({
     return null
   }
   let rect = producerNode.getBoundingClientRect()
-  let finalAlign = align || 'top'
+  let finalAlign = align || 'bottom'
 
   switch (finalAlign) {
-    case 'top':
-      return {
-        align: finalAlign,
-        x: rect.x + rect.width / 2,
-        y: rect.y - offset
-      }
     case 'top-left':
       return {
         align: finalAlign,
@@ -110,18 +104,13 @@ export const usePositionAttachment: PositionAttachmentHook = ({
         x: rect.x + rect.width + offset,
         y: rect.y + rect.height / 2
       }
-    case 'right-top':
-      return {
-        align: finalAlign,
-        x: rect.x + rect.width + offset,
-        y: rect.y
-      }
     case 'right-bottom':
       return {
         align: finalAlign,
         x: rect.x + rect.width + offset,
         y: rect.y + rect.height
       }
+    case 'top':
     default:
       return {
         align: 'top',

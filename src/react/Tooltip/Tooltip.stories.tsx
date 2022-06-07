@@ -18,10 +18,12 @@ const Template: ComponentStory<typeof Tooltip> = args => <Tooltip {...args} />
 export const Default = Template.bind({})
 Default.args = {
   children: (
-    <Button className="ui-ink">
-      <ShoppingBag />
-      Add to cart
-    </Button>
+    <>
+      <Button className="ui-ink">
+        <ShoppingBag />
+        Add to cart
+      </Button>
+    </>
   ),
   label: 'My tooltip'
 }

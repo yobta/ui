@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin')
 
 const applyPrefixed = require('./applyPrefixed.cjs')
 
-module.exports = plugin(({ addBase, prefix }) => {
+module.exports = plugin(({ addBase, addComponents, prefix }) => {
   addBase({
     '.ui-tooltip': {
       ...applyPrefixed(
@@ -42,6 +42,27 @@ module.exports = plugin(({ addBase, prefix }) => {
     },
     '.ui-tooltip__content--active': {
       ...applyPrefixed(prefix, '.opacity-90')
+    }
+  })
+
+  addComponents({
+    '.ui-tooltip__spot': {
+      ...applyPrefixed(
+        prefix,
+        '.hidden',
+        '.fixed',
+        '.w-2',
+        '.h-2',
+        '.pointer-events-none',
+        '.rounded-full',
+        '.select-none',
+        '.ui-bg-tooltip',
+        '.-translate-x-1/2',
+        '.-translate-y-1/2'
+      )
+    },
+    '.ui-tooltip__spot--visible': {
+      display: 'block'
     }
   })
 })

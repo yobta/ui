@@ -3,6 +3,7 @@ import { Children, ReactNode, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import { usePortalNode } from '../hooks/usePortalNode.js'
+import { usePositionAttachment } from '../hooks/usePositionAttachment.js'
 
 export type TooltipProps = {
   animate?: boolean
@@ -36,13 +37,20 @@ export const createTooltip: TooltipFactory = defaultProps => {
     visible
   }) => {
     let portalNode = usePortalNode(portalNodeId)
-    let [producerNode, setProducerNode] = useState<ChildNode | null>(null)
+    let [producerNode, setProducerNode] = useState<HTMLElement | null>(null)
     let consumerRef = useRef<HTMLDivElement>(null)
 
     let [hasFocus, setHasFocus] = useState(false)
     let [hasCursor, setHasCursor] = useState(false)
 
-    let isActive = visible || hasFocus || hasCursor
+    let position = usePositionAttachment({
+      align: 'bottom',
+      producerNode,
+      consumerNode: consumerRef.current,
+      offset: 8
+    })
+
+    let isActive = !!position && (visible || hasFocus || hasCursor)
 
     // TODO:
     // position attachment
@@ -53,7 +61,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
     useEffect(() => {
       let node = consumerRef.current?.previousSibling
       if (node) {
-        setProducerNode(node)
+        setProducerNode(node as HTMLElement)
       }
       return () => {
         setProducerNode(null)
@@ -104,15 +112,19 @@ export const createTooltip: TooltipFactory = defaultProps => {
     }, [producerNode])
 
     let tooltip = (
-      <div
-        ref={consumerRef}
-        className={clsx('ui-tooltip', isActive && 'ui-tooltip--active')}
-        style={{
-          top: 8,
-          left: 60
-        }}
-      >
+      <>
         <div
+          ref={consumerRef}
+          className={clsx(
+            'ui-tooltip__spot',
+            isActive && 'ui-tooltip__spot--visible'
+          )}
+          style={{
+            top: position?.y,
+            left: position?.x
+          }}
+        />
+        {/* <div
           className={clsx(
             'ui-tooltip__content',
             isActive && 'ui-tooltip__content--active',
@@ -121,16 +133,14 @@ export const createTooltip: TooltipFactory = defaultProps => {
           )}
         >
           {label}
-        </div>
-      </div>
+        </div> */}
+      </>
     )
 
     return (
       <>
         {Children.only(children)}
-        {producerNode && portalNode
-          ? createPortal(tooltip, portalNode)
-          : tooltip}
+        {portalNode ? createPortal(tooltip, portalNode) : tooltip}
       </>
     )
   }

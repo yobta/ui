@@ -107,14 +107,14 @@ export const createTooltip: TooltipFactory = defaultProps => {
       <div
         ref={consumerRef}
         className={clsx(
-          'bg-paper-dark opacity-90 rounded-full w-2 h-2 relative pointer-events-none',
+          'ui-bg-tooltip opacity-90 rounded-full w-2 h-2 relative pointer-events-none',
           'fixed top-3 left-8',
           !isVisible && 'hidden'
         )}
       >
         <div
           className={clsx(
-            'bg-paper-dark rounded px-2 py-1 absolute left-1 top-3 text-ink-dark text-center text-sm select-none',
+            'ui-bg-tooltip ui-text-ink-tooltip rounded px-2 py-1 absolute left-1 top-3 text-center text-sm select-none',
             '-translate-x-1/2'
           )}
         >

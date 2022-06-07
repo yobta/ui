@@ -1,3 +1,4 @@
+/* #region  Paper */
 const paper = 'var(--y-color-paper, #FCFCFC)'
 const paperDark = 'var(--y-color-paper-dark, #2A2D35)'
 const paper2 = 'var(--y-color-paper-2, #EBEBEB)'
@@ -16,7 +17,9 @@ const paperWarning = 'var(--y-color-paper-warning, #E87C06)'
 const paperWarningDark = 'var(--y-color-paper-warning-dark, #C6751C)'
 const paperInfo = 'var(--y-color-paper-info, #4C9BE4)'
 const paperInfoDark = 'var(--y-color-paper-info-dark, #3B72A5)'
+/* #endregion */
 
+/* #region  Ink */
 const ink = 'var(--y-color-ink, #414141)'
 const inkDark = 'var(--y-color-ink-dark, #FCFCFC)'
 const ink2 = 'var(--y-color-ink-2, #7B8B99)'
@@ -35,7 +38,9 @@ const inkInfo = 'var(--y-color-ink-info, #3784CB)'
 const inkInfoDark = 'var(--y-color-ink-info-dark, #5A86AF)'
 const inkBorder = 'var(--y-color-ink-border, #29292916)'
 const inkBorderDark = 'var(--y-color-ink-border-dark, #FFFFFF16)'
+/* #endregion */
 
+/* #region  Link */
 const link = 'var(--y-color-link, #120EED)'
 const linkDark = 'var(--y-color-link, #9C9AFF)'
 const linkHover = 'var(--y-color-link-hover, #5F5CFF)'
@@ -44,7 +49,9 @@ const linkActive = 'var(--y-color-link-active, #B92AFD)'
 const linkActiveDark = 'var(--y-color-link-active-dark, #CD63FF)'
 const linkVisited = 'var(--y-color-link-visited, #8B2E9A)'
 const linkVisitedDark = 'var(--y-color-link-visited-dark, #BD9FC1)'
+/* #endregion */
 
+/* #region  Pale */
 const pale1 = 'var(--y-color-pale-1, #FAD8C2)'
 const pale1Dark = 'var(--y-color-pale-1-dark, #4C474B)'
 const pale2 = 'var(--y-color-pale-2, #FFE7CE)'
@@ -77,6 +84,12 @@ const pale15 = 'var(--y-color-pale-15, #E9DDEB)'
 const pale15Dark = 'var(--y-color-pale-15-dark, #474858)'
 const pale16 = 'var(--y-color-pale-16, #F8E0EB)'
 const pale16Dark = 'var(--y-color-pale-16-dark, #4B4958)'
+/* #endregion */
+
+const tooltipBg = 'var(--y-color-tooltip-bg, #2A2D35)'
+const tooltipBgDark = 'var(--y-color-tooltip-bg-dark, #FCFCFC)'
+const tooltipText = 'var(--y-color-tooltip-text, #FCFCFC)'
+const tooltipTextDark = 'var(--y-color-tooltip-text-dark, #414141)'
 
 module.exports = {
   paper: {
@@ -167,6 +180,13 @@ module.exports = {
     'info': {
       bg: { DEFAULT: paperInfo, dark: paperInfoDark },
       text: { DEFAULT: inkDark, dark: inkDark }
+    }
+  },
+
+  tooltip: {
+    paper: {
+      bg: { DEFAULT: tooltipBg, dark: tooltipBgDark },
+      text: { DEFAULT: tooltipText, dark: tooltipTextDark }
     }
   }
 }

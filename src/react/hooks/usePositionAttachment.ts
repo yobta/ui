@@ -8,11 +8,7 @@ interface PositionAttachmentHook {
       | 'bottom-left'
       | 'bottom-right'
       | 'right'
-      | 'right-top'
-      | 'right-bottom'
       | 'left'
-      | 'left-top'
-      | 'left-bottom'
     // | 'auto'
     consumerNode: HTMLElement | null
     producerNode: HTMLElement | null
@@ -28,11 +24,7 @@ interface PositionAttachmentHook {
       | 'bottom-left'
       | 'bottom-right'
       | 'right'
-      | 'right-top'
-      | 'right-bottom'
       | 'left'
-      | 'left-top'
-      | 'left-bottom'
   } | null
 }
 
@@ -56,11 +48,10 @@ export const usePositionAttachment: PositionAttachmentHook = ({
         y: rect.y - offset
       }
     case 'top-right':
-    case 'right-top':
       return {
         align: finalAlign,
-        x: rect.x + rect.width + offset / 2,
-        y: rect.y - offset / 2
+        x: rect.x + rect.width,
+        y: rect.y - offset
       }
     case 'bottom':
       return {
@@ -86,29 +77,11 @@ export const usePositionAttachment: PositionAttachmentHook = ({
         x: rect.x - offset,
         y: rect.y + rect.height / 2
       }
-    case 'left-top':
-      return {
-        align: finalAlign,
-        x: rect.x - offset,
-        y: rect.y
-      }
-    case 'left-bottom':
-      return {
-        align: finalAlign,
-        x: rect.x - offset,
-        y: rect.y + rect.height
-      }
     case 'right':
       return {
         align: finalAlign,
         x: rect.x + rect.width + offset,
         y: rect.y + rect.height / 2
-      }
-    case 'right-bottom':
-      return {
-        align: finalAlign,
-        x: rect.x + rect.width + offset,
-        y: rect.y + rect.height
       }
     case 'top':
     default:

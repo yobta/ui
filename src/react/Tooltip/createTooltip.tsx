@@ -2,23 +2,13 @@ import clsx from 'clsx'
 import { Children, ReactNode, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
+import { AlignOptions } from '../helpers/getPositionAlign.js'
 import { usePortalNode } from '../hooks/usePortalNode.js'
 import { usePositionAttachment } from '../hooks/usePositionAttachment.js'
+import { getTooltipStyle } from './getTooltipStyle.js'
 
 export type TooltipProps = {
-  align?:
-    | 'top'
-    | 'top-left'
-    | 'top-right'
-    | 'bottom'
-    | 'bottom-left'
-    | 'bottom-right'
-    | 'right'
-    | 'right-top'
-    | 'right-bottom'
-    | 'left'
-    | 'left-top'
-    | 'left-bottom'
+  align?: AlignOptions
   animate?: boolean
   children: ReactNode
   className?: string
@@ -39,6 +29,8 @@ export interface TooltipFC {
 export interface TooltipFactory {
   (defaultProps: TooltipDefaultProps): TooltipFC
 }
+
+const offset = 8
 
 export const createTooltip: TooltipFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
@@ -63,7 +55,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
       align,
       producerNode,
       consumerNode: tooltipRef.current,
-      offset: 8
+      offset
     })
 
     let isActive = !!position && (visible || hasFocus || hasCursor)
@@ -149,10 +141,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
             className
           )}
           ref={tooltipRef}
-          style={{
-            top: Number(position?.y) + 8,
-            left: position?.x
-          }}
+          style={getTooltipStyle(position, offset)}
         >
           {label}
         </div>

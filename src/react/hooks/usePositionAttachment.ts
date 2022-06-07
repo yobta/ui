@@ -1,17 +1,18 @@
 import { AlignOptions, getPositionAlign } from '../helpers/getPositionAlign.js'
 
+export type PositionAttachment = {
+  x: number
+  y: number
+  align: AlignOptions
+} | null
+
 interface PositionAttachmentHook {
   (args: {
     align?: AlignOptions
-    // | 'auto'
     consumerNode: HTMLElement | null
     producerNode: HTMLElement | null
     offset: number
-  }): {
-    x: number
-    y: number
-    align: AlignOptions
-  } | null
+  }): PositionAttachment
 }
 
 export const usePositionAttachment: PositionAttachmentHook = ({

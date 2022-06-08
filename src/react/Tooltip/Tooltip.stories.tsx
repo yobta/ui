@@ -13,30 +13,32 @@ export default {
   }
 } as ComponentMeta<typeof Tooltip>
 
-const Template: ComponentStory<typeof Tooltip> = args => <Tooltip {...args} />
+const Template: ComponentStory<typeof Tooltip> = args => (
+  <div style={{}}>
+    <Tooltip {...args} />
+  </div>
+)
 
 export const Default = Template.bind({})
 Default.args = {
   children: (
-    <>
-      <Button className="ui-ink">
-        <ShoppingBag />
-        Add to cart
-      </Button>
-    </>
+    <Button className="ui-ink backdrop-blur-md">
+      <ShoppingBag />
+      Add to cart
+    </Button>
   ),
   // align: 'top',
   // align: 'top-left',
   // align: 'top-right',
-  // align: 'bottom',
+  align: 'bottom',
   // align: 'bottom-left',
-  align: 'bottom-right',
+  // align: 'bottom-right',
   // align: 'right',
   // align: 'right-top',
   // align: 'right-bottom',
   // align: 'left',
   // align: 'left-top',
   // align: 'left-bottom',
-  label: 'My tooltip',
-  className: 'ui-bg-secondary'
+  label: 'My tooltip'
+  // className: 'ui-bg-secondary p-6'
 }

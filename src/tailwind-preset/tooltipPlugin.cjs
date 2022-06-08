@@ -8,7 +8,12 @@ module.exports = plugin(({ addBase, addUtilities, prefix }) => {
       ...applyPrefixed(prefix, '.ui-bg-tooltip', '.rounded-full')
     },
     '.ui-tooltip--animated': {
-      ...applyPrefixed(prefix, '.transition', '.duration-500')
+      ...applyPrefixed(
+        prefix,
+        '.transition-opacity',
+        '.ease-out',
+        '.duration-700'
+      )
     },
     '.ui-tooltip__content': {
       ...applyPrefixed(
@@ -32,8 +37,8 @@ module.exports = plugin(({ addBase, addUtilities, prefix }) => {
         '.fixed',
         '.w-2',
         '.h-2',
+        '.p-0',
         '.pointer-events-none',
-
         '.select-none',
         '.-translate-x-1/2',
         '.-translate-y-1/2'

@@ -6,7 +6,11 @@ export type AlignOptions =
   | 'bottom-left'
   | 'bottom-right'
   | 'right'
+  | 'right-top'
+  | 'right-bottom'
   | 'left'
+  | 'left-top'
+  | 'left-bottom'
 
 interface AutoAlign {
   (producerNode: HTMLElement, consumerNode: HTMLElement): AlignOptions

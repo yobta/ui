@@ -38,13 +38,9 @@ A ESM UI library for React and Tailwind
 1. `make i`
 2. `make dev`
 
-[`documentation`]: https://yobta.github.io/ui/
-[`tailwind`]: https://tailwindcss.com/docs/installation
-[`esmexternals`]: https://nextjs.org/blog/next-11-1#es-modules-support
-
 ## Other design systems
 
-1. Ant Design
+1. [`Ant Design`]
 2. Material-UI
 3. Chakra UI
 4. React Bootstrap
@@ -60,3 +56,8 @@ A ESM UI library for React and Tailwind
 14. Blueprint
 15. Svelte UI
 16. Next UI
+
+[`documentation`]: https://yobta.github.io/ui/
+[`tailwind`]: https://tailwindcss.com/docs/installation
+[`esmexternals`]: https://nextjs.org/blog/next-11-1#es-modules-support
+[`ant design`]: https://ant.design/

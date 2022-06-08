@@ -41,3 +41,22 @@ A ESM UI library for React and Tailwind
 [`documentation`]: https://yobta.github.io/ui/
 [`tailwind`]: https://tailwindcss.com/docs/installation
 [`esmexternals`]: https://nextjs.org/blog/next-11-1#es-modules-support
+
+## Other design systems
+
+1. Ant Design
+2. Material-UI
+3. Chakra UI
+4. React Bootstrap
+5. Semantic UI React
+6. Fluent UI
+7. Evergreen
+8. Reactstrap
+9. Grommet
+10. Reakit
+11. Mantine
+12. Theme UI
+13. Rebass
+14. Blueprint
+15. Svelte UI
+16. Next UI

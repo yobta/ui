@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ReactNode, RefObject, useRef } from 'react'
+import { ReactNode, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 import { AlignOptions } from '../helpers/getPositionAlign.js'
@@ -14,7 +14,7 @@ export type TooltipProps = {
   className?: string
   placement?: AlignOptions
   portalNodeId?: string
-  producerRef?: RefObject<HTMLElement>
+  producerNode?: HTMLElement | null
   visible?: boolean
 }
 
@@ -25,6 +25,7 @@ export type TooltipDefaultProps = Partial<
 export interface TooltipFC {
   (props: TooltipProps): JSX.Element
   defaultProps: TooltipDefaultProps
+  displayName: string
 }
 
 export interface TooltipFactory {
@@ -35,13 +36,13 @@ const offset = 8
 
 export const createTooltip: TooltipFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
-  const Tooltip: TooltipFC = ({
+  const YobtaTooltip: TooltipFC = ({
     placement: align,
     animate,
     children,
     className,
     id,
-    producerRef,
+    producerNode,
     portalNodeId,
     visible
   }) => {
@@ -51,7 +52,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
 
     let position = usePositionAttachment({
       align,
-      producerNode: producerRef?.current,
+      producerNode,
       consumerNode: tooltipRef.current,
       offset
     })
@@ -95,7 +96,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
     return <>{portalNode ? createPortal(tooltip, portalNode) : tooltip}</>
   }
 
-  Tooltip.defaultProps = defaultProps
+  YobtaTooltip.defaultProps = defaultProps
 
-  return Tooltip
+  return YobtaTooltip
 }

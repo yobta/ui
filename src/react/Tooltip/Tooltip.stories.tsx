@@ -1,44 +1,47 @@
 /* eslint-disable import/extensions */
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { useRef } from 'react'
 
 import { Tooltip } from './Tooltip'
 import { ShoppingBag } from '../entypo'
-import { Button } from '../Button'
 
 export default {
   title: 'React/Tooltip',
   component: Tooltip,
-  argTypes: {
-    busy: { control: 'boolean' }
-  }
+  argTypes: {}
 } as ComponentMeta<typeof Tooltip>
 
-const Template: ComponentStory<typeof Tooltip> = args => (
-  <div style={{}}>
-    <Tooltip {...args} />
-  </div>
-)
+const Template: ComponentStory<typeof Tooltip> = args => {
+  let ref = useRef(null)
+  return (
+    <>
+      <button
+        className="ui-button ui-border-ink-border backdrop-blur-md"
+        ref={ref}
+      >
+        <ShoppingBag />
+        Add to cart
+      </button>
+      <Tooltip {...args} producerRef={ref} visible />
+    </>
+  )
+}
 
 export const Default = Template.bind({})
 Default.args = {
-  children: (
-    <Button className="ui-ink backdrop-blur-md">
-      <ShoppingBag />
-      Add to cart
-    </Button>
-  ),
+  children: 'My tooltip',
+  id: 'tooltip-bottom',
   // align: 'top',
   // align: 'top-left',
   // align: 'top-right',
-  align: 'bottom',
+  // align: 'bottom'
   // align: 'bottom-left',
-  // align: 'bottom-right',
+  align: 'bottom-right'
   // align: 'right',
   // align: 'right-top',
   // align: 'right-bottom',
   // align: 'left',
   // align: 'left-top',
   // align: 'left-bottom',
-  label: 'My tooltip'
   // className: 'ui-bg-secondary p-6'
 }

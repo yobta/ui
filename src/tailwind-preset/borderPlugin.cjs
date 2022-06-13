@@ -8,7 +8,12 @@ function createClasses(base, colors, prefix) {
     DEFAULT && dark
       ? {
           [`.ui-${base}`]: {
-            ...applyPrefixed(prefix, `.${base}`, `.dark:${base}-dark`)
+            ...applyPrefixed(
+              prefix,
+              '.border',
+              `.${base}`,
+              `.dark:${base}-dark`
+            )
           }
         }
       : {}
@@ -23,6 +28,7 @@ function createClasses(base, colors, prefix) {
         [`.ui-${base}-${key}`]: {
           ...applyPrefixed(
             prefix,
+            '.border',
             `.${base}-${key}`,
             `.dark:${base}-${key}-dark`
           )

@@ -9,8 +9,8 @@ export type PositionAttachment = {
 interface PositionAttachmentHook {
   (args: {
     align?: AlignOptions
-    consumerNode: HTMLElement | null
-    producerNode: HTMLElement | null
+    consumerNode?: HTMLElement | null
+    producerNode?: HTMLElement | null
     offset: number
   }): PositionAttachment
 }

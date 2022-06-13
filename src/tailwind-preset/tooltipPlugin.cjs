@@ -12,7 +12,8 @@ module.exports = plugin(({ addBase, addUtilities, prefix }) => {
         prefix,
         '.transition-opacity',
         '.ease-out',
-        '.duration-700'
+        '.duration-700',
+        '.transform-gpu'
       )
     },
     '.ui-tooltip__content': {

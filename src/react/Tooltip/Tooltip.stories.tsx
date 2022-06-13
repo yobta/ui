@@ -36,7 +36,7 @@ Default.args = {
   // align: 'top-right',
   // align: 'bottom'
   // align: 'bottom-left',
-  align: 'bottom-right'
+  placement: 'bottom-right'
   // align: 'right',
   // align: 'right-top',
   // align: 'right-bottom',

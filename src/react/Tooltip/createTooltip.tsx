@@ -10,9 +10,9 @@ import { getTooltipStyle } from './getTooltipStyle.js'
 export type TooltipProps = {
   children: ReactNode
   id: string
-  align?: AlignOptions
   animate?: boolean
   className?: string
+  placement?: AlignOptions
   portalNodeId?: string
   producerRef?: RefObject<HTMLElement>
   visible?: boolean
@@ -36,7 +36,7 @@ const offset = 8
 export const createTooltip: TooltipFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
   const Tooltip: TooltipFC = ({
-    align,
+    placement: align,
     animate,
     children,
     className,

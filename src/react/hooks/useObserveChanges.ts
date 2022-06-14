@@ -11,6 +11,8 @@ export const useObserveChanges: ObserveChangesHook = ({
   let [, setState] = useState({})
 
   useEffect(() => {
+    let isActive = producerNode && !disabled
+    let resizeObzerver: ResizeObserver | undefined
     let update = (): void => {
       setState({})
     }
@@ -19,8 +21,13 @@ export const useObserveChanges: ObserveChangesHook = ({
       ? new ResizeObserver(update)
       : null
 
-    if (producerNode && !disabled) {
-      resizeObzerver?.observe(producerNode)
+    if (isActive) {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      if (window.ResizeObserver) {
+        resizeObzerver = new ResizeObserver(update)
+        // @ts-ignore
+        resizeObzerver.observe(producerNode)
+      }
       window.addEventListener('scroll', update, { passive: true })
       window.addEventListener('resize', update, { passive: true })
     }

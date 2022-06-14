@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 
 import { AlignOptions } from '../helpers/getPositionAlign.js'
 import { usePortalNode } from '../hooks/usePortalNode.js'
-import { usePositionAttachment } from '../hooks/usePositionAttachment.js'
+import { usePositionAttachment, useObserveChanges } from '../hooks/index.js'
 import { getTooltipStyle } from './getTooltipStyle.js'
 
 export type TooltipProps = {
@@ -25,7 +25,6 @@ export type TooltipDefaultProps = Partial<
 export interface TooltipFC {
   (props: TooltipProps): JSX.Element
   defaultProps: TooltipDefaultProps
-  displayName: string
 }
 
 export interface TooltipFactory {
@@ -58,6 +57,8 @@ export const createTooltip: TooltipFactory = defaultProps => {
     })
 
     let isActive = !!position && visible
+
+    useObserveChanges({ producerNode, disabled: !isActive })
 
     // TODO:
     // plugun

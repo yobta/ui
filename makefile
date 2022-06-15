@@ -17,7 +17,7 @@ lint:
 	npm run lint
 
 test:
-	npm run test
+	npm run test:watch
 
 typecheck:
 	npm run typecheck

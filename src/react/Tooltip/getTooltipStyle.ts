@@ -84,5 +84,4 @@ export const getTooltipStyle: GetTooltipStyle = (position, offset) => {
         transform: `translate(-50%, ${offset}px)`
       }
   }
-  return {}
 }

@@ -13,32 +13,40 @@ export type AlignOptions =
   | 'left-bottom'
 
 interface AutoAlign {
-  (producerNode: HTMLElement, consumerNode: HTMLElement, offset: number, align: AlignOptions | undefined): AlignOptions
+  (args: {
+    producerNode: HTMLElement
+    consumerNode: HTMLElement
+    offset: number
+    align?: AlignOptions
+  }): AlignOptions
 }
 
 interface Sizes {
-  width: number,
+  width: number
   height: number
 }
 
 interface Positions {
-  top: number,
-  left: number,
-  right: number,
+  top: number
+  left: number
+  right: number
   bottom: number
 }
 
 interface PossiblePositions {
-  top: boolean,
-  right: boolean,
-  bottom: boolean,
+  top: boolean
+  right: boolean
+  bottom: boolean
   left: boolean
 }
 
-export const getPositionAlign: AutoAlign = (producerNode, consumerNode, offset, align) => {
-
+export const getPositionAlign: AutoAlign = ({
+  producerNode,
+  consumerNode,
+  offset,
+  align
+}) => {
   let positionCalc = (): { possiblePosition: PossiblePositions } => {
-
     let windowWidth: number = document.documentElement.clientWidth
     let windowHeigth: number = document.documentElement.clientHeight
     let rectProducer: DOMRect = producerNode.getBoundingClientRect()
@@ -61,9 +69,11 @@ export const getPositionAlign: AutoAlign = (producerNode, consumerNode, offset, 
     }
     let possiblePosition: PossiblePositions = {
       top: comparePositions.top > 0,
-      right: (comparePositions.right > 0 && (positions.top > 0 && positions.bottom > 0)),
+      right:
+        comparePositions.right > 0 && positions.top > 0 && positions.bottom > 0,
       bottom: comparePositions.bottom > 0,
-      left: (comparePositions.left > 0 && (positions.top > 0 && positions.bottom > 0))
+      left:
+        comparePositions.left > 0 && positions.top > 0 && positions.bottom > 0
     }
     return { possiblePosition }
   }
@@ -72,31 +82,52 @@ export const getPositionAlign: AutoAlign = (producerNode, consumerNode, offset, 
     if (!align) align = 'top'
 
     let position: string = align.split('-')[0]
-    let positions: [string, boolean][] = Object.entries(positionCalc().possiblePosition)
+    let positions: [string, boolean][] = Object.entries(
+      positionCalc().possiblePosition
+    )
 
-    let check: [string, boolean] | undefined = positions.find((item: [string, boolean]) => {
-      if (item[0] === position && item[1]) return true
-    })
+    let check: [string, boolean] | undefined = positions.find(
+      (item: [string, boolean]) => {
+        if (item[0] === position && item[1]) return true
+      }
+    )
     if (check) return align
-    let find: [string, boolean] | undefined = positions.find((item: [string, boolean]) => item[1])
+    let find: [string, boolean] | undefined = positions.find(
+      (item: [string, boolean]) => item[1]
+    )
     if (find[0]) {
       return find[0]
-    } else {return 'top'}
+    } else {
+      return 'top'
+    }
   }
 
   switch (finalPosition()) {
-    case 'top': return 'top'
-    case 'top-left': return 'top-left'
-    case 'top-right': return 'top-right'
-    case 'bottom': return 'bottom'
-    case 'bottom-left': return 'bottom-left'
-    case 'bottom-right': return 'bottom-right'
-    case 'left': return 'left'
-    case 'left-top': return 'left-top'
-    case 'left-bottom': return 'left-bottom'
-    case 'right': return 'right'
-    case 'right-top': return 'right-top'
-    case 'right-bottom': return 'right-bottom'
-    default: return 'top'
+    case 'top':
+      return 'top'
+    case 'top-left':
+      return 'top-left'
+    case 'top-right':
+      return 'top-right'
+    case 'bottom':
+      return 'bottom'
+    case 'bottom-left':
+      return 'bottom-left'
+    case 'bottom-right':
+      return 'bottom-right'
+    case 'left':
+      return 'left'
+    case 'left-top':
+      return 'left-top'
+    case 'left-bottom':
+      return 'left-bottom'
+    case 'right':
+      return 'right'
+    case 'right-top':
+      return 'right-top'
+    case 'right-bottom':
+      return 'right-bottom'
+    default:
+      return 'top'
   }
 }

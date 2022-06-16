@@ -25,8 +25,14 @@ export const usePositionAttachment: PositionAttachmentHook = ({
     return null
   }
   let rect = producerNode.getBoundingClientRect()
-  // let finalAlign = align || getPositionAlign(producerNode, consumerNode, offset)
-  let finalAlign = getPositionAlign(producerNode, consumerNode, offset, align)
+  let finalAlign =
+    align ||
+    getPositionAlign({
+      producerNode,
+      consumerNode,
+      offset,
+      align
+    })
 
   switch (finalAlign) {
     case 'top-left':

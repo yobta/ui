@@ -8,7 +8,7 @@ export const getTooltipStyle: GetTooltipStyle = (position, offset) => {
   if (!position) {
     return {}
   }
-  let { align, x, y } = position
+  let { placement: align, x, y } = position
   switch (align) {
     case 'top':
       return {

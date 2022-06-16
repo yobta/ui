@@ -2,9 +2,9 @@ import clsx from 'clsx'
 import { ReactNode, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
-import { AlignOptions } from '../helpers/getPositionAlign.js'
+import { PopoverPlacementOptions } from '../helpers/index.js'
 import { usePortalNode } from '../hooks/usePortalNode.js'
-import { usePositionAttachment, useObserveChanges } from '../hooks/index.js'
+import { usePlacementCoordinates, useObserveChanges } from '../hooks/index.js'
 import { getTooltipStyle } from './getTooltipStyle.js'
 
 export type TooltipProps = {
@@ -12,7 +12,7 @@ export type TooltipProps = {
   id: string
   animate?: boolean
   className?: string
-  placement?: AlignOptions
+  placement?: PopoverPlacementOptions
   portalNodeId?: string
   producerNode?: HTMLElement | null
   visible?: boolean
@@ -36,7 +36,7 @@ const offset = 8
 export const createTooltip: TooltipFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
   const YobtaTooltip: TooltipFC = ({
-    placement: align,
+    placement,
     animate,
     children,
     className,
@@ -49,8 +49,8 @@ export const createTooltip: TooltipFactory = defaultProps => {
     let spotRef = useRef<HTMLDivElement>(null)
     let tooltipRef = useRef<HTMLDivElement>(null)
 
-    let position = usePositionAttachment({
-      align,
+    let position = usePlacementCoordinates({
+      placement,
       producerNode,
       consumerNode: tooltipRef.current,
       offset

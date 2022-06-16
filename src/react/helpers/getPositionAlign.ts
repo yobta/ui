@@ -17,10 +17,11 @@ interface AutoAlign {
 }
 
 export const getPositionAlign: AutoAlign = (producerNode, consumerNode, offset, align) => {
-  const documentWidth: number = document.documentElement.scrollWidth
-  const documentHeight: number = document.documentElement.scrollHeight
-  const rectProducer: DOMRect = producerNode.getBoundingClientRect()
-  const rectConsumer: DOMRect = consumerNode.getBoundingClientRect()
+  let windowWidth: number = document.documentElement.clientWidth
+  let windowHeigth: number = document.documentElement.clientHeight
+  console.log(`Window Width: ${windowWidth}, Window height: ${windowHeigth}`)
+  let rectProducer: DOMRect = producerNode.getBoundingClientRect()
+  let rectConsumer: DOMRect = consumerNode.getBoundingClientRect()
 
   interface Sizes {
     width: number,
@@ -34,27 +35,27 @@ export const getPositionAlign: AutoAlign = (producerNode, consumerNode, offset, 
     bottom: number
   }
 
-  const sizesProducer: Sizes = {
+  let sizesProducer: Sizes = {
     width: rectProducer.width,
     height: rectProducer.height
   }
   console.log(sizesProducer)
 
-  const sizesConsumer: Sizes = {
+  let sizesConsumer: Sizes = {
     width: rectConsumer.width,
     height: rectConsumer.height
   }
   console.log(sizesConsumer)
 
-  const positions: Positions = {
+  let positions: Positions = {
     top: rectProducer.top,
-    right: documentWidth - rectProducer.left - rectProducer.width,
-    bottom: documentHeight - rectProducer.top - rectProducer.height,
+    right: windowWidth - rectProducer.left - rectProducer.width,
+    bottom: windowHeigth - rectProducer.top - rectProducer.height,
     left: rectProducer.left
   }
   console.log(positions)
 
-  const comparePositions: Positions = {
+  let comparePositions: Positions = {
     top: positions.top - sizesConsumer.height - 2 * offset,
     right: positions.right - sizesConsumer.width - 2 * offset,
     bottom: positions.bottom - sizesConsumer.height - 2 * offset,
@@ -62,16 +63,30 @@ export const getPositionAlign: AutoAlign = (producerNode, consumerNode, offset, 
   }
   console.log(comparePositions)
 
-  const finalPosition = (): string | undefined => {
-    if (!align) return align
+  interface PossiblePositions {
+    top: boolean,
+    right: boolean,
+    bottom: boolean,
+    left: boolean
+  }
 
-    const key: string = align.split('-')[0]
-    const value: number = comparePositions[key]
-    console.log(value)
+  let possiblePosition: PossiblePositions = {
+    top: comparePositions.top > 0,
+    right: (comparePositions.right > 0 && (positions.top > 0 && positions.bottom > 0)),
+    bottom: comparePositions.bottom > 0,
+    left: (comparePositions.left > 0 && (positions.top > 0 && positions.bottom > 0))
+  }
+  console.log(possiblePosition)
+
+  let finalPosition = (): string | undefined => {
+    if (!align) align = 'top'
+
+    let value: number = comparePositions[align.split('-')[0]]
+    console.log(`value: ${value}`)
 
     if (value > 0) return align
 
-    const autoPosition: string = Object.entries(comparePositions).reduce((acc, item) => {
+    let autoPosition: string = Object.entries(comparePositions).reduce((acc, item) => {
       if (item[1] > acc[1]) return item
       return acc
     })[0]
@@ -93,7 +108,6 @@ export const getPositionAlign: AutoAlign = (producerNode, consumerNode, offset, 
     case 'right': return 'right'
     case 'right-top': return 'right-top'
     case 'right-bottom': return 'right-bottom'
-    case 'top': return 'top'
     default: return 'top'
   }
 

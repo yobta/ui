@@ -5,7 +5,7 @@ import { fitsSpace } from './fitsSpace.js'
 vi.stubGlobal('innerWidth', 600)
 vi.stubGlobal('innerHeight', 400)
 
-/* #region  top */
+// #region  top
 it('fits top when have space', () => {
   let consumerNode = {
     getBoundingClientRect: () => ({
@@ -113,16 +113,334 @@ it('does not fit top when have negative space', () => {
   expect(resultTopLeft).toBe(false)
   expect(resultTopRight).toBe(false)
 })
-/* #endregion */
+// #endregion
 
-/* #region  left */
-// TODO
-/* #endregion */
+// #region  left
+it('fits left when have space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      width: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      left: 200
+    })
+  } as HTMLElement
 
-/* #region  right */
-// TODO
-/* #endregion */
+  let resultLeft = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left',
+    offset: 8
+  })
+  let resultLeftTop = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left-top',
+    offset: 8
+  })
+  let resultLeftBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left-bottom',
+    offset: 8
+  })
 
-/* #region  bottom */
-// TODO
-/* #endregion */
+  expect(resultLeft).toBe(true)
+  expect(resultLeftTop).toBe(true)
+  expect(resultLeftBottom).toBe(true)
+})
+
+it('does not fit left when have no space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      width: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      left: 0
+    })
+  } as HTMLElement
+
+  let resultLeft = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left',
+    offset: 8
+  })
+  let resultLeftTop = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left-top',
+    offset: 8
+  })
+  let resultLeftBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left-bottom',
+    offset: 8
+  })
+
+  expect(resultLeft).toBe(false)
+  expect(resultLeftTop).toBe(false)
+  expect(resultLeftBottom).toBe(false)
+})
+
+it('does not fit left when have negative space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      width: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      left: -200
+    })
+  } as HTMLElement
+
+  let resultLeft = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left',
+    offset: 8
+  })
+  let resultLeftTop = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left-top',
+    offset: 8
+  })
+  let resultLeftBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'left-bottom',
+    offset: 8
+  })
+
+  expect(resultLeft).toBe(false)
+  expect(resultLeftTop).toBe(false)
+  expect(resultLeftBottom).toBe(false)
+})
+// #endregion left
+
+// #region  right
+it('fits right when have space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      width: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      right: 200
+    })
+  } as HTMLElement
+
+  let resultRight = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right',
+    offset: 8
+  })
+  let resultRightTop = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right-top',
+    offset: 8
+  })
+  let resultRightBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right-bottom',
+    offset: 8
+  })
+
+  expect(resultRight).toBe(true)
+  expect(resultRightTop).toBe(true)
+  expect(resultRightBottom).toBe(true)
+})
+
+it('does not fit right when have no space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      width: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      right: 0
+    })
+  } as HTMLElement
+
+  let resultRight = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right',
+    offset: 8
+  })
+  let resultRightTop = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right-top',
+    offset: 8
+  })
+  let resultRightBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right-bottom',
+    offset: 8
+  })
+
+  expect(resultRight).toBe(false)
+  expect(resultRightTop).toBe(false)
+  expect(resultRightBottom).toBe(false)
+})
+
+it('does not fit right when have negative space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      width: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      right: -200
+    })
+  } as HTMLElement
+
+  let resultRight = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right',
+    offset: 8
+  })
+  let resultRightTop = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right-top',
+    offset: 8
+  })
+  let resultRightBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'right-bottom',
+    offset: 8
+  })
+
+  expect(resultRight).toBe(false)
+  expect(resultRightTop).toBe(false)
+  expect(resultRightBottom).toBe(false)
+})
+// #endregion right
+
+// #region  bottom
+it('fits bottom when have space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      height: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      bottom: 200
+    })
+  } as HTMLElement
+
+  let resultBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom',
+    offset: 8
+  })
+  let resultBottomLeft = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom-left',
+    offset: 8
+  })
+  let resultBottomRight = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom-right',
+    offset: 8
+  })
+
+  expect(resultBottom).toBe(true)
+  expect(resultBottomLeft).toBe(true)
+  expect(resultBottomRight).toBe(true)
+})
+
+it('does not fit bottom when have no space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      height: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      bottom: 0
+    })
+  } as HTMLElement
+
+  let resultBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom',
+    offset: 8
+  })
+  let resultBottomLeft = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom-left',
+    offset: 8
+  })
+  let resultBottomRight = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom-right',
+    offset: 8
+  })
+
+  expect(resultBottom).toBe(false)
+  expect(resultBottomLeft).toBe(false)
+  expect(resultBottomRight).toBe(false)
+})
+
+it('does not fit bottom when have negative space', () => {
+  let consumerNode = {
+    getBoundingClientRect: () => ({
+      height: 32
+    })
+  } as HTMLElement
+  let producerNode = {
+    getBoundingClientRect: () => ({
+      bottom: -200
+    })
+  } as HTMLElement
+
+  let resultBottom = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom',
+    offset: 8
+  })
+  let resultBottomLeft = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom-left',
+    offset: 8
+  })
+  let resultBottomRight = fitsSpace({
+    consumerNode,
+    producerNode,
+    preferredPlacement: 'bottom-right',
+    offset: 8
+  })
+
+  expect(resultBottom).toBe(false)
+  expect(resultBottomLeft).toBe(false)
+  expect(resultBottomRight).toBe(false)
+})
+// #endregion bottom

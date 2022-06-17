@@ -25,13 +25,7 @@ export const fitsSpace: FitsSpace = ({
     case 'top':
     case 'top-left':
     case 'top-right': {
-      return (
-        windowHeight -
-          (windowHeight - producerBounds.top) -
-          consumerBounds.height -
-          doubleOffset >
-        0
-      )
+      return producerBounds.top - consumerBounds.height - doubleOffset > 0
     }
 
     // todo:

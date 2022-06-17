@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 
+import { useObserveChanges } from '../useObserveChanges.js'
 import {
   PopoverPlacementOptions,
   getOptimalPopoverPlacement
-} from '../helpers/index.js'
-import { useObserveChanges } from './useObserveChanges.js'
+} from './getOptimalPopoverPlacement.js'
 
 interface PopoverCoordinatesHook {
   (args: {

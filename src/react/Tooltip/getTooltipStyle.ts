@@ -1,4 +1,4 @@
-import { PopoverCoordinates } from '../hooks/usePopoverCoordinates.js'
+import { PopoverCoordinates } from '../hooks/index.js'
 
 interface GetTooltipStyle {
   (position: PopoverCoordinates, offset: number): {}

@@ -2,10 +2,10 @@ import clsx from 'clsx'
 import { ReactNode, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
-import { PopoverPlacementOptions } from '../helpers/index.js'
 import { usePortalNode } from '../hooks/usePortalNode.js'
 import { usePopoverCoordinates } from '../hooks/index.js'
 import { getTooltipStyle } from './getTooltipStyle.js'
+import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
 
 export type TooltipProps = {
   children: ReactNode

@@ -4,31 +4,34 @@ import {
   PopoverPlacementOptions,
   getOptimalPopoverPlacement
 } from '../helpers/index.js'
+import { useObserveChanges } from './useObserveChanges.js'
 
-export type PositionAttachment = {
-  x: number
-  y: number
-  placement: PopoverPlacementOptions
-} | null
-
-interface PositionAttachmentHook {
+interface PopoverCoordinatesHook {
   (args: {
     placement?: PopoverPlacementOptions
     preferredPlacement?: PopoverPlacementOptions
     consumerNode?: HTMLElement | null
     producerNode?: HTMLElement | null
     offset?: number
-  }): PositionAttachment
+  }): {
+    x: number
+    y: number
+    placement: PopoverPlacementOptions
+  } | null
 }
 
-export const usePlacementCoordinates: PositionAttachmentHook = ({
+export type PopoverCoordinates = ReturnType<PopoverCoordinatesHook>
+
+export const usePopoverCoordinates: PopoverCoordinatesHook = ({
   placement,
   preferredPlacement,
   consumerNode,
   producerNode,
   offset = 0
-}) =>
-  useMemo(() => {
+}) => {
+  let disabled = !producerNode || !consumerNode
+  let updatesCount = useObserveChanges({ producerNode, disabled })
+  return useMemo(() => {
     if (!producerNode || !consumerNode) {
       return null
     }
@@ -117,4 +120,12 @@ export const usePlacementCoordinates: PositionAttachmentHook = ({
           y: rect.y - offset
         }
     }
-  }, [producerNode, consumerNode, placement, preferredPlacement, offset])
+  }, [
+    producerNode,
+    consumerNode,
+    placement,
+    preferredPlacement,
+    offset,
+    updatesCount
+  ])
+}

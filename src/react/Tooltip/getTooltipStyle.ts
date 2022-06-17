@@ -1,7 +1,7 @@
-import { PositionAttachment } from '../hooks/usePositionAttachment.js'
+import { PopoverCoordinates } from '../hooks/usePopoverCoordinates.js'
 
 interface GetTooltipStyle {
-  (position: PositionAttachment, offset: number): {}
+  (position: PopoverCoordinates, offset: number): {}
 }
 
 export const getTooltipStyle: GetTooltipStyle = (position, offset) => {

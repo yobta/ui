@@ -34,13 +34,13 @@ describe('ObserveChangesHook', () => {
     let ref = renderHook(
       (...args) => {
         renderCountMock()
-        useObserveChanges(...args)
+        return useObserveChanges(...args)
       },
       {
         initialProps: { producerNode: null }
       }
     )
-    expect(ref.result.current).toBe(undefined)
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(0)
     expect(unobserveMock).toBeCalledTimes(0)
@@ -49,6 +49,7 @@ describe('ObserveChangesHook', () => {
 
     ref.unmount()
 
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(0)
     expect(unobserveMock).toBeCalledTimes(0)
@@ -60,13 +61,13 @@ describe('ObserveChangesHook', () => {
     let ref = renderHook(
       (...args) => {
         renderCountMock()
-        useObserveChanges(...args)
+        return useObserveChanges(...args)
       },
       {
         initialProps: { producerNode, disabled: true }
       }
     )
-    expect(ref.result.current).toBe(undefined)
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(0)
     expect(unobserveMock).toBeCalledTimes(0)
@@ -75,6 +76,7 @@ describe('ObserveChangesHook', () => {
 
     ref.unmount()
 
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(0)
     expect(unobserveMock).toBeCalledTimes(0)
@@ -86,13 +88,13 @@ describe('ObserveChangesHook', () => {
     let ref = renderHook(
       (...args) => {
         renderCountMock()
-        useObserveChanges(...args)
+        return useObserveChanges(...args)
       },
       {
         initialProps: { producerNode: document.createElement('button') }
       }
     )
-    expect(ref.result.current).toBe(undefined)
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(1)
     expect(unobserveMock).toBeCalledTimes(0)
@@ -117,6 +119,7 @@ describe('ObserveChangesHook', () => {
 
     ref.unmount()
 
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(1)
     expect(unobserveMock).toBeCalledTimes(1)
@@ -128,13 +131,13 @@ describe('ObserveChangesHook', () => {
     let ref = renderHook(
       (...args) => {
         renderCountMock()
-        useObserveChanges(...args)
+        return useObserveChanges(...args)
       },
       {
         initialProps: { producerNode: document.createElement('span') }
       }
     )
-    expect(ref.result.current).toBe(undefined)
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(1)
     expect(unobserveMock).toBeCalledTimes(0)
@@ -143,6 +146,7 @@ describe('ObserveChangesHook', () => {
 
     ref.rerender({ producerNode: document.createElement('div') })
 
+    expect(ref.result.current).toBe(0)
     expect(observeMock).toBeCalledTimes(2)
     expect(renderCountMock).toBeCalledTimes(2)
     expect(unobserveMock).toBeCalledTimes(1)
@@ -151,6 +155,7 @@ describe('ObserveChangesHook', () => {
 
     ref.unmount()
 
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(2)
     expect(observeMock).toBeCalledTimes(2)
     expect(unobserveMock).toBeCalledTimes(2)
@@ -163,13 +168,13 @@ describe('ObserveChangesHook', () => {
     let ref = renderHook(
       (...args) => {
         renderCountMock()
-        useObserveChanges(...args)
+        return useObserveChanges(...args)
       },
       {
         initialProps: { producerNode, disabled: false }
       }
     )
-    expect(ref.result.current).toBe(undefined)
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(1)
     expect(unobserveMock).toBeCalledTimes(0)
@@ -178,6 +183,7 @@ describe('ObserveChangesHook', () => {
 
     ref.rerender({ producerNode, disabled: true })
 
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(2)
     expect(observeMock).toBeCalledTimes(1)
     expect(unobserveMock).toBeCalledTimes(1)
@@ -186,6 +192,7 @@ describe('ObserveChangesHook', () => {
 
     ref.unmount()
 
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(2)
     expect(observeMock).toBeCalledTimes(1)
     expect(unobserveMock).toBeCalledTimes(1)
@@ -195,11 +202,12 @@ describe('ObserveChangesHook', () => {
 
   it('re-renders when receives events', () => {
     let producerNode = document.createElement('span')
-    renderHook(() => {
+    let ref = renderHook(() => {
       renderCountMock()
-      useObserveChanges({ producerNode })
+      return useObserveChanges({ producerNode })
     })
 
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
 
     act(() => {
@@ -208,28 +216,33 @@ describe('ObserveChangesHook', () => {
       listener()
     })
 
+    expect(ref.result.current).toBe(1)
     expect(renderCountMock).toBeCalledTimes(2)
 
     act(() => {
       let listener: Function = addEventListenerMock.mock.calls[0][1]
       listener()
     })
+    expect(ref.result.current).toBe(2)
     expect(renderCountMock).toBeCalledTimes(3)
+
     act(() => {
       let listener: Function = addEventListenerMock.mock.calls[1][1]
       listener()
     })
+    expect(ref.result.current).toBe(3)
     expect(renderCountMock).toBeCalledTimes(4)
   })
 
   it('works without ResizeObserver', () => {
     vi.stubGlobal('ResizeObserver', undefined)
     let producerNode = document.createElement('span')
-    renderHook(() => {
+    let ref = renderHook(() => {
       renderCountMock()
-      useObserveChanges({ producerNode })
+      return useObserveChanges({ producerNode })
     })
 
+    expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(resizeObserverMock).toBeCalledTimes(0)
 
@@ -239,12 +252,14 @@ describe('ObserveChangesHook', () => {
       let listener: Function = addEventListenerMock.mock.calls[0][1]
       listener()
     })
+    expect(ref.result.current).toBe(1)
     expect(renderCountMock).toBeCalledTimes(2)
+
     act(() => {
       let listener: Function = addEventListenerMock.mock.calls[1][1]
       listener()
     })
-
+    expect(ref.result.current).toBe(2)
     expect(renderCountMock).toBeCalledTimes(3)
   })
 })

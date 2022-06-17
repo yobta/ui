@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 
 import { PopoverPlacementOptions } from '../helpers/index.js'
 import { usePortalNode } from '../hooks/usePortalNode.js'
-import { usePlacementCoordinates, useObserveChanges } from '../hooks/index.js'
+import { usePopoverCoordinates } from '../hooks/index.js'
 import { getTooltipStyle } from './getTooltipStyle.js'
 
 export type TooltipProps = {
@@ -13,6 +13,7 @@ export type TooltipProps = {
   animate?: boolean
   className?: string
   placement?: PopoverPlacementOptions
+  preferredPlacement?: PopoverPlacementOptions
   portalNodeId?: string
   producerNode?: HTMLElement | null
   visible?: boolean
@@ -37,6 +38,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
   const YobtaTooltip: TooltipFC = ({
     placement,
+    preferredPlacement,
     animate,
     children,
     className,
@@ -49,17 +51,15 @@ export const createTooltip: TooltipFactory = defaultProps => {
     let spotRef = useRef<HTMLDivElement>(null)
     let tooltipRef = useRef<HTMLDivElement>(null)
 
-    let position = usePlacementCoordinates({
+    let position = usePopoverCoordinates({
       placement,
+      preferredPlacement,
       producerNode,
       consumerNode: tooltipRef.current,
       offset
     })
 
     let isActive = !!position && visible
-
-    useObserveChanges({ producerNode, disabled: !isActive })
-
     // TODO:
     // plugun
     // color settings

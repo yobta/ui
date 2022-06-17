@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react'
 
 interface ObserveChangesHook {
-  (args: { producerNode?: HTMLElement | null; disabled?: boolean }): void
+  (args: { producerNode?: HTMLElement | null; disabled?: boolean }): number
 }
 
 export const useObserveChanges: ObserveChangesHook = ({
   producerNode,
   disabled
 }) => {
-  let [, setState] = useState({})
+  let [state, setState] = useState(0)
 
   useEffect(() => {
     let isActive = producerNode && !disabled
     let resizeObzerver: ResizeObserver | undefined
     let update = (): void => {
-      setState({})
+      setState(lastState => lastState + 1)
     }
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     let resizeObzerver: ResizeObserver | null = window.ResizeObserver
@@ -39,4 +39,6 @@ export const useObserveChanges: ObserveChangesHook = ({
       }
     }
   }, [disabled, producerNode])
+
+  return state
 }

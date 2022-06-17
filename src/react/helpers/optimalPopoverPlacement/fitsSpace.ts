@@ -25,14 +25,16 @@ export const fitsSpace: FitsSpace = ({
     case 'top':
     case 'top-left':
     case 'top-right': {
-      return producerBounds.top - consumerBounds.height - doubleOffset > 0
+      let spaceTop = producerBounds.top - consumerBounds.height - doubleOffset
+      return spaceTop > 0
     }
 
     // todo:
     case 'left':
     case 'left-top':
     case 'left-bottom': {
-      return false
+      let spaceLeft = producerBounds.left - consumerBounds.width - doubleOffset
+      return spaceLeft > 0
     }
     case 'right':
     case 'right-top':

@@ -42,7 +42,7 @@ it('fits top when have space', () => {
   expect(resultTopRight).toBe(true)
 })
 
-it('doea not fit top when have no space', () => {
+it('does not fit top when have no space', () => {
   let consumerNode = {
     getBoundingClientRect: () => ({
       height: 32
@@ -78,7 +78,7 @@ it('doea not fit top when have no space', () => {
   expect(resultTopRight).toBe(false)
 })
 
-it('doea not fit top when have negative space', () => {
+it('does not fit top when have negative space', () => {
   let consumerNode = {
     getBoundingClientRect: () => ({
       height: 32

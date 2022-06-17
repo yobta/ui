@@ -33,19 +33,24 @@ export const fitsSpace: FitsSpace = ({
         0
       )
     }
+
+    // todo:
     case 'left':
     case 'left-top':
     case 'left-bottom': {
-      return (
-        windowHeight -
-          producerBounds.top -
-          consumerBounds.height -
-          doubleOffset >
-        0
-      )
+      return false
+    }
+    case 'right':
+    case 'right-top':
+    case 'right-bottom': {
+      return false
     }
 
-    default:
+    case 'bottom':
+    case 'bottom-left':
+    case 'bottom-right':
+    default: {
       return false
+    }
   }
 }

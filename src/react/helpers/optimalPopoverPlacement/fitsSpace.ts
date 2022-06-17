@@ -27,7 +27,6 @@ export const fitsSpace: FitsSpace = ({
       return spaceTop > 0
     }
 
-    // todo:
     case 'left':
     case 'left-top':
     case 'left-bottom': {

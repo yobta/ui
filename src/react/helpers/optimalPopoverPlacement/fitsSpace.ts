@@ -16,8 +16,6 @@ export const fitsSpace: FitsSpace = ({
   offset
 }) => {
   // TODO: проверить что подсказка вмещается куда назначено
-  let windowWidth = window.innerWidth
-  let windowHeight = window.innerHeight
   let producerBounds = producerNode.getBoundingClientRect()
   let consumerBounds = consumerNode.getBoundingClientRect()
   let doubleOffset = offset * 2
@@ -39,14 +37,18 @@ export const fitsSpace: FitsSpace = ({
     case 'right':
     case 'right-top':
     case 'right-bottom': {
-      return false
+      let spaceRight =
+        producerBounds.right + consumerBounds.width + doubleOffset
+      return spaceRight < window.innerWidth
     }
 
     case 'bottom':
     case 'bottom-left':
     case 'bottom-right':
     default: {
-      return false
+      let spaceBottom =
+        producerBounds.bottom + consumerBounds.height + doubleOffset
+      return spaceBottom < window.innerHeight
     }
   }
 }

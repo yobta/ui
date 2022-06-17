@@ -1,23 +1,19 @@
 interface SuggestPlacement {
-  (args: {
-    producerNode: HTMLElement
-    consumerNode: HTMLElement
-    offset: number
-  }): 'top' | 'bottom' | 'right' | 'left'
+  (args: { producerNode: HTMLElement }): 'top' | 'bottom' | 'right' | 'left'
 }
 
 type SuggestedPlacement = ReturnType<SuggestPlacement>
 
 type Space = Record<SuggestedPlacement, number>
 
-export const suggestPlacement: SuggestPlacement = () => {
-  // TODO: рассчитать площадь свободного пространства по сторонам от объекта
-  // сортировку ключей не менять
+export const suggestPlacement: SuggestPlacement = ({ producerNode }) => {
+  let { left, top, right, bottom } = producerNode.getBoundingClientRect()
+  let { innerWidth, innerHeight } = window
   let space: Space = {
-    top: 2,
-    right: 3,
-    bottom: 4,
-    left: 1
+    top: top * innerWidth,
+    right: (innerWidth - right) * innerHeight,
+    bottom: (innerHeight - bottom) * innerHeight,
+    left: left * innerHeight
   }
 
   let entries = Object.entries(space) as [SuggestedPlacement, number][]

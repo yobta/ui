@@ -49,3 +49,21 @@ Default.args = {
   // align: 'left-bottom',
   // className: 'ui-bg-secondary p-6'
 }
+
+export const withoutPlacement = Template.bind({})
+withoutPlacement.args = {
+  children: 'My tooltip',
+  id: 'tooltip-bottom',
+}
+
+export const withPlacement = Template.bind({})
+withPlacement.args = {
+  children: 'My tooltip',
+  id: 'tooltip-bottom',
+}
+
+export const preferredPlacement = Template.bind({})
+preferredPlacement.args = {
+  children: 'My tooltip',
+  id: 'tooltip-bottom',
+}

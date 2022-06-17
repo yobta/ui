@@ -25,7 +25,11 @@ typecheck:
 spellcheck:
 	npm run spellcheck
 
-check: typecheck test lint spellcheck
+check: 
+	npm run typecheck
+	npm run test
+	npm run lint
+	npm run spellcheck
 
 update:
 	npm run update

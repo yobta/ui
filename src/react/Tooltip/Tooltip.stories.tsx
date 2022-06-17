@@ -31,39 +31,41 @@ const Template: ComponentStory<typeof Tooltip> = args => {
   )
 }
 
-export const Default = Template.bind({})
-Default.args = {
-  children: 'My tooltip',
-  id: 'tooltip-bottom',
-  // align: 'top',
-  // align: 'top-left',
-  // align: 'top-right',
-  // align: 'bottom'
-  // align: 'bottom-left',
-  placement: 'bottom-right'
-  // align: 'right',
-  // align: 'right-top',
-  // align: 'right-bottom',
-  // align: 'left',
-  // align: 'left-top',
-  // align: 'left-bottom',
-  // className: 'ui-bg-secondary p-6'
-}
+// export const Default = Template.bind({})
+// Default.args = {
+//   children: 'My tooltip',
+//   id: 'tooltip-bottom',
+//   // align: 'top',
+//   // align: 'top-left',
+//   // align: 'top-right',
+//   // align: 'bottom'
+//   // align: 'bottom-left',
+//   placement: 'bottom-right'
+//   // align: 'right',
+//   // align: 'right-top',
+//   // align: 'right-bottom',
+//   // align: 'left',
+//   // align: 'left-top',
+//   // align: 'left-bottom',
+//   // className: 'ui-bg-secondary p-6'
+// }
 
 export const withoutPlacement = Template.bind({})
 withoutPlacement.args = {
   children: 'My tooltip',
-  id: 'tooltip-bottom',
+  id: 'withoutPlacement',
 }
 
 export const withPlacement = Template.bind({})
 withPlacement.args = {
   children: 'My tooltip',
-  id: 'tooltip-bottom',
+  id: 'withPlacement',
+  placement: 'bottom-left'
 }
 
 export const preferredPlacement = Template.bind({})
 preferredPlacement.args = {
   children: 'My tooltip',
-  id: 'tooltip-bottom',
+  id: 'preferredPlacement',
+  preferredPlacement: 'right-bottom'
 }

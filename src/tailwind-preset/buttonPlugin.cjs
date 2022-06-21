@@ -2,24 +2,41 @@ const plugin = require('tailwindcss/plugin')
 
 const applyPrefixed = require('./applyPrefixed.cjs')
 
-module.exports = plugin(({ addBase, prefix }) => {
-  addBase({
+module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
+  let color = theme('colors')
+  let common = [
+    '.px-4',
+    '.rounded',
+    '.ui-button-text',
+    '.flex',
+    '.gap-2',
+    '.items-center',
+    '.justify-center',
+    '.relative',
+    '.h-10'
+  ]
+  let classes = Object.entries(color.button).reduce(
+    (acc, [key]) => ({
+      ...acc,
+      [`.ui-button-${key}`]: {
+        ...applyPrefixed(
+          prefix,
+          ...common,
+          `.bg-button-${key}-bg`,
+          `.dark:bg-button-${key}-bg-dark`,
+          `.text-button-${key}-text`,
+          `.dark:text-button-${key}-text-dark`
+        )
+      }
+    }),
+    {}
+  )
+  addComponents({
     '.ui-button-text': {
       ...applyPrefixed(prefix, '.text-sm', '.font-medium', '.leading-6')
     },
     '.ui-button': {
-      ...applyPrefixed(
-        prefix,
-        '.px-4',
-        '.rounded',
-        '.ui-button-text',
-        '.flex',
-        '.gap-2',
-        '.items-center',
-        '.justify-center',
-        '.relative',
-        '.h-10'
-      ),
+      ...applyPrefixed(prefix, ...common),
       'transition': 'filter',
       '&:before': {
         ...applyPrefixed(
@@ -69,4 +86,5 @@ module.exports = plugin(({ addBase, prefix }) => {
       }
     }
   })
+  addUtilities(classes)
 })

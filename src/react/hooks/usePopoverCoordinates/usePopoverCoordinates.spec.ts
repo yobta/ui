@@ -8,24 +8,24 @@ describe('usePopoverCoordinates Hook', () => {
   let consumerNode = {
     getBoundingClientRect: () => ({
       top: 100,
-      bottom: 100,
-      height: 100,
-      width: 100
+      left: 100,
+      width: 100,
+      height: 100
     })
   } as HTMLElement
 
   let producerNode = {
     getBoundingClientRect: () => ({
-      top: 100,
-      bottom: 100,
-      height: 100,
-      width: 100
+      top: 200,
+      left: 200,
+      width: 100,
+      height: 100
     })
   } as HTMLElement
 
   it('is undefined when consumerNode and producerNode are null', () => {
     let { result } = renderHook(() => {
-      usePopoverCoordinates({
+      return usePopoverCoordinates({
         placement: 'top',
         preferredPlacement: 'top',
         consumerNode: null,
@@ -33,11 +33,11 @@ describe('usePopoverCoordinates Hook', () => {
         offset: 8
       })
     })
-    expect(result).toEqual({ undefined })
+    expect(result.current).toEqual(null)
   })
   it('is undefined when placement and preferredPlacement are undefined', () => {
     let { result } = renderHook(() => {
-      usePopoverCoordinates({
+      return usePopoverCoordinates({
         placement: undefined,
         preferredPlacement: undefined,
         consumerNode: null,
@@ -45,11 +45,11 @@ describe('usePopoverCoordinates Hook', () => {
         offset: 8
       })
     })
-    expect(result).toEqual({ undefined })
+    expect(result.current).toEqual(null)
   })
   it('is when consumerNode and producerNode are defined', () => {
     let { result } = renderHook(() => {
-      usePopoverCoordinates({
+      return usePopoverCoordinates({
         placement: 'right',
         preferredPlacement: 'left',
         consumerNode,
@@ -58,19 +58,23 @@ describe('usePopoverCoordinates Hook', () => {
       })
     })
 
-    expect(result).toEqual({ undefined })
+    expect(result.current?.placement).toEqual('right')
+    expect(result.current?.x).toEqual(NaN)
+    expect(result.current?.y).toEqual(NaN)
   })
   it('is undefined when offset is undefined', () => {
     let { result } = renderHook(() => {
-      usePopoverCoordinates({
-        placement: 'right',
-        preferredPlacement: 'left',
+      return usePopoverCoordinates({
+        placement: 'left',
+        preferredPlacement: 'bottom',
         consumerNode,
         producerNode,
         offset: undefined
       })
     })
 
-    expect(result).toEqual({ undefined })
+    expect(result.current?.placement).toEqual('left')
+    expect(result.current?.x).toEqual(NaN)
+    expect(result.current?.y).toEqual(NaN)
   })
 })

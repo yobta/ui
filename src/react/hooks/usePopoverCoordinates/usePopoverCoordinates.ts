@@ -8,13 +8,44 @@ import {
 import { getPopoverCoordinates } from './getPopoverCoordinates.js'
 
 interface PopoverCoordinatesHook {
-  (args: {
-    placement?: PopoverPlacementOptions
-    preferredPlacement?: PopoverPlacementOptions
-    consumerNode?: HTMLElement | null
-    producerNode?: HTMLElement | null
-    offset?: number
-  }): {
+  (
+    args:
+      | {
+          placement?: PopoverPlacementOptions
+          preferredPlacement?: never
+          consumerNode?: HTMLElement | null
+          producerNode?: HTMLElement | null
+          offset?: number
+        }
+      | {
+          preferredPlacement?: never
+          placement?: PopoverPlacementOptions
+          consumerNode?: HTMLElement | null
+          producerNode?: HTMLElement | null
+          offset?: number
+        }
+  ): {
+    x: number
+    y: number
+    placement: PopoverPlacementOptions
+  } | null
+  (
+    args:
+      | {
+          placement?: PopoverPlacementOptions
+          preferredPlacement?: never
+          consumerNode?: HTMLElement | null
+          producerNode?: HTMLElement | null
+          offset?: number
+        }
+      | {
+          preferredPlacement?: never
+          placement?: PopoverPlacementOptions
+          consumerNode?: HTMLElement | null
+          producerNode?: HTMLElement | null
+          offset?: number
+        }
+  ): {
     x: number
     y: number
     placement: PopoverPlacementOptions

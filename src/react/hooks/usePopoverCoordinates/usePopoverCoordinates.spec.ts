@@ -4,7 +4,6 @@ import { renderHook } from '@testing-library/react'
 import { usePopoverCoordinates } from './usePopoverCoordinates.js'
 
 describe('usePopoverCoordinates Hook', () => {
-
   let consumerNode = {
     getBoundingClientRect: () => ({
       x: 100,
@@ -69,7 +68,7 @@ describe('usePopoverCoordinates Hook', () => {
   it('is when offset is undefined', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
-        placement: 'left',
+        // placement: 'left',
         preferredPlacement: 'bottom',
         consumerNode,
         producerNode,
@@ -84,10 +83,10 @@ describe('usePopoverCoordinates Hook', () => {
   it('is when x and y equals 0', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
-        placement: 'bottom',
+        // placement: 'bottom',
         preferredPlacement: 'top',
-        consumerNode: {...consumerNode, ...{x: 0, y: 0}},
-        producerNode: {...consumerNode, ...{x: 0, y: 0}},
+        consumerNode: { ...consumerNode, ...{ x: 0, y: 0 } },
+        producerNode: { ...consumerNode, ...{ x: 0, y: 0 } },
         offset: 1
       })
     })

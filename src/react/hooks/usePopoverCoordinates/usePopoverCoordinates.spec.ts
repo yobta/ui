@@ -7,6 +7,8 @@ describe('usePopoverCoordinates Hook', () => {
 
   let consumerNode = {
     getBoundingClientRect: () => ({
+      x: 100,
+      y: 100,
       top: 100,
       left: 100,
       width: 100,
@@ -16,6 +18,8 @@ describe('usePopoverCoordinates Hook', () => {
 
   let producerNode = {
     getBoundingClientRect: () => ({
+      x: 200,
+      y: 200,
       top: 200,
       left: 200,
       width: 100,
@@ -59,10 +63,10 @@ describe('usePopoverCoordinates Hook', () => {
     })
 
     expect(result.current?.placement).toEqual('right')
-    expect(result.current?.x).toEqual(NaN)
-    expect(result.current?.y).toEqual(NaN)
+    expect(result.current?.x).toEqual(308)
+    expect(result.current?.y).toEqual(250)
   })
-  it('is undefined when offset is undefined', () => {
+  it('is when offset is undefined', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
         placement: 'left',
@@ -74,7 +78,22 @@ describe('usePopoverCoordinates Hook', () => {
     })
 
     expect(result.current?.placement).toEqual('left')
-    expect(result.current?.x).toEqual(NaN)
-    expect(result.current?.y).toEqual(NaN)
+    expect(result.current?.x).toEqual(200)
+    expect(result.current?.y).toEqual(250)
+  })
+  it('is when x and y equals 0', () => {
+    let { result } = renderHook(() => {
+      return usePopoverCoordinates({
+        placement: 'bottom',
+        preferredPlacement: 'top',
+        consumerNode: {...consumerNode, ...{x: 0, y: 0}},
+        producerNode: {...consumerNode, ...{x: 0, y: 0}},
+        offset: 1
+      })
+    })
+
+    expect(result.current?.placement).toEqual('bottom')
+    expect(result.current?.x).toEqual(150)
+    expect(result.current?.y).toEqual(201)
   })
 })

@@ -30,7 +30,7 @@ describe('usePopoverCoordinates Hook', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
         placement: 'top',
-        preferredPlacement: 'top',
+        preferredPlacement: undefined,
         consumerNode: null,
         producerNode: null,
         offset: 8
@@ -54,7 +54,7 @@ describe('usePopoverCoordinates Hook', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
         placement: 'right',
-        preferredPlacement: 'left',
+        preferredPlacement: undefined,
         consumerNode,
         producerNode,
         offset: 8
@@ -68,31 +68,46 @@ describe('usePopoverCoordinates Hook', () => {
   it('is when offset is undefined', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
-        // placement: 'left',
-        preferredPlacement: 'bottom',
+        placement: 'right',
+        preferredPlacement: undefined,
         consumerNode,
         producerNode,
         offset: undefined
       })
     })
 
-    expect(result.current?.placement).toEqual('left')
-    expect(result.current?.x).toEqual(200)
+    expect(result.current?.placement).toEqual('right')
+    expect(result.current?.x).toEqual(300)
     expect(result.current?.y).toEqual(250)
   })
-  it('is when x and y equals 0', () => {
+  it('is when placement is undefined', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
-        // placement: 'bottom',
-        preferredPlacement: 'top',
+        placement: undefined,
+        preferredPlacement: 'right',
+        consumerNode,
+        producerNode,
+        offset: 8
+      })
+    })
+
+    expect(result.current?.placement).toEqual('top')
+    expect(result.current?.x).toEqual(250)
+    expect(result.current?.y).toEqual(192)
+  })
+  it('is when placement is undefined, x and y equals 0', () => {
+    let { result } = renderHook(() => {
+      return usePopoverCoordinates({
+        placement: 'left',
+        preferredPlacement: undefined,
         consumerNode: { ...consumerNode, ...{ x: 0, y: 0 } },
         producerNode: { ...consumerNode, ...{ x: 0, y: 0 } },
         offset: 1
       })
     })
 
-    expect(result.current?.placement).toEqual('bottom')
-    expect(result.current?.x).toEqual(150)
-    expect(result.current?.y).toEqual(201)
+    expect(result.current?.placement).toEqual('left')
+    expect(result.current?.x).toEqual(99)
+    expect(result.current?.y).toEqual(150)
   })
 })

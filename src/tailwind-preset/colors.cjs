@@ -184,9 +184,7 @@ module.exports = {
   },
 
   tooltip: {
-    paper: {
-      bg: { DEFAULT: tooltipBg, dark: tooltipBgDark },
-      text: { DEFAULT: tooltipText, dark: tooltipTextDark }
-    }
+    paper: { DEFAULT: tooltipBg, dark: tooltipBgDark },
+    ink: { DEFAULT: tooltipText, dark: tooltipTextDark }
   }
 }

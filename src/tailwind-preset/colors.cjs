@@ -146,40 +146,40 @@ module.exports = {
 
   button: {
     'paper': {
-      bg: { DEFAULT: paper, dark: paperDark },
-      text: { DEFAULT: ink, dark: inkDark }
+      paper: { DEFAULT: paper, dark: paperDark },
+      ink: { DEFAULT: ink, dark: inkDark }
     },
     'paper-2': {
-      bg: { DEFAULT: paper2, dark: paper2Dark },
-      text: { DEFAULT: ink, dark: inkDark }
+      paper: { DEFAULT: paper2, dark: paper2Dark },
+      ink: { DEFAULT: ink, dark: inkDark }
     },
     'paper-3': {
-      bg: { DEFAULT: paper3, dark: paper3Dark },
-      text: { DEFAULT: ink, dark: inkDark }
+      paper: { DEFAULT: paper3, dark: paper3Dark },
+      ink: { DEFAULT: ink, dark: inkDark }
     },
     'primary': {
-      bg: { DEFAULT: paperPrimary, dark: paperPrimaryDark },
-      text: { DEFAULT: ink, dark: ink }
+      paper: { DEFAULT: paperPrimary, dark: paperPrimaryDark },
+      ink: { DEFAULT: ink, dark: ink }
     },
     'secondary': {
-      bg: { DEFAULT: paperSecondary, dark: paperSecondaryDark },
-      text: { DEFAULT: inkDark, dark: inkDark }
+      paper: { DEFAULT: paperSecondary, dark: paperSecondaryDark },
+      ink: { DEFAULT: inkDark, dark: inkDark }
     },
     'error': {
-      bg: { DEFAULT: paperError, dark: paperErrorDark },
-      text: { DEFAULT: inkDark, dark: inkDark }
+      paper: { DEFAULT: paperError, dark: paperErrorDark },
+      ink: { DEFAULT: inkDark, dark: inkDark }
     },
     'success': {
-      bg: { DEFAULT: paperSuccess, dark: paperSuccessDark },
-      text: { DEFAULT: inkDark, dark: inkDark }
+      paper: { DEFAULT: paperSuccess, dark: paperSuccessDark },
+      ink: { DEFAULT: inkDark, dark: inkDark }
     },
     'warning': {
-      bg: { DEFAULT: paperWarning, dark: paperWarningDark },
-      text: { DEFAULT: inkDark, dark: inkDark }
+      paper: { DEFAULT: paperWarning, dark: paperWarningDark },
+      ink: { DEFAULT: inkDark, dark: inkDark }
     },
     'info': {
-      bg: { DEFAULT: paperInfo, dark: paperInfoDark },
-      text: { DEFAULT: inkDark, dark: inkDark }
+      paper: { DEFAULT: paperInfo, dark: paperInfoDark },
+      ink: { DEFAULT: inkDark, dark: inkDark }
     }
   },
 

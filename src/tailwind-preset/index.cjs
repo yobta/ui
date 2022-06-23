@@ -48,6 +48,7 @@ module.exports = {
     require('./bgPlugin.cjs'),
     require('./borderPlugin.cjs'),
     require('./buttonPlugin.cjs'),
+    require('./buttonVariantsPlugin.cjs'),
     require('./checkboxPlugin.cjs'),
     require('./dividerPlugin.cjs'),
     require('./entypoPlugin.cjs'),

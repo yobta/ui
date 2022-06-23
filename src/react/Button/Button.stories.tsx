@@ -19,22 +19,64 @@ Default.args = {
   children: (
     <>
       <ShoppingBag />
-      Button<span>1</span>
+      Transparent
     </>
   ),
-  className: 'ui-ink'
+  className: 'ui-button'
 }
 
 export const Primary = Template.bind({})
 Primary.args = {
   children: 'Primary button',
-  className: 'ui-bg-primary text-ink'
+  className: 'ui-button-primary'
 }
 
 export const Secondary = Template.bind({})
 Secondary.args = {
   children: 'Secondary button',
-  className: 'ui-bg-secondary text-ink-dark'
+  className: 'ui-button-secondary'
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  children: 'Error button',
+  className: 'ui-button-error'
+}
+
+export const Success = Template.bind({})
+Success.args = {
+  children: 'Error button',
+  className: 'ui-button-success'
+}
+
+export const Warning = Template.bind({})
+Warning.args = {
+  children: 'Error button',
+  className: 'ui-button-warning'
+}
+
+export const Info = Template.bind({})
+Info.args = {
+  children: 'Error button',
+  className: 'ui-button-info'
+}
+
+export const Paper = Template.bind({})
+Paper.args = {
+  children: 'Error button',
+  className: 'ui-button-paper'
+}
+
+export const Paper2 = Template.bind({})
+Paper2.args = {
+  children: 'Error button',
+  className: 'ui-button-paper-2'
+}
+
+export const Paper3 = Template.bind({})
+Paper3.args = {
+  children: 'Error button',
+  className: 'ui-button-paper-3'
 }
 
 export const Large = Template.bind({})

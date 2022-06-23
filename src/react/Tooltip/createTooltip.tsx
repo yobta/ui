@@ -7,18 +7,24 @@ import { usePopoverCoordinates } from '../hooks/index.js'
 import { getTooltipStyle } from './getTooltipStyle.js'
 import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
 
-export type TooltipProps = {
+export type TooltipProps = (
+  | {
+      placement?: PopoverPlacementOptions
+      preferredPlacement?: undefined
+    }
+  | {
+      placement?: undefined
+      preferredPlacement?: PopoverPlacementOptions
+    }
+) & {
   children: ReactNode
   id: string
   animate?: boolean
   className?: string
-  placement?: PopoverPlacementOptions
-  preferredPlacement?: PopoverPlacementOptions
   portalNodeId?: string
   producerNode?: HTMLElement | null
   visible?: boolean
 }
-
 export type TooltipDefaultProps = Partial<
   Pick<TooltipProps, 'animate' | 'className'>
 >
@@ -51,9 +57,10 @@ export const createTooltip: TooltipFactory = defaultProps => {
     let spotRef = useRef<HTMLDivElement>(null)
     let tooltipRef = useRef<HTMLDivElement>(null)
 
+    let placementProps = placement ? { placement } : { preferredPlacement }
+
     let position = usePopoverCoordinates({
-      placement,
-      preferredPlacement,
+      ...placementProps,
       producerNode,
       consumerNode: tooltipRef.current,
       offset

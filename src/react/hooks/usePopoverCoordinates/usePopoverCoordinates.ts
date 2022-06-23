@@ -9,14 +9,20 @@ import { getPopoverCoordinates } from './getPopoverCoordinates.js'
 
 interface PopoverCoordinatesHook {
   (
-    args:
-      {
-        placement?: PopoverPlacementOptions | undefined
-        preferredPlacement?: PopoverPlacementOptions | undefined
-        consumerNode?: HTMLElement | null
-        producerNode?: HTMLElement | null
-        offset?: number
-      }
+    args: (
+      | {
+          placement?: PopoverPlacementOptions
+          preferredPlacement?: undefined
+        }
+      | {
+          placement?: undefined
+          preferredPlacement?: PopoverPlacementOptions
+        }
+    ) & {
+      consumerNode?: HTMLElement | null
+      producerNode?: HTMLElement | null
+      offset?: number
+    }
   ): {
     x: number
     y: number

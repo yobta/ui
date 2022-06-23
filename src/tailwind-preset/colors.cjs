@@ -1,40 +1,82 @@
-const paper = '#FCFCFC'
-const paperDark = '#2A2D35'
-const paper2 = '#EBEBEB'
-const paper2Dark = '#4F5462'
-const paper3 = '#D0D0D0'
-const paper3Dark = '#767C8B'
-const paperPrimary = '#FADC4F'
-const paperPrimaryDark = '#E2C438'
-const paperSecondary = '#524FFA'
-const paperSecondaryDark = '#5755CD'
-const paperError = '#EC4E3D'
-const paperErrorDark = '#D85243'
-const paperSuccess = '#4FA762'
-const paperSuccessDark = '#458052'
-const paperWarning = '#E87C06'
-const paperWarningDark = '#C6751C'
-const paperInfo = '#4C9BE4'
-const paperInfoDark = '#3B72A5'
+const paper = 'var(--y-color-paper, #FCFCFC)'
+const paperDark = 'var(--y-color-paper-dark, #2A2D35)'
+const paper2 = 'var(--y-color-paper-2, #EBEBEB)'
+const paper2Dark = 'var(--y-color-paper-2-dark, #4F5462)'
+const paper3 = 'var(--y-color-paper-3, #D0D0D0)'
+const paper3Dark = 'var(--y-color-paper-3-dark, #767C8B)'
+const paperPrimary = 'var(--y-color-paper-primary, #FADC4F)'
+const paperPrimaryDark = 'var(--y-color-paper-primary-dark, #E2C438)'
+const paperSecondary = 'var(--y-color-paper-secondary, #524FFA)'
+const paperSecondaryDark = 'var(--y-color-paper-secondary-dark, #5755CD)'
+const paperError = 'var(--y-color-paper-error, #EC4E3D)'
+const paperErrorDark = 'var(--y-color-paper-error-dark, #D85243)'
+const paperSuccess = 'var(--y-color-paper-success, #4FA762)'
+const paperSuccessDark = 'var(--y-color-paper-success-dark, #458052)'
+const paperWarning = 'var(--y-color-paper-warning, #E87C06)'
+const paperWarningDark = 'var(--y-color-paper-warning-dark, #C6751C)'
+const paperInfo = 'var(--y-color-paper-info, #4C9BE4)'
+const paperInfoDark = 'var(--y-color-paper-info-dark, #3B72A5)'
 
-const ink = '#414141'
-const inkDark = '#FCFCFC'
-const ink2 = '#7B8B99'
-const ink2Dark = '#5B6772'
-const inkPrimary = '#C7A713'
-const inkPrimaryDark = '#DCCA76'
-const inkSecondary = '#4F4CEA'
-const inkSecondaryDark = '#8583FF'
-const inkError = '#D74030'
-const inkErrorDark = '#D45D50'
-const inkSuccess = '#3B7D49'
-const inkSuccessDark = '#6D9F78'
-const inkWarning = '#E48D2E'
-const inkWarningDark = '#B98A56'
-const inkInfo = '#3784CB'
-const inkInfoDark = '#5A86AF'
-const inkBorder = '#29292916'
-const inkBorderDark = '#FFFFFF16'
+const ink = 'var(--y-color-ink, #414141)'
+const inkDark = 'var(--y-color-ink-dark, #FCFCFC)'
+const ink2 = 'var(--y-color-ink-2, #7B8B99)'
+const ink2Dark = 'var(--y-color-ink-2-dark, #5B6772)'
+const inkPrimary = 'var(--y-color-ink-primary, #C7A713)'
+const inkPrimaryDark = 'var(--y-color-ink-primary-dark, #DCCA76)'
+const inkSecondary = 'var(--y-color-ink-secondary, #4F4CEA)'
+const inkSecondaryDark = 'var(--y-color-ink-secondary-dark, #8583FF)'
+const inkError = 'var(--y-color-ink-error, #D74030)'
+const inkErrorDark = 'var(--y-color-ink-error-dark, #D45D50)'
+const inkSuccess = 'var(--y-color-ink-success, #3B7D49)'
+const inkSuccessDark = 'var(--y-color-ink-success-dark, #6D9F78)'
+const inkWarning = 'var(--y-color-ink-warning, #E48D2E)'
+const inkWarningDark = 'var(--y-color-ink-warning-dark, #B98A56)'
+const inkInfo = 'var(--y-color-ink-info, #3784CB)'
+const inkInfoDark = 'var(--y-color-ink-info-dark, #5A86AF)'
+const inkBorder = 'var(--y-color-ink-border, #29292916)'
+const inkBorderDark = 'var(--y-color-ink-border-dark, #FFFFFF16)'
+
+const link = 'var(--y-color-link, #120EED)'
+const linkDark = 'var(--y-color-link, #9C9AFF)'
+const linkHover = 'var(--y-color-link-hover, #5F5CFF)'
+const linkHoverDark = 'var(--y-color-link-hover-dark, #ACAAF0)'
+const linkActive = 'var(--y-color-link-active, #B92AFD)'
+const linkActiveDark = 'var(--y-color-link-active-dark, #CD63FF)'
+const linkVisited = 'var(--y-color-link-visited, #8B2E9A)'
+const linkVisitedDark = 'var(--y-color-link-visited-dark, #BD9FC1)'
+
+const pale1 = 'var(--y-color-pale-1, #FAD8C2)'
+const pale1Dark = 'var(--y-color-pale-1-dark, #4C474B)'
+const pale2 = 'var(--y-color-pale-2, #FFE7CE)'
+const pale2Dark = 'var(--y-color-pale-2-dark, #48474B)'
+const pale3 = 'var(--y-color-pale-3, #FFF6C0)'
+const pale3Dark = 'var(--y-color-pale-3-dark, #4D4F4A)'
+const pale4 = 'var(--y-color-pale-4, #FFFDF1)'
+const pale4Dark = 'var(--y-color-pale-4-dark, #373A3F)'
+const pale5 = 'var(--y-color-pale-5, #E9F2CE)'
+const pale5Dark = 'var(--y-color-pale-5-dark, #474E4F)'
+const pale6 = 'var(--y-color-pale-6, #D6E8CF)'
+const pale6Dark = 'var(--y-color-pale-6-dark, #424B4F)'
+const pale7 = 'var(--y-color-pale-7, #C3C9C4)'
+const pale7Dark = 'var(--y-color-pale-7-dark, #3D424C)'
+const pale8 = 'var(--y-color-pale-8, #E8EEE9)'
+const pale8Dark = 'var(--y-color-pale-8-dark, #474D58)'
+const pale9 = 'var(--y-color-pale-9, #D8EDEF)'
+const pale9Dark = 'var(--y-color-pale-9-dark, #424D5A)'
+const pale10 = 'var(--y-color-pale-10, #ECF5F7)'
+const pale10Dark = 'var(--y-color-pale-10-dark, #3D434F)'
+const pale11 = 'var(--y-color-pale-11, #F8FDFE)'
+const pale11Dark = 'var(--y-color-pale-11-dark, #2D323B)'
+const pale12 = 'var(--y-color-pale-12, #C5E7F7)'
+const pale12Dark = 'var(--y-color-pale-12-dark, #3D4B5C)'
+const pale13 = 'var(--y-color-pale-13, #C6E0F4)'
+const pale13Dark = 'var(--y-color-pale-13-dark, #3D495B)'
+const pale14 = 'var(--y-color-pale-14, #B0B9BF)'
+const pale14Dark = 'var(--y-color-pale-14-dark, #373E4A)'
+const pale15 = 'var(--y-color-pale-15, #E9DDEB)'
+const pale15Dark = 'var(--y-color-pale-15-dark, #474858)'
+const pale16 = 'var(--y-color-pale-16, #F8E0EB)'
+const pale16Dark = 'var(--y-color-pale-16-dark, #4B4958)'
 
 module.exports = {
   paper: {
@@ -64,29 +106,29 @@ module.exports = {
   },
 
   link: {
-    DEFAULT: '#120EED',
-    dark: '#9C9AFF',
-    hover: { DEFAULT: '#5F5CFF', dark: '#ACAAF0' },
-    active: { DEFAULT: '#B92AFD', dark: '#CD63FF' },
-    visited: { DEFAULT: '#8B2E9A', dark: '#BD9FC1' }
+    DEFAULT: link,
+    dark: linkDark,
+    hover: { DEFAULT: linkHover, dark: linkHoverDark },
+    active: { DEFAULT: linkActive, dark: linkActiveDark },
+    visited: { DEFAULT: linkVisited, dark: linkVisitedDark }
   },
   color: {
-    1: { DEFAULT: '#FAD8C2', dark: '#4C474B' },
-    2: { DEFAULT: '#FFE7CE', dark: '#48474B' },
-    3: { DEFAULT: '#FFF6C0', dark: '#4D4F4A' },
-    4: { DEFAULT: '#FFFDF1', dark: '#373A3F' },
-    5: { DEFAULT: '#E9F2CE', dark: '#474E4F' },
-    6: { DEFAULT: '#D6E8CF', dark: '#424B4F' },
-    7: { DEFAULT: '#C3C9C4', dark: '#3D424C' },
-    8: { DEFAULT: '#E8EEE9', dark: '#474D58' },
-    9: { DEFAULT: '#D8EDEF', dark: '#424D5A' },
-    10: { DEFAULT: '#ECF5F7', dark: '#3D434F' },
-    11: { DEFAULT: '#F8FDFE', dark: '#2D323B' },
-    12: { DEFAULT: '#C5E7F7', dark: '#3D4B5C' },
-    13: { DEFAULT: '#C6E0F4', dark: '#3D495B' },
-    14: { DEFAULT: '#B0B9BF', dark: '#373E4A' },
-    15: { DEFAULT: '#E9DDEB', dark: '#474858' },
-    16: { DEFAULT: '#F8E0EB', dark: '#4B4958' }
+    1: { DEFAULT: pale1, dark: pale1Dark },
+    2: { DEFAULT: pale2, dark: pale2Dark },
+    3: { DEFAULT: pale3, dark: pale3Dark },
+    4: { DEFAULT: pale4, dark: pale4Dark },
+    5: { DEFAULT: pale5, dark: pale5Dark },
+    6: { DEFAULT: pale6, dark: pale6Dark },
+    7: { DEFAULT: pale7, dark: pale7Dark },
+    8: { DEFAULT: pale8, dark: pale8Dark },
+    9: { DEFAULT: pale9, dark: pale9Dark },
+    10: { DEFAULT: pale10, dark: pale10Dark },
+    11: { DEFAULT: pale11, dark: pale11Dark },
+    12: { DEFAULT: pale12, dark: pale12Dark },
+    13: { DEFAULT: pale13, dark: pale13Dark },
+    14: { DEFAULT: pale14, dark: pale14Dark },
+    15: { DEFAULT: pale15, dark: pale15Dark },
+    16: { DEFAULT: pale16, dark: pale16Dark }
   },
 
   button: {

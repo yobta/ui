@@ -11,10 +11,10 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
         ...applyPrefixed(
           prefix,
           '.ui-button',
-          `.bg-button-${key}-bg`,
-          `.dark:bg-button-${key}-bg-dark`,
-          `.text-button-${key}-text`,
-          `.dark:text-button-${key}-text-dark`
+          `.paper-button-${key}-paper`,
+          `.dark:paper-button-${key}-paper-dark`,
+          `.ink-button-${key}-ink`,
+          `.dark:ink-button-${key}-ink-dark`
         )
       }
     }),

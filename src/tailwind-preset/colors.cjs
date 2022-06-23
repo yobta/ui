@@ -86,10 +86,19 @@ const pale16 = 'var(--y-color-pale-16, #F8E0EB)'
 const pale16Dark = 'var(--y-color-pale-16-dark, #4B4958)'
 /* #endregion */
 
+/* #region Tooltip */
 const tooltipBg = 'var(--y-color-tooltip-bg, #2A2D35)'
 const tooltipBgDark = 'var(--y-color-tooltip-bg-dark, #FCFCFC)'
 const tooltipText = 'var(--y-color-tooltip-text, #FCFCFC)'
 const tooltipTextDark = 'var(--y-color-tooltip-text-dark, #414141)'
+/* #endregion */
+
+/* #region Button  */
+const buttonPaperBg = 'var(--y-color-button-paper-bg, #FCFCFC)'
+const buttonPaperBgDark = 'var(--y-color-button-paper-bg-dark, #2A2D35)'
+const buttonPaperText = 'var(--y-color-button-paper-text, #414141)'
+const buttonPaperTextDark = 'var(--y-color-button-paper-text-dark, #FCFCFC)'
+/* #endregion */
 
 module.exports = {
   paper: {
@@ -104,7 +113,6 @@ module.exports = {
     warning: { DEFAULT: paperWarning, dark: paperWarningDark },
     info: { DEFAULT: paperInfo, dark: paperInfoDark }
   },
-
   ink: {
     DEFAULT: ink,
     dark: inkDark,
@@ -117,7 +125,6 @@ module.exports = {
     info: { DEFAULT: inkInfo, dark: inkInfoDark },
     border: { DEFAULT: inkBorder, dark: inkBorderDark }
   },
-
   link: {
     DEFAULT: link,
     dark: linkDark,
@@ -143,11 +150,10 @@ module.exports = {
     15: { DEFAULT: pale15, dark: pale15Dark },
     16: { DEFAULT: pale16, dark: pale16Dark }
   },
-
   button: {
     'paper': {
-      paper: { DEFAULT: paper, dark: paperDark },
-      ink: { DEFAULT: ink, dark: inkDark }
+      paper: { DEFAULT: buttonPaperBg, dark: buttonPaperBgDark },
+      ink: { DEFAULT: buttonPaperText, dark: buttonPaperTextDark }
     },
     'paper-2': {
       paper: { DEFAULT: paper2, dark: paper2Dark },

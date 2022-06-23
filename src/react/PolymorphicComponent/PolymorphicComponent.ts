@@ -10,8 +10,9 @@ export type PolymorphicComponentProps<E extends ElementType, P> = P &
   PolymorphicProps<E> &
   Omit<ComponentProps<E>, keyof PolymorphicProps>
 
-export type PolymorphicComponent<D extends ElementType, P> = <
-  E extends ElementType = D
->(
-  props: PolymorphicComponentProps<E, P>
-) => JSX.Element
+export interface PolymorphicComponent<D extends ElementType, P> {
+  <E extends ElementType = D>(
+    props: PolymorphicComponentProps<E, P>
+  ): JSX.Element
+  displayName: string
+}

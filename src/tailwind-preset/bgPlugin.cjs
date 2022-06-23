@@ -48,6 +48,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
       '.ui-bg-info': {
         ...applyPrefixed(prefix, '.bg-paper-info', '.dark:bg-paper-info-dark')
       },
+
       '.ui-bg-1': {
         ...applyPrefixed(prefix, '.bg-color-1', '.dark:bg-color-1-dark')
       },

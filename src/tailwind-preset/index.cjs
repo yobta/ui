@@ -64,7 +64,8 @@ module.exports = {
     require('./spinnerPlugin.cjs'),
     require('./switchPlugin.cjs'),
     require('./textAreaPlugin.cjs'),
-    require('./textColorPlugin.cjs')
+    require('./textColorPlugin.cjs'),
+    require('./tooltipPlugin.cjs')
   ],
   variants: {
     extend: {

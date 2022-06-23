@@ -6,6 +6,7 @@ type Props = {
 }
 
 export class Cache extends Component<Props> {
+  static displayName: 'YobtaCache'
   shouldComponentUpdate({ disabled = false }: Props): boolean {
     return disabled
   }

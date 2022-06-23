@@ -23,8 +23,8 @@ export const createButton = <C extends ElementType = typeof defaultElement>({
   element: configElement,
   style: configStyle,
   ...config
-}: ButtonConfig<C>): PolymorphicComponent<C, ButtonProps> =>
-  forwardRef(
+}: ButtonConfig<C>): PolymorphicComponent<C, ButtonProps> => {
+  let Button = forwardRef(
     <E extends ElementType = C>(
       {
         busy,
@@ -65,3 +65,8 @@ export const createButton = <C extends ElementType = typeof defaultElement>({
       )
     }
   ) as PolymorphicComponent<C, ButtonProps>
+
+  Button.displayName = 'YobtaButton'
+
+  return Button
+}

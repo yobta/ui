@@ -12,4 +12,4 @@ const Template: ComponentStory<'span'> = ({ className, ...props }) => (
 )
 
 export const Primary = Template.bind({})
-Primary.args = { className: 'ui-bg-primary text-ink' }
+Primary.args = { className: 'yobta-bg-primary text-ink' }

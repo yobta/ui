@@ -47,13 +47,13 @@ const Template: ComponentStory<typeof Tooltip> = args => {
 //   // align: 'left',
 //   // align: 'left-top',
 //   // align: 'left-bottom',
-//   // className: 'ui-bg-secondary p-6'
+//   // className: 'yobta-bg-secondary p-6'
 // }
 
 export const withoutPlacement = Template.bind({})
 withoutPlacement.args = {
   children: 'My tooltip',
-  id: 'withoutPlacement',
+  id: 'withoutPlacement'
 }
 
 export const withPlacement = Template.bind({})

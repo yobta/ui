@@ -13,7 +13,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         '.duration-300',
         '.rounded-full',
         '.cursor-pointer',
-        '.ui-bg-paper-3'
+        '.yobta-bg-paper-3'
       ),
       'height': '1.5rem',
       'width': '2.25rem',
@@ -48,7 +48,7 @@ module.exports = plugin(({ addBase, prefix }) => {
       '&::before': {
         ...applyPrefixed(
           prefix,
-          '.ui-bg-paper',
+          '.yobta-bg-paper',
           '.shadow',
           '.absolute',
           '.block',
@@ -76,7 +76,7 @@ module.exports = plugin(({ addBase, prefix }) => {
       '&::before': {
         ...applyPrefixed(
           prefix,
-          '.ui-bg-paper',
+          '.yobta-bg-paper',
           '.shadow',
           '.absolute',
           '.block',

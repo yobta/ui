@@ -40,7 +40,7 @@ module.exports = plugin(({ addBase, prefix }) => {
       '&:invalid': {
         ...applyPrefixed(prefix, '.ui-ink-error'),
         '&::before': {
-          ...applyPrefixed(prefix, '.ui-bg-error')
+          ...applyPrefixed(prefix, '.yobta-bg-error')
         }
       }
     }

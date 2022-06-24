@@ -11,7 +11,10 @@ const Checkbox: ComponentStory<'input'> = props => (
 
 const Radio: ComponentStory<'form'> = ({ className, ...props }) => (
   <form
-    className={clsx('ui-menu ui-bg-paper-2 ui-ink shadow max-w-sm', className)}
+    className={clsx(
+      'ui-menu yobta-bg-paper-2 ui-ink shadow max-w-sm',
+      className
+    )}
     {...props}
   />
 )
@@ -20,14 +23,14 @@ export const Default = Checkbox.bind({})
 Default.args = { className: 'ui-switch' }
 
 export const Primary = Checkbox.bind({})
-Primary.args = { className: 'ui-switch checked:ui-bg-primary' }
+Primary.args = { className: 'ui-switch checked:yobta-bg-primary' }
 
 export const Small = Checkbox.bind({})
-Small.args = { className: 'ui-switch-small checked:ui-bg-success' }
+Small.args = { className: 'ui-switch-small checked:yobta-bg-success' }
 
 export const Big = Checkbox.bind({})
 Big.args = {
-  className: 'ui-bg-error ui-switch-big checked:ui-bg-info',
+  className: 'yobta-bg-error ui-switch-big checked:yobta-bg-info',
   defaultChecked: true
 }
 
@@ -41,7 +44,7 @@ MutiallyExclusive.args = {
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:ui-bg-success ui-menu-icon"
+          className="ui-switch checked:yobta-bg-success ui-menu-icon"
           value="1"
         />
       </label>
@@ -50,7 +53,7 @@ MutiallyExclusive.args = {
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:ui-bg-success ui-menu-icon"
+          className="ui-switch checked:yobta-bg-success ui-menu-icon"
           value="2"
         />
       </label>
@@ -59,7 +62,7 @@ MutiallyExclusive.args = {
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:ui-bg-success ui-menu-icon"
+          className="ui-switch checked:yobta-bg-success ui-menu-icon"
           value="3"
         />
       </label>

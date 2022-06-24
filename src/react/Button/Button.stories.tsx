@@ -22,7 +22,7 @@ Default.args = {
       Transparent
     </>
   ),
-  className: 'ui-button'
+  className: 'dark:text-ink-dark'
 }
 
 export const Primary = Template.bind({})
@@ -88,13 +88,13 @@ Large.args = {
 export const Small = Template.bind({})
 Small.args = {
   children: 'Small Button',
-  className: 'ui-bg-paper-2 ui-ink text-xs h-8'
+  className: 'yobta-paper-2 text-xs h-8'
 }
 
 export const Outlined = Template.bind({})
 Outlined.args = {
   children: 'Outlined Button',
-  className: 'border-2 ui-ink ui-bg-paper'
+  className: 'border-2 ui-ink'
 }
 
 export const Round = Template.bind({})

@@ -65,7 +65,8 @@ module.exports = {
     require('./switchPlugin.cjs'),
     require('./textAreaPlugin.cjs'),
     require('./textColorPlugin.cjs'),
-    require('./tooltipPlugin.cjs')
+    require('./tooltipPlugin.cjs'),
+    require('./yobtaColorsPlugin.cjs')
   ],
   variants: {
     extend: {

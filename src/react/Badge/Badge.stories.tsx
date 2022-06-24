@@ -6,7 +6,7 @@ export default {
 }
 
 const Template: ComponentStory<'span'> = ({ className, ...props }) => (
-  <span {...props} className={clsx('ui-badge bg-slate-300', className)}>
+  <span {...props} className={clsx('yobta-badge bg-slate-300', className)}>
     123K
   </span>
 )

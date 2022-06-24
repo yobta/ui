@@ -4,7 +4,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-badge': {
+    '.yobta-badge': {
       ...applyPrefixed(
         prefix,
         '.px-2',

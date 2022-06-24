@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof Tooltip> = args => {
   return (
     <>
       <button
-        className="ui-button ui-border-ink-border backdrop-blur-md"
+        className="ui-button yobta-border-ink-border backdrop-blur-md"
         ref={ref}
       >
         <ShoppingBag />

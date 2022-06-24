@@ -17,7 +17,7 @@ const ToggleTemplate: ComponentStory<typeof Tooltip> = args => {
   return (
     <Toggle>
       <button
-        className="ui-button ui-border-ink-border backdrop-blur-md"
+        className="ui-button yobta-border-ink-border backdrop-blur-md"
         ref={ref}
       >
         <ShoppingBag />

@@ -91,20 +91,20 @@ export const createInput: InputFactory = ({
     return (
       <label
         className={clsx(
-          'ui-input',
-          after && 'ui-input--after',
-          before && 'ui-input--before',
-          children && 'ui-input--menu',
-          disabled && 'ui-input--disabled',
-          fancy && 'ui-input--fancy',
-          isFilled && 'ui-input--filled',
+          'yobta-input',
+          after && 'yobta-input--after',
+          before && 'yobta-input--before',
+          children && 'yobta-input--menu',
+          disabled && 'yobta-input--disabled',
+          fancy && 'yobta-input--fancy',
+          isFilled && 'yobta-input--filled',
           configClassName,
           className
         )}
         style={{ ...configStyle, ...style }}
       >
         {before}
-        <span className="ui-input__wrapper">
+        <span className="yobta-input__wrapper">
           <input
             {...rest}
             defaultValue={defaultValue}
@@ -115,14 +115,14 @@ export const createInput: InputFactory = ({
             value={value}
           />
           {caption && (
-            <span className="ui-input__label">
+            <span className="yobta-input__label">
               {caption}
-              <span className="ui-input__label--error-bullet">{error}</span>
+              <span className="yobta-input__label--error-bullet">{error}</span>
             </span>
           )}
         </span>
         {after}
-        {children && <nav className="ui-input__menu">{children}</nav>}
+        {children && <nav className="yobta-input__menu">{children}</nav>}
       </label>
     )
   })

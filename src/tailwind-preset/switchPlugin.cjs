@@ -4,7 +4,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-switch': {
+    '.yobta-switch': {
       ...applyPrefixed(
         prefix,
         '.appearance-none',
@@ -41,8 +41,8 @@ module.exports = plugin(({ addBase, prefix }) => {
         }
       }
     },
-    '.ui-switch-small': {
-      ...applyPrefixed(prefix, '.ui-switch'),
+    '.yobta-switch-small': {
+      ...applyPrefixed(prefix, '.yobta-switch'),
       'height': '1rem',
       'width': '1.75rem',
       '&::before': {
@@ -69,8 +69,8 @@ module.exports = plugin(({ addBase, prefix }) => {
         }
       }
     },
-    '.ui-switch-big': {
-      ...applyPrefixed(prefix, '.ui-switch'),
+    '.yobta-switch-big': {
+      ...applyPrefixed(prefix, '.yobta-switch'),
       'height': '2rem',
       'width': '3rem',
       '&::before': {

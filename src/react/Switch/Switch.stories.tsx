@@ -20,17 +20,17 @@ const Radio: ComponentStory<'form'> = ({ className, ...props }) => (
 )
 
 export const Default = Checkbox.bind({})
-Default.args = { className: 'ui-switch' }
+Default.args = { className: 'yobta-switch' }
 
 export const Primary = Checkbox.bind({})
-Primary.args = { className: 'ui-switch checked:yobta-bg-primary' }
+Primary.args = { className: 'yobta-switch checked:yobta-bg-primary' }
 
 export const Small = Checkbox.bind({})
-Small.args = { className: 'ui-switch-small checked:yobta-bg-success' }
+Small.args = { className: 'yobta-switch-small checked:yobta-bg-success' }
 
 export const Big = Checkbox.bind({})
 Big.args = {
-  className: 'yobta-bg-error ui-switch-big checked:yobta-bg-info',
+  className: 'yobta-bg-error yobta-switch-big checked:yobta-bg-info',
   defaultChecked: true
 }
 
@@ -44,7 +44,7 @@ MutiallyExclusive.args = {
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:yobta-bg-success yobta-menu-icon"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
           value="1"
         />
       </label>
@@ -53,7 +53,7 @@ MutiallyExclusive.args = {
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:yobta-bg-success yobta-menu-icon"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
           value="2"
         />
       </label>
@@ -62,7 +62,7 @@ MutiallyExclusive.args = {
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:yobta-bg-success yobta-menu-icon"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
           value="3"
         />
       </label>

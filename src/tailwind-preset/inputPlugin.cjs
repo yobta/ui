@@ -34,7 +34,7 @@ module.exports = plugin(({ addBase, prefix }) => {
           borderRadius: 'inherit'
         },
         '&.ui-input--disabled': {
-          ...applyPrefixed(prefix, '.ui-disabled')
+          ...applyPrefixed(prefix, '.yobta-disabled')
         },
         '&.ui-input--fancy': {
           ...applyPrefixed(prefix, '.rounded-b-none'),

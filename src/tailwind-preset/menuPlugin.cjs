@@ -42,7 +42,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         opacity: 0.8
       },
       '&:disabled': {
-        ...applyPrefixed(prefix, '.ui-disabled')
+        ...applyPrefixed(prefix, '.yobta-disabled')
       }
     },
     '.ui-menu-group': {
@@ -77,7 +77,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         opacity: 0.16
       },
       '&:disabled': {
-        ...applyPrefixed(prefix, '.ui-disabled')
+        ...applyPrefixed(prefix, '.yobta-disabled')
       }
     },
     '.ui-menu-text': {

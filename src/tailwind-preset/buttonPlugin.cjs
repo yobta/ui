@@ -44,7 +44,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
         opacity: 0.16
       },
       '&:disabled': {
-        ...applyPrefixed(prefix, '.ui-disabled')
+        ...applyPrefixed(prefix, '.yobta-disabled')
       }
     },
     '.ui-button--busy': {

@@ -4,7 +4,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-disabled': {
+    '.yobta-disabled': {
       ...applyPrefixed(prefix, '.pointer-events-none', '.opacity-50')
     }
   })

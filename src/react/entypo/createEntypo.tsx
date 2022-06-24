@@ -17,7 +17,7 @@ export const createEntypo = (
       <svg
         viewBox="0 0 20 20"
         {...rest}
-        className={clsx('ui-entypo', className)}
+        className={clsx('yobta-entypo', className)}
         ref={ref}
       >
         {node}

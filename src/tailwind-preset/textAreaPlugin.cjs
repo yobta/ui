@@ -4,7 +4,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-textarea': {
+    '.yobta-textarea': {
       ...applyPrefixed(
         prefix,
         '.relative',
@@ -13,7 +13,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         '.text-ink',
         '.dark:text-ink-dark'
       ),
-      '&.ui-textarea--fancy': {
+      '&.yobta-textarea--fancy': {
         '&::before, &::after': {
           ...applyPrefixed(
             prefix,
@@ -42,21 +42,21 @@ module.exports = plugin(({ addBase, prefix }) => {
           ...applyPrefixed(prefix, '.rounded-b-none', '.px-0', '.resize-none'),
           backgroundColor: 'transparent'
         },
-        '& .ui-textarea__caption': {
+        '& .yobta-textarea__caption': {
           ...applyPrefixed(prefix, '.px-0')
         }
       },
-      '& .ui-textarea__caption--error-bullet': {
+      '& .yobta-textarea__caption--error-bullet': {
         ...applyPrefixed(prefix, '.hidden', '.ml-1', '.yobta-ink-error')
       },
-      '&.ui-textarea--filled, &:focus-within': {
-        '& .ui-textarea__caption': {
+      '&.yobta-textarea--filled, &:focus-within': {
+        '& .yobta-textarea__caption': {
           'font-size': '0.64rem',
           'transform': 'translateY(0%)'
         }
       }
     },
-    '.ui-textarea__input': {
+    '.yobta-textarea__input': {
       ...applyPrefixed(
         prefix,
         '.block',
@@ -71,15 +71,16 @@ module.exports = plugin(({ addBase, prefix }) => {
         '.py-2'
       ),
       '-webkit-tap-highlight-color': 'transparent',
-      '&:invalid ~ .ui-textarea__caption .ui-textarea__caption--error-bullet': {
-        ...applyPrefixed(prefix, '.inline')
-      },
+      '&:invalid ~ .yobta-textarea__caption .yobta-textarea__caption--error-bullet':
+        {
+          ...applyPrefixed(prefix, '.inline')
+        },
       '&::placeholder': {
         color: 'inherit',
         opacity: 0.4
       }
     },
-    '.ui-textarea__caption': {
+    '.yobta-textarea__caption': {
       ...applyPrefixed(
         prefix,
         '.block',

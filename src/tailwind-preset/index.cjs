@@ -8,7 +8,8 @@ module.exports = {
       colors: require('./colors.cjs'),
       animation: {
         'yobta-linear-progress': 'yobta-linear-progress 2s infinite linear',
-        'ui-spinner': 'ui-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite'
+        'yobta-spinner':
+          'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite'
       },
       keyframes: {
         'yobta-linear-progress': {
@@ -25,7 +26,7 @@ module.exports = {
             backgroundPosition: 'left -102% top 0%'
           }
         },
-        'ui-spinner': {
+        'yobta-spinner': {
           '0%': {
             animationTimingFunction: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
             transform: 'rotate(0)'

@@ -5,7 +5,7 @@ export default {
 }
 
 const Template: ComponentStory<() => JSX.Element> = () => (
-  <div className="ui-addon">A</div>
+  <div className="yobta-addon">A</div>
 )
 
 export const Primary = Template.bind({})

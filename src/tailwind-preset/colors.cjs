@@ -1,74 +1,81 @@
 /* #region  Paper */
 const paper = 'var(--yobta-color-paper, #FCFCFC)'
 const paperDark = 'var(--yobta-color-paper-dark, #2A2D35)'
-const paper2 = 'var(--yobta-color-paper-2, #EBEBEB)'
-const paper2Dark = 'var(--yobta-color-paper-2-dark, #4F5462)'
-const paper3 = 'var(--yobta-color-paper-3, #D0D0D0)'
-const paper3Dark = 'var(--yobta-color-paper-3-dark, #767C8B)'
-const paperPrimary = 'var(--yobta-color-primary, #FADC4F)'
-const paperPrimaryDark = 'var(--yobta-color-primary-dark, #E2C438)'
-const paperSecondary = 'var(--yobta-color-secondary, #524FFA)'
-const paperSecondaryDark = 'var(--yobta-color-secondary-dark, #5755CD)'
-const paperError = 'var(--yobta-color-error, #EC4E3D)'
-const paperErrorDark = 'var(--yobta-color-error-dark, #D85243)'
-const paperSuccess = 'var(--yobta-color-success, #4FA762)'
-const paperSuccessDark = 'var(--yobta-color-success-dark, #458052)'
-const paperWarning = 'var(--yobta-color-warning, #E87C06)'
-const paperWarningDark = 'var(--yobta-color-warning-dark, #C6751C)'
-const paperInfo = 'var(--yobta-color-info, #4C9BE4)'
-const paperInfoDark = 'var(--yobta-color-info-dark, #3B72A5)'
-
 const paperText = 'var(--yobta-color-text-on-paper, #414141)'
 const paperDarkText = 'var(--yobta-color-text-on-paper-dark, #FCFCFC)'
+
+const paper2 = 'var(--yobta-color-paper-2, #EBEBEB)'
+const paper2Dark = 'var(--yobta-color-paper-2-dark, #4F5462)'
 const paper2Text = 'var(--yobta-color-text-on-paper-2, #414141)'
 const paper2DarkText = 'var(--yobta-color-text-on-paper-2-dark, #FCFCFC)'
+
+const paper3 = 'var(--yobta-color-paper-3, #D0D0D0)'
+const paper3Dark = 'var(--yobta-color-paper-3-dark, #767C8B)'
 const paper3Text = 'var(--yobta-color-text-on-paper-3, #414141)'
 const paper3DarkText = 'var(--yobta-color-text-on-paper-3-dark, #FCFCFC)'
+
+const paperPrimary = 'var(--yobta-color-primary, #FADC4F)'
+const paperPrimaryDark = 'var(--yobta-color-primary-dark, #E2C438)'
 const paperPrimaryText = 'var(--yobta-color-text-on-primary, #414141)'
 const paperPrimaryDarkText = 'var(--yobta-color-text-on-primary-dark, #414141)'
+
+const paperSecondary = 'var(--yobta-color-secondary, #524FFA)'
+const paperSecondaryDark = 'var(--yobta-color-secondary-dark, #5755CD)'
 const paperSecondaryText = 'var(--yobta-color-text-on-secondary, #FCFCFC)'
 const paperSecondaryDarkText =
   'var(--yobta-color-text-on-secondary-dark, #FCFCFC)'
+
+const paperError = 'var(--yobta-color-error, #EC4E3D)'
+const paperErrorDark = 'var(--yobta-color-error-dark, #D85243)'
 const paperErrorText = 'var(--yobta-color-text-on-error, #FCFCFC)'
 const paperErrorDarkText = 'var(--yobta-color-text-on-error-dark, #FCFCFC)'
+
+const paperSuccess = 'var(--yobta-color-success, #4FA762)'
+const paperSuccessDark = 'var(--yobta-color-success-dark, #458052)'
 const paperSuccessText = 'var(--yobta-color-text-on-success, #FCFCFC)'
 const paperSuccessDarkText = 'var(--yobta-color-text-on-success-dark, #FCFCFC)'
+
+const paperWarning = 'var(--yobta-color-warning, #E87C06)'
+const paperWarningDark = 'var(--yobta-color-warning-dark, #C6751C)'
 const paperWarningText = 'var(--yobta-color-text-on-warning, #FCFCFC)'
 const paperWarningDarkText = 'var(--yobta-color-text-on-warning-dark, #FCFCFC)'
+
+const paperInfo = 'var(--yobta-color-info, #4C9BE4)'
+const paperInfoDark = 'var(--yobta-color-info-dark, #3B72A5)'
 const paperInfoText = 'var(--yobta-color-text-on-info, #FCFCFC)'
 const paperInfoDarkText = 'var(--yobta-color-text-on-info-dark, #FCFCFC)'
 /* #endregion */
 
 /* #region  Ink */
-const ink = 'var(--yobta-ink, #414141)'
-const inkDark = 'var(--yobta-ink-dark, #FCFCFC)'
-const ink2 = 'var(--yobta-ink-2, #7B8B99)'
-const ink2Dark = 'var(--yobta-ink-2-dark, #5B6772)'
-const inkPrimary = 'var(--yobta-ink-primary, #C7A713)'
-const inkPrimaryDark = 'var(--yobta-ink-primary-dark, #DCCA76)'
-const inkSecondary = 'var(--yobta-ink-secondary, #4F4CEA)'
-const inkSecondaryDark = 'var(--yobta-ink-secondary-dark, #8583FF)'
-const inkError = 'var(--yobta-ink-error, #D74030)'
-const inkErrorDark = 'var(--yobta-ink-error-dark, #D45D50)'
-const inkSuccess = 'var(--yobta-ink-success, #3B7D49)'
-const inkSuccessDark = 'var(--yobta-ink-success-dark, #6D9F78)'
-const inkWarning = 'var(--yobta-ink-warning, #E48D2E)'
-const inkWarningDark = 'var(--yobta-ink-warning-dark, #B98A56)'
-const inkInfo = 'var(--yobta-ink-info, #3784CB)'
-const inkInfoDark = 'var(--yobta-ink-info-dark, #5A86AF)'
-const inkBorder = 'var(--yobta-ink-border, #29292916)'
-const inkBorderDark = 'var(--yobta-ink-border-dark, #FFFFFF16)'
+const ink = 'var(--yobta-color-ink, #414141)'
+const inkDark = 'var(--yobta-color-ink-dark, #FCFCFC)'
+const ink2 = 'var(--yobta-color-ink-2, #7B8B99)'
+const ink2Dark = 'var(--yobta-color-ink-2-dark, #5B6772)'
+const inkPrimary = 'var(--yobta-color-ink-primary, #C7A713)'
+const inkPrimaryDark = 'var(--yobta-color-ink-primary-dark, #DCCA76)'
+const inkSecondary = 'var(--yobta-color-ink-secondary, #4F4CEA)'
+const inkSecondaryDark = 'var(--yobta-color-ink-secondary-dark, #8583FF)'
+const inkError = 'var(--yobta-color-ink-error, #D74030)'
+const inkErrorDark = 'var(--yobta-color-ink-error-dark, #D45D50)'
+const inkSuccess = 'var(--yobta-color-ink-success, #3B7D49)'
+const inkSuccessDark = 'var(--yobta-color-ink-success-dark, #6D9F78)'
+const inkWarning = 'var(--yobta-color-ink-warning, #E48D2E)'
+const inkWarningDark = 'var(--yobta-color-ink-warning-dark, #B98A56)'
+const inkInfo = 'var(--yobta-color-ink-info, #3784CB)'
+const inkInfoDark = 'var(--yobta-color-ink-info-dark, #5A86AF)'
+const inkBorder = 'var(--yobta-color-ink-border, #29292916)'
+const inkBorderDark = 'var(--yobta-color-ink-border-dark, #FFFFFF16)'
 /* #endregion */
 
 /* #region  Link */
-const link = 'var(--yobta-link, #120EED)'
-const linkDark = 'var(--yobta-link, #9C9AFF)'
-const linkHover = 'var(--yobta-link-hover, #5F5CFF)'
-const linkHoverDark = 'var(--yobta-link-hover-dark, #ACAAF0)'
-const linkActive = 'var(--yobta-link-active, #B92AFD)'
-const linkActiveDark = 'var(--yobta-link-active-dark, #CD63FF)'
-const linkVisited = 'var(--yobta-link-visited, #8B2E9A)'
-const linkVisitedDark = 'var(--yobta-link-visited-dark, #BD9FC1)'
+const link = 'var(--yobta-color-link, #120EED)'
+const linkDark = 'var(--yobta-color-link, #9C9AFF)'
+const linkHover = 'var(--yobta-color-link-hover, #5F5CFF)'
+const linkHoverDark = 'var(--yobta-color-link-hover-dark, #ACAAF0)'
+const linkActive = 'var(--yobta-color-link-active, #B92AFD)'
+const linkActiveDark = 'var(--yobta-color-link-active-dark, #CD63FF)'
+const linkVisited = 'var(--yobta-color-link-visited, #8B2E9A)'
+const linkVisitedDark = 'var(--yobta-color-link-visited-dark, #BD9FC1)'
 /* #endregion */
 
 /* #region  Pale */
@@ -106,10 +113,12 @@ const pale16 = 'var(--yobta-color-16, #F8E0EB)'
 const pale16Dark = 'var(--yobta-color-16-dark, #4B4958)'
 /* #endregion */
 
+/* #region  Tooltip colors */
 const tooltipBg = 'var(--yobta-color-tooltip-bg, #2A2D35)'
 const tooltipBgDark = 'var(--yobta-color-tooltip-bg-dark, #FCFCFC)'
 const tooltipText = 'var(--yobta-color-tooltip-text, #FCFCFC)'
 const tooltipTextDark = 'var(--yobta-color-tooltip-text-dark, #414141)'
+/* #endregion */
 
 // yobta-paper
 // bg-paper

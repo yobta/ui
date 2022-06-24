@@ -4,10 +4,10 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-linear-progress': {
+    '.yobta-linear-progress': {
       ...applyPrefixed(
         prefix,
-        '.animate-ui-linear-progress',
+        '.animate-yobta-linear-progress',
         '.block',
         '.h-1',
         '.relative',
@@ -26,7 +26,7 @@ module.exports = plugin(({ addBase, prefix }) => {
           transparent 84%
         )`
     },
-    '.ui-linear-progress::before': {
+    '.yobta-linear-progress::before': {
       ...applyPrefixed(
         prefix,
         '.absolute',

@@ -39,7 +39,7 @@ export const createLinearProgress = <
         <Tag
           {...config}
           {...rest}
-          className={clsx('ui-linear-progress', configClassName, className)}
+          className={clsx('yobta-linear-progress', configClassName, className)}
           ref={ref}
           role={role}
           style={{ ...configStyle, ...style }}

@@ -5,15 +5,15 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
     '.ui-menu': {
-      ...applyPrefixed(prefix, '.ui-list', '.rounded')
+      ...applyPrefixed(prefix, '.yobta-list', '.rounded')
     },
     '.ui-menu-header': {
-      ...applyPrefixed(prefix, '.ui-list-header')
+      ...applyPrefixed(prefix, '.yobta-list-header')
     },
     '.ui-menu-item': {
       ...applyPrefixed(
         prefix,
-        '.ui-list-item',
+        '.yobta-list-item',
         '.w-full',
         '.text-left',
         '.relative',
@@ -48,7 +48,7 @@ module.exports = plugin(({ addBase, prefix }) => {
     '.ui-menu-group': {
       ...applyPrefixed(
         prefix,
-        '.ui-list-group',
+        '.yobta-list-group',
         '.w-full',
         '.text-left',
         '.relative',
@@ -81,10 +81,10 @@ module.exports = plugin(({ addBase, prefix }) => {
       }
     },
     '.ui-menu-text': {
-      ...applyPrefixed(prefix, '.ui-list-text')
+      ...applyPrefixed(prefix, '.yobta-list-text')
     },
     '.ui-menu-icon': {
-      ...applyPrefixed(prefix, '.ui-list-icon')
+      ...applyPrefixed(prefix, '.yobta-list-icon')
     }
   })
 })

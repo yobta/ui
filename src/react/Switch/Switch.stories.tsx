@@ -38,7 +38,7 @@ export const MutiallyExclusive = Radio.bind({})
 MutiallyExclusive.args = {
   children: (
     <>
-      <header className="ui-list-header">Choose one</header>
+      <header className="yobta-list-header">Choose one</header>
       <label className="ui-menu-group">
         <span className="ui-menu-text">One</span>
         <input

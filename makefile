@@ -40,5 +40,8 @@ bump:
 	git add .
 	git push
 
-publish: check build docs bump
+publish:
+	make build
+	make docs
+	make bump
 	npm publish

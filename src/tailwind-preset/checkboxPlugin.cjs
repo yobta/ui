@@ -4,7 +4,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-checkbox': {
+    '.yobta-checkbox': {
       ...applyPrefixed(
         prefix,
         '.appearance-none',

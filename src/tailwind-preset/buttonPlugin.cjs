@@ -4,15 +4,15 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addComponents, prefix }) => {
   addComponents({
-    '.ui-button-text': {
+    '.yobta-button-text': {
       ...applyPrefixed(prefix, '.text-sm', '.font-medium', '.leading-6')
     },
-    '.ui-button': {
+    '.yobta-button': {
       ...applyPrefixed(
         prefix,
         '.px-4',
         '.rounded',
-        '.ui-button-text',
+        '.yobta-button-text',
         '.flex',
         '.gap-2',
         '.items-center',
@@ -47,7 +47,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
         ...applyPrefixed(prefix, '.yobta-disabled')
       }
     },
-    '.ui-button--busy': {
+    '.yobta-button--busy': {
       'pointer-events': 'none',
       '& > :first-child': {
         visibility: 'hidden',

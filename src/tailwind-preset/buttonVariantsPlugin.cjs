@@ -7,8 +7,8 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
   let classes = Object.entries(color.yobta).reduce(
     (acc, [key]) => ({
       ...acc,
-      [`.ui-button-${key}`]: {
-        ...applyPrefixed(prefix, '.ui-button', `.yobta-${key}`)
+      [`.yobta-button-${key}`]: {
+        ...applyPrefixed(prefix, '.yobta-button', `.yobta-${key}`)
       }
     }),
     {}

@@ -10,7 +10,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         '.px-2',
         '.rounded-full',
         '.inline-block',
-        '.ui-button-text'
+        '.yobta-button-text'
       )
     }
   })

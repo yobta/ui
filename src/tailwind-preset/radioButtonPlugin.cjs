@@ -9,7 +9,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         prefix,
         '.appearance-none',
         '.border-2',
-        '.ui-ink',
+        '.yobta-ink',
         '.rounded-full',
         '.cursor-pointer',
         '.relative'
@@ -39,7 +39,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         ...applyPrefixed(prefix, '.scale-100')
       },
       '&:invalid': {
-        ...applyPrefixed(prefix, '.ui-ink-error'),
+        ...applyPrefixed(prefix, '.yobta-ink-error'),
         '&::before': {
           ...applyPrefixed(prefix, '.yobta-bg-error')
         }

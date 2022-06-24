@@ -82,7 +82,7 @@ Paper3.args = {
 export const Large = Template.bind({})
 Large.args = {
   children: 'Large Button',
-  className: 'yobta-bg-paper-2 ui-ink px-8 h-14 text-xl'
+  className: 'yobta-bg-paper-2 yobta-ink px-8 h-14 text-xl'
 }
 
 export const Small = Template.bind({})
@@ -94,25 +94,25 @@ Small.args = {
 export const Outlined = Template.bind({})
 Outlined.args = {
   children: 'Outlined Button',
-  className: 'border-2 ui-ink'
+  className: 'border-2 yobta-ink'
 }
 
 export const Round = Template.bind({})
 Round.args = {
   children: 'R',
-  className: 'yobta-bg-paper-2 ui-ink w-12 h-12 rounded-full px-0 py-0'
+  className: 'yobta-bg-paper-2 yobta-ink w-12 h-12 rounded-full px-0 py-0'
 }
 
 export const Busy = Template.bind({})
 Busy.args = {
   busy: true,
   children: 'Busy button',
-  className: 'yobta-bg-paper-2 ui-ink'
+  className: 'yobta-bg-paper-2 yobta-ink'
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
   children: 'Disabled button',
-  className: 'yobta-bg-paper-2 ui-ink',
+  className: 'yobta-bg-paper-2 yobta-ink',
   disabled: true
 }

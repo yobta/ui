@@ -14,4 +14,4 @@ Default.args = {
 }
 
 export const Primary = Checkbox.bind({})
-Primary.args = { className: 'ui-radio ui-ink-secondary' }
+Primary.args = { className: 'ui-radio yobta-ink-secondary' }

@@ -14,4 +14,4 @@ Default.args = {
 }
 
 export const Secondary = Checkbox.bind({})
-Secondary.args = { className: 'yobta-checkbox ui-ink-secondary' }
+Secondary.args = { className: 'yobta-checkbox yobta-ink-secondary' }

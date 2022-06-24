@@ -5,7 +5,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 module.exports = plugin(({ addUtilities, prefix }) => {
   // NOTE: Utility level in order to override border color on base level
   addUtilities({
-    '.ui-ink': {
+    '.yobta-ink': {
       ...applyPrefixed(
         prefix,
         '.border-ink',
@@ -14,7 +14,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         '.dark:text-ink-dark'
       )
     },
-    '.ui-ink-2': {
+    '.yobta-ink-2': {
       ...applyPrefixed(
         prefix,
         '.border-ink-2',
@@ -23,7 +23,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         '.dark:text-ink-2-dark'
       )
     },
-    '.ui-ink-primary': {
+    '.yobta-ink-primary': {
       ...applyPrefixed(
         prefix,
         '.border-ink-primary',
@@ -32,7 +32,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         '.dark:text-ink-primary-dark'
       )
     },
-    '.ui-ink-secondary': {
+    '.yobta-ink-secondary': {
       ...applyPrefixed(
         prefix,
         '.border-ink-secondary',
@@ -41,7 +41,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         '.dark:text-ink-secondary-dark'
       )
     },
-    '.ui-ink-error': {
+    '.yobta-ink-error': {
       ...applyPrefixed(
         prefix,
         '.border-ink-error',
@@ -50,7 +50,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         '.dark:text-ink-error-dark'
       )
     },
-    '.ui-ink-success': {
+    '.yobta-ink-success': {
       ...applyPrefixed(
         prefix,
         '.border-ink-success',
@@ -59,7 +59,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         '.dark:text-ink-success-dark'
       )
     },
-    '.ui-ink-warning': {
+    '.yobta-ink-warning': {
       ...applyPrefixed(
         prefix,
         '.border-ink-warning',
@@ -68,7 +68,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         '.dark:text-ink-warning-dark'
       )
     },
-    '.ui-ink-info': {
+    '.yobta-ink-info': {
       ...applyPrefixed(
         prefix,
         '.border-ink-info',
@@ -77,7 +77,7 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         '.dark:text-ink-info-dark'
       )
     },
-    '.ui-ink-border': {
+    '.yobta-ink-border': {
       ...applyPrefixed(
         prefix,
         '.border-ink-border',

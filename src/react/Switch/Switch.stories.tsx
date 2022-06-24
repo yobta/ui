@@ -12,7 +12,7 @@ const Checkbox: ComponentStory<'input'> = props => (
 const Radio: ComponentStory<'form'> = ({ className, ...props }) => (
   <form
     className={clsx(
-      'ui-menu yobta-bg-paper-2 ui-ink shadow max-w-sm',
+      'ui-menu yobta-bg-paper-2 yobta-ink shadow max-w-sm',
       className
     )}
     {...props}

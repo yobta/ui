@@ -123,7 +123,7 @@ module.exports = plugin(({ addBase, prefix }) => {
           }
         },
         '& :invalid ~ .ui-input__label .ui-input__label--error-bullet': {
-          ...applyPrefixed(prefix, '.inline', '.ui-ink-error')
+          ...applyPrefixed(prefix, '.inline', '.yobta-ink-error')
         },
         '& .ui-input__menu': {
           ...applyPrefixed(

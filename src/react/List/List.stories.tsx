@@ -16,7 +16,7 @@ const Template: ComponentStory<'ul'> = props => (
 
 export const Simple = Template.bind({})
 Simple.args = {
-  className: 'rounded w-80 yobta-bg-paper-2 ui-ink',
+  className: 'rounded w-80 yobta-bg-paper-2 yobta-ink',
   children: (
     <>
       <li className="ui-list-header">Mail</li>
@@ -31,7 +31,7 @@ Simple.args = {
 
 export const Advanced = Template.bind({})
 Advanced.args = {
-  className: 'rounded w-80 yobta-bg-paper-2 ui-ink',
+  className: 'rounded w-80 yobta-bg-paper-2 yobta-ink',
   children: (
     <>
       <li className="ui-list-header">Mail</li>

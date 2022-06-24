@@ -12,7 +12,7 @@ const Checkbox: ComponentStory<'input'> = props => (
 const Radio: ComponentStory<'form'> = ({ className, ...props }) => (
   <form
     className={clsx(
-      'ui-menu yobta-bg-paper-2 yobta-ink shadow max-w-sm',
+      'yobta-menu yobta-bg-paper-2 yobta-ink shadow max-w-sm',
       className
     )}
     {...props}
@@ -39,30 +39,30 @@ MutiallyExclusive.args = {
   children: (
     <>
       <header className="yobta-list-header">Choose one</header>
-      <label className="ui-menu-group">
-        <span className="ui-menu-text">One</span>
+      <label className="yobta-menu-group">
+        <span className="yobta-menu-text">One</span>
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:yobta-bg-success ui-menu-icon"
+          className="ui-switch checked:yobta-bg-success yobta-menu-icon"
           value="1"
         />
       </label>
-      <label className="ui-menu-group">
-        <span className="ui-menu-text">Two</span>
+      <label className="yobta-menu-group">
+        <span className="yobta-menu-text">Two</span>
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:yobta-bg-success ui-menu-icon"
+          className="ui-switch checked:yobta-bg-success yobta-menu-icon"
           value="2"
         />
       </label>
-      <label className="ui-menu-group">
-        <span className="ui-menu-text">Three</span>
+      <label className="yobta-menu-group">
+        <span className="yobta-menu-text">Three</span>
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:yobta-bg-success ui-menu-icon"
+          className="ui-switch checked:yobta-bg-success yobta-menu-icon"
           value="3"
         />
       </label>

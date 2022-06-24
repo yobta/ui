@@ -4,10 +4,10 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-spinner': {
+    '.yobta-spinner': {
       ...applyPrefixed(
         prefix,
-        '.animate-ui-spinner',
+        '.animate-yobta-spinner',
         '.block',
         '.border-2',
         '.w-6',

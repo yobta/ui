@@ -5,7 +5,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 module.exports = plugin(({ addBase, prefix }) => {
   addBase(
     {
-      '.ui-input': {
+      '.yobta-input': {
         ...applyPrefixed(
           prefix,
           '.flex',
@@ -19,7 +19,7 @@ module.exports = plugin(({ addBase, prefix }) => {
           '.dark:bg-paper-2-dark',
           '.dark:text-ink-dark'
         ),
-        '& > .ui-input__wrapper': {
+        '& > .yobta-input__wrapper': {
           ...applyPrefixed(
             prefix,
             '.flex',
@@ -33,13 +33,13 @@ module.exports = plugin(({ addBase, prefix }) => {
           ),
           borderRadius: 'inherit'
         },
-        '&.ui-input--disabled': {
-          ...applyPrefixed(prefix, '.ui-disabled')
+        '&.yobta-input--disabled': {
+          ...applyPrefixed(prefix, '.yobta-disabled')
         },
-        '&.ui-input--fancy': {
+        '&.yobta-input--fancy': {
           ...applyPrefixed(prefix, '.rounded-b-none'),
           'backgroundColor': 'transparent',
-          '& > .ui-input__wrapper': {
+          '& > .yobta-input__wrapper': {
             ...applyPrefixed(prefix, '.px-0')
           },
           '&::before, &::after': {
@@ -65,10 +65,10 @@ module.exports = plugin(({ addBase, prefix }) => {
             transition: 'transform 0.48s ease'
           }
         },
-        '&.ui-input--before .ui-input__wrapper': {
+        '&.yobta-input--before .yobta-input__wrapper': {
           ...applyPrefixed(prefix, '.rounded-l-none')
         },
-        '&.ui-input--after .ui-input__wrapper': {
+        '&.yobta-input--after .yobta-input__wrapper': {
           ...applyPrefixed(prefix, '.rounded-r-none')
         },
         '&:focus-within::after': {
@@ -96,10 +96,10 @@ module.exports = plugin(({ addBase, prefix }) => {
             opacity: 0.4
           }
         },
-        '& .ui-input__label--error-bullet': {
+        '& .yobta-input__label--error-bullet': {
           ...applyPrefixed(prefix, '.hidden', '.ml-1')
         },
-        '& .ui-input__label': {
+        '& .yobta-input__label': {
           ...applyPrefixed(
             prefix,
             '.block',
@@ -116,16 +116,16 @@ module.exports = plugin(({ addBase, prefix }) => {
           padding: 'inherit',
           transition: 'font 0.32s ease, transform 0.32s ease'
         },
-        '&.ui-input--filled, &:focus-within': {
-          '& .ui-input__label': {
+        '&.yobta-input--filled, &:focus-within': {
+          '& .yobta-input__label': {
             'font-size': '0.64rem',
             'transform': 'translateY(-56%)'
           }
         },
-        '& :invalid ~ .ui-input__label .ui-input__label--error-bullet': {
-          ...applyPrefixed(prefix, '.inline', '.ui-ink-error')
+        '& :invalid ~ .yobta-input__label .yobta-input__label--error-bullet': {
+          ...applyPrefixed(prefix, '.inline', '.yobta-ink-error')
         },
-        '& .ui-input__menu': {
+        '& .yobta-input__menu': {
           ...applyPrefixed(
             prefix,
             '.absolute',
@@ -141,7 +141,7 @@ module.exports = plugin(({ addBase, prefix }) => {
           )
         },
         '&:focus-within, &:active': {
-          '&  .ui-input__menu': {
+          '&  .yobta-input__menu': {
             ...applyPrefixed(
               prefix,
               '.visible',

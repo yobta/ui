@@ -4,16 +4,16 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-menu': {
-      ...applyPrefixed(prefix, '.ui-list', '.rounded')
+    '.yobta-menu': {
+      ...applyPrefixed(prefix, '.yobta-list', '.rounded')
     },
-    '.ui-menu-header': {
-      ...applyPrefixed(prefix, '.ui-list-header')
+    '.yobta-menu-header': {
+      ...applyPrefixed(prefix, '.yobta-list-header')
     },
-    '.ui-menu-item': {
+    '.yobta-menu-item': {
       ...applyPrefixed(
         prefix,
-        '.ui-list-item',
+        '.yobta-list-item',
         '.w-full',
         '.text-left',
         '.relative',
@@ -42,13 +42,13 @@ module.exports = plugin(({ addBase, prefix }) => {
         opacity: 0.8
       },
       '&:disabled': {
-        ...applyPrefixed(prefix, '.ui-disabled')
+        ...applyPrefixed(prefix, '.yobta-disabled')
       }
     },
-    '.ui-menu-group': {
+    '.yobta-menu-group': {
       ...applyPrefixed(
         prefix,
-        '.ui-list-group',
+        '.yobta-list-group',
         '.w-full',
         '.text-left',
         '.relative',
@@ -77,14 +77,14 @@ module.exports = plugin(({ addBase, prefix }) => {
         opacity: 0.16
       },
       '&:disabled': {
-        ...applyPrefixed(prefix, '.ui-disabled')
+        ...applyPrefixed(prefix, '.yobta-disabled')
       }
     },
-    '.ui-menu-text': {
-      ...applyPrefixed(prefix, '.ui-list-text')
+    '.yobta-menu-text': {
+      ...applyPrefixed(prefix, '.yobta-list-text')
     },
-    '.ui-menu-icon': {
-      ...applyPrefixed(prefix, '.ui-list-icon')
+    '.yobta-menu-icon': {
+      ...applyPrefixed(prefix, '.yobta-list-icon')
     }
   })
 })

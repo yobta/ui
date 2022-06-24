@@ -4,7 +4,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-switch': {
+    '.yobta-switch': {
       ...applyPrefixed(
         prefix,
         '.appearance-none',
@@ -13,7 +13,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         '.duration-300',
         '.rounded-full',
         '.cursor-pointer',
-        '.ui-bg-paper-3'
+        '.yobta-bg-paper-3'
       ),
       'height': '1.5rem',
       'width': '2.25rem',
@@ -41,14 +41,14 @@ module.exports = plugin(({ addBase, prefix }) => {
         }
       }
     },
-    '.ui-switch-small': {
-      ...applyPrefixed(prefix, '.ui-switch'),
+    '.yobta-switch-small': {
+      ...applyPrefixed(prefix, '.yobta-switch'),
       'height': '1rem',
       'width': '1.75rem',
       '&::before': {
         ...applyPrefixed(
           prefix,
-          '.ui-bg-paper',
+          '.yobta-bg-paper',
           '.shadow',
           '.absolute',
           '.block',
@@ -69,14 +69,14 @@ module.exports = plugin(({ addBase, prefix }) => {
         }
       }
     },
-    '.ui-switch-big': {
-      ...applyPrefixed(prefix, '.ui-switch'),
+    '.yobta-switch-big': {
+      ...applyPrefixed(prefix, '.yobta-switch'),
       'height': '2rem',
       'width': '3rem',
       '&::before': {
         ...applyPrefixed(
           prefix,
-          '.ui-bg-paper',
+          '.yobta-bg-paper',
           '.shadow',
           '.absolute',
           '.block',

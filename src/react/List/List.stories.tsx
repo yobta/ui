@@ -11,50 +11,50 @@ export default {
 export type LinearProgressProps = { className?: string }
 
 const Template: ComponentStory<'ul'> = props => (
-  <ul {...props} className={clsx('ui-list', props.className)} />
+  <ul {...props} className={clsx('yobta-list', props.className)} />
 )
 
 export const Simple = Template.bind({})
 Simple.args = {
-  className: 'rounded w-80 ui-bg-paper-2 ui-ink',
+  className: 'rounded w-80 yobta-bg-paper-2 yobta-ink',
   children: (
     <>
-      <li className="ui-list-header">Mail</li>
-      <li className="ui-list-item">Sent mail</li>
-      <li className="ui-list-item">Drafts</li>
-      <li className="ui-list-item">Starred</li>
+      <li className="yobta-list-header">Mail</li>
+      <li className="yobta-list-item">Sent mail</li>
+      <li className="yobta-list-item">Drafts</li>
+      <li className="yobta-list-item">Starred</li>
       <hr className="mx-4 my-2" />
-      <li className="ui-list-item">Archive</li>
+      <li className="yobta-list-item">Archive</li>
     </>
   )
 }
 
 export const Advanced = Template.bind({})
 Advanced.args = {
-  className: 'rounded w-80 ui-bg-paper-2 ui-ink',
+  className: 'rounded w-80 yobta-bg-paper-2 yobta-ink',
   children: (
     <>
-      <li className="ui-list-header">Mail</li>
-      <li className="ui-list-group">
-        <PaperPlane className="ui-list-icon" />
-        <span className="ui-list-text">Sent mail</span>
-        <ChevronSmallRight className="ui-list-icon" />
+      <li className="yobta-list-header">Mail</li>
+      <li className="yobta-list-group">
+        <PaperPlane className="yobta-list-icon" />
+        <span className="yobta-list-text">Sent mail</span>
+        <ChevronSmallRight className="yobta-list-icon" />
       </li>
-      <li className="ui-list-group">
-        <Mail className="ui-list-icon" />
-        <span className="ui-list-text">Drafts</span>
-        <ChevronSmallRight className="ui-list-icon" />
+      <li className="yobta-list-group">
+        <Mail className="yobta-list-icon" />
+        <span className="yobta-list-text">Drafts</span>
+        <ChevronSmallRight className="yobta-list-icon" />
       </li>
-      <li className="ui-list-group">
-        <Star className="ui-list-icon" />
-        <span className="ui-list-text">Starred</span>
-        <ChevronSmallRight className="ui-list-icon" />
+      <li className="yobta-list-group">
+        <Star className="yobta-list-icon" />
+        <span className="yobta-list-text">Starred</span>
+        <ChevronSmallRight className="yobta-list-icon" />
       </li>
       <hr className="mx-4 my-2 border-dotted border-t-2 opacity-100" />
-      <li className="ui-list-group">
-        <Archive className="ui-list-icon" />
-        <span className="ui-list-text">Archive</span>
-        <ChevronSmallRight className="ui-list-icon" />
+      <li className="yobta-list-group">
+        <Archive className="yobta-list-icon" />
+        <span className="yobta-list-text">Archive</span>
+        <ChevronSmallRight className="yobta-list-icon" />
       </li>
     </>
   )

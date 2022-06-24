@@ -22,51 +22,51 @@ const Template: TemplateFC = ({ classNames }) => (
 export const Ink = Template.bind({})
 Ink.args = {
   classNames: [
-    'ui-border-ink',
-    'ui-border-ink-2',
-    'ui-border-ink-primary',
-    'ui-border-ink-secondary',
-    'ui-border-ink-error',
-    'ui-border-ink-success',
-    'ui-border-ink-warning',
-    'ui-border-ink-info',
-    'ui-border-ink-border'
+    'yobta-border-ink',
+    'yobta-border-ink-2',
+    'yobta-border-ink-primary',
+    'yobta-border-ink-secondary',
+    'yobta-border-ink-error',
+    'yobta-border-ink-success',
+    'yobta-border-ink-warning',
+    'yobta-border-ink-info',
+    'yobta-border-ink-border'
   ]
 }
 
 export const Paper = Template.bind({})
 Paper.args = {
   classNames: [
-    'ui-border-paper',
-    'ui-border-paper-2',
-    'ui-border-paper-3',
-    'ui-border-paper-primary',
-    'ui-border-paper-secondary',
-    'ui-border-paper-error',
-    'ui-border-paper-success',
-    'ui-border-paper-warning',
-    'ui-border-paper-info'
+    'yobta-border-paper',
+    'yobta-border-paper-2',
+    'yobta-border-paper-3',
+    'yobta-border-paper-primary',
+    'yobta-border-paper-secondary',
+    'yobta-border-paper-error',
+    'yobta-border-paper-success',
+    'yobta-border-paper-warning',
+    'yobta-border-paper-info'
   ]
 }
 
 export const Additional = Template.bind({})
 Additional.args = {
   classNames: [
-    'ui-border-color-1',
-    'ui-border-color-2',
-    'ui-border-color-3',
-    'ui-border-color-4',
-    'ui-border-color-5',
-    'ui-border-color-6',
-    'ui-border-color-7',
-    'ui-border-color-8',
-    'ui-border-color-9',
-    'ui-border-color-10',
-    'ui-border-color-11',
-    'ui-border-color-12',
-    'ui-border-color-13',
-    'ui-border-color-14',
-    'ui-border-color-15',
-    'ui-border-color-16'
+    'yobta-border-color-1',
+    'yobta-border-color-2',
+    'yobta-border-color-3',
+    'yobta-border-color-4',
+    'yobta-border-color-5',
+    'yobta-border-color-6',
+    'yobta-border-color-7',
+    'yobta-border-color-8',
+    'yobta-border-color-9',
+    'yobta-border-color-10',
+    'yobta-border-color-11',
+    'yobta-border-color-12',
+    'yobta-border-color-13',
+    'yobta-border-color-14',
+    'yobta-border-color-15',
+    'yobta-border-color-16'
   ]
 }

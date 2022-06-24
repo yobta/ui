@@ -75,8 +75,8 @@ export const createTooltip: TooltipFactory = defaultProps => {
       <>
         <div
           className={clsx(
-            'ui-tooltip__spot',
-            isActive && 'ui-tooltip__spot--visible',
+            'yobta-tooltip__spot',
+            isActive && 'yobta-tooltip__spot--visible',
             className
           )}
           ref={spotRef}
@@ -87,9 +87,9 @@ export const createTooltip: TooltipFactory = defaultProps => {
         />
         <div
           className={clsx(
-            'ui-tooltip__content',
-            isActive && 'ui-tooltip__content--visible',
-            animate && 'ui-tooltip--animated',
+            'yobta-tooltip__content',
+            isActive && 'yobta-tooltip__content--visible',
+            animate && 'yobta-tooltip--animated',
             className
           )}
           id={id}

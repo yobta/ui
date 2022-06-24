@@ -88,16 +88,16 @@ export const createTextArea: TextAreaFactory = ({
     return (
       <label
         className={clsx(
-          'ui-textarea',
-          isFilled && 'ui-textarea--filled',
-          fancy && 'ui-textarea--fancy',
+          'yobta-textarea',
+          isFilled && 'yobta-textarea--filled',
+          fancy && 'yobta-textarea--fancy',
           configWrapperClassName,
           wrapperClassName
         )}
       >
         <textarea
           {...rest}
-          className={clsx('ui-textarea__input', configClassName, className)}
+          className={clsx('yobta-textarea__input', configClassName, className)}
           defaultValue={defaultValue}
           placeholder={placeholder}
           ref={ref}
@@ -107,13 +107,15 @@ export const createTextArea: TextAreaFactory = ({
         {caption && (
           <span
             className={clsx(
-              'ui-textarea__caption',
+              'yobta-textarea__caption',
               configCaptionClassName,
               captionClassName
             )}
           >
             {caption}
-            <span className="ui-textarea__caption--error-bullet">{error}</span>
+            <span className="yobta-textarea__caption--error-bullet">
+              {error}
+            </span>
           </span>
         )}
       </label>

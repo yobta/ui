@@ -4,10 +4,10 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-list': {
+    '.yobta-list': {
       ...applyPrefixed(prefix, '.px-0', '.py-2', '.m-0')
     },
-    '.ui-list-header': {
+    '.yobta-list-header': {
       ...applyPrefixed(
         prefix,
         '.text-sm',
@@ -18,16 +18,16 @@ module.exports = plugin(({ addBase, prefix }) => {
         '.block'
       )
     },
-    '.ui-list-item': {
+    '.yobta-list-item': {
       ...applyPrefixed(prefix, '.px-4', '.py-2', '.m-0', '.block')
     },
-    '.ui-list-group': {
+    '.yobta-list-group': {
       ...applyPrefixed(prefix, '.flex', '.items-center', '.py-2', '.m-0')
     },
-    '.ui-list-text': {
+    '.yobta-list-text': {
       ...applyPrefixed(prefix, '.px-4', '.flex-1')
     },
-    '.ui-list-icon': {
+    '.yobta-list-icon': {
       marginLeft: 'calc(1rem + 2px)',
       marginRight: 'calc(1rem + 2px)'
     }

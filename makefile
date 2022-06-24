@@ -2,6 +2,7 @@ i:
 	npm i --legacy-peer-deps
 
 build:
+	make check
 	npm run build
 	rm -rf ./lib/tailwind-preset
 	cp -R ./src/tailwind-preset ./lib/tailwind-preset
@@ -39,5 +40,8 @@ bump:
 	git add .
 	git push
 
-publish: check build docs bump
+publish:
+	make build
+	make docs
+	make bump
 	npm publish

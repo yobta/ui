@@ -45,8 +45,8 @@ export const createButton = <C extends ElementType = typeof defaultElement>({
           {...config}
           {...rest}
           className={clsx(
-            'ui-button',
-            busy && 'ui-button--busy',
+            'yobta-button',
+            busy && 'yobta-button--busy',
             configClassName,
             className
           )}

@@ -36,7 +36,7 @@ export const createSpinner = <C extends ElementType = typeof defaultElement>({
         <Tag
           {...config}
           {...rest}
-          className={clsx('ui-spinner', configClassName, className)}
+          className={clsx('yobta-spinner', configClassName, className)}
           ref={ref}
           role={role}
           style={{ ...configStyle, ...style }}

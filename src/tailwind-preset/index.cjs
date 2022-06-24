@@ -7,11 +7,12 @@ module.exports = {
     extend: {
       colors: require('./colors.cjs'),
       animation: {
-        'ui-linear-progress': 'ui-linear-progress 2s infinite linear',
-        'ui-spinner': 'ui-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite'
+        'yobta-linear-progress': 'yobta-linear-progress 2s infinite linear',
+        'yobta-spinner':
+          'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite'
       },
       keyframes: {
-        'ui-linear-progress': {
+        'yobta-linear-progress': {
           '0%': {
             backgroundSize: '200% 100%',
             backgroundPosition: 'left -31.25% top 0%'
@@ -25,7 +26,7 @@ module.exports = {
             backgroundPosition: 'left -102% top 0%'
           }
         },
-        'ui-spinner': {
+        'yobta-spinner': {
           '0%': {
             animationTimingFunction: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
             transform: 'rotate(0)'
@@ -65,7 +66,8 @@ module.exports = {
     require('./switchPlugin.cjs'),
     require('./textAreaPlugin.cjs'),
     require('./textColorPlugin.cjs'),
-    require('./tooltipPlugin.cjs')
+    require('./tooltipPlugin.cjs'),
+    require('./yobtaColorsPlugin.cjs')
   ],
   variants: {
     extend: {

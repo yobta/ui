@@ -31,16 +31,16 @@ test('colors', async () => {
 
   expect(addUtilities).toBeCalledWith(
     {
-      '.ui-border-paper': {
+      '.yobta-border-paper': {
         '@apply border border-paper dark:border-paper-dark': {}
       },
-      '.ui-border-paper-2': {
+      '.yobta-border-paper-2': {
         '@apply border border-paper-2 dark:border-paper-2-dark': {}
       },
-      '.ui-border-paper-primary': {
+      '.yobta-border-paper-primary': {
         '@apply border border-paper-primary dark:border-paper-primary-dark': {}
       },
-      '.ui-border-color-1': {
+      '.yobta-border-color-1': {
         '@apply border border-color-1 dark:border-color-1-dark': {}
       }
     },

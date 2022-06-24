@@ -10,8 +10,8 @@ const Checkbox: ComponentStory<'input'> = props => (
 
 export const Default = Checkbox.bind({})
 Default.args = {
-  className: 'ui-checkbox'
+  className: 'yobta-checkbox'
 }
 
 export const Secondary = Checkbox.bind({})
-Secondary.args = { className: 'ui-checkbox ui-ink-secondary' }
+Secondary.args = { className: 'yobta-checkbox yobta-ink-secondary' }

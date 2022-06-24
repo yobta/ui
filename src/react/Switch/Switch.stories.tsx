@@ -11,23 +11,26 @@ const Checkbox: ComponentStory<'input'> = props => (
 
 const Radio: ComponentStory<'form'> = ({ className, ...props }) => (
   <form
-    className={clsx('ui-menu ui-bg-paper-2 ui-ink shadow max-w-sm', className)}
+    className={clsx(
+      'yobta-menu yobta-bg-paper-2 yobta-ink shadow max-w-sm',
+      className
+    )}
     {...props}
   />
 )
 
 export const Default = Checkbox.bind({})
-Default.args = { className: 'ui-switch' }
+Default.args = { className: 'yobta-switch' }
 
 export const Primary = Checkbox.bind({})
-Primary.args = { className: 'ui-switch checked:ui-bg-primary' }
+Primary.args = { className: 'yobta-switch checked:yobta-bg-primary' }
 
 export const Small = Checkbox.bind({})
-Small.args = { className: 'ui-switch-small checked:ui-bg-success' }
+Small.args = { className: 'yobta-switch-small checked:yobta-bg-success' }
 
 export const Big = Checkbox.bind({})
 Big.args = {
-  className: 'ui-bg-error ui-switch-big checked:ui-bg-info',
+  className: 'yobta-bg-error yobta-switch-big checked:yobta-bg-info',
   defaultChecked: true
 }
 
@@ -35,31 +38,31 @@ export const MutiallyExclusive = Radio.bind({})
 MutiallyExclusive.args = {
   children: (
     <>
-      <header className="ui-list-header">Choose one</header>
-      <label className="ui-menu-group">
-        <span className="ui-menu-text">One</span>
+      <header className="yobta-list-header">Choose one</header>
+      <label className="yobta-menu-group">
+        <span className="yobta-menu-text">One</span>
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:ui-bg-success ui-menu-icon"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
           value="1"
         />
       </label>
-      <label className="ui-menu-group">
-        <span className="ui-menu-text">Two</span>
+      <label className="yobta-menu-group">
+        <span className="yobta-menu-text">Two</span>
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:ui-bg-success ui-menu-icon"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
           value="2"
         />
       </label>
-      <label className="ui-menu-group">
-        <span className="ui-menu-text">Three</span>
+      <label className="yobta-menu-group">
+        <span className="yobta-menu-text">Three</span>
         <input
           type="radio"
           name="option"
-          className="ui-switch checked:ui-bg-success ui-menu-icon"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
           value="3"
         />
       </label>

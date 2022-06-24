@@ -5,7 +5,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 module.exports = plugin(({ addBase, prefix }) => {
   addBase(
     {
-      'a.ui-link, .ui-link-box a': {
+      'a.yobta-link, .yobta-link-box a': {
         ...applyPrefixed(
           prefix,
           '.underline',

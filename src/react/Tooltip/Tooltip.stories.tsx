@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof Tooltip> = args => {
   return (
     <>
       <button
-        className="ui-button ui-border-ink-border backdrop-blur-md"
+        className="yobta-button yobta-border-ink-border backdrop-blur-md"
         ref={ref}
       >
         <ShoppingBag />
@@ -47,13 +47,13 @@ const Template: ComponentStory<typeof Tooltip> = args => {
 //   // align: 'left',
 //   // align: 'left-top',
 //   // align: 'left-bottom',
-//   // className: 'ui-bg-secondary p-6'
+//   // className: 'yobta-bg-secondary p-6'
 // }
 
 export const withoutPlacement = Template.bind({})
 withoutPlacement.args = {
   children: 'My tooltip',
-  id: 'withoutPlacement',
+  id: 'withoutPlacement'
 }
 
 export const withPlacement = Template.bind({})

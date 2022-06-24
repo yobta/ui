@@ -4,12 +4,12 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addBase, prefix }) => {
   addBase({
-    '.ui-radio': {
+    '.yobta-radio': {
       ...applyPrefixed(
         prefix,
         '.appearance-none',
         '.border-2',
-        '.ui-ink',
+        '.yobta-ink',
         '.rounded-full',
         '.cursor-pointer',
         '.relative'
@@ -39,9 +39,9 @@ module.exports = plugin(({ addBase, prefix }) => {
         ...applyPrefixed(prefix, '.scale-100')
       },
       '&:invalid': {
-        ...applyPrefixed(prefix, '.ui-ink-error'),
+        ...applyPrefixed(prefix, '.yobta-ink-error'),
         '&::before': {
-          ...applyPrefixed(prefix, '.ui-bg-error')
+          ...applyPrefixed(prefix, '.yobta-bg-error')
         }
       }
     }

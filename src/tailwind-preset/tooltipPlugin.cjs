@@ -10,10 +10,10 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
     '.dark:text-tooltip-ink-dark'
   ]
   addComponents({
-    '.ui-tooltip__spot': {
+    '.yobta-tooltip__spot': {
       ...applyPrefixed(prefix, ...common, '.rounded-full')
     },
-    '.ui-tooltip__content': {
+    '.yobta-tooltip__content': {
       ...applyPrefixed(
         prefix,
         ...common,
@@ -24,7 +24,7 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
         '.text-xs'
       )
     },
-    '.ui-tooltip--animated': {
+    '.yobta-tooltip--animated': {
       ...applyPrefixed(
         prefix,
         '.transition-opacity',
@@ -36,7 +36,7 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
   })
 
   addUtilities({
-    '.ui-tooltip__spot': {
+    '.yobta-tooltip__spot': {
       ...applyPrefixed(
         prefix,
         '.hidden',
@@ -50,10 +50,10 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
         '.-translate-y-1/2'
       )
     },
-    '.ui-tooltip__spot--visible': {
+    '.yobta-tooltip__spot--visible': {
       display: 'block'
     },
-    '.ui-tooltip__content': {
+    '.yobta-tooltip__content': {
       ...applyPrefixed(
         prefix,
         '.invisible',
@@ -63,7 +63,7 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
         '.opacity-0'
       )
     },
-    '.ui-tooltip__content--visible': {
+    '.yobta-tooltip__content--visible': {
       ...applyPrefixed(prefix, '.visible', '.opacity-90')
     }
   })

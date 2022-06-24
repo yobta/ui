@@ -6,7 +6,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addUtilities, prefix }) => {
   addUtilities({
-    '.ui-scroll-box': {
+    '.yobta-scroll-box': {
       'overflow': 'hidden',
       'scroll-behavior': 'smooth',
       'scrollbar-width': 'none',
@@ -16,8 +16,8 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         display: 'none'
       }
     },
-    '.ui-scroll-box-x': {
-      ...applyPrefixed(prefix, '.ui-scroll-box'),
+    '.yobta-scroll-box-x': {
+      ...applyPrefixed(prefix, '.yobta-scroll-box'),
       'display': 'flex',
       'justifyContent': 'flex-start',
       'overflow-x': 'scroll',
@@ -25,8 +25,8 @@ module.exports = plugin(({ addUtilities, prefix }) => {
         display: 'none'
       }
     },
-    '.ui-scroll-box-y': {
-      ...applyPrefixed(prefix, '.ui-scroll-box'),
+    '.yobta-scroll-box-y': {
+      ...applyPrefixed(prefix, '.yobta-scroll-box'),
       'overflow-y': 'scroll',
       '&::-webkit-scrollbar': {
         display: 'none'

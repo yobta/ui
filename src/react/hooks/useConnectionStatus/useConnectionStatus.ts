@@ -18,9 +18,9 @@ export const useConnectionStatus: ConnectionStatusHook = () => {
     }
 
     if (navigator.onLine) {
-      setIsOnline(true)
+      setTrue()
     } else {
-      setIsOnline(false)
+      setFalse()
     }
     window.addEventListener('online', setTrue)
     window.addEventListener('offline', setFalse)

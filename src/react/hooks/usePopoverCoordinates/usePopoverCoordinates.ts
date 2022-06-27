@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { useObserveChanges } from '../useObserveChanges.js'
+import { useObserveChanges } from '../useObserveChanges/index.js'
 import {
   PopoverPlacementOptions,
   getOptimalPopoverPlacement

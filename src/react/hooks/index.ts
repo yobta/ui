@@ -1,4 +1,5 @@
-export * from './useObserveChanges.js'
+export * from './useConnectionStatus/index.js'
+export * from './useObserveChanges/index.js'
+export * from './usePopoverCoordinates/index.js'
 export * from './usePatchState.js'
 export * from './usePortalNode.js'
-export * from './usePopoverCoordinates/index.js'

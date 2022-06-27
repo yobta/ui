@@ -12,8 +12,8 @@ it('is null when not mounted and then true when navigator is online', () => {
   })
 
   expect(ref).toBeCalledTimes(2)
-  expect(ref.mock.calls[0][0]).toBe(null)
-  expect(ref.mock.calls[1][0]).toBe(true)
+  expect(ref.mock.calls[0][0]).toEqual({ connected: null, hasChange: false })
+  expect(ref.mock.calls[1][0]).toEqual({ connected: true, hasChange: false })
 })
 
 it('is null when not mounted and then false when navigator is online', () => {
@@ -25,8 +25,8 @@ it('is null when not mounted and then false when navigator is online', () => {
   })
 
   expect(ref).toBeCalledTimes(2)
-  expect(ref.mock.calls[0][0]).toBe(null)
-  expect(ref.mock.calls[1][0]).toBe(false)
+  expect(ref.mock.calls[0][0]).toEqual({ connected: null, hasChange: false })
+  expect(ref.mock.calls[1][0]).toEqual({ connected: false, hasChange: false })
 })
 
 it('subscribes to online/offline events', () => {
@@ -38,7 +38,7 @@ it('subscribes to online/offline events', () => {
 
   let ref = renderHook(useConnectionStatus)
 
-  expect(ref.result.current).toBe(false)
+  expect(ref.result.current).toEqual({ connected: false, hasChange: false })
   expect(addEventListener).toBeCalledTimes(2)
   expect(removeEventListener).toBeCalledTimes(0)
   expect(addEventListener.mock.calls[0][0]).toBe('online')
@@ -46,13 +46,13 @@ it('subscribes to online/offline events', () => {
 
   addEventListener.mock.calls[0][1]()
   ref.rerender()
-  expect(ref.result.current).toBe(true)
+  expect(ref.result.current).toEqual({ connected: true, hasChange: false })
   expect(addEventListener).toBeCalledTimes(2)
   expect(removeEventListener).toBeCalledTimes(0)
 
   addEventListener.mock.calls[1][1]()
   ref.rerender()
-  expect(ref.result.current).toBe(false)
+  expect(ref.result.current).toEqual({ connected: false, hasChange: true })
   expect(addEventListener).toBeCalledTimes(2)
   expect(removeEventListener).toBeCalledTimes(0)
 

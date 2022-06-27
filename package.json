@@ -1,6 +1,6 @@
 {
   "name": "@yobta/ui",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "ui",
   "main": "index.js",
   "directories": {

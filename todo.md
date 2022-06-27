@@ -1,13 +1,13 @@
 * plugins that don't have documentation:
-  * applyPrefixed
-  * basePlugin
-  * entypoPlugin
-  * linearProgressPlugin
-  * linkPlugin
-  * scrollBoxPlugin
-  * spinnerPlugin
+  * apply-prefixed
+  * base-plugin
+  * entypo-plugin
+  * linear-progress-plugin
+  * link-plugin
+  * scroll-box-plugin
+  * spinner-plugin
 <br><br>
 * hooks without tests:
-  * getOptimalPopoverPlacement
-  * usePatchState
-  * usePortalNode.ts
+  * get-optimal-popover-placement
+  * use-patch-state
+  * use-portal-node

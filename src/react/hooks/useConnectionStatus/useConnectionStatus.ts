@@ -1,22 +1,27 @@
 import { useEffect, useState } from 'react'
 
 interface ConnectionStatusHook {
-  (): null | boolean
+  (): { connected: null | boolean; hasChange: boolean }
 }
 
 export const useConnectionStatus: ConnectionStatusHook = () => {
   let [isOnline, setIsOnline] = useState<null | boolean>(null)
+  let [changed, setHasChange] = useState<boolean>(false)
 
   useEffect(() => {
-    setIsOnline(navigator.onLine)
-
     let setTrue = (): void => {
       setIsOnline(true)
     }
     let setFalse = (): void => {
       setIsOnline(false)
+      setHasChange(true)
     }
 
+    if (navigator.onLine) {
+      setTrue()
+    } else {
+      setFalse()
+    }
     window.addEventListener('online', setTrue)
     window.addEventListener('offline', setFalse)
 
@@ -26,5 +31,5 @@ export const useConnectionStatus: ConnectionStatusHook = () => {
     }
   }, [])
 
-  return isOnline
+  return { connected: isOnline, hasChange: changed }
 }

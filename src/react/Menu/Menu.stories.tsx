@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Menu } from './Menu'
 
 export default {
-  title: 'CSS/Menu'
+  title: 'React/Menu'
 }
 
 export type LinearProgressProps = { className?: string }

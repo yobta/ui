@@ -59,6 +59,7 @@ module.exports = plugin(({ addBase, prefix }) => {
             backgroundColor: 'currentColor'
           },
           '&::after': {
+            ...applyPrefixed(prefix, '.transform-gpu'),
             opacity: 1,
             height: '2px',
             transform: 'scaleX(0)',
@@ -124,31 +125,6 @@ module.exports = plugin(({ addBase, prefix }) => {
         },
         '& :invalid ~ .yobta-input__label .yobta-input__label--error-bullet': {
           ...applyPrefixed(prefix, '.inline', '.yobta-ink-error')
-        },
-        '& .yobta-input__menu': {
-          ...applyPrefixed(
-            prefix,
-            '.absolute',
-            '.invisible',
-            '.top-full',
-            '.left-0',
-            '.right-0',
-            '.transform',
-            '.duration-200',
-            '.translate-y-8',
-            '.opacity-0',
-            '.z-50'
-          )
-        },
-        '&:focus-within, &:active': {
-          '&  .yobta-input__menu': {
-            ...applyPrefixed(
-              prefix,
-              '.visible',
-              '.translate-y-0',
-              '.opacity-100'
-            )
-          }
         }
       }
     },

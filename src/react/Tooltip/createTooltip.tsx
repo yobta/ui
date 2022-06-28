@@ -4,38 +4,35 @@ import { createPortal } from 'react-dom'
 
 import { usePortalNode } from '../hooks/usePortalNode.js'
 import { usePopoverCoordinates } from '../hooks/index.js'
-import { getTooltipStyle } from './getTooltipStyle.js'
+import { getPopoverStyle } from '../helpers/getPopoverStyle.js'
 import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
 
-export type TooltipProps = (
-  | {
-      placement?: PopoverPlacementOptions
-      preferredPlacement?: undefined
-    }
-  | {
-      placement?: undefined
-      preferredPlacement?: PopoverPlacementOptions
-    }
-) & {
-  children: ReactNode
-  id: string
-  animate?: boolean
-  className?: string
-  portalNodeId?: string
-  producerNode?: HTMLElement | null
-  visible?: boolean
-}
-export type TooltipDefaultProps = Partial<
-  Pick<TooltipProps, 'animate' | 'className'>
->
-
 export interface TooltipFC {
-  (props: TooltipProps): JSX.Element
-  defaultProps: TooltipDefaultProps
+  (
+    props: (
+      | {
+          placement?: PopoverPlacementOptions
+          preferredPlacement?: undefined
+        }
+      | {
+          placement?: undefined
+          preferredPlacement?: PopoverPlacementOptions
+        }
+    ) & {
+      children: ReactNode
+      id: string
+      animate?: boolean
+      className?: string
+      portalNodeId?: string
+      producerNode?: HTMLElement | null
+      visible?: boolean
+    }
+  ): JSX.Element
+  defaultProps: { animate?: boolean; className?: string }
 }
 
 export interface TooltipFactory {
-  (defaultProps: TooltipDefaultProps): TooltipFC
+  (defaultProps: { animate?: boolean; className?: string }): TooltipFC
 }
 
 const offset = 8
@@ -67,9 +64,6 @@ export const createTooltip: TooltipFactory = defaultProps => {
     })
 
     let isActive = !!position && visible
-    // TODO:
-    // plugun
-    // color settings
 
     let tooltip = (
       <>
@@ -94,7 +88,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
           )}
           id={id}
           ref={tooltipRef}
-          style={getTooltipStyle(position, offset)}
+          style={getPopoverStyle(position, offset)}
         >
           {children}
         </div>

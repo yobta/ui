@@ -1,4 +1,6 @@
+export * from './useCombineRefs/index.js'
 export * from './useConnectionStatus/index.js'
+export * from './useDependencyChangeCount/index.js'
 export * from './useObserveChanges/index.js'
 export * from './usePopoverCoordinates/index.js'
 export * from './usePatchState.js'

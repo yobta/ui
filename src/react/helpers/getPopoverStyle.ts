@@ -1,10 +1,10 @@
 import { PopoverCoordinates } from '../hooks/index.js'
 
-interface GetTooltipStyle {
+interface GetPopoverStyle {
   (position: PopoverCoordinates, offset: number): {}
 }
 
-export const getTooltipStyle: GetTooltipStyle = (position, offset) => {
+export const getPopoverStyle: GetPopoverStyle = (position, offset) => {
   if (!position) {
     return {}
   }

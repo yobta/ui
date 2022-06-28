@@ -16,13 +16,12 @@ import clsx from 'clsx'
 import { useCombineRefs } from '../hooks/index.js'
 import { useTimeout } from '../hooks/useTimeout/useTimeout.js'
 
-type BaseProps = ComponentProps<'input'>
+type BaseProps = Omit<ComponentProps<'input'>, 'children'>
 
 export type InputProps = {
   after?: ReactElement
   before?: ReactElement
   caption?: ReactNode
-  children?: null
   error?: ReactNode
   fancy?: boolean
 }
@@ -32,7 +31,7 @@ type Props = InputProps & BaseProps
 type InputFactory = (
   config: Partial<Props>
 ) => ForwardRefExoticComponent<
-  PropsWithoutRef<BaseProps> & RefAttributes<InputProps>
+  PropsWithoutRef<Props> & RefAttributes<InputProps>
 >
 
 export const createInput: InputFactory = ({

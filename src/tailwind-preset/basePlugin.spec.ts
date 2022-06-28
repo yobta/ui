@@ -1,5 +1,6 @@
 import { test, expect, vi } from 'vitest'
 
+// @ts-ignore
 import basePlugin from './basePlugin.cjs'
 
 const prefix = (str: string): string => str

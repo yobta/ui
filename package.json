@@ -122,7 +122,9 @@
     "lang": "en",
     "ignoreCapitalization": true,
     "ignoreText": [
-      " \\(by [^)]+\\)."
+      " \\(by [^)]+\\).",
+      "entypo",
+      "popover"
     ],
     "dictionary": [
       "Yobta",

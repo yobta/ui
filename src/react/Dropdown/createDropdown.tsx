@@ -97,7 +97,7 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
     },
     forwardedRef
   ) => {
-    let [isAnimating, setIsAnimating] = useState(false)
+    let [, update] = useState({})
     let portalNode = usePortalNode(portalNodeId)
     let menuRef = useRef<HTMLElement>(null)
     let combinedRef = useCombineRefs<HTMLElement>(forwardedRef, menuRef)
@@ -115,20 +115,11 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
       menuRef.current?.style.display
     )
 
-    // useEffect(() => {
-    //   if (menuRef.current) {
-    //     let dislay = !visible && !isAnimating ? 'none' : 'block'
-    //     menuRef.current.style.display = dislay
-    //   }
-    // }, [visible, isAnimating])
-
     useEffect(() => {
-      if (isTriggered) {
-        setIsAnimating(true)
-        if (visible && menuRef.current) {
-          menuRef.current.style.display = 'inherit'
-        }
+      if (isTriggered && visible && menuRef.current) {
+        menuRef.current.style.display = 'inherit'
       }
+      update({})
     }, [visible, isTriggered])
 
     let isActive = !!position && visible
@@ -140,7 +131,7 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
         className={clsx('yobta-dropdown-menu', animationClassName, className)}
         id={id}
         onAnimationEnd={() => {
-          setIsAnimating(false)
+          update({})
           if (!visible && menuRef.current) {
             menuRef.current.style.display = 'none'
           }

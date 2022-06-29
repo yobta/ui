@@ -11,6 +11,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
         '.yobta-paper',
         '.fixed',
         '.rounded',
+        '.transform-gpu',
         '.shadow-md'
       )
     }

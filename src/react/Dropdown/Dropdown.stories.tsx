@@ -3,10 +3,11 @@ import { ComponentStory } from '@storybook/react'
 import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 
-import { DropdownMenu } from './DropdownMenu.js'
+import { Toggle } from '../Toggle/Toggle.js'
+import { DropdownMenu } from './Dropdown.js'
 
 export default {
-  title: 'React/DropdownMenu'
+  title: 'React/Dropdown'
 }
 
 export type LinearProgressProps = { className?: string }
@@ -22,21 +23,21 @@ const Template: ComponentStory<typeof DropdownMenu> = ({
     refresh({})
   }, [])
   return (
-    <>
+    <Toggle>
       <button className="yobta-button-primary" ref={ref}>
         Button
       </button>
       <DropdownMenu
         // {...props}
         className={clsx('yobta-menu', className)}
-        preferredPlacement="bottom-right"
+        placement="top"
         producerNode={ref.current}
         id="dropdown-menu"
         visible
       >
         {children}
       </DropdownMenu>
-    </>
+    </Toggle>
   )
 }
 

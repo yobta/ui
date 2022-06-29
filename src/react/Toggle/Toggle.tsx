@@ -9,18 +9,12 @@ import {
 interface ToogleFC {
   (props: {
     children: [ReactElement, ReactElement]
-    type?: 'tooltip' | 'menu'
+    type?: 'YobtaTooltip' | 'YobtaDropdown'
   }): JSX.Element
 }
 
-function getConsumerType(child: ReactElement): 'tooltip' | 'menu' {
-  let name = typeof child.type === 'function' ? child.type.name : {}
-  switch (name) {
-    case 'value':
-      return 'tooltip'
-    default:
-      return 'tooltip'
-  }
+function getConsumerType(child: ReactElement): string {
+  return typeof child.type === 'function' ? child.type.name : ''
 }
 
 export const Toggle: ToogleFC = ({ children, type }) => {
@@ -32,6 +26,9 @@ export const Toggle: ToogleFC = ({ children, type }) => {
   let consumerType = type || getConsumerType(consumer as ReactElement)
 
   useEffect(() => {
+    let toggle = (): void => {
+      setHasFocus(lastState => !lastState)
+    }
     let handleFocus = (): void => {
       setHasFocus(true)
     }
@@ -51,11 +48,18 @@ export const Toggle: ToogleFC = ({ children, type }) => {
     }
 
     if (producerNode) {
-      if (consumerType === 'tooltip') {
-        producerNode.addEventListener('mouseover', handleMouseOver)
-        producerNode.addEventListener('mouseout', handleMouseOut)
-        producerNode.addEventListener('focus', handleFocus)
-        producerNode.addEventListener('blur', handleBlur)
+      switch (consumerType) {
+        case 'YobtaDropdown':
+          producerNode.addEventListener('click', toggle)
+          break
+
+        case 'YobtaTooltip':
+        default:
+          producerNode.addEventListener('mouseover', handleMouseOver)
+          producerNode.addEventListener('mouseout', handleMouseOut)
+          producerNode.addEventListener('focus', handleFocus)
+          producerNode.addEventListener('blur', handleBlur)
+          break
       }
       document.addEventListener('wheel', forceHide, {
         passive: true
@@ -66,6 +70,7 @@ export const Toggle: ToogleFC = ({ children, type }) => {
     }
     return () => {
       if (producerNode) {
+        producerNode.removeEventListener('click', toggle)
         producerNode.removeEventListener('mouseover', handleMouseOver)
         producerNode.removeEventListener('mouseout', handleMouseOut)
         producerNode.removeEventListener('focus', handleFocus)

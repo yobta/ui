@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ReactNode, useRef } from 'react'
+import { ReactNode, useRef, useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 import { usePortalNode } from '../hooks/usePortalNode.js'
@@ -39,9 +39,40 @@ export interface YobtaMenuFactory {
 
 const offset = 0
 
-export const createDropdownMenu: YobtaMenuFactory = defaultProps => {
+const getAnimationClassName = (
+  placement: PopoverPlacementOptions,
+  visible: boolean
+): string => {
+  switch (placement) {
+    case 'top':
+    case 'top-left':
+    case 'top-right':
+      return visible
+        ? 'animate-yobta-dropdown-in-top'
+        : 'animate-yobta-dropdown-out-top'
+    case 'right':
+    case 'right-top':
+    case 'right-bottom':
+      return visible
+        ? 'animate-yobta-dropdown-in-right'
+        : 'animate-yobta-dropdown-out-right'
+    case 'left':
+    case 'left-top':
+    case 'left-bottom':
+      return visible
+        ? 'animate-yobta-dropdown-in-left'
+        : 'animate-yobta-dropdown-out-left'
+
+    default:
+      return visible
+        ? 'animate-yobta-dropdown-in-bottom'
+        : 'animate-yobta-dropdown-out-bottom'
+  }
+}
+
+export const createDropdown: YobtaMenuFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
-  const YobtaMenu: YobtaMenuFC = ({
+  const YobtaDropdown: YobtaMenuFC = ({
     placement,
     preferredPlacement,
     children,
@@ -51,9 +82,10 @@ export const createDropdownMenu: YobtaMenuFactory = defaultProps => {
     portalNodeId,
     visible
   }) => {
+    let [isAnimating, setIsAnimating] = useState(false)
     let portalNode = usePortalNode(portalNodeId)
     let menuRef = useRef<HTMLElement>(null)
-    let dependencyChangeCount = useDependencyChangeCount(visible)
+    let isTriggered = useDependencyChangeCount(visible) > 0
 
     let placementProps = placement ? { placement } : { preferredPlacement }
 
@@ -64,17 +96,26 @@ export const createDropdownMenu: YobtaMenuFactory = defaultProps => {
       offset
     })
 
+    useEffect(() => {
+      if (isTriggered) {
+        setIsAnimating(true)
+      }
+    }, [visible, isTriggered])
+
     let isActive = !!position && visible
 
     let menu = (
       <nav
         className={clsx(
           'yobta-dropdown-menu',
-          !isActive && 'hidden',
-          dependencyChangeCount > 0 && 'yobta-menu--animated',
+          !isActive && !isAnimating && 'hidden',
+          position && getAnimationClassName(position.placement, isActive),
           className
         )}
         id={id}
+        onAnimationEnd={() => {
+          setIsAnimating(false)
+        }}
         ref={menuRef}
         style={getPopoverStyle(position, offset)}
       >
@@ -85,7 +126,7 @@ export const createDropdownMenu: YobtaMenuFactory = defaultProps => {
     return <>{portalNode ? createPortal(menu, portalNode) : menu}</>
   }
 
-  YobtaMenu.defaultProps = defaultProps
+  YobtaDropdown.defaultProps = defaultProps
 
-  return YobtaMenu
+  return YobtaDropdown
 }

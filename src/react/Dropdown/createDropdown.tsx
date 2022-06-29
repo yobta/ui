@@ -81,6 +81,8 @@ const getAnimationClassName = (
   }
 }
 
+const hiddenClassName = 'yobta-dropdown-menu--hidden'
+
 export const createDropdown: YobtaMenuFactory = defaultProps => {
   let YobtaDropdown: ForwardRefRenderFunction<HTMLElement, Props & NavProps> = (
     {
@@ -98,12 +100,22 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
     forwardedRef
   ) => {
     let [, update] = useState({})
+    let [isHidden, setIsHidden] = useState(true)
     let portalNode = usePortalNode(portalNodeId)
     let menuRef = useRef<HTMLElement>(null)
     let combinedRef = useCombineRefs<HTMLElement>(forwardedRef, menuRef)
     let isTriggered = useDependencyChangeCount(visible) > 0
 
     let placementProps = placement ? { placement } : { preferredPlacement }
+
+    useEffect(() => {
+      if (isTriggered && visible && menuRef.current) {
+        menuRef.current.classList.remove(hiddenClassName)
+        setIsHidden(false)
+        // menuRef.current.style.display = 'inherit'
+        update({})
+      }
+    }, [visible, isTriggered])
 
     let position = usePopoverCoordinates(
       {
@@ -112,28 +124,29 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
         consumerNode: menuRef.current,
         offset
       },
-      menuRef.current?.style.display
+      ...(menuRef.current?.classList || [])
     )
-
-    useEffect(() => {
-      if (isTriggered && visible && menuRef.current) {
-        menuRef.current.style.display = 'inherit'
-      }
-      update({})
-    }, [visible, isTriggered])
 
     let isActive = !!position && visible
     let animationClassName =
-      position && getAnimationClassName(position.placement, isActive)
+      position &&
+      position.consumerHeight > 0 &&
+      getAnimationClassName(position.placement, isActive)
 
     let menu = (
       <nav
-        className={clsx('yobta-dropdown-menu', animationClassName, className)}
+        className={clsx(
+          'yobta-dropdown-menu',
+          isHidden && hiddenClassName,
+          !position?.consumerHeight && 'invisible',
+          animationClassName,
+          className
+        )}
         id={id}
         onAnimationEnd={() => {
-          update({})
           if (!visible && menuRef.current) {
-            menuRef.current.style.display = 'none'
+            menuRef.current.classList.add(hiddenClassName)
+            update({})
           }
         }}
         ref={combinedRef}

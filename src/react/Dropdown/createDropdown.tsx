@@ -150,7 +150,7 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
           }
         }}
         ref={combinedRef}
-        style={{ ...style, ...getDropdownStyle(position, offset) }}
+        style={{ ...style, ...getDropdownStyle(position) }}
       >
         {children}
       </nav>

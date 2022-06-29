@@ -1,10 +1,10 @@
 import { PopoverCoordinates } from '../hooks/index.js'
 
 interface GetDropdownStyle {
-  (position: PopoverCoordinates, offset: number): {}
+  (position: PopoverCoordinates): {}
 }
 
-export const getDropdownStyle: GetDropdownStyle = (position, offset) => {
+export const getDropdownStyle: GetDropdownStyle = position => {
   if (!position) {
     return {}
   }

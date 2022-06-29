@@ -50,8 +50,8 @@ export const Toggle: ToogleFC = ({ children, type }) => {
   let consumerType = getConsumerType(consumer as ReactElement)
   let mode = type || suggestMode(consumerType)
 
-  useClickAway(consumerRef, () => {
-    if (visible && mode === 'click') {
+  useClickAway(consumerRef, event => {
+    if (visible && mode === 'click' && event.target !== producerRef.current) {
       setHasFocus(false)
       setHasCursor(false)
     }
@@ -71,7 +71,7 @@ export const Toggle: ToogleFC = ({ children, type }) => {
 
   useEffect(() => {
     let toggle = (): void => {
-      setHasFocus(true)
+      setHasFocus(lastState => !lastState)
     }
     let handleFocus = (): void => {
       setHasFocus(true)

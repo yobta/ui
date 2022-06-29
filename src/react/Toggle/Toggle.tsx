@@ -86,11 +86,6 @@ export const Toggle: ToogleFC = ({ children, type }) => {
       setHasCursor(false)
     }
 
-    let forceHide = (): void => {
-      setHasCursor(false)
-      setHasFocus(false)
-    }
-
     if (producerRef.current) {
       switch (mode) {
         case 'click':
@@ -105,12 +100,6 @@ export const Toggle: ToogleFC = ({ children, type }) => {
           producerRef.current.addEventListener('blur', handleBlur)
           break
       }
-      document.addEventListener('wheel', forceHide, {
-        passive: true
-      })
-      window.addEventListener('resize', forceHide, {
-        passive: true
-      })
     }
     return () => {
       if (producerRef.current) {
@@ -119,10 +108,7 @@ export const Toggle: ToogleFC = ({ children, type }) => {
         producerRef.current.removeEventListener('mouseout', handleMouseOut)
         producerRef.current.removeEventListener('focus', handleFocus)
         producerRef.current.removeEventListener('blur', handleBlur)
-        document.removeEventListener('wheel', forceHide)
-        window.removeEventListener('resize', forceHide)
       }
-      forceHide()
     }
   }, [consumerType])
 

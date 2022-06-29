@@ -8,11 +8,12 @@ module.exports = plugin(({ addComponents, prefix }) => {
       ...applyPrefixed(
         prefix,
         '.yobta-menu',
-        '.yobta-paper',
+        '.yobta-paper-2',
         '.fixed',
         '.rounded',
         '.transform-gpu',
-        '.shadow-md'
+        '.shadow-md',
+        '.hidden'
       )
     }
   })

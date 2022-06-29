@@ -8,13 +8,13 @@ module.exports = {
         'yobta-linear-progress': 'yobta-linear-progress 2s infinite linear',
         'yobta-dropdown-in-bottom': 'yobtaDropdownInBottom 0.40s ease forwards',
         'yobta-dropdown-out-bottom':
-          'yobtaDropdownOutBottom 0.24s ease forwards',
+          'yobtaDropdownOutBottom 0.32s ease forwards',
         'yobta-dropdown-in-left': 'yobtaDropdownInLeft 0.40s ease forwards',
-        'yobta-dropdown-out-left': 'yobtaDropdownOutLeft 0.24s ease forwards',
+        'yobta-dropdown-out-left': 'yobtaDropdownOutLeft 0.32s ease forwards',
         'yobta-dropdown-in-right': 'yobtaDropdownInRight 0.40s ease forwards',
-        'yobta-dropdown-out-right': 'yobtaDropdownOutRight 0.24s ease forwards',
+        'yobta-dropdown-out-right': 'yobtaDropdownOutRight 0.32s ease forwards',
         'yobta-dropdown-in-top': 'yobtaDropdownInTop 0.40s ease forwards',
-        'yobta-dropdown-out-top': 'yobtaDropdownOutTop 0.24s ease forwards',
+        'yobta-dropdown-out-top': 'yobtaDropdownOutTop 0.32s ease forwards',
         'yobta-spinner':
           'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite'
       },

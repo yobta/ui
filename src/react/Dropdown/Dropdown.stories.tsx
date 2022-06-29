@@ -1,8 +1,8 @@
 /* eslint-disable import/extensions */
 import { ComponentStory } from '@storybook/react'
-import clsx from 'clsx'
-import { useEffect, useRef, useState } from 'react'
+import { FC } from 'react'
 
+import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
 import { Toggle } from '../Toggle/Toggle.js'
 import { Dropdown } from './Dropdown.js'
 
@@ -12,51 +12,44 @@ export default {
 
 export type LinearProgressProps = { className?: string }
 
-const Template: ComponentStory<typeof Dropdown> = ({ children, className }) => {
-  let ref = useRef<HTMLButtonElement>(null)
-
-  let [, refresh] = useState({})
-  useEffect(() => {
-    refresh({})
-  }, [])
+type TemplateFC = FC<{ placementOptions: PopoverPlacementOptions[] }>
+const Template: ComponentStory<TemplateFC> = ({ placementOptions }) => {
   return (
-    <Toggle>
-      <button className="yobta-button-primary" ref={ref}>
-        Button
-      </button>
-      <Dropdown
-        // {...props}
-        className={clsx('yobta-menu', className)}
-        placement="bottom-left"
-        producerNode={ref.current}
-        id="dropdown-menu"
-        visible
-      >
-        {children}
-      </Dropdown>
-    </Toggle>
+    <div className="grid p-16 gap-16 grid-cols-3">
+      {placementOptions.map(option => (
+        <Toggle key={option}>
+          <button className="yobta-button-primary">{option}</button>
+          <Dropdown
+            className="w-56"
+            placement={option}
+            id={`dropdown-menu-${option}`}
+            visible
+            offset={8}
+          >
+            <div className="yobta-menu-item  whitespace-nowrap">Option 1</div>
+            <div className="yobta-menu-item  whitespace-nowrap">Option 2</div>
+            <div className="yobta-menu-item  whitespace-nowrap">Option 3</div>
+          </Dropdown>
+        </Toggle>
+      ))}
+    </div>
   )
 }
 
 export const Simple = Template.bind({})
 Simple.args = {
-  className: 'w-80 yobta-paper',
-  children: (
-    <>
-      <header className="yobta-menu-header py-2 mb-2">Mail</header>
-      <button type="button" className="yobta-menu-item">
-        Sent mail
-      </button>
-      <button type="button" className="yobta-menu-item">
-        Drafts
-      </button>
-      <button type="button" className="yobta-menu-item">
-        Starred
-      </button>
-      <hr className="mx-4 my-2" />
-      <button type="button" className="yobta-menu-item">
-        Archive
-      </button>
-    </>
-  )
+  placementOptions: [
+    'top-left',
+    'top',
+    'top-right',
+    'right-top',
+    'right',
+    'right-bottom',
+    'bottom-left',
+    'bottom',
+    'bottom-right',
+    'left-top',
+    'left',
+    'left-bottom'
+  ]
 }

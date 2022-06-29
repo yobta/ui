@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 
 import { usePortalNode } from '../hooks/usePortalNode.js'
 import { usePopoverCoordinates } from '../hooks/index.js'
-import { getPopoverStyle } from '../helpers/getPopoverStyle.js'
+import { getTooltipStyle } from './getTooltipStyle.js'
 import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
 
 export interface TooltipFC {
@@ -88,7 +88,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
           )}
           id={id}
           ref={tooltipRef}
-          style={getPopoverStyle(position, offset)}
+          style={getTooltipStyle(position, offset)}
         >
           {children}
         </div>

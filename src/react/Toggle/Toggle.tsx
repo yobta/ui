@@ -6,19 +6,37 @@ import {
   useEffect,
   useRef
 } from 'react'
-import { useClickAway } from 'react-use'
+import { useClickAway, useKey } from 'react-use'
 
 interface ToogleFC {
   (props: {
     children: [ReactElement, ReactElement]
-    type?: 'YobtaTooltip' | 'YobtaDropdown'
+    type?: 'click' | 'mouseover' | 'focus'
   }): JSX.Element
 }
 
+type ToggleMode = Parameters<ToogleFC>[0]['type']
+
 function getConsumerType(child: ReactElement): string {
-  // console.log('child.type.name: ', child.type, child.type.render?.name)
-  console.log('child: ', child)
-  return typeof child.type === 'function' ? child.type.name : ''
+  if (typeof child.type === 'function') {
+    return child.type.name
+  } else if (typeof child.type === 'object') {
+    // @ts-ignore
+    return child.type.displayName
+  }
+  return ''
+}
+
+function suggestMode(consumerType: string): ToggleMode {
+  switch (consumerType) {
+    case 'YobtaTooltip':
+      return 'mouseover'
+    case 'YobtaInput':
+      return 'focus'
+    case 'YobtaDropdown':
+    default:
+      return 'click'
+  }
 }
 
 export const Toggle: ToogleFC = ({ children, type }) => {
@@ -28,15 +46,32 @@ export const Toggle: ToogleFC = ({ children, type }) => {
   let [hasFocus, setHasFocus] = useState(false)
   let [hasCursor, setHasCursor] = useState(false)
 
-  let consumerType = type || getConsumerType(consumer as ReactElement)
+  let visible = hasFocus || hasCursor
+  let consumerType = getConsumerType(consumer as ReactElement)
+  let mode = type || suggestMode(consumerType)
 
   useClickAway(consumerRef, () => {
-    console.log('consumerType: ', consumerType)
+    if (visible && mode === 'click') {
+      setHasFocus(false)
+      setHasCursor(false)
+    }
   })
+
+  useKey(
+    'Escape',
+    () => {
+      if (visible) {
+        setHasFocus(false)
+        setHasCursor(false)
+      }
+    },
+    {},
+    [visible]
+  )
 
   useEffect(() => {
     let toggle = (): void => {
-      setHasFocus(lastState => !lastState)
+      setHasFocus(true)
     }
     let handleFocus = (): void => {
       setHasFocus(true)
@@ -57,12 +92,12 @@ export const Toggle: ToogleFC = ({ children, type }) => {
     }
 
     if (producerRef.current) {
-      switch (consumerType) {
-        case 'YobtaDropdown':
+      switch (mode) {
+        case 'click':
           producerRef.current.addEventListener('click', toggle)
           break
 
-        case 'YobtaTooltip':
+        case 'mouseover':
         default:
           producerRef.current.addEventListener('mouseover', handleMouseOver)
           producerRef.current.addEventListener('mouseout', handleMouseOut)
@@ -99,7 +134,7 @@ export const Toggle: ToogleFC = ({ children, type }) => {
       {cloneElement(consumer as ReactElement, {
         ref: consumerRef,
         producerRef,
-        visible: hasFocus || hasCursor
+        visible
       })}
     </>
   )

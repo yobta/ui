@@ -46,14 +46,14 @@ type NavProps = ComponentProps<'nav'>
 
 export interface YobtaMenuFactory {
   (defaultProps: { className?: string }): ForwardRefExoticComponent<
-    PropsWithoutRef<Props & NavProps> & RefAttributes<Props>
+    PropsWithoutRef<Props & NavProps> & RefAttributes<HTMLElement>
   >
 }
 
 const offset = 0
 
 export const createDropdown: YobtaMenuFactory = defaultProps => {
-  let YobtaDropdown: ForwardRefRenderFunction<NavProps, Props> = (
+  let YobtaDropdown: ForwardRefRenderFunction<HTMLElement, Props> = (
     {
       placement,
       preferredPlacement,
@@ -111,8 +111,10 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
     return <>{portalNode ? createPortal(menu, portalNode) : menu}</>
   }
 
-  YobtaDropdown.defaultProps = defaultProps
-  YobtaDropdown.displayName = 'YobtaDropdown'
+  let YobtaDropdownWithRef = forwardRef(YobtaDropdown)
 
-  return forwardRef(YobtaDropdown)
+  YobtaDropdownWithRef.defaultProps = defaultProps
+  YobtaDropdownWithRef.displayName = 'YobtaDropdown'
+
+  return YobtaDropdownWithRef
 }

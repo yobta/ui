@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ReactNode, useRef } from 'react'
+import { ReactNode, RefObject, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 import { usePortalNode } from '../hooks/usePortalNode.js'
@@ -24,7 +24,7 @@ export interface TooltipFC {
       animate?: boolean
       className?: string
       portalNodeId?: string
-      producerNode?: HTMLElement | null
+      producerRef?: RefObject<HTMLElement | null>
       visible?: boolean
     }
   ): JSX.Element
@@ -46,7 +46,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
     children,
     className,
     id,
-    producerNode,
+    producerRef,
     portalNodeId,
     visible
   }) => {
@@ -58,7 +58,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
 
     let position = usePopoverCoordinates({
       ...placementProps,
-      producerNode,
+      producerNode: producerRef?.current,
       consumerNode: tooltipRef.current,
       offset
     })

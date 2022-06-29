@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 
 import { Tooltip } from './Tooltip'
 import { ShoppingBag } from '../entypo'
@@ -13,10 +13,6 @@ export default {
 
 const Template: ComponentStory<typeof Tooltip> = args => {
   let ref = useRef(null)
-  let [, refresh] = useState({})
-  useEffect(() => {
-    refresh({})
-  }, [])
   return (
     <>
       <button
@@ -26,7 +22,7 @@ const Template: ComponentStory<typeof Tooltip> = args => {
         <ShoppingBag />
         Add to cart
       </button>
-      <Tooltip {...args} producerNode={ref.current} visible />
+      <Tooltip {...args} producerRef={ref} visible />
     </>
   )
 }

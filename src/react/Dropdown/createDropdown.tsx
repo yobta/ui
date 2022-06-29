@@ -1,97 +1,82 @@
 import clsx from 'clsx'
-import { ReactNode, useRef, useState, useEffect } from 'react'
+import {
+  ReactNode,
+  PropsWithoutRef,
+  ForwardRefExoticComponent,
+  ForwardRefRenderFunction,
+  RefAttributes,
+  useRef,
+  useState,
+  useEffect,
+  RefObject,
+  forwardRef,
+  ComponentProps
+} from 'react'
 import { createPortal } from 'react-dom'
 
 import { usePortalNode } from '../hooks/usePortalNode.js'
 import {
+  useCombineRefs,
   useDependencyChangeCount,
   usePopoverCoordinates
 } from '../hooks/index.js'
 import { getPopoverStyle } from '../helpers/getPopoverStyle.js'
 import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
+import { getAnimationClassName } from './getAnimationClassName.js'
 
-export interface YobtaMenuFC {
-  (
-    props: (
-      | {
-          placement: PopoverPlacementOptions
-          preferredPlacement?: undefined
-        }
-      | {
-          placement?: undefined
-          preferredPlacement: PopoverPlacementOptions
-        }
-    ) & {
-      children: ReactNode
-      id: string
-      className?: string
-      portalNodeId?: string
-      producerNode?: HTMLElement | null
-      visible: boolean
+type Props = (
+  | {
+      placement: PopoverPlacementOptions
+      preferredPlacement?: undefined
     }
-  ): JSX.Element
-  defaultProps: { className?: string }
+  | {
+      placement?: undefined
+      preferredPlacement: PopoverPlacementOptions
+    }
+) & {
+  children: ReactNode
+  id: string
+  className?: string
+  portalNodeId?: string
+  producerRef?: RefObject<HTMLElement>
+  visible: boolean
 }
 
+type NavProps = ComponentProps<'nav'>
+
 export interface YobtaMenuFactory {
-  (defaultProps: { className?: string }): YobtaMenuFC
+  (defaultProps: { className?: string }): ForwardRefExoticComponent<
+    PropsWithoutRef<Props & NavProps> & RefAttributes<Props>
+  >
 }
 
 const offset = 0
 
-const getAnimationClassName = (
-  placement: PopoverPlacementOptions,
-  visible: boolean
-): string => {
-  switch (placement) {
-    case 'top':
-    case 'top-left':
-    case 'top-right':
-      return visible
-        ? 'animate-yobta-dropdown-in-top'
-        : 'animate-yobta-dropdown-out-top'
-    case 'right':
-    case 'right-top':
-    case 'right-bottom':
-      return visible
-        ? 'animate-yobta-dropdown-in-right'
-        : 'animate-yobta-dropdown-out-right'
-    case 'left':
-    case 'left-top':
-    case 'left-bottom':
-      return visible
-        ? 'animate-yobta-dropdown-in-left'
-        : 'animate-yobta-dropdown-out-left'
-
-    default:
-      return visible
-        ? 'animate-yobta-dropdown-in-bottom'
-        : 'animate-yobta-dropdown-out-bottom'
-  }
-}
-
 export const createDropdown: YobtaMenuFactory = defaultProps => {
-  // eslint-disable-next-line prefer-let/prefer-let
-  const YobtaDropdown: YobtaMenuFC = ({
-    placement,
-    preferredPlacement,
-    children,
-    className,
-    id,
-    producerNode,
-    portalNodeId,
-    visible
-  }) => {
+  let YobtaDropdown: ForwardRefRenderFunction<NavProps, Props> = (
+    {
+      placement,
+      preferredPlacement,
+      children,
+      className,
+      id,
+      producerRef,
+      portalNodeId,
+      visible
+    },
+    forwardedRef
+  ) => {
     let [isAnimating, setIsAnimating] = useState(false)
     let portalNode = usePortalNode(portalNodeId)
     let menuRef = useRef<HTMLElement>(null)
+    let combinedRef = useCombineRefs<HTMLElement>(forwardedRef, menuRef)
     let isTriggered = useDependencyChangeCount(visible) > 0
 
     let placementProps = placement ? { placement } : { preferredPlacement }
 
     let position = usePopoverCoordinates({
       ...placementProps,
-      producerNode,
+      producerNode: producerRef?.current,
       consumerNode: menuRef.current,
       offset
     })
@@ -116,7 +101,7 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
         onAnimationEnd={() => {
           setIsAnimating(false)
         }}
-        ref={menuRef}
+        ref={combinedRef}
         style={getPopoverStyle(position, offset)}
       >
         {children}
@@ -127,6 +112,7 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
   }
 
   YobtaDropdown.defaultProps = defaultProps
+  YobtaDropdown.displayName = 'YobtaDropdown'
 
-  return YobtaDropdown
+  return forwardRef(YobtaDropdown)
 }

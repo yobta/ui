@@ -3,8 +3,10 @@ import {
   Children,
   cloneElement,
   ReactElement,
-  useEffect
+  useEffect,
+  useRef
 } from 'react'
+import { useClickAway } from 'react-use'
 
 interface ToogleFC {
   (props: {
@@ -14,16 +16,22 @@ interface ToogleFC {
 }
 
 function getConsumerType(child: ReactElement): string {
+  console.log('child.type.name: ', child.type, child.type.render!.name)
   return typeof child.type === 'function' ? child.type.name : ''
 }
 
 export const Toggle: ToogleFC = ({ children, type }) => {
+  let producerRef = useRef<HTMLElement | null>(null)
+  let consumerRef = useRef<HTMLElement | null>(null)
   let [producer, consumer] = Children.toArray(children)
-  let [producerNode, setProducerNode] = useState<HTMLElement | null>(null)
   let [hasFocus, setHasFocus] = useState(false)
   let [hasCursor, setHasCursor] = useState(false)
 
   let consumerType = type || getConsumerType(consumer as ReactElement)
+
+  useClickAway(consumerRef, () => {
+    console.log('consumerType: ', consumerType)
+  })
 
   useEffect(() => {
     let toggle = (): void => {
@@ -47,18 +55,18 @@ export const Toggle: ToogleFC = ({ children, type }) => {
       setHasFocus(false)
     }
 
-    if (producerNode) {
+    if (producerRef.current) {
       switch (consumerType) {
         case 'YobtaDropdown':
-          producerNode.addEventListener('click', toggle)
+          producerRef.current.addEventListener('click', toggle)
           break
 
         case 'YobtaTooltip':
         default:
-          producerNode.addEventListener('mouseover', handleMouseOver)
-          producerNode.addEventListener('mouseout', handleMouseOut)
-          producerNode.addEventListener('focus', handleFocus)
-          producerNode.addEventListener('blur', handleBlur)
+          producerRef.current.addEventListener('mouseover', handleMouseOver)
+          producerRef.current.addEventListener('mouseout', handleMouseOut)
+          producerRef.current.addEventListener('focus', handleFocus)
+          producerRef.current.addEventListener('blur', handleBlur)
           break
       }
       document.addEventListener('wheel', forceHide, {
@@ -69,28 +77,27 @@ export const Toggle: ToogleFC = ({ children, type }) => {
       })
     }
     return () => {
-      if (producerNode) {
-        producerNode.removeEventListener('click', toggle)
-        producerNode.removeEventListener('mouseover', handleMouseOver)
-        producerNode.removeEventListener('mouseout', handleMouseOut)
-        producerNode.removeEventListener('focus', handleFocus)
-        producerNode.removeEventListener('blur', handleBlur)
+      if (producerRef.current) {
+        producerRef.current.removeEventListener('click', toggle)
+        producerRef.current.removeEventListener('mouseover', handleMouseOver)
+        producerRef.current.removeEventListener('mouseout', handleMouseOut)
+        producerRef.current.removeEventListener('focus', handleFocus)
+        producerRef.current.removeEventListener('blur', handleBlur)
         document.removeEventListener('wheel', forceHide)
         window.removeEventListener('resize', forceHide)
       }
       forceHide()
     }
-  }, [consumerType, producerNode])
+  }, [consumerType])
 
   return (
     <>
       {cloneElement(producer as ReactElement, {
-        ref(node: HTMLElement) {
-          setProducerNode(node)
-        }
+        ref: producerRef
       })}
       {cloneElement(consumer as ReactElement, {
-        producerNode,
+        ref: consumerRef,
+        producerRef,
         visible: hasFocus || hasCursor
       })}
     </>

@@ -1,3 +1,5 @@
 import { createDropdown } from './createDropdown.js'
 
-export const DropdownMenu = createDropdown({})
+export const Dropdown = createDropdown({})
+
+Dropdown.displayName = 'YobtaDropdown'

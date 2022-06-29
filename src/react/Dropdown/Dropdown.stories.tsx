@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 
 import { Toggle } from '../Toggle/Toggle.js'
-import { DropdownMenu } from './Dropdown.js'
+import { Dropdown } from './Dropdown.js'
 
 export default {
   title: 'React/Dropdown'
@@ -12,10 +12,7 @@ export default {
 
 export type LinearProgressProps = { className?: string }
 
-const Template: ComponentStory<typeof DropdownMenu> = ({
-  children,
-  className
-}) => {
+const Template: ComponentStory<typeof Dropdown> = ({ children, className }) => {
   let ref = useRef<HTMLButtonElement>(null)
 
   let [, refresh] = useState({})
@@ -27,16 +24,16 @@ const Template: ComponentStory<typeof DropdownMenu> = ({
       <button className="yobta-button-primary" ref={ref}>
         Button
       </button>
-      <DropdownMenu
+      <Dropdown
         // {...props}
         className={clsx('yobta-menu', className)}
-        placement="top"
+        placement="bottom-left"
         producerNode={ref.current}
         id="dropdown-menu"
         visible
       >
         {children}
-      </DropdownMenu>
+      </Dropdown>
     </Toggle>
   )
 }

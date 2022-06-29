@@ -16,7 +16,8 @@ interface ToogleFC {
 }
 
 function getConsumerType(child: ReactElement): string {
-  console.log('child.type.name: ', child.type, child.type.render!.name)
+  // console.log('child.type.name: ', child.type, child.type.render?.name)
+  console.log('child: ', child)
   return typeof child.type === 'function' ? child.type.name : ''
 }
 

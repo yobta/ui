@@ -1,9 +1,10 @@
 /* eslint-disable import/extensions */
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { useRef } from 'react'
+import { FC, Fragment, useRef } from 'react'
 
 import { Tooltip } from './Tooltip'
 import { ShoppingBag } from '../entypo'
+import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement'
 
 export default {
   title: 'React/Tooltip',
@@ -24,6 +25,37 @@ const Template: ComponentStory<typeof Tooltip> = args => {
       </button>
       <Tooltip {...args} producerRef={ref} visible />
     </>
+  )
+}
+
+type Template2Props = FC<{ options: PopoverPlacementOptions[] }>
+const Template2: ComponentStory<Template2Props> = ({ options }) => {
+  return (
+    <div className="p-16 grid grid-cols-3 gap-16">
+      {options.map(option => {
+        let ref = useRef(null)
+
+        return (
+          <Fragment key={option}>
+            <button
+              className="yobta-button yobta-border-ink-border backdrop-blur-md"
+              ref={ref}
+            >
+              <ShoppingBag />
+              Add to cart
+            </button>
+            <Tooltip
+              placement={option}
+              producerRef={ref}
+              visible
+              id={`tooltip-${option}`}
+            >
+              {option}
+            </Tooltip>
+          </Fragment>
+        )
+      })}
+    </div>
   )
 }
 
@@ -73,72 +105,7 @@ PlacementTopLeft.args = {
   placement: 'top-left'
 }
 
-export const PlacementTopRight = Template.bind({})
-PlacementTopRight.args = {
-  children: 'My tooltip',
-  id: 'placement top-right',
-  placement: 'top-right'
-}
-
-export const PlacementBottom = Template.bind({})
-PlacementBottom.args = {
-  children: 'My tooltip',
-  id: 'placement bottom',
-  placement: 'bottom'
-}
-
-export const PlacementBottomLeft = Template.bind({})
-PlacementBottomLeft.args = {
-  children: 'My tooltip',
-  id: 'placement bottom-left',
-  placement: 'bottom-left'
-}
-
-export const PlacementBottomRight = Template.bind({})
-PlacementBottomRight.args = {
-  children: 'My tooltip',
-  id: 'placement bottom-right',
-  placement: 'bottom-right'
-}
-
-export const PlacementRight = Template.bind({})
-PlacementRight.args = {
-  children: 'My tooltip',
-  id: 'placement right',
-  placement: 'right'
-}
-
-export const PlacementRightTop = Template.bind({})
-PlacementRightTop.args = {
-  children: 'My tooltip',
-  id: 'placement right-top',
-  placement: 'right-top'
-}
-
-export const PlacementRightBottom = Template.bind({})
-PlacementRightBottom.args = {
-  children: 'My tooltip',
-  id: 'placement right-bottom',
-  placement: 'right-bottom'
-}
-
-export const PlacementLeft = Template.bind({})
-PlacementLeft.args = {
-  children: 'My tooltip',
-  id: 'placement left',
-  placement: 'left'
-}
-
-export const PlacementLeftTop = Template.bind({})
-PlacementLeftTop.args = {
-  children: 'My tooltip',
-  id: 'placement left-top',
-  placement: 'left-top'
-}
-
-export const PlacementLeftBottom = Template.bind({})
-PlacementLeftBottom.args = {
-  children: 'My tooltip',
-  id: 'placement left-bottom',
-  placement: 'left-bottom'
+export const AllPlacementOptions = Template2.bind({})
+AllPlacementOptions.args = {
+  options: ['top', 'top-left', 'top-right', 'bottom', 'left', 'right']
 }

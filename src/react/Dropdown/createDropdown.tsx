@@ -114,5 +114,7 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
   YobtaDropdown.defaultProps = defaultProps
   YobtaDropdown.displayName = 'YobtaDropdown'
 
+  YobtaDropdown._yobtaToggle = 'Dropdown'
+
   return forwardRef(YobtaDropdown)
 }

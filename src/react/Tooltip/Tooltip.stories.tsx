@@ -52,16 +52,93 @@ withoutPlacement.args = {
   id: 'withoutPlacement'
 }
 
-export const withPlacement = Template.bind({})
-withPlacement.args = {
-  children: 'My tooltip',
-  id: 'withPlacement',
-  placement: 'bottom-left'
-}
-
 export const preferredPlacement = Template.bind({})
 preferredPlacement.args = {
   children: 'My tooltip',
   id: 'preferredPlacement',
   preferredPlacement: 'right-bottom'
+}
+
+export const PlacementTop = Template.bind({})
+PlacementTop.args = {
+  children: 'My tooltip',
+  id: 'placement top',
+  placement: 'top'
+}
+
+export const PlacementTopLeft = Template.bind({})
+PlacementTopLeft.args = {
+  children: 'My tooltip',
+  id: 'placement top-left',
+  placement: 'top-left'
+}
+
+export const PlacementTopRight = Template.bind({})
+PlacementTopRight.args = {
+  children: 'My tooltip',
+  id: 'placement top-right',
+  placement: 'top-right'
+}
+
+export const PlacementBottom = Template.bind({})
+PlacementBottom.args = {
+  children: 'My tooltip',
+  id: 'placement bottom',
+  placement: 'bottom'
+}
+
+export const PlacementBottomLeft = Template.bind({})
+PlacementBottomLeft.args = {
+  children: 'My tooltip',
+  id: 'placement bottom-left',
+  placement: 'bottom-left'
+}
+
+export const PlacementBottomRight = Template.bind({})
+PlacementBottomRight.args = {
+  children: 'My tooltip',
+  id: 'placement bottom-right',
+  placement: 'bottom-right'
+}
+
+export const PlacementRight = Template.bind({})
+PlacementRight.args = {
+  children: 'My tooltip',
+  id: 'placement right',
+  placement: 'right'
+}
+
+export const PlacementRightTop = Template.bind({})
+PlacementRightTop.args = {
+  children: 'My tooltip',
+  id: 'placement right-top',
+  placement: 'right-top'
+}
+
+export const PlacementRightBottom = Template.bind({})
+PlacementRightBottom.args = {
+  children: 'My tooltip',
+  id: 'placement right-bottom',
+  placement: 'right-bottom'
+}
+
+export const PlacementLeft = Template.bind({})
+PlacementLeft.args = {
+  children: 'My tooltip',
+  id: 'placement left',
+  placement: 'left'
+}
+
+export const PlacementLeftTop = Template.bind({})
+PlacementLeftTop.args = {
+  children: 'My tooltip',
+  id: 'placement left-top',
+  placement: 'left-top'
+}
+
+export const PlacementLeftBottom = Template.bind({})
+PlacementLeftBottom.args = {
+  children: 'My tooltip',
+  id: 'placement left-bottom',
+  placement: 'left-bottom'
 }

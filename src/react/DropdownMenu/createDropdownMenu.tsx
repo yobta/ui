@@ -39,7 +39,7 @@ export interface YobtaMenuFactory {
 
 const offset = 0
 
-export const createMenu: YobtaMenuFactory = defaultProps => {
+export const createDropdownMenu: YobtaMenuFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
   const YobtaMenu: YobtaMenuFC = ({
     placement,
@@ -69,7 +69,7 @@ export const createMenu: YobtaMenuFactory = defaultProps => {
     let menu = (
       <nav
         className={clsx(
-          'yobta-menu',
+          'yobta-dropdown-menu',
           !isActive && 'hidden',
           dependencyChangeCount > 0 && 'yobta-menu--animated',
           className

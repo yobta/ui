@@ -5,14 +5,7 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 module.exports = plugin(({ addComponents, prefix }) => {
   addComponents({
     '.yobta-menu': {
-      ...applyPrefixed(
-        prefix,
-        '.yobta-list',
-        '.yobta-paper',
-        '.fixed',
-        '.rounded',
-        '.shadow-md'
-      )
+      ...applyPrefixed(prefix, '.yobta-list', '.rounded')
     },
     '.yobta-menu-header': {
       ...applyPrefixed(prefix, '.yobta-list-header')

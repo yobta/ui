@@ -52,6 +52,7 @@ module.exports = {
     require('./buttonVariantsPlugin.cjs'),
     require('./checkboxPlugin.cjs'),
     require('./dividerPlugin.cjs'),
+    require('./dropdownMenuPlugin.cjs'),
     require('./entypoPlugin.cjs'),
     require('./inkPlugin.cjs'),
     require('./inputPlugin.cjs'),

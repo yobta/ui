@@ -2,6 +2,7 @@
 import { ComponentStory } from '@storybook/react'
 import { FC } from 'react'
 
+import { ChevronSmallRight } from '../entypo/index.js'
 import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
 import { Toggle } from '../Toggle/Toggle.js'
 import { Dropdown } from './Dropdown.js'
@@ -9,8 +10,6 @@ import { Dropdown } from './Dropdown.js'
 export default {
   title: 'React/Dropdown'
 }
-
-export type LinearProgressProps = { className?: string }
 
 type TemplateFC = FC<{ placementOptions: PopoverPlacementOptions[] }>
 const Template: ComponentStory<TemplateFC> = ({ placementOptions }) => {
@@ -23,12 +22,11 @@ const Template: ComponentStory<TemplateFC> = ({ placementOptions }) => {
             className="w-56"
             placement={option}
             id={`dropdown-menu-${option}`}
-            visible
             offset={8}
           >
-            <div className="yobta-menu-item  whitespace-nowrap">Option 1</div>
-            <div className="yobta-menu-item  whitespace-nowrap">Option 2</div>
-            <div className="yobta-menu-item  whitespace-nowrap">Option 3</div>
+            <button className="yobta-menu-item">Option 1</button>
+            <button className="yobta-menu-item">Option 2</button>
+            <button className="yobta-menu-item">Option 3</button>
           </Dropdown>
         </Toggle>
       ))}
@@ -53,3 +51,33 @@ Simple.args = {
     'left-bottom'
   ]
 }
+
+const NestedTemplate: ComponentStory<FC> = () => {
+  return (
+    <Toggle>
+      <button className="yobta-button-primary">Toggle 1</button>
+      <Dropdown
+        className="w-56"
+        placement="bottom-left"
+        id="nested-toggle-1"
+        visible
+      >
+        <Toggle>
+          <button className="yobta-menu-group">
+            <span className="yobta-menu-text">Option 1</span>
+            <ChevronSmallRight className="yobta-addon" />
+          </button>
+          <Dropdown className="w-56" id="nested-dropdown" placement="right-top">
+            <button className="yobta-menu-item">Option 1.1</button>
+            <button className="yobta-menu-item">Option 1.2</button>
+          </Dropdown>
+        </Toggle>
+        <button className="yobta-menu-item">Option 2</button>
+        <button className="yobta-menu-item">Option 3</button>
+      </Dropdown>
+    </Toggle>
+  )
+}
+
+export const Nested = NestedTemplate.bind({})
+Nested.args = {}

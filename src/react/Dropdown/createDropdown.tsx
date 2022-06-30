@@ -21,7 +21,7 @@ import {
   usePopoverCoordinates
 } from '../hooks/index.js'
 import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
-import { getDropdownStyle } from './getDropdownStyle.js'
+import { useDropdownStyle } from './useDropdownStyle.js'
 
 type Props = (
   | {
@@ -35,7 +35,7 @@ type Props = (
 ) & {
   children: ReactNode
   id: string
-  visible: boolean
+  visible?: boolean
   className?: string
   offset?: number
   portalNodeId?: string
@@ -43,12 +43,6 @@ type Props = (
 }
 
 type NavProps = ComponentProps<'nav'>
-
-export interface YobtaMenuFactory {
-  (defaultProps: { className?: string }): ForwardRefExoticComponent<
-    PropsWithoutRef<Props & NavProps> & RefAttributes<HTMLElement>
-  >
-}
 
 const getAnimationClassName = (
   placement: PopoverPlacementOptions,
@@ -83,6 +77,11 @@ const getAnimationClassName = (
 
 const hiddenClassName = 'yobta-dropdown-menu--hidden'
 
+export interface YobtaMenuFactory {
+  (defaultProps: { className?: string }): ForwardRefExoticComponent<
+    PropsWithoutRef<Props & NavProps> & RefAttributes<HTMLElement>
+  >
+}
 export const createDropdown: YobtaMenuFactory = defaultProps => {
   let YobtaDropdown: ForwardRefRenderFunction<HTMLElement, Props & NavProps> = (
     {
@@ -94,13 +93,13 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
       offset = 0,
       producerRef,
       portalNodeId,
-      visible,
-      style
+      visible = false,
+      ...rest
     },
     forwardedRef
   ) => {
     let [, update] = useState({})
-    let [isHidden, setIsHidden] = useState(true)
+    let [forceHide, setForceHide] = useState(!visible)
     let portalNode = usePortalNode(portalNodeId)
     let menuRef = useRef<HTMLElement>(null)
     let combinedRef = useCombineRefs<HTMLElement>(forwardedRef, menuRef)
@@ -108,14 +107,38 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
 
     let placementProps = placement ? { placement } : { preferredPlacement }
 
+    let hasHiddenClassName: boolean =
+      forceHide || Boolean(menuRef.current?.classList.contains(hiddenClassName))
+
+    if (id === 'nested-dropdown') {
+      console.log('visible: ', { visible, isTriggered, hasHiddenClassName })
+    }
     useEffect(() => {
       if (isTriggered && visible && menuRef.current) {
         menuRef.current.classList.remove(hiddenClassName)
-        setIsHidden(false)
-        // menuRef.current.style.display = 'inherit'
-        update({})
+        setForceHide(false)
       }
     }, [visible, isTriggered])
+
+    useEffect(() => {
+      let handleAnimationEnd = (event: AnimationEvent): void => {
+        if (!visible && menuRef.current && event.target === menuRef.current) {
+          menuRef.current.classList.add(hiddenClassName)
+          update({})
+        }
+      }
+      if (menuRef.current) {
+        menuRef.current.addEventListener('animationend', handleAnimationEnd)
+      }
+      return () => {
+        if (menuRef.current) {
+          menuRef.current.removeEventListener(
+            'animationend',
+            handleAnimationEnd
+          )
+        }
+      }
+    }, [visible])
 
     let position = usePopoverCoordinates(
       {
@@ -124,33 +147,26 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
         consumerNode: menuRef.current,
         offset
       },
-      ...(menuRef.current?.classList || [])
+      hasHiddenClassName
     )
+
+    useDropdownStyle(position, menuRef)
 
     let isActive = !!position && visible
     let animationClassName =
-      position &&
-      position.consumerHeight > 0 &&
-      getAnimationClassName(position.placement, isActive)
+      position && getAnimationClassName(position.placement, isActive)
 
     let menu = (
       <nav
+        {...rest}
         className={clsx(
           'yobta-dropdown-menu',
-          isHidden && hiddenClassName,
-          !position?.consumerHeight && 'invisible',
+          forceHide && hiddenClassName,
           animationClassName,
           className
         )}
         id={id}
-        onAnimationEnd={() => {
-          if (!visible && menuRef.current) {
-            menuRef.current.classList.add(hiddenClassName)
-            update({})
-          }
-        }}
         ref={combinedRef}
-        style={{ ...style, ...getDropdownStyle(position) }}
       >
         {children}
       </nav>

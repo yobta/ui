@@ -4,15 +4,20 @@ import {
   cloneElement,
   ReactElement,
   useEffect,
-  useRef
+  useRef,
+  useContext,
+  isValidElement
 } from 'react'
 import { useClickAway, useKey } from 'react-use'
+
+import { ToggleContext } from './ToggleContext.js'
 
 interface ToogleFC {
   (props: {
     children: [ReactElement, ReactElement]
     type?: 'click' | 'mouseover' | 'focus'
   }): JSX.Element
+  displayName: string
 }
 
 type ToggleMode = Parameters<ToogleFC>[0]['type']
@@ -43,15 +48,25 @@ export const Toggle: ToogleFC = ({ children, type }) => {
   let producerRef = useRef<HTMLElement | null>(null)
   let consumerRef = useRef<HTMLElement | null>(null)
   let [producer, consumer] = Children.toArray(children)
-  let [hasFocus, setHasFocus] = useState(false)
+  let [hasFocus, setHasFocus] = useState<boolean>(
+    (isValidElement(consumer) && consumer.props.visible) || false
+  )
   let [hasCursor, setHasCursor] = useState(false)
+  let context = useContext(ToggleContext)
+  let [childToggleIsVisible, setChildToggleIsVisible] =
+    useState<null | boolean>(null)
 
   let visible = hasFocus || hasCursor
   let consumerType = getConsumerType(consumer as ReactElement)
   let mode = type || suggestMode(consumerType)
 
   useClickAway(consumerRef, event => {
-    if (visible && mode === 'click' && event.target !== producerRef.current) {
+    if (
+      visible &&
+      mode === 'click' &&
+      event.target !== producerRef.current &&
+      !childToggleIsVisible
+    ) {
       setHasFocus(false)
       setHasCursor(false)
     }
@@ -60,13 +75,13 @@ export const Toggle: ToogleFC = ({ children, type }) => {
   useKey(
     'Escape',
     () => {
-      if (visible) {
+      if (visible && !childToggleIsVisible) {
         setHasFocus(false)
         setHasCursor(false)
       }
     },
     {},
-    [visible]
+    [visible, childToggleIsVisible]
   )
 
   useEffect(() => {
@@ -112,8 +127,14 @@ export const Toggle: ToogleFC = ({ children, type }) => {
     }
   }, [consumerType])
 
+  useEffect(() => {
+    if (setChildToggleIsVisible !== context.setChildToggleIsVisible) {
+      context.setChildToggleIsVisible(visible)
+    }
+  }, [visible])
+
   return (
-    <>
+    <ToggleContext.Provider value={{ setChildToggleIsVisible }}>
       {cloneElement(producer as ReactElement, {
         ref: producerRef
       })}
@@ -122,6 +143,8 @@ export const Toggle: ToogleFC = ({ children, type }) => {
         producerRef,
         visible
       })}
-    </>
+    </ToggleContext.Provider>
   )
 }
+
+Toggle.displayName = 'YobtaToggle'

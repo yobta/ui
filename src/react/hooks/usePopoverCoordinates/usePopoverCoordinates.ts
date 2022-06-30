@@ -25,8 +25,6 @@ interface PopoverCoordinatesHook {
     },
     ...deps: unknown[]
   ): {
-    consumerWidth: number
-    consumerHeight: number
     x: number
     y: number
     placement: PopoverPlacementOptions
@@ -57,7 +55,6 @@ export const usePopoverCoordinates: PopoverCoordinatesHook = (
     return getPopoverCoordinates({
       offset,
       placement: resultingPlacement,
-      consumerNode,
       producerNode
     })
   }, [

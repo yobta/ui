@@ -10,13 +10,13 @@ export default {
 
 export type LinearProgressProps = { className?: string }
 
-const Template: ComponentStory<'nav'> = props => (
-  <nav {...props} className={clsx('yobta-menu', props.className)} />
-)
+const Template: ComponentStory<'nav'> = ({ className, ...props }) => {
+  return <nav {...props} className={clsx('yobta-menu', className)} />
+}
 
 export const Simple = Template.bind({})
 Simple.args = {
-  className: 'w-80 yobta-bg-paper yobta-ink shadow',
+  className: 'w-80 yobta-paper shadow',
   children: (
     <>
       <header className="yobta-menu-header py-2 mb-2">Mail</header>
@@ -39,7 +39,7 @@ Simple.args = {
 
 export const Advanced = Template.bind({})
 Advanced.args = {
-  className: 'w-80 yobta-bg-paper yobta-ink shadow',
+  className: 'w-80 yobta-paper shadow',
   children: (
     <>
       <header className="yobta-menu-header py-2 mb-2">Mail</header>

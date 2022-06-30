@@ -8,19 +8,20 @@ import {
   useState,
   ForwardRefExoticComponent,
   PropsWithoutRef,
-  RefAttributes
+  RefAttributes,
+  ForwardRefRenderFunction
 } from 'react'
 import clsx from 'clsx'
 
-import { getRefCurrent } from '../helpers/index.js'
+import { useCombineRefs } from '../hooks/index.js'
+import { useTimeout } from '../hooks/useTimeout/useTimeout.js'
 
-type BaseProps = ComponentProps<'input'>
+type BaseProps = Omit<ComponentProps<'input'>, 'children'>
 
 export type InputProps = {
   after?: ReactElement
   before?: ReactElement
   caption?: ReactNode
-  children?: ReactNode
   error?: ReactNode
   fancy?: boolean
 }
@@ -30,19 +31,21 @@ type Props = InputProps & BaseProps
 type InputFactory = (
   config: Partial<Props>
 ) => ForwardRefExoticComponent<
-  PropsWithoutRef<Props> & RefAttributes<HTMLInputElement>
+  PropsWithoutRef<Props> & RefAttributes<InputProps>
 >
 
 export const createInput: InputFactory = ({
   className: configClassName,
   style: configStyle,
   ...config
-}) =>
-  forwardRef((props, externalRef): JSX.Element => {
+}) => {
+  let Input: ForwardRefRenderFunction<InputProps, BaseProps> = (
+    props,
+    forwardedRef
+  ) => {
     let {
       after,
       before,
-      children,
       caption,
       className,
       defaultValue,
@@ -55,38 +58,48 @@ export const createInput: InputFactory = ({
       value,
       ...rest
     } = { ...config, ...props }
-    let defaultRef = useRef<HTMLInputElement>(null)
-    let ref = externalRef || defaultRef
+    let internalRef = useRef<HTMLInputElement>(null)
+    let combinedRef = useCombineRefs<HTMLInputElement>(
+      forwardedRef,
+      internalRef
+    )
     let [state, setState] = useState<string>()
 
-    let node = getRefCurrent<HTMLInputElement>(ref)
+    let inputNode = internalRef.current
+
+    useTimeout(
+      64,
+      () => {
+        setState(internalRef.current?.value)
+      },
+      []
+    )
 
     useEffect(() => {
-      let currentNode = getRefCurrent<HTMLInputElement>(ref)
+      if (inputNode && state !== inputNode.value) {
+        setState(inputNode.value)
+      }
+    })
+
+    useEffect(() => {
       let handleBlur = (): void => {
-        setState(currentNode?.value)
+        setState(inputNode?.value)
       }
-      let handleKeydown = (event: KeyboardEvent): void => {
-        if (children && currentNode && event.code === 'Escape') {
-          currentNode.blur()
-        }
+
+      if (inputNode) {
+        inputNode.addEventListener('blur', handleBlur)
       }
-      if (currentNode) {
-        if (state !== currentNode.value) setState(currentNode.value)
-        currentNode.addEventListener('blur', handleBlur)
-        currentNode.addEventListener('keydown', handleKeydown)
-      }
+
       return () => {
-        if (currentNode) {
-          currentNode.removeEventListener('blur', handleBlur)
-          currentNode.removeEventListener('keydown', handleKeydown)
+        if (inputNode) {
+          inputNode.removeEventListener('blur', handleBlur)
         }
       }
-    }, [children, ref, state])
+    }, [inputNode])
 
     let isFilled =
       typeof (value || defaultValue || placeholder) !== 'undefined' ||
-      !!node?.value
+      !!inputNode?.value
 
     return (
       <label
@@ -94,7 +107,6 @@ export const createInput: InputFactory = ({
           'yobta-input',
           after && 'yobta-input--after',
           before && 'yobta-input--before',
-          children && 'yobta-input--menu',
           disabled && 'yobta-input--disabled',
           fancy && 'yobta-input--fancy',
           isFilled && 'yobta-input--filled',
@@ -110,7 +122,7 @@ export const createInput: InputFactory = ({
             defaultValue={defaultValue}
             disabled={disabled}
             placeholder={placeholder}
-            ref={ref}
+            ref={combinedRef}
             type={type}
             value={value}
           />
@@ -122,7 +134,11 @@ export const createInput: InputFactory = ({
           )}
         </span>
         {after}
-        {children && <nav className="yobta-input__menu">{children}</nav>}
       </label>
     )
-  })
+  }
+
+  let YobtaInput = forwardRef(Input)
+
+  return YobtaInput
+}

@@ -3,35 +3,120 @@ import {
   Children,
   cloneElement,
   ReactElement,
-  useEffect
+  ReactNode,
+  useEffect,
+  useRef,
+  useContext,
+  isValidElement
 } from 'react'
+import { useClickAway, useKey } from 'react-use'
+
+import { ToggleContext } from './ToggleContext.js'
 
 interface ToogleFC {
   (props: {
-    children: [ReactElement, ReactElement]
-    type?: 'tooltip' | 'menu'
+    children: [ReactNode, ReactNode]
+    mode?: 'click' | 'mouseover' | 'focus'
+    activeProducerClassName?: string
   }): JSX.Element
+  displayName: string
 }
 
-function getConsumerType(child: ReactElement): 'tooltip' | 'menu' {
-  let name = typeof child.type === 'function' ? child.type.name : {}
-  switch (name) {
-    case 'value':
-      return 'tooltip'
+type ToggleMode = Parameters<ToogleFC>[0]['mode']
+
+function getConsumerType(child: ReactNode): string {
+  if (isValidElement(child) && typeof child.type !== 'string') {
+    // @ts-ignore
+    return child.type.displayName
+  }
+  return ''
+}
+
+// function getConsumerType(child: ReactElement): string {
+//   if (typeof child.type === 'function') {
+//     return child.type.name
+//   } else if (typeof child.type === 'object') {
+//     return child.type.displayName
+//   }
+//   return ''
+// }
+
+function suggestMode(consumerType: string): ToggleMode {
+  switch (consumerType) {
+    case 'YobtaTooltip':
+      return 'mouseover'
+    case 'YobtaInput':
+      return 'focus'
+    case 'YobtaDropdown':
     default:
-      return 'tooltip'
+      return 'click'
   }
 }
 
-export const Toggle: ToogleFC = ({ children, type }) => {
-  let [producer, consumer] = Children.toArray(children)
-  let [producerNode, setProducerNode] = useState<HTMLElement | null>(null)
-  let [hasFocus, setHasFocus] = useState(false)
-  let [hasCursor, setHasCursor] = useState(false)
+// type Result<T> = {
+//   [Key in keyof T]: T[Key]
+// }
 
-  let consumerType = type || getConsumerType(consumer as ReactElement)
+const getComponentProps = <C extends ReactNode>(
+  child: C
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Record<string, any> => {
+  if (isValidElement(child)) {
+    return child.props
+  }
+  return {}
+}
+
+export const Toggle: ToogleFC = ({
+  children,
+  mode,
+  activeProducerClassName
+}) => {
+  let producerRef = useRef<HTMLElement | null>(null)
+  let consumerRef = useRef<HTMLElement | null>(null)
+  let [producer, consumer] = Children.toArray(children)
+  // let producerProps = getComponentProps(producer)
+  let consumerProps = getComponentProps(consumer)
+  let [hasFocus, setHasFocus] = useState<boolean>(
+    Boolean(consumerProps.visible) || false
+  )
+  let [hasCursor, setHasCursor] = useState(false)
+  let context = useContext(ToggleContext)
+  let [childToggleIsVisible, setChildToggleIsVisible] =
+    useState<null | boolean>(null)
+
+  let visible = hasFocus || hasCursor
+  let consumerType = getConsumerType(consumer)
+  let resultingMode = mode || suggestMode(consumerType)
+
+  useClickAway(consumerRef, event => {
+    if (
+      visible &&
+      resultingMode === 'click' &&
+      event.target !== producerRef.current &&
+      !childToggleIsVisible
+    ) {
+      setHasFocus(false)
+      setHasCursor(false)
+    }
+  })
+
+  useKey(
+    'Escape',
+    () => {
+      if (visible && !childToggleIsVisible) {
+        setHasFocus(false)
+        setHasCursor(false)
+      }
+    },
+    {},
+    [visible, childToggleIsVisible]
+  )
 
   useEffect(() => {
+    let toggle = (): void => {
+      setHasFocus(lastState => !lastState)
+    }
     let handleFocus = (): void => {
       setHasFocus(true)
     }
@@ -45,49 +130,57 @@ export const Toggle: ToogleFC = ({ children, type }) => {
       setHasCursor(false)
     }
 
-    let forceHide = (): void => {
-      setHasCursor(false)
-      setHasFocus(false)
-    }
+    if (producerRef.current) {
+      switch (resultingMode) {
+        case 'click':
+          producerRef.current.addEventListener('click', toggle)
+          break
 
-    if (producerNode) {
-      if (consumerType === 'tooltip') {
-        producerNode.addEventListener('mouseover', handleMouseOver)
-        producerNode.addEventListener('mouseout', handleMouseOut)
-        producerNode.addEventListener('focus', handleFocus)
-        producerNode.addEventListener('blur', handleBlur)
+        case 'mouseover':
+        default:
+          producerRef.current.addEventListener('mouseover', handleMouseOver)
+          producerRef.current.addEventListener('mouseout', handleMouseOut)
+          producerRef.current.addEventListener('focus', handleFocus)
+          producerRef.current.addEventListener('blur', handleBlur)
+          break
       }
-      document.addEventListener('wheel', forceHide, {
-        passive: true
-      })
-      window.addEventListener('resize', forceHide, {
-        passive: true
-      })
     }
     return () => {
-      if (producerNode) {
-        producerNode.removeEventListener('mouseover', handleMouseOver)
-        producerNode.removeEventListener('mouseout', handleMouseOut)
-        producerNode.removeEventListener('focus', handleFocus)
-        producerNode.removeEventListener('blur', handleBlur)
-        document.removeEventListener('wheel', forceHide)
-        window.removeEventListener('resize', forceHide)
+      if (producerRef.current) {
+        producerRef.current.removeEventListener('click', toggle)
+        producerRef.current.removeEventListener('mouseover', handleMouseOver)
+        producerRef.current.removeEventListener('mouseout', handleMouseOut)
+        producerRef.current.removeEventListener('focus', handleFocus)
+        producerRef.current.removeEventListener('blur', handleBlur)
       }
-      forceHide()
     }
-  }, [consumerType, producerNode])
+  }, [consumerType])
+
+  useEffect(() => {
+    if (setChildToggleIsVisible !== context.setChildToggleIsVisible) {
+      context.setChildToggleIsVisible(visible)
+    }
+    if (activeProducerClassName && producerRef.current) {
+      if (visible) {
+        producerRef.current.classList.add(activeProducerClassName)
+      } else {
+        producerRef.current.classList.remove(activeProducerClassName)
+      }
+    }
+  }, [visible])
 
   return (
-    <>
+    <ToggleContext.Provider value={{ setChildToggleIsVisible }}>
       {cloneElement(producer as ReactElement, {
-        ref(node: HTMLElement) {
-          setProducerNode(node)
-        }
+        ref: producerRef
       })}
       {cloneElement(consumer as ReactElement, {
-        producerNode,
-        visible: hasFocus || hasCursor
+        ref: consumerRef,
+        producerRef,
+        visible
       })}
-    </>
+    </ToggleContext.Provider>
   )
 }
+
+Toggle.displayName = 'YobtaToggle'

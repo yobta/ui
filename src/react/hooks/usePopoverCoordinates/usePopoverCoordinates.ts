@@ -22,7 +22,8 @@ interface PopoverCoordinatesHook {
       consumerNode?: HTMLElement | null
       producerNode?: HTMLElement | null
       offset?: number
-    }
+    },
+    ...deps: unknown[]
   ): {
     x: number
     y: number
@@ -32,13 +33,10 @@ interface PopoverCoordinatesHook {
 
 export type PopoverCoordinates = ReturnType<PopoverCoordinatesHook>
 
-export const usePopoverCoordinates: PopoverCoordinatesHook = ({
-  placement,
-  preferredPlacement,
-  consumerNode,
-  producerNode,
-  offset = 0
-}) => {
+export const usePopoverCoordinates: PopoverCoordinatesHook = (
+  { placement, preferredPlacement, consumerNode, producerNode, offset = 0 },
+  ...deps
+) => {
   let disabled = !producerNode || !consumerNode
   let updatesCount = useObserveChanges({ producerNode, disabled })
   return useMemo(() => {
@@ -65,6 +63,7 @@ export const usePopoverCoordinates: PopoverCoordinatesHook = ({
     placement,
     preferredPlacement,
     offset,
-    updatesCount
+    updatesCount,
+    ...deps
   ])
 }

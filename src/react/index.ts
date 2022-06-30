@@ -1,5 +1,6 @@
 export * from './Button/index.js'
 export * from './Cache/index.js'
+export * from './Dropdown/index.js'
 export * from './Input/index.js'
 export * from './LinearProgress/index.js'
 export * from './PolymorphicComponent/index.js'

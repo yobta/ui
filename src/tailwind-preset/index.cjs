@@ -1,6 +1,4 @@
 /* eslint-disable n/global-require */
-/* eslint-disable node/no-missing-require */
-/* eslint-disable node/global-require */
 
 module.exports = {
   theme: {
@@ -8,6 +6,15 @@ module.exports = {
       colors: require('./colors.cjs'),
       animation: {
         'yobta-linear-progress': 'yobta-linear-progress 2s infinite linear',
+        'yobta-dropdown-in-bottom': 'yobtaDropdownInBottom 0.40s ease forwards',
+        'yobta-dropdown-out-bottom':
+          'yobtaDropdownOutBottom 0.32s ease forwards',
+        'yobta-dropdown-in-left': 'yobtaDropdownInLeft 0.40s ease forwards',
+        'yobta-dropdown-out-left': 'yobtaDropdownOutLeft 0.32s ease forwards',
+        'yobta-dropdown-in-right': 'yobtaDropdownInRight 0.40s ease forwards',
+        'yobta-dropdown-out-right': 'yobtaDropdownOutRight 0.32s ease forwards',
+        'yobta-dropdown-in-top': 'yobtaDropdownInTop 0.40s ease forwards',
+        'yobta-dropdown-out-top': 'yobtaDropdownOutTop 0.32s ease forwards',
         'yobta-spinner':
           'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite'
       },
@@ -25,6 +32,38 @@ module.exports = {
             backgroundSize: '400% 100%',
             backgroundPosition: 'left -102% top 0%'
           }
+        },
+        'yobtaDropdownInBottom': {
+          from: { transform: 'translateY(3rem)', opacity: 0 },
+          to: { transform: 'translateY(0)', opacity: 100 }
+        },
+        'yobtaDropdownOutBottom': {
+          from: { transform: 'translateY(0)', opacity: 100 },
+          to: { transform: 'translateY(3rem)', opacity: 0 }
+        },
+        'yobtaDropdownInLeft': {
+          from: { transform: 'translateX(-3rem)', opacity: 0 },
+          to: { transform: 'translateX(0)', opacity: 100 }
+        },
+        'yobtaDropdownOutLeft': {
+          from: { transform: 'translateX(0)', opacity: 100 },
+          to: { transform: 'translateX(-3rem)', opacity: 0 }
+        },
+        'yobtaDropdownInRight': {
+          from: { transform: 'translateX(3rem)', opacity: 0 },
+          to: { transform: 'translateX(0)', opacity: 100 }
+        },
+        'yobtaDropdownOutRight': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(3rem)', opacity: 0 }
+        },
+        'yobtaDropdownInTop': {
+          from: { transform: 'translateY(-3rem)', opacity: 0 },
+          to: { transform: 'translateY(0)', opacity: 100 }
+        },
+        'yobtaDropdownOutTop': {
+          from: { transform: 'translateY(0)', opacity: 100 },
+          to: { transform: 'translateY(-3rem)', opacity: 0 }
         },
         'yobta-spinner': {
           '0%': {
@@ -52,6 +91,7 @@ module.exports = {
     require('./buttonVariantsPlugin.cjs'),
     require('./checkboxPlugin.cjs'),
     require('./dividerPlugin.cjs'),
+    require('./dropdownPlugin.cjs'),
     require('./entypoPlugin.cjs'),
     require('./inkPlugin.cjs'),
     require('./inputPlugin.cjs'),
@@ -59,7 +99,6 @@ module.exports = {
     require('./linkPlugin.cjs'),
     require('./listPlugin.cjs'),
     require('./menuPlugin.cjs'),
-    // require('./paperPlugin'),
     require('./radioButtonPlugin.cjs'),
     require('./scrollBoxPlugin.cjs'),
     require('./spinnerPlugin.cjs'),

@@ -2,8 +2,8 @@ const plugin = require('tailwindcss/plugin')
 
 const applyPrefixed = require('./applyPrefixed.cjs')
 
-module.exports = plugin(({ addBase, prefix }) => {
-  addBase({
+module.exports = plugin(({ addComponents, prefix }) => {
+  addComponents({
     '.yobta-menu': {
       ...applyPrefixed(prefix, '.yobta-list', '.rounded')
     },

@@ -28,7 +28,11 @@ test('unknown', () => {
 })
 
 test('top', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'top' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'top'
+  })
   expect(result).toEqual({
     placement: 'top',
     x: 60,
@@ -37,7 +41,11 @@ test('top', () => {
 })
 
 test('top-left', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'top-left' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'top-left'
+  })
   expect(result).toEqual({
     placement: 'top-left',
     x: 10,
@@ -46,7 +54,11 @@ test('top-left', () => {
 })
 
 test('top-right', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'top-right' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'top-right'
+  })
   expect(result).toEqual({
     placement: 'top-right',
     x: 110,
@@ -55,7 +67,11 @@ test('top-right', () => {
 })
 
 test('bottom', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'bottom' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'bottom'
+  })
   expect(result).toEqual({
     placement: 'bottom',
     x: 60,
@@ -64,7 +80,11 @@ test('bottom', () => {
 })
 
 test('bottom-left', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'bottom-left' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'bottom-left'
+  })
   expect(result).toEqual({
     placement: 'bottom-left',
     x: 10,
@@ -73,7 +93,11 @@ test('bottom-left', () => {
 })
 
 test('bottom-right', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'bottom-right' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'bottom-right'
+  })
   expect(result).toEqual({
     placement: 'bottom-right',
     x: 110,
@@ -82,7 +106,11 @@ test('bottom-right', () => {
 })
 
 test('left', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'left' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'left'
+  })
   expect(result).toEqual({
     placement: 'left',
     x: 2,
@@ -91,7 +119,11 @@ test('left', () => {
 })
 
 test('left-top', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'left-top' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'left-top'
+  })
   expect(result).toEqual({
     placement: 'left-top',
     x: 2,
@@ -100,7 +132,11 @@ test('left-top', () => {
 })
 
 test('left-bottom', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'left-bottom' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'left-bottom'
+  })
   expect(result).toEqual({
     placement: 'left-bottom',
     x: 2,
@@ -109,7 +145,11 @@ test('left-bottom', () => {
 })
 
 test('right', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'right' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'right'
+  })
   expect(result).toEqual({
     placement: 'right',
     x: 118,
@@ -118,7 +158,11 @@ test('right', () => {
 })
 
 test('right-top', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'right-top' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'right-top'
+  })
   expect(result).toEqual({
     placement: 'right-top',
     x: 118,
@@ -127,7 +171,11 @@ test('right-top', () => {
 })
 
 test('right-bottom', () => {
-  let result = getPopoverCoordinates({ producerNode, offset, placement: 'right-bottom' })
+  let result = getPopoverCoordinates({
+    producerNode,
+    offset,
+    placement: 'right-bottom'
+  })
   expect(result).toEqual({
     placement: 'right-bottom',
     x: 118,

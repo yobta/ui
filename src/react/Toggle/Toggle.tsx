@@ -15,12 +15,12 @@ import { ToggleContext } from './ToggleContext.js'
 interface ToogleFC {
   (props: {
     children: [ReactElement, ReactElement]
-    type?: 'click' | 'mouseover' | 'focus'
+    mode?: 'click' | 'mouseover' | 'focus'
   }): JSX.Element
   displayName: string
 }
 
-type ToggleMode = Parameters<ToogleFC>[0]['type']
+type ToggleMode = Parameters<ToogleFC>[0]['mode']
 
 function getConsumerType(child: ReactElement): string {
   if (typeof child.type === 'function') {
@@ -44,7 +44,7 @@ function suggestMode(consumerType: string): ToggleMode {
   }
 }
 
-export const Toggle: ToogleFC = ({ children, type }) => {
+export const Toggle: ToogleFC = ({ children, mode }) => {
   let producerRef = useRef<HTMLElement | null>(null)
   let consumerRef = useRef<HTMLElement | null>(null)
   let [producer, consumer] = Children.toArray(children)
@@ -58,12 +58,12 @@ export const Toggle: ToogleFC = ({ children, type }) => {
 
   let visible = hasFocus || hasCursor
   let consumerType = getConsumerType(consumer as ReactElement)
-  let mode = type || suggestMode(consumerType)
+  let resultingMode = mode || suggestMode(consumerType)
 
   useClickAway(consumerRef, event => {
     if (
       visible &&
-      mode === 'click' &&
+      resultingMode === 'click' &&
       event.target !== producerRef.current &&
       !childToggleIsVisible
     ) {
@@ -102,7 +102,7 @@ export const Toggle: ToogleFC = ({ children, type }) => {
     }
 
     if (producerRef.current) {
-      switch (mode) {
+      switch (resultingMode) {
         case 'click':
           producerRef.current.addEventListener('click', toggle)
           break

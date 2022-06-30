@@ -9,17 +9,28 @@ it('should be eventually true when online', async () => {
   expect(result).toBe(undefined)
 })
 
-it('shuld wait for online event when pffline', async () => {
+it('shuld wait for online event and then unsubsribe', async () => {
   let addEventListenerMock = vi.fn()
+  let removeEventListenerMock = vi.fn()
   vi.stubGlobal('navigator', { onLine: false })
   vi.stubGlobal('addEventListener', addEventListenerMock)
+  vi.stubGlobal('removeEventListener', removeEventListenerMock)
 
   let promise = whenOnline()
+
+  expect(removeEventListenerMock).toBeCalledTimes(0)
+  expect(addEventListenerMock).toBeCalledTimes(1)
   expect(addEventListenerMock).toHaveBeenCalledWith(
     'online',
     expect.any(Function)
   )
 
   addEventListenerMock.mock.calls[0][1]()
-  expect(promise).resolves.toBe(undefined)
+
+  await expect(promise).resolves.toBe(undefined)
+  expect(removeEventListenerMock).toBeCalledTimes(1)
+  expect(removeEventListenerMock).toHaveBeenCalledWith(
+    'online',
+    expect.any(Function)
+  )
 })

@@ -12,6 +12,7 @@ import {
 import clsx from 'clsx'
 
 import { getRefCurrent } from '../helpers/index.js'
+import { subscribe } from '../helpers/subscribe/index.js'
 
 type BaseProps = Omit<ComponentProps<'textarea'>, 'children'>
 
@@ -71,14 +72,12 @@ export const createTextArea: TextAreaFactory = ({
       }
       if (node) {
         if (state !== node.value) setState(node.value)
-        node.addEventListener('blur', handleBlur)
-        node.addEventListener('input', handleInput)
       }
+      let unsubscribeBlur = subscribe(node, 'blur', handleBlur)
+      let unsubscribeInput = subscribe(node, 'input', handleInput)
       return () => {
-        if (node) {
-          node.removeEventListener('blur', handleBlur)
-          node.removeEventListener('input', handleInput)
-        }
+        unsubscribeBlur()
+        unsubscribeInput()
       }
     }, [autoHeight, ref, state])
 

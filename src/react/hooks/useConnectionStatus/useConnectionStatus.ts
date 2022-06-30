@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { subscribe } from '../../helpers/subscribe/index.js'
+
 interface ConnectionStatusHook {
   (): { connected: null | boolean; hasChange: boolean }
 }
@@ -22,12 +24,12 @@ export const useConnectionStatus: ConnectionStatusHook = () => {
     } else {
       setFalse()
     }
-    window.addEventListener('online', setTrue)
-    window.addEventListener('offline', setFalse)
+    let unsubscribeOnline = subscribe(window, 'online', setTrue)
+    let unsubscribeOffline = subscribe(window, 'offline', setFalse)
 
     return () => {
-      window.removeEventListener('online', setTrue)
-      window.removeEventListener('offline', setFalse)
+      unsubscribeOnline()
+      unsubscribeOffline()
     }
   }, [])
 

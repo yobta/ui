@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 
+import { batch } from '../../helpers/batch/index.js'
+import { subscribe } from '../../helpers/subscribe/index.js'
+
 interface ObserveChangesHook {
   (args: { producerNode?: HTMLElement | null; disabled?: boolean }): number
 }
@@ -19,16 +22,23 @@ export const useObserveChanges: ObserveChangesHook = ({
       ? new ResizeObserver(update)
       : null
 
-    if (producerNode && !disabled) {
-      resizeObzerver?.observe(producerNode)
-      window.addEventListener('scroll', update, { passive: true })
-      window.addEventListener('resize', update, { passive: true })
+    let shouldObserve = producerNode && !disabled
+
+    let eventTypes = shouldObserve ? ['resize', 'scroll'] : []
+
+    let unsubsribe = eventTypes.map(eventType =>
+      subscribe(window, eventType, update, { passive: true })
+    )
+
+    if (shouldObserve) {
+      resizeObzerver?.observe(producerNode as HTMLElement)
     }
+
     return () => {
-      if (producerNode && !disabled) {
-        resizeObzerver?.unobserve(producerNode)
-        window.removeEventListener('scroll', update)
-        window.removeEventListener('resize', update)
+      batch(...unsubsribe)
+
+      if (shouldObserve) {
+        resizeObzerver?.unobserve(producerNode as HTMLElement)
       }
     }
   }, [disabled, producerNode])

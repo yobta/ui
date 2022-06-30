@@ -9,11 +9,9 @@ import {
   useContext,
   isValidElement
 } from 'react'
-import { useKey } from 'react-use'
 
-import { batch } from '../helpers/batch/index.js'
-import { useClickAway } from '../hooks/useClickAway/index.js'
-import { subscribe } from '../helpers/subscribe/index.js'
+import { batch, subscribe } from '../helpers/index.js'
+import { useClickAway, useEscapeKey } from '../hooks/index.js'
 import { ToggleContext } from './ToggleContext.js'
 
 interface ToogleFC {
@@ -104,17 +102,12 @@ export const Toggle: ToogleFC = ({
     }
   })
 
-  useKey(
-    'Escape',
-    () => {
-      if (visible && !childToggleIsVisible) {
-        setHasFocus(false)
-        setHasCursor(false)
-      }
-    },
-    {},
-    [visible, childToggleIsVisible]
-  )
+  useEscapeKey(() => {
+    if (visible && !childToggleIsVisible) {
+      setHasFocus(false)
+      setHasCursor(false)
+    }
+  }, [visible, childToggleIsVisible])
 
   useEffect(() => {
     let toggle = (): void => {

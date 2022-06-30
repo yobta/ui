@@ -1,19 +1,7 @@
 interface Subscribe {
-  (
-    window: Window,
-    ...args: Parameters<Window['addEventListener']>
-  ): VoidFunction
-  (
-    document: Document,
-    ...args: Parameters<Document['addEventListener']>
-  ): VoidFunction
-  (
-    htmlElement: HTMLElement | null,
-    ...args: Parameters<HTMLElement['addEventListener']>
-  ): VoidFunction
-  (
-    eventTarget: EventTarget | null,
-    ...args: Parameters<EventTarget['addEventListener']>
+  <T extends Window | Document | HTMLElement | EventTarget>(
+    eventTarget: T | null,
+    ...args: Parameters<T['addEventListener']>
   ): VoidFunction
 }
 

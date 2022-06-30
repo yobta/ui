@@ -11,9 +11,11 @@ export const useClickAway = <E extends Event = Event>(
   eventTypes: string[] = defaultEventTypes
 ): void => {
   let callbackRef = useRef(onClickAway)
+
   useEffect(() => {
     callbackRef.current = onClickAway
   }, [onClickAway])
+
   useEffect(() => {
     let handler = (event: Event): void => {
       let { current: element } = ref

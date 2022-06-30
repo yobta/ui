@@ -110,9 +110,6 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
     let hasHiddenClassName: boolean =
       forceHide || Boolean(menuRef.current?.classList.contains(hiddenClassName))
 
-    if (id === 'nested-dropdown') {
-      console.log('visible: ', { visible, isTriggered, hasHiddenClassName })
-    }
     useEffect(() => {
       if (isTriggered && visible && menuRef.current) {
         menuRef.current.classList.remove(hiddenClassName)

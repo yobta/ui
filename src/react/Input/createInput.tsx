@@ -15,6 +15,7 @@ import clsx from 'clsx'
 
 import { useCombineRefs } from '../hooks/index.js'
 import { useTimeout } from '../hooks/useTimeout/useTimeout.js'
+import { subscribe } from '../helpers/subscribe/index.js'
 
 type BaseProps = Omit<ComponentProps<'input'>, 'children'>
 
@@ -86,15 +87,7 @@ export const createInput: InputFactory = ({
         setState(inputNode?.value)
       }
 
-      if (inputNode) {
-        inputNode.addEventListener('blur', handleBlur)
-      }
-
-      return () => {
-        if (inputNode) {
-          inputNode.removeEventListener('blur', handleBlur)
-        }
-      }
+      return subscribe(inputNode, 'blur', handleBlur)
     }, [inputNode])
 
     let isFilled =

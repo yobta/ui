@@ -9,8 +9,9 @@ import {
   useContext,
   isValidElement
 } from 'react'
-import { useClickAway, useKey } from 'react-use'
 
+import { batch, subscribe } from '../helpers/index.js'
+import { useClickAway, useEscapeKey } from '../hooks/index.js'
 import { ToggleContext } from './ToggleContext.js'
 
 interface ToogleFC {
@@ -101,17 +102,12 @@ export const Toggle: ToogleFC = ({
     }
   })
 
-  useKey(
-    'Escape',
-    () => {
-      if (visible && !childToggleIsVisible) {
-        setHasFocus(false)
-        setHasCursor(false)
-      }
-    },
-    {},
-    [visible, childToggleIsVisible]
-  )
+  useEscapeKey(() => {
+    if (visible && !childToggleIsVisible) {
+      setHasFocus(false)
+      setHasCursor(false)
+    }
+  }, [visible, childToggleIsVisible])
 
   useEffect(() => {
     let toggle = (): void => {
@@ -130,29 +126,25 @@ export const Toggle: ToogleFC = ({
       setHasCursor(false)
     }
 
-    if (producerRef.current) {
-      switch (resultingMode) {
-        case 'click':
-          producerRef.current.addEventListener('click', toggle)
-          break
+    let unsubscribe: VoidFunction[] = []
 
-        case 'mouseover':
-        default:
-          producerRef.current.addEventListener('mouseover', handleMouseOver)
-          producerRef.current.addEventListener('mouseout', handleMouseOut)
-          producerRef.current.addEventListener('focus', handleFocus)
-          producerRef.current.addEventListener('blur', handleBlur)
-          break
-      }
+    switch (resultingMode) {
+      case 'click':
+        unsubscribe.push(subscribe(producerRef.current, 'click', toggle))
+        break
+
+      case 'mouseover':
+      default:
+        unsubscribe.push(
+          subscribe(producerRef.current, 'mouseover', handleMouseOver),
+          subscribe(producerRef.current, 'mouseout', handleMouseOut),
+          subscribe(consumerRef.current, 'focus', handleFocus),
+          subscribe(consumerRef.current, 'blur', handleBlur)
+        )
+        break
     }
     return () => {
-      if (producerRef.current) {
-        producerRef.current.removeEventListener('click', toggle)
-        producerRef.current.removeEventListener('mouseover', handleMouseOver)
-        producerRef.current.removeEventListener('mouseout', handleMouseOut)
-        producerRef.current.removeEventListener('focus', handleFocus)
-        producerRef.current.removeEventListener('blur', handleBlur)
-      }
+      batch(...unsubscribe)
     }
   }, [consumerType])
 

@@ -101,14 +101,14 @@ describe('ObserveChangesHook', () => {
     expect(addEventListenerMock).toBeCalledTimes(2)
     expect(addEventListenerMock.mock.calls).toEqual([
       [
-        'scroll',
+        'resize',
         expect.any(Function),
         {
           passive: true
         }
       ],
       [
-        'resize',
+        'scroll',
         expect.any(Function),
         {
           passive: true

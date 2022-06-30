@@ -22,6 +22,7 @@ import {
 } from '../hooks/index.js'
 import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'
 import { useDropdownStyle } from './useDropdownStyle.js'
+import { subscribe } from '../helpers/subscribe/index.js'
 
 type Props = (
   | {
@@ -124,17 +125,12 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
           update({})
         }
       }
-      if (menuRef.current) {
-        menuRef.current.addEventListener('animationend', handleAnimationEnd)
-      }
-      return () => {
-        if (menuRef.current) {
-          menuRef.current.removeEventListener(
-            'animationend',
-            handleAnimationEnd
-          )
-        }
-      }
+      let unsubscribe = subscribe(
+        menuRef.current,
+        'animationend',
+        handleAnimationEnd as EventListenerOrEventListenerObject
+      )
+      return unsubscribe
     }, [visible])
 
     let position = usePopoverCoordinates(

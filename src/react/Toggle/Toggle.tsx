@@ -3,6 +3,7 @@ import {
   Children,
   cloneElement,
   ReactElement,
+  ReactNode,
   useEffect,
   useRef,
   useContext,
@@ -14,7 +15,7 @@ import { ToggleContext } from './ToggleContext.js'
 
 interface ToogleFC {
   (props: {
-    children: [ReactElement, ReactElement]
+    children: [ReactNode, ReactNode]
     mode?: 'click' | 'mouseover' | 'focus'
     activeProducerClassName?: string
   }): JSX.Element
@@ -23,15 +24,22 @@ interface ToogleFC {
 
 type ToggleMode = Parameters<ToogleFC>[0]['mode']
 
-function getConsumerType(child: ReactElement): string {
-  if (typeof child.type === 'function') {
-    return child.type.name
-  } else if (typeof child.type === 'object') {
+function getConsumerType(child: ReactNode): string {
+  if (isValidElement(child) && typeof child.type !== 'string') {
     // @ts-ignore
     return child.type.displayName
   }
   return ''
 }
+
+// function getConsumerType(child: ReactElement): string {
+//   if (typeof child.type === 'function') {
+//     return child.type.name
+//   } else if (typeof child.type === 'object') {
+//     return child.type.displayName
+//   }
+//   return ''
+// }
 
 function suggestMode(consumerType: string): ToggleMode {
   switch (consumerType) {
@@ -45,6 +53,20 @@ function suggestMode(consumerType: string): ToggleMode {
   }
 }
 
+// type Result<T> = {
+//   [Key in keyof T]: T[Key]
+// }
+
+const getComponentProps = <C extends ReactNode>(
+  child: C
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Record<string, any> => {
+  if (isValidElement(child)) {
+    return child.props
+  }
+  return {}
+}
+
 export const Toggle: ToogleFC = ({
   children,
   mode,
@@ -53,8 +75,10 @@ export const Toggle: ToogleFC = ({
   let producerRef = useRef<HTMLElement | null>(null)
   let consumerRef = useRef<HTMLElement | null>(null)
   let [producer, consumer] = Children.toArray(children)
+  // let producerProps = getComponentProps(producer)
+  let consumerProps = getComponentProps(consumer)
   let [hasFocus, setHasFocus] = useState<boolean>(
-    (isValidElement(consumer) && consumer.props.visible) || false
+    Boolean(consumerProps.visible) || false
   )
   let [hasCursor, setHasCursor] = useState(false)
   let context = useContext(ToggleContext)
@@ -62,7 +86,7 @@ export const Toggle: ToogleFC = ({
     useState<null | boolean>(null)
 
   let visible = hasFocus || hasCursor
-  let consumerType = getConsumerType(consumer as ReactElement)
+  let consumerType = getConsumerType(consumer)
   let resultingMode = mode || suggestMode(consumerType)
 
   useClickAway(consumerRef, event => {

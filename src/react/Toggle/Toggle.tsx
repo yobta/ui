@@ -16,6 +16,7 @@ interface ToogleFC {
   (props: {
     children: [ReactElement, ReactElement]
     mode?: 'click' | 'mouseover' | 'focus'
+    activeProducerClassName?: string
   }): JSX.Element
   displayName: string
 }
@@ -44,7 +45,11 @@ function suggestMode(consumerType: string): ToggleMode {
   }
 }
 
-export const Toggle: ToogleFC = ({ children, mode }) => {
+export const Toggle: ToogleFC = ({
+  children,
+  mode,
+  activeProducerClassName
+}) => {
   let producerRef = useRef<HTMLElement | null>(null)
   let consumerRef = useRef<HTMLElement | null>(null)
   let [producer, consumer] = Children.toArray(children)
@@ -130,6 +135,13 @@ export const Toggle: ToogleFC = ({ children, mode }) => {
   useEffect(() => {
     if (setChildToggleIsVisible !== context.setChildToggleIsVisible) {
       context.setChildToggleIsVisible(visible)
+    }
+    if (activeProducerClassName && producerRef.current) {
+      if (visible) {
+        producerRef.current.classList.add(activeProducerClassName)
+      } else {
+        producerRef.current.classList.remove(activeProducerClassName)
+      }
     }
   }, [visible])
 

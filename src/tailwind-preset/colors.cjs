@@ -125,6 +125,7 @@ const tooltipTextDark = 'var(--yobta-color-tooltip-text-dark, #414141)'
 // text-paper
 
 module.exports = {
+  current: 'currentColor',
   paper: {
     DEFAULT: paper,
     dark: paperDark,

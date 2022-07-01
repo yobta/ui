@@ -9,7 +9,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         prefix,
         '.appearance-none',
         '.border-2',
-        '.yobta-ink',
+        '.border-current',
         '.rounded-full',
         '.cursor-pointer',
         '.relative'

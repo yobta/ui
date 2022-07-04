@@ -3,7 +3,7 @@ const preset = require('./src/tailwind-preset/index.cjs')
 
 module.exports = {
   darkMode: 'class',
-  content: ['./src/**/*.tsx', './src/**/*.story.tsx'],
+  content: ['./src/**/*.tsx', './src/**/*.mdx'],
   plugins: [],
   presets: [preset],
   theme: {

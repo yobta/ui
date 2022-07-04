@@ -4,21 +4,21 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addComponents, prefix }) => {
   addComponents({
-    '.yobta-button-text': {
-      ...applyPrefixed(prefix, '.text-sm', '.font-medium', '.leading-6')
-    },
     '.yobta-button': {
       ...applyPrefixed(
         prefix,
-        '.px-4',
-        '.rounded',
-        '.yobta-button-text',
         '.flex',
-        '.gap-2',
+        '.font-medium',
+        '.gap-x-2',
+        '.h-10',
         '.items-center',
         '.justify-center',
+        '.leading-6',
+        '.px-4',
         '.relative',
-        '.h-10'
+        '.rounded',
+        '.text-current',
+        '.text-sm'
       ),
       'transition': 'filter',
       '&:before': {

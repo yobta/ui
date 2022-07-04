@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: make build
       - name: Docs
-        run: make docs
+        run: npm run build-storybook
         env:
           FORCE_COLOR: 2
   short:

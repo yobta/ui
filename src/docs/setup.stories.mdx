@@ -1,0 +1,44 @@
+import { Canvas } from '@storybook/addon-docs'
+
+<Meta title="Getting Started/Setup" />
+
+# Setup Yobta
+
+## With Next.js
+
+Easiest way to get started with [`Next.js`], [`Tailwind`] and [`Typescript`] is to use our npx installer.
+To do that run the following command in console:
+
+```bash
+npx yobta next my-app-name
+```
+
+## With Tailwind
+
+To use Yobta UI with any React Tailwind app, install `@yobta/ui`:
+
+```bash
+npm i @yobta/ui
+```
+
+And add following to the `tailwind.config.js` file:
+
+```js
+module.exports = {
+  darkMode: 'media', // or `class`
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@yobta/ui/**/*.{js,jsx}'
+  ],
+  presets: [require('@yobta/ui/tailwind-preset')]
+}
+```
+
+Mind that `@yobta/ui`is the ECMAScript module, and you need to
+configure your application for ESM. For Next.js you can
+configure it with [`esmExternals`].
+
+[`esmexternals`]: https://nextjs.org/blog/next-11-1#es-modules-support
+[`next.js`]: https://nextjs.org/
+[`tailwind`]: https://tailwindcss.com/
+[`typescript`]: https://www.typescriptlang.org/

@@ -22,6 +22,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         ...applyPrefixed(
           prefix,
           '.absolute',
+          '.bg-current',
           '.left-1',
           '.top-1',
           '.right-1',
@@ -31,7 +32,6 @@ module.exports = plugin(({ addBase, prefix }) => {
           '.transition',
           '.duration-100'
         ),
-        backgroundColor: 'currentColor',
         borderRadius: 'inherit',
         content: '""'
       },

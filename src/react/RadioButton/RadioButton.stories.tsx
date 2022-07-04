@@ -5,7 +5,9 @@ export default {
 }
 
 const Checkbox: ComponentStory<'input'> = props => (
-  <input type="radio" {...props} />
+  <div className="yobta-paper">
+    <input type="radio" {...props} />
+  </div>
 )
 
 export const Default = Checkbox.bind({})
@@ -13,5 +15,5 @@ Default.args = {
   className: 'yobta-radio'
 }
 
-export const Primary = Checkbox.bind({})
-Primary.args = { className: 'yobta-radio yobta-ink-secondary' }
+export const Secondary = Checkbox.bind({})
+Secondary.args = { className: 'yobta-radio yobta-ink-secondary' }

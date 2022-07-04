@@ -1,0 +1,29 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { AddUser, RemoveUser } from '../entypo'
+
+<Meta title="CSS Components/Addon" />
+
+# Addon
+
+Addon is the helper css class that is useful for adding margins to the icons inside the list items.
+
+export const Template = args => (
+  <nav className="yobta-menu yobta-paper-2">
+    <h2 className="yobta-menu-header">Manage Users</h2>
+    <button className="yobta-menu-group">
+      <AddUser className="yobta-addon" />
+      <div className="yobta-menu-text">Add user</div>
+    </button>
+    <button className="yobta-menu-group">
+      <RemoveUser className="yobta-addon" />
+      <div className="yobta-menu-text">Remove user</div>
+    </button>
+  </nav>
+)
+
+<Canvas>
+  <Story name="Addon 1" args={{}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

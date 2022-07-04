@@ -1,0 +1,48 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import * as icons from './'
+import { AppStore } from './'
+
+<Meta title="React Components/Icons" />
+
+# Icons
+
+## Basic Usage
+
+By default, icons come at 20×20px size with a 2px margin and inherit the current text color.
+
+<Canvas>
+  <Story name="Basic Usage">
+    <AppStore />
+  </Story>
+</Canvas>
+
+## Customizing Icons
+
+Now let&apos;s change the size and color of the icon.
+
+<Canvas>
+  <Story name="Customizing Icons">
+    <AppStore className="w-8 h-8 yobta-ink-primary" />
+  </Story>
+</Canvas>
+
+## All Icons
+
+<Canvas>
+  <Story name="All Icons">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+      {Object.entries(icons).map(([key, Icon]) => (
+        <div
+          className="flex flex-col gap-y-2 justify-center items-center"
+          key={key}
+        >
+          <Icon className="w-8 h-8" />
+          <span className="text-xs truncate" title={key}>
+            {key}
+          </span>
+        </div>
+      ))}
+    </div>
+  </Story>
+</Canvas>

@@ -2,13 +2,13 @@ const plugin = require('tailwindcss/plugin')
 
 const applyPrefixed = require('./applyPrefixed.cjs')
 
-module.exports = plugin(({ addComponents, prefix, theme }) => {
+module.exports = plugin(({ addUtilities, prefix, theme }) => {
   let colors = theme('colors') || {}
 
   let { DEFAULT, dark, ...inkColors } = colors.ink || {}
 
   if (DEFAULT && dark) {
-    addComponents({
+    addUtilities({
       '.yobta-ink': {
         ...applyPrefixed(
           prefix,
@@ -21,7 +21,7 @@ module.exports = plugin(({ addComponents, prefix, theme }) => {
   }
 
   Object.keys(inkColors).forEach(key => {
-    addComponents({
+    addUtilities({
       [`.yobta-ink-${key}`]: {
         ...applyPrefixed(
           prefix,

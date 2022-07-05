@@ -38,10 +38,13 @@ module.exports = plugin(({ addBase, prefix }) => {
         ...applyPrefixed(prefix, '.scale-100')
       },
       '&:invalid': {
-        ...applyPrefixed(prefix, '.yobta-ink-error'),
-        '&::before': {
-          ...applyPrefixed(prefix, '.yobta-bg-error')
-        }
+        ...applyPrefixed(
+          prefix,
+          '.bg-ink-error',
+          '.dark:bg-ink-error-dark',
+          '.text-ink-error',
+          '.dark:text-ink-error-dark'
+        )
       }
     }
   })

@@ -32,8 +32,9 @@ check:
 	npm run lint
 	npm run spellcheck
 
-update:
-	npm run update
+ncu:
+	npm run ncu
+	make i
 
 bump:
 	npm version patch

@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { Archive, ChevronSmallRight, Mail, PaperPlane, Star } from '../entypo'
 
 export default {
-  title: 'CSS/List'
+  title: 'CSS/List old'
 }
 
 export type LinearProgressProps = { className?: string }

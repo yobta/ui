@@ -47,7 +47,13 @@ module.exports = plugin(({ addBase, prefix }) => {
         }
       },
       '& .yobta-textarea__caption--error-bullet': {
-        ...applyPrefixed(prefix, '.hidden', '.ml-1', '.yobta-ink-error')
+        ...applyPrefixed(
+          prefix,
+          '.hidden',
+          '.ml-1',
+          '.bg-ink-error',
+          '.dark:bg-ink-error-dark'
+        )
       },
       '&.yobta-textarea--filled, &:focus-within': {
         '& .yobta-textarea__caption': {

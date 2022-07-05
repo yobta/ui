@@ -32,6 +32,6 @@
     "useDefineForClassFields": true
   },
   "include": ["src"],
-  "exclude": ["vite.config.ts"],
+  "exclude": ["vite.config.ts", "storybook-static", ".storybook", "lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

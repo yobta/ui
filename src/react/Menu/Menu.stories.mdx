@@ -15,12 +15,18 @@ To create menues you only need to add those class names to html tags.
 
 <Canvas>
   <Story name="Basic Usage">
-    <menu className="yobta-menu yobta-paper-2">
+    <nav className="yobta-menu yobta-paper-2" role="menu">
       <h4 className="yobta-menu-header">Menu Header</h4>
-      <button className="yobta-menu-item">Menu Item 1</button>
-      <button className="yobta-menu-item">Menu Item 2</button>
-      <button className="yobta-menu-item">Menu Item 2</button>
-    </menu>
+      <div className="yobta-menu-item" role="menuitem">
+        Menu Item 1
+      </div>
+      <div className="yobta-menu-item" role="menuitem">
+        Menu Item 2
+      </div>
+      <div className="yobta-menu-item" role="menuitem">
+        Menu Item 2
+      </div>
+    </nav>
   </Story>
 </Canvas>
 
@@ -28,21 +34,21 @@ To create menues you only need to add those class names to html tags.
 
 <Canvas>
   <Story name="With Left Icon">
-    <menu className="yobta-menu yobta-paper-2">
+    <nav className="yobta-menu yobta-paper-2" role="menu">
       <h4 className="yobta-menu-header">Menu Header</h4>
-      <button className="yobta-menu-item">
+      <div className="yobta-menu-item" role="menuitem">
         <PaperPlane />
         Sent mail
-      </button>
-      <button className="yobta-menu-item">
+      </div>
+      <div className="yobta-menu-item" role="menuitem">
         <Mail />
         Drafts
-      </button>
-      <button className="yobta-menu-item">
+      </div>
+      <div className="yobta-menu-item" role="menuitem">
         <Star />
         Starred
-      </button>
-    </menu>
+      </div>
+    </nav>
   </Story>
 </Canvas>
 
@@ -50,21 +56,21 @@ To create menues you only need to add those class names to html tags.
 
 <Canvas>
   <Story name="With Right Icon">
-    <menu className="yobta-menu yobta-paper-2">
+    <nav className="yobta-menu yobta-paper-2" role="menu">
       <h4 className="yobta-menu-header">Menu Header</h4>
-      <button className="yobta-menu-item">
+      <div className="yobta-menu-item" role="menuitem">
         <span>Sent mail</span>
         <PaperPlane />
-      </button>
-      <button className="yobta-menu-item">
+      </div>
+      <div className="yobta-menu-item" role="menuitem">
         <span>Drafts</span>
         <Mail />
-      </button>
-      <button className="yobta-menu-item">
+      </div>
+      <div className="yobta-menu-item" role="menuitem">
         <span>Starred</span>
         <Star />
-      </button>
-    </menu>
+      </div>
+    </nav>
   </Story>
 </Canvas>
 
@@ -72,23 +78,23 @@ To create menues you only need to add those class names to html tags.
 
 <Canvas>
   <Story name="With Left and Right Icons">
-    <menu className="yobta-menu yobta-paper-2">
+    <nav className="yobta-menu yobta-paper-2" role="menu">
       <lh4i className="yobta-menu-header">Menu Header</lh4i>
-      <button className="yobta-menu-item">
+      <button className="yobta-menu-item" role="menuitem">
         <PaperPlane />
         Sent mail
         <ChevronSmallRight />
       </button>
-      <button className="yobta-menu-item">
+      <button className="yobta-menu-item" role="menuitem">
         <Mail />
         Drafts
         <ChevronSmallRight />
       </button>
-      <button className="yobta-menu-item">
+      <button className="yobta-menu-item" role="menuitem">
         <Star />
         Starred
         <ChevronSmallRight />
       </button>
-    </menu>
+    </nav>
   </Story>
 </Canvas>

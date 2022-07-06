@@ -39,8 +39,8 @@ MutiallyExclusive.args = {
   children: (
     <>
       <header className="yobta-list-header">Choose one</header>
-      <label className="yobta-menu-group">
-        <span className="yobta-menu-text">One</span>
+      <label className="yobta-menu-item">
+        <span>One</span>
         <input
           type="radio"
           name="option"
@@ -48,8 +48,8 @@ MutiallyExclusive.args = {
           value="1"
         />
       </label>
-      <label className="yobta-menu-group">
-        <span className="yobta-menu-text">Two</span>
+      <label className="yobta-menu-item">
+        <span>Two</span>
         <input
           type="radio"
           name="option"
@@ -57,8 +57,8 @@ MutiallyExclusive.args = {
           value="2"
         />
       </label>
-      <label className="yobta-menu-group">
-        <span className="yobta-menu-text">Three</span>
+      <label className="yobta-menu-item">
+        <span>Three</span>
         <input
           type="radio"
           name="option"

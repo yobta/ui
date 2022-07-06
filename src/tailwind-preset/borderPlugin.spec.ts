@@ -32,16 +32,16 @@ test('colors', async () => {
   expect(addUtilities).toBeCalledWith(
     {
       '.yobta-border-paper': {
-        '@apply border border-paper dark:border-paper-dark': {}
+        '@apply border-paper dark:border-paper-dark': {}
       },
       '.yobta-border-paper-2': {
-        '@apply border border-paper-2 dark:border-paper-2-dark': {}
+        '@apply border-paper-2 dark:border-paper-2-dark': {}
       },
       '.yobta-border-paper-primary': {
-        '@apply border border-paper-primary dark:border-paper-primary-dark': {}
+        '@apply border-paper-primary dark:border-paper-primary-dark': {}
       },
       '.yobta-border-color-1': {
-        '@apply border border-color-1 dark:border-color-1-dark': {}
+        '@apply border-color-1 dark:border-color-1-dark': {}
       }
     },
     { variants: ['checked', 'focus-within'] }

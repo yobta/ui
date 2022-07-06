@@ -63,8 +63,8 @@ const NestedTemplate: ComponentStory<FC> = () => {
         visible
       >
         <Toggle activeProducerClassName="yobta-info">
-          <button className="yobta-menu-group">
-            <span className="yobta-menu-text">Option 1</span>
+          <button className="yobta-menu-item">
+            <span>Option 1</span>
             <ChevronSmallRight className="yobta-addon" />
           </button>
           <Dropdown

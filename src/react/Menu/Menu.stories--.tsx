@@ -43,26 +43,26 @@ Advanced.args = {
   children: (
     <>
       <header className="yobta-menu-header py-2 mb-2">Mail</header>
-      <button type="button" className="yobta-menu-group yobta-ink">
-        <PaperPlane className="yobta-menu-icon" />
-        <span className="yobta-menu-text">Sent mail</span>
-        <ChevronSmallRight className="yobta-menu-icon" />
+      <button type="button" className="yobta-menu-item yobta-ink">
+        <PaperPlane />
+        <span>Sent mail</span>
+        <ChevronSmallRight />
       </button>
-      <button type="button" className="yobta-menu-group yobta-ink" disabled>
-        <Mail className="yobta-menu-icon" />
-        <span className="yobta-menu-text">Drafts</span>
-        <ChevronSmallRight className="yobta-menu-icon" />
+      <button type="button" className="yobta-menu-item yobta-ink" disabled>
+        <Mail />
+        <span>Drafts</span>
+        <ChevronSmallRight />
       </button>
-      <a href="button" className="yobta-menu-group yobta-ink">
-        <Star className="yobta-menu-icon" />
-        <span className="yobta-menu-text">Starred</span>
-        <ChevronSmallRight className="yobta-menu-icon" />
+      <a href="button" className="yobta-menu-item yobta-ink">
+        <Star />
+        <span>Starred</span>
+        <ChevronSmallRight />
       </a>
       <hr className="mx-4 my-2 border-dotted border-t-2" />
-      <button type="button" className="yobta-menu-group yobta-ink-secondary">
-        <Archive className="yobta-menu-icon" />
-        <span className="yobta-menu-text">Archive</span>
-        <ChevronSmallRight className="yobta-menu-icon" />
+      <button type="button" className="yobta-menu-item yobta-ink-secondary">
+        <Archive />
+        <span>Archive</span>
+        <ChevronSmallRight />
       </button>
     </>
   )

@@ -82,7 +82,6 @@ module.exports = {
     }
   },
   plugins: [
-    require('./addonPlugin.cjs'),
     require('./badgePlugin.cjs'),
     require('./basePlugin.cjs'),
     require('./bgPlugin.cjs'),

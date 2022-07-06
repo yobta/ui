@@ -8,12 +8,7 @@ function createClasses(base, colors, prefix) {
     DEFAULT && dark
       ? {
           [`.yobta-${base}`]: {
-            ...applyPrefixed(
-              prefix,
-              '.border',
-              `.${base}`,
-              `.dark:${base}-dark`
-            )
+            ...applyPrefixed(prefix, `.${base}`, `.dark:${base}-dark`)
           }
         }
       : {}
@@ -28,7 +23,6 @@ function createClasses(base, colors, prefix) {
         [`.yobta-${base}-${key}`]: {
           ...applyPrefixed(
             prefix,
-            '.border',
             `.${base}-${key}`,
             `.dark:${base}-${key}-dark`
           )

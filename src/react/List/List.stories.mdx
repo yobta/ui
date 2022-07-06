@@ -1,0 +1,94 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Archive, ChevronSmallRight, Mail, PaperPlane, Star } from '../entypo'
+
+<Meta title="CSS Components/List" />
+
+# List
+
+List plugin adds following class names to the components `@layer`
+of tailwind styles: `.yobta-list`, `.yobta-list-header`,
+`.yobta-list-item`.
+
+To work with list you only need to add those class names to html tags.
+
+## Basic Usage
+
+<Canvas>
+  <Story name="Basic Usage">
+    <ul className="yobta-list yobta-paper-2">
+      <li className="yobta-list-header">List Header</li>
+      <li className="yobta-list-item">List Item 1</li>
+      <li className="yobta-list-item">List Item 2</li>
+      <li className="yobta-list-item">List Item 2</li>
+    </ul>
+  </Story>
+</Canvas>
+
+## With Left Icon
+
+<Canvas>
+  <Story name="With Left Icon">
+    <ul className="yobta-list yobta-paper-2">
+      <li className="yobta-list-header">List Header</li>
+      <li className="yobta-list-item">
+        <PaperPlane />
+        Sent mail
+      </li>
+      <li className="yobta-list-item">
+        <Mail />
+        Drafts
+      </li>
+      <li className="yobta-list-item">
+        <Star />
+        Starred
+      </li>
+    </ul>
+  </Story>
+</Canvas>
+
+## With Right Icon
+
+<Canvas>
+  <Story name="With Right Icon">
+    <ul className="yobta-list yobta-paper-2">
+      <li className="yobta-list-header">List Header</li>
+      <li className="yobta-list-item">
+        <span>Sent mail</span>
+        <PaperPlane />
+      </li>
+      <li className="yobta-list-item">
+        <span>Drafts</span>
+        <Mail />
+      </li>
+      <li className="yobta-list-item">
+        <span>Starred</span>
+        <Star />
+      </li>
+    </ul>
+  </Story>
+</Canvas>
+
+## With Left and Right Icons
+
+<Canvas>
+  <Story name="With Left and Right Icons">
+    <ul className="yobta-list yobta-paper-2">
+      <li className="yobta-list-header">List Header</li>
+      <li className="yobta-list-item">
+        <PaperPlane />
+        Sent mail
+        <ChevronSmallRight />
+      </li>
+      <li className="yobta-list-item">
+        <Mail />
+        Drafts
+        <ChevronSmallRight />
+      </li>
+      <li className="yobta-list-item">
+        <Star />
+        Starred
+        <ChevronSmallRight />
+      </li>
+    </ul>
+  </Story>
+</Canvas>

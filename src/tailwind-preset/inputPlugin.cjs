@@ -124,7 +124,12 @@ module.exports = plugin(({ addBase, prefix }) => {
           }
         },
         '& :invalid ~ .yobta-input__label .yobta-input__label--error-bullet': {
-          ...applyPrefixed(prefix, '.inline', '.yobta-ink-error')
+          ...applyPrefixed(
+            prefix,
+            '.inline',
+            '.text-ink-error',
+            '.dark:text-ink-error-dark'
+          )
         }
       }
     },

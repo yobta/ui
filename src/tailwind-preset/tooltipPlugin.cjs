@@ -27,6 +27,7 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
     '.yobta-tooltip--animated': {
       ...applyPrefixed(
         prefix,
+        '.delay-500',
         '.transition-opacity',
         '.ease-out',
         '.duration-700',

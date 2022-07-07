@@ -84,7 +84,7 @@ export interface YobtaMenuFactory {
   >
 }
 export const createDropdown: YobtaMenuFactory = defaultProps => {
-  let YobtaDropdown: ForwardRefRenderFunction<HTMLElement, Props & NavProps> = (
+  let Dropdown: ForwardRefRenderFunction<HTMLElement, Props & NavProps> = (
     {
       placement,
       preferredPlacement,
@@ -168,10 +168,10 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
     return <>{portalNode ? createPortal(menu, portalNode) : menu}</>
   }
 
-  let YobtaDropdownWithRef = forwardRef(YobtaDropdown)
+  let YobtaDropdown = forwardRef(Dropdown)
 
-  YobtaDropdownWithRef.defaultProps = defaultProps
-  YobtaDropdownWithRef.displayName = 'YobtaDropdown'
+  YobtaDropdown.defaultProps = defaultProps
+  YobtaDropdown.displayName = 'YobtaDropdown'
 
-  return YobtaDropdownWithRef
+  return YobtaDropdown
 }

@@ -31,6 +31,7 @@ type Props = (
   id: string
   animate?: boolean
   className?: string
+  dotSize?: number
   offset?: number
   portalNodeId?: string
   producerRef?: RefObject<HTMLElement | null>
@@ -57,6 +58,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
       animate,
       children,
       className,
+      dotSize = 5.33,
       id,
       offset = 5.33,
       producerRef,
@@ -91,8 +93,8 @@ export const createTooltip: TooltipFactory = defaultProps => {
           )}
           ref={spotRef}
           style={{
-            height: offset,
-            width: offset,
+            height: dotSize,
+            width: dotSize,
             top: position?.y,
             left: position?.x
           }}

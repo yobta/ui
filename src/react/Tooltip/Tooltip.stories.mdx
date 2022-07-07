@@ -20,7 +20,7 @@ available screen space.
   <Story name="Basic Usage">
     <Toggle>
       <button type="button" className="yobta-button-primary">
-        A button
+        Hover me
       </button>
       <Tooltip id="basic-tooltip">A hint</Tooltip>
     </Toggle>
@@ -40,7 +40,7 @@ it has enough screen space to stay fully visible.
   <Story name="Preffered Placement">
     <Toggle>
       <button type="button" className="yobta-button-primary">
-        A button
+        Hover me
       </button>
       <Tooltip id="preffered-tooltip" prefferedPlacement="left">
         A hint
@@ -57,7 +57,7 @@ Use the `placement` option if you want to control the tooltip position.
   <Story name="Strict Placement">
     <Toggle>
       <button type="button" className="yobta-button-primary">
-        A button
+        Hover me
       </button>
       <Tooltip id="strict-tooltip" placement="left">
         A hint
@@ -142,7 +142,7 @@ on a click event.
             ref={producerRef}
             type="button"
           >
-            A button
+            Click me
           </button>
           <Tooltip
             id="controlled-tooltip"
@@ -159,15 +159,52 @@ on a click event.
 
 ## Offset
 
-The offset property determines the size of the tooltip dot and the distance between the elements.
+The numeric `offset` property determines the distance between the
+producer, dot, and tooltip elements.
 
 <Canvas>
   <Story name="Offset">
     <Toggle>
       <button type="button" className="yobta-button-primary">
-        A button
+        Hover me
       </button>
-      <Tooltip id="strict-tooltip" offset={12} visible>
+      <Tooltip id="strict-tooltip" offset={12}>
+        A hint
+      </Tooltip>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## Dot Size
+
+The numeric `dotSize` property determines the size of the tooltip's
+dot element. Set it to `0` to hide the dot.
+
+<Canvas>
+  <Story name="Dot Size">
+    <Toggle>
+      <button type="button" className="yobta-button-primary">
+        Hover me
+      </button>
+      <Tooltip id="strict-tooltip" dotSize={0}>
+        A hint
+      </Tooltip>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## Disabling Tooltip Transition
+
+By default, the tooltip has an animated fade-in effect. If you want
+to disable it, pass an `{ animate: false }` property.
+
+<Canvas>
+  <Story name="Transition">
+    <Toggle>
+      <button type="button" className="yobta-button-primary">
+        Hover me
+      </button>
+      <Tooltip id="strict-tooltip" animate={false}>
         A hint
       </Tooltip>
     </Toggle>

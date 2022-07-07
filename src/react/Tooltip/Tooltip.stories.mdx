@@ -1,0 +1,158 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useState, useRef } from 'react'
+
+import { Toggle } from '../Toggle'
+import { Tooltip } from './Tooltip'
+
+export const fixStorybug = (Tooltip.displayName = 'YobtaTooltip')
+
+<Meta title="MDX/Tooltip" />
+
+# Tooltip
+
+## Basic Usage
+
+When used with `Toggle`, the tooltip requires only the `id` attribute.
+The tooltip placement will be calculated automatically, based on
+available screen space.
+
+<Canvas>
+  <Story name="Basic Usage">
+    <Toggle>
+      <button type="button" className="yobta-button-primary">
+        A button
+      </button>
+      <Tooltip id="basic-tooltip">A hint</Tooltip>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## Preffered Placement
+
+The `prefferedPlacement` property is an option when you want to show
+your tooltip at a specific side of the described element, but you're
+not sure if you have enough screen space to do that.
+
+In this case, the `Tooltip` will try to respect your setting unless
+it has enough screen space to stay fully visible.
+
+<Canvas>
+  <Story name="Preffered Placement">
+    <Toggle>
+      <button type="button" className="yobta-button-primary">
+        A button
+      </button>
+      <Tooltip id="preffered-tooltip" prefferedPlacement="left">
+        A hint
+      </Tooltip>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## Strict Placement
+
+Use the `placement` option if you want to fully control the tooltip position.
+
+<Canvas>
+  <Story name="Strict Placement">
+    <Toggle>
+      <button type="button" className="yobta-button-primary">
+        A button
+      </button>
+      <Tooltip id="strict-tooltip" placement="left">
+        A hint
+      </Tooltip>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## All Placement Options
+
+Both `placement` and `prefferedPlacement` properties can accept the following options:
+
+<Canvas>
+  <Story name="All Placement Options">
+    <div className="grid grid-cols-3 gap-6">
+      {[
+        'top-left',
+        'top',
+        'top-right',
+        'left-top',
+        'left',
+        'left-botom',
+        'bottom-right',
+        'bottom',
+        'bottom-left',
+        'right-top',
+        'right',
+        'right-bottom'
+      ].map((placement, index) => (
+        <Toggle key={index}>
+          <button className="yobta-button-primary" type="button">
+            {placement}
+          </button>
+          <Tooltip id={`tooltip-${placement}`} placement={placement}>
+            A hint
+          </Tooltip>
+        </Toggle>
+      ))}
+    </div>
+  </Story>
+</Canvas>
+
+## Visible Tooltip
+
+Sometimes we need our tooltips to be initially visible. To do that
+add `{visibility: true}` to the `Tooltip` props and `Toggle` will
+recognise it as `mouseover` state.
+
+<Canvas>
+  <Story name="Visible Tooltip">
+    <Toggle>
+      <button type="button" className="yobta-button-primary">
+        Hover me
+      </button>
+      <Tooltip id="visible-tooltip" visible>
+        Hide me
+      </Tooltip>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## Controlled Tooltip
+
+You can fully controll tooltip state if you pass a boolean value
+as `visible` property and an `ObjectRef<HtmlElement>` as
+`producerRef` property.
+
+In the following example we don't use `Toggle` component, but
+rather controll the tooltip manually by toggling it's `visibility`
+on a click event.
+
+<Canvas>
+  <Story name="Controlled Tooltip">
+    {() => {
+      const [visible, setVisible] = useState(true)
+      const producerRef = useRef(null)
+      return (
+        <>
+          <button
+            className="yobta-button-secondary"
+            onClick={() => setVisible(lastVisible => !lastVisible)}
+            ref={producerRef}
+            type="button"
+          >
+            A button
+          </button>
+          <Tooltip
+            id="controlled-tooltip"
+            visible={visible}
+            producerRef={producerRef}
+          >
+            A controlled tooltip
+          </Tooltip>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

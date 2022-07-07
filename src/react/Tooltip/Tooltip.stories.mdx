@@ -51,7 +51,7 @@ it has enough screen space to stay fully visible.
 
 ## Strict Placement
 
-Use the `placement` option if you want to fully control the tooltip position.
+Use the `placement` option if you want to control the tooltip position.
 
 <Canvas>
   <Story name="Strict Placement">
@@ -154,5 +154,22 @@ on a click event.
         </>
       )
     }}
+  </Story>
+</Canvas>
+
+## Offset
+
+The offset property determines the size of the tooltip dot and the distance between the elements.
+
+<Canvas>
+  <Story name="Offset">
+    <Toggle>
+      <button type="button" className="yobta-button-primary">
+        A button
+      </button>
+      <Tooltip id="strict-tooltip" offset={12} visible>
+        A hint
+      </Tooltip>
+    </Toggle>
   </Story>
 </Canvas>

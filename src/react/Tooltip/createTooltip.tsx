@@ -31,6 +31,7 @@ type Props = (
   id: string
   animate?: boolean
   className?: string
+  offset?: number
   portalNodeId?: string
   producerRef?: RefObject<HTMLElement | null>
   visible?: boolean
@@ -47,8 +48,6 @@ export interface TooltipFactory {
   >
 }
 
-const offset = 8
-
 export const createTooltip: TooltipFactory = defaultProps => {
   // eslint-disable-next-line prefer-let/prefer-let
   const Tooltip: ForwardRefRenderFunction<HTMLElement, Props & NodeProps> = (
@@ -59,6 +58,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
       children,
       className,
       id,
+      offset = 5.33,
       producerRef,
       portalNodeId,
       visible
@@ -91,6 +91,8 @@ export const createTooltip: TooltipFactory = defaultProps => {
           )}
           ref={spotRef}
           style={{
+            height: offset,
+            width: offset,
             top: position?.y,
             left: position?.x
           }}

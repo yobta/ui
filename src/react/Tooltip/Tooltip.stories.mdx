@@ -137,6 +137,7 @@ on a click event.
       return (
         <>
           <button
+            aria-describedby="controlled-tooltip"
             className="yobta-button-secondary"
             onClick={() => setVisible(lastVisible => !lastVisible)}
             ref={producerRef}
@@ -168,7 +169,7 @@ producer, dot, and tooltip elements.
       <button type="button" className="yobta-button-primary">
         Hover me
       </button>
-      <Tooltip id="strict-tooltip" offset={12}>
+      <Tooltip id="offset-tooltip" offset={12}>
         A hint
       </Tooltip>
     </Toggle>
@@ -186,14 +187,14 @@ dot element. Set it to `0` to hide the dot.
       <button type="button" className="yobta-button-primary">
         Hover me
       </button>
-      <Tooltip id="strict-tooltip" dotSize={0}>
+      <Tooltip id="dot-size-tooltip" dotSize={0}>
         A hint
       </Tooltip>
     </Toggle>
   </Story>
 </Canvas>
 
-## Disabling Tooltip Transition
+## Disabling Animation
 
 By default, the tooltip has an animated fade-in effect. If you want
 to disable it, pass an `{ animate: false }` property.
@@ -204,9 +205,21 @@ to disable it, pass an `{ animate: false }` property.
       <button type="button" className="yobta-button-primary">
         Hover me
       </button>
-      <Tooltip id="strict-tooltip" animate={false}>
+      <Tooltip id="no-animation-tooltip" animate={false}>
         A hint
       </Tooltip>
     </Toggle>
   </Story>
+</Canvas>
+
+## Customizing Tooltip Colors
+
+<Canvas>
+  <Story name="Customizing Colors">Do Later</Story>
+</Canvas>
+
+## Tooltip Variants
+
+<Canvas>
+  <Story name="Variants">Do Later</Story>
 </Canvas>

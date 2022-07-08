@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin')
 
 const applyPrefixed = require('./applyPrefixed.cjs')
 
-module.exports = plugin(({ addUtilities, prefix, theme }) => {
+module.exports = plugin(({ addComponents, prefix, theme }) => {
   let color = theme('colors')
   let classes = Object.entries(color.yobta).reduce(
     (acc, [key]) => ({
@@ -13,5 +13,5 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
     }),
     {}
   )
-  addUtilities(classes)
+  addComponents(classes)
 })

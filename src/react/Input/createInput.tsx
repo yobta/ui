@@ -1,11 +1,8 @@
 import {
   forwardRef,
-  useEffect,
-  useRef,
   ReactElement,
   ReactNode,
   ComponentProps,
-  useState,
   ForwardRefExoticComponent,
   PropsWithoutRef,
   RefAttributes,
@@ -13,13 +10,11 @@ import {
 } from 'react'
 import clsx from 'clsx'
 
-import { useCombineRefs } from '../hooks/index.js'
-import { useTimeout } from '../hooks/useTimeout/useTimeout.js'
-import { subscribe } from '../helpers/subscribe/index.js'
+import { useInput } from './useInput.js'
 
-type BaseProps = Omit<ComponentProps<'input'>, 'children'>
+type InputNodeProps = Omit<ComponentProps<'input'>, 'children'>
 
-export type InputProps = {
+type YobtaProps = {
   after?: ReactElement
   before?: ReactElement
   caption?: ReactNode
@@ -27,12 +22,12 @@ export type InputProps = {
   fancy?: boolean
 }
 
-type Props = InputProps & BaseProps
+export type YobtaInputProps = YobtaProps & InputNodeProps
 
 type InputFactory = (
-  config: Partial<Props>
+  config: Partial<YobtaInputProps>
 ) => ForwardRefExoticComponent<
-  PropsWithoutRef<Props> & RefAttributes<InputProps>
+  PropsWithoutRef<YobtaInputProps> & RefAttributes<YobtaProps>
 >
 
 export const createInput: InputFactory = ({
@@ -40,7 +35,7 @@ export const createInput: InputFactory = ({
   style: configStyle,
   ...config
 }) => {
-  let Input: ForwardRefRenderFunction<InputProps, BaseProps> = (
+  let Input: ForwardRefRenderFunction<YobtaInputProps, InputNodeProps> = (
     props,
     forwardedRef
   ) => {
@@ -59,38 +54,13 @@ export const createInput: InputFactory = ({
       value,
       ...rest
     } = { ...config, ...props }
-    let inputRef = useRef<HTMLInputElement>(null)
-    let combinedRef = useCombineRefs<HTMLInputElement>(forwardedRef, inputRef)
-    let [state, setState] = useState<string | undefined>(
-      String(typeof value === 'undefined' ? defaultValue : value)
-    )
 
-    let inputNode = inputRef.current
-
-    useTimeout(
-      64,
-      () => {
-        setState(inputRef.current?.value)
-      },
-      []
-    )
-
-    useEffect(() => {
-      if (inputNode && state !== inputNode.value) {
-        setState(inputNode.value)
-      }
+    let { combinedRef, isFilled } = useInput({
+      forwardedRef,
+      value,
+      defaultValue,
+      placeholder
     })
-
-    useEffect(() => {
-      let handleBlur = (): void => {
-        setState(inputNode?.value)
-      }
-
-      return subscribe(inputNode, 'blur', handleBlur)
-    }, [inputNode])
-
-    let isFilled =
-      typeof (state || placeholder) !== 'undefined' || !!inputNode?.value
 
     return (
       <label

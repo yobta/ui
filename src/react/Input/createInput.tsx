@@ -46,7 +46,7 @@ export const createInput: InputFactory = ({
       className,
       defaultValue,
       disabled,
-      error = '•',
+      error,
       fancy,
       placeholder,
       style,
@@ -69,6 +69,7 @@ export const createInput: InputFactory = ({
           after && 'yobta-input--after',
           before && 'yobta-input--before',
           disabled && 'yobta-input--disabled',
+          error && 'yobta-input--error',
           fancy && 'yobta-input--fancy',
           isFilled && 'yobta-input--filled',
           configClassName,
@@ -87,10 +88,10 @@ export const createInput: InputFactory = ({
             type={type}
             value={value}
           />
-          {caption && (
-            <span className="yobta-input__label">
+          {(caption || error) && (
+            <span className="yobta-input__caption">
               {caption}
-              <span className="yobta-input__label--error-bullet">{error}</span>
+              <span className="yobta-input__bullet">{error || '•'}</span>
             </span>
           )}
         </span>

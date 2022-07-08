@@ -8,14 +8,16 @@ module.exports = plugin(({ addBase, prefix }) => {
       '.yobta-input': {
         ...applyPrefixed(
           prefix,
-          '.flex',
-          '.items-center',
+          '.bg-paper-2',
           '.cursor-text',
+          '.flex',
+          '.gap-x-2',
+          '.h-12',
+          '.items-center',
           '.relative',
           '.rounded',
-          '.bg-paper-2',
-          '.h-12',
           '.text-ink',
+          '.px-4',
           '.dark:bg-paper-2-dark',
           '.dark:text-ink-dark'
         ),
@@ -27,7 +29,6 @@ module.exports = plugin(({ addBase, prefix }) => {
             '.items-center',
             '.min-w-0',
             '.overflow-hidden',
-            '.px-4',
             '.relative',
             '.self-stretch'
           ),
@@ -35,6 +36,14 @@ module.exports = plugin(({ addBase, prefix }) => {
         },
         '&.yobta-input--disabled': {
           ...applyPrefixed(prefix, '.yobta-disabled')
+        },
+        '& .yobta-entypo': {
+          marginLeft: '2px',
+          marginRight: '2px',
+          flexShrink: 0
+        },
+        '& .yobta-entypo + .yobta-input__wrapper': {
+          marginLeft: '1.5rem'
         },
         '&.yobta-input--fancy': {
           ...applyPrefixed(prefix, '.rounded-b-none'),
@@ -97,14 +106,15 @@ module.exports = plugin(({ addBase, prefix }) => {
             opacity: 0.4
           }
         },
-        '& .yobta-input__label--error-bullet': {
-          ...applyPrefixed(prefix, '.hidden', '.ml-1')
+        '& .yobta-input__bullet': {
+          ...applyPrefixed(prefix, '.hidden')
         },
-        '& .yobta-input__label': {
+        '& .yobta-input__caption': {
           ...applyPrefixed(
             prefix,
-            '.block',
+            '.flex',
             '.items-center',
+            '.gap-x-[0.25rem]',
             '.left-0',
             '.right-0',
             '.truncate',
@@ -118,12 +128,20 @@ module.exports = plugin(({ addBase, prefix }) => {
           transition: 'font 0.32s ease, transform 0.32s ease'
         },
         '&.yobta-input--filled, &:focus-within': {
-          '& .yobta-input__label': {
+          '& .yobta-input__caption': {
             'font-size': '0.64rem',
             'transform': 'translateY(-56%)'
           }
         },
-        '& :invalid ~ .yobta-input__label .yobta-input__label--error-bullet': {
+        '& :invalid ~ .yobta-input__caption .yobta-input__bullet': {
+          ...applyPrefixed(
+            prefix,
+            '.inline',
+            '.text-ink-error',
+            '.dark:text-ink-error-dark'
+          )
+        },
+        '&.yobta-input--error .yobta-input__bullet': {
           ...applyPrefixed(
             prefix,
             '.inline',

@@ -61,7 +61,7 @@ export const createInput: InputFactory = ({
     } = { ...config, ...props }
     let inputRef = useRef<HTMLInputElement>(null)
     let combinedRef = useCombineRefs<HTMLInputElement>(forwardedRef, inputRef)
-    let [state, setState] = useState<string>(
+    let [state, setState] = useState<string | undefined>(
       String(typeof value === 'undefined' ? defaultValue : value)
     )
 

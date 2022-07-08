@@ -1,11 +1,8 @@
 import {
   forwardRef,
-  useEffect,
-  useRef,
   ReactElement,
   ReactNode,
   ComponentProps,
-  useState,
   ForwardRefExoticComponent,
   PropsWithoutRef,
   RefAttributes,
@@ -13,13 +10,11 @@ import {
 } from 'react'
 import clsx from 'clsx'
 
-import { useCombineRefs } from '../hooks/index.js'
-import { useTimeout } from '../hooks/useTimeout/useTimeout.js'
-import { subscribe } from '../helpers/subscribe/index.js'
+import { useInput } from './useInput.js'
 
-type BaseProps = Omit<ComponentProps<'input'>, 'children'>
+type InputNodeProps = Omit<ComponentProps<'input'>, 'children'>
 
-export type InputProps = {
+type YobtaProps = {
   after?: ReactElement
   before?: ReactElement
   caption?: ReactNode
@@ -27,12 +22,12 @@ export type InputProps = {
   fancy?: boolean
 }
 
-type Props = InputProps & BaseProps
+export type YobtaInputProps = YobtaProps & InputNodeProps
 
 type InputFactory = (
-  config: Partial<Props>
+  config: Partial<YobtaInputProps>
 ) => ForwardRefExoticComponent<
-  PropsWithoutRef<Props> & RefAttributes<InputProps>
+  PropsWithoutRef<YobtaInputProps> & RefAttributes<YobtaProps>
 >
 
 export const createInput: InputFactory = ({
@@ -40,7 +35,7 @@ export const createInput: InputFactory = ({
   style: configStyle,
   ...config
 }) => {
-  let Input: ForwardRefRenderFunction<InputProps, BaseProps> = (
+  let Input: ForwardRefRenderFunction<YobtaInputProps, InputNodeProps> = (
     props,
     forwardedRef
   ) => {
@@ -51,7 +46,7 @@ export const createInput: InputFactory = ({
       className,
       defaultValue,
       disabled,
-      error = '•',
+      error,
       fancy,
       placeholder,
       style,
@@ -59,40 +54,13 @@ export const createInput: InputFactory = ({
       value,
       ...rest
     } = { ...config, ...props }
-    let internalRef = useRef<HTMLInputElement>(null)
-    let combinedRef = useCombineRefs<HTMLInputElement>(
+
+    let { combinedRef, isFilled } = useInput({
       forwardedRef,
-      internalRef
-    )
-    let [state, setState] = useState<string>()
-
-    let inputNode = internalRef.current
-
-    useTimeout(
-      64,
-      () => {
-        setState(internalRef.current?.value)
-      },
-      []
-    )
-
-    useEffect(() => {
-      if (inputNode && state !== inputNode.value) {
-        setState(inputNode.value)
-      }
+      value,
+      defaultValue,
+      placeholder
     })
-
-    useEffect(() => {
-      let handleBlur = (): void => {
-        setState(inputNode?.value)
-      }
-
-      return subscribe(inputNode, 'blur', handleBlur)
-    }, [inputNode])
-
-    let isFilled =
-      typeof (value || defaultValue || placeholder) !== 'undefined' ||
-      !!inputNode?.value
 
     return (
       <label
@@ -101,6 +69,7 @@ export const createInput: InputFactory = ({
           after && 'yobta-input--after',
           before && 'yobta-input--before',
           disabled && 'yobta-input--disabled',
+          error && 'yobta-input--error',
           fancy && 'yobta-input--fancy',
           isFilled && 'yobta-input--filled',
           configClassName,
@@ -119,10 +88,10 @@ export const createInput: InputFactory = ({
             type={type}
             value={value}
           />
-          {caption && (
-            <span className="yobta-input__label">
+          {(caption || error) && (
+            <span className="yobta-input__caption">
               {caption}
-              <span className="yobta-input__label--error-bullet">{error}</span>
+              <span className="yobta-input__bullet">{error || '•'}</span>
             </span>
           )}
         </span>

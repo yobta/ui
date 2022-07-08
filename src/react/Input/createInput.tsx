@@ -59,19 +59,18 @@ export const createInput: InputFactory = ({
       value,
       ...rest
     } = { ...config, ...props }
-    let internalRef = useRef<HTMLInputElement>(null)
-    let combinedRef = useCombineRefs<HTMLInputElement>(
-      forwardedRef,
-      internalRef
+    let inputRef = useRef<HTMLInputElement>(null)
+    let combinedRef = useCombineRefs<HTMLInputElement>(forwardedRef, inputRef)
+    let [state, setState] = useState<string>(
+      String(typeof value === 'undefined' ? defaultValue : value)
     )
-    let [state, setState] = useState<string>()
 
-    let inputNode = internalRef.current
+    let inputNode = inputRef.current
 
     useTimeout(
       64,
       () => {
-        setState(internalRef.current?.value)
+        setState(inputRef.current?.value)
       },
       []
     )
@@ -91,8 +90,7 @@ export const createInput: InputFactory = ({
     }, [inputNode])
 
     let isFilled =
-      typeof (value || defaultValue || placeholder) !== 'undefined' ||
-      !!inputNode?.value
+      typeof (state || placeholder) !== 'undefined' || !!inputNode?.value
 
     return (
       <label

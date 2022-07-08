@@ -1,0 +1,55 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Star } from '../entypo'
+import { Input } from '../Input'
+
+<Meta title="MDX/Input" />
+
+# Input
+
+## Basic Usage
+
+<Canvas>
+  <Story name="Basic Usage">
+    <Input />
+  </Story>
+</Canvas>
+
+## Caption
+
+<Canvas>
+  <Story name="Caption">
+    <Input caption="Hello" />
+  </Story>
+</Canvas>
+
+## Default Value
+
+<Canvas>
+  <Story name="Default Value">
+    <Input caption="Hello" defaultValue="Human" />
+  </Story>
+</Canvas>
+
+## Invalid State
+
+<Canvas>
+  <Story name="Invalid State">
+    <div className="grid gap-2">
+      <Input caption="Hello" required />
+      <Input error="Say hello!" />
+    </div>
+  </Story>
+</Canvas>
+
+## Addons
+
+<Canvas>
+  <Story name="Addons">
+    <Input
+      before={<Star />}
+      after={<Star />}
+      caption="Hello"
+      defaultValue="Human"
+    />
+  </Story>
+</Canvas>

@@ -11,7 +11,6 @@ import {
 import { batch, subscribe } from '../helpers/index.js'
 import { useClickAway, useEscapeKey } from '../hooks/index.js'
 import { getComponentProps } from './getComponentProps.js'
-import { getConsumerType } from './getConsumerType.js'
 import { suggestMode } from './suggestMode.js'
 import { ToggleContext } from './ToggleContext.js'
 
@@ -54,8 +53,8 @@ export const useToggle: ToggleHook = ({
     useState<null | boolean>(null)
 
   let visible = hasFocus || hasCursor
-  let consumerType = getConsumerType(consumer)
-  let resultingMode = mode || suggestMode(consumerType)
+  let resultingMode =
+    mode || suggestMode(producerRef.current, consumerRef.current)
 
   useClickAway(consumerRef, event => {
     if (
@@ -77,6 +76,7 @@ export const useToggle: ToggleHook = ({
   }, [visible, childToggleIsVisible])
 
   useEffect(() => {
+    let focusLock: boolean = false
     let toggle = (): void => {
       setHasFocus(lastState => !lastState)
     }
@@ -84,7 +84,9 @@ export const useToggle: ToggleHook = ({
       setHasFocus(true)
     }
     let handleBlur = (): void => {
-      setHasFocus(false)
+      if (!focusLock) {
+        setHasFocus(false)
+      }
     }
     let handleMouseOver = (): void => {
       setHasCursor(true)
@@ -93,15 +95,20 @@ export const useToggle: ToggleHook = ({
       setHasCursor(false)
     }
 
+    let lockFocus = (): void => {
+      focusLock = true
+      let unlockFocus = (): void => {
+        unsubscribe()
+        focusLock = false
+        setHasFocus(false)
+      }
+      let unsubscribe = subscribe(document, 'mouseup', unlockFocus)
+    }
+
     let unsubscribe: VoidFunction[] = []
 
     switch (resultingMode) {
-      case 'click':
-        unsubscribe.push(subscribe(producerRef.current, 'click', toggle))
-        break
-
       case 'rollover':
-      default:
         unsubscribe.push(
           subscribe(producerRef.current, 'mouseover', handleMouseOver),
           subscribe(producerRef.current, 'mouseout', handleMouseOut),
@@ -109,11 +116,22 @@ export const useToggle: ToggleHook = ({
           subscribe(producerRef.current, 'blur', handleBlur)
         )
         break
+      case 'focus':
+        unsubscribe.push(
+          subscribe(producerRef.current, 'focus', handleFocus),
+          subscribe(producerRef.current, 'blur', handleBlur),
+          subscribe(consumerRef.current, 'mousedown', lockFocus)
+        )
+        break
+      case 'click':
+      default:
+        unsubscribe.push(subscribe(producerRef.current, 'click', toggle))
+        break
     }
     return () => {
       batch(...unsubscribe)
     }
-  }, [resultingMode, producerRef.current])
+  }, [resultingMode, producerRef.current, consumerRef.current])
 
   useEffect(() => {
     if (setChildToggleIsVisible !== context.setChildToggleIsVisible) {

@@ -1,13 +1,20 @@
 import { ToggleMode } from './useToggle.js'
 
-export function suggestMode(consumerType: string): NonNullable<ToggleMode> {
-  switch (consumerType) {
-    case 'YobtaTooltip':
-      return 'rollover'
-    case 'YobtaInput':
-      return 'focus'
-    case 'YobtaDropdown':
-    default:
-      return 'click'
+interface SuggestMode {
+  (
+    producerNode: HTMLElement | null,
+    consumerNode: HTMLElement | null
+  ): NonNullable<ToggleMode>
+}
+
+export const suggestMode: SuggestMode = (producerNode, consumerNode) => {
+  if (producerNode?.nodeName === 'INPUT') {
+    return 'focus'
   }
+
+  if (consumerNode?.classList.contains('yobta-tooltip')) {
+    return 'rollover'
+  }
+
+  return 'click'
 }

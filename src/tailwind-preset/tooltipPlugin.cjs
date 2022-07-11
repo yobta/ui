@@ -13,7 +13,7 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
     '.yobta-tooltip__spot': {
       ...applyPrefixed(prefix, ...common, '.rounded-full')
     },
-    '.yobta-tooltip__content': {
+    '.yobta-tooltip': {
       ...applyPrefixed(
         prefix,
         ...common,
@@ -54,7 +54,7 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
     '.yobta-tooltip__spot--visible': {
       display: 'block'
     },
-    '.yobta-tooltip__content': {
+    '.yobta-tooltip': {
       ...applyPrefixed(
         prefix,
         '.invisible',
@@ -64,7 +64,7 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
         '.opacity-0'
       )
     },
-    '.yobta-tooltip__content--visible': {
+    '.yobta-tooltip--visible': {
       ...applyPrefixed(prefix, '.visible', '.opacity-90')
     }
   })

@@ -80,17 +80,45 @@ const getStyle: GetStyle = ({ x, y, width, height, placement }) => {
 }
 
 interface DropdownStyleHook {
-  (position: PopoverCoordinates, menuRef: RefObject<HTMLElement>): void
+  (props: {
+    blockLevel?: boolean
+    consumerRef: RefObject<HTMLElement>
+    producerRef?: RefObject<HTMLElement>
+    position: PopoverCoordinates
+  }): void
 }
 
-export const useDropdownStyle: DropdownStyleHook = (position, menuRef) => {
+export const useDropdownStyle: DropdownStyleHook = ({
+  blockLevel,
+  position,
+  consumerRef,
+  producerRef
+}) => {
   useEffect(() => {
-    if (position && menuRef.current) {
+    if (position && consumerRef.current) {
       let { x, y, placement } = position
-      let { width, height } = menuRef.current.getBoundingClientRect()
+      let { width, height } = consumerRef.current.getBoundingClientRect()
       let { top, left } = getStyle({ x, y, width, height, placement })
-      menuRef.current.style.top = `${top}px`
-      menuRef.current.style.left = `${left}px`
+      consumerRef.current.style.top = `${top}px`
+      consumerRef.current.style.left = `${left}px`
+
+      if (blockLevel && producerRef?.current) {
+        let producerRect = producerRef.current.getBoundingClientRect()
+        switch (placement) {
+          case 'left':
+          case 'left-top':
+          case 'left-bottom':
+          case 'right':
+          case 'right-top':
+          case 'right-bottom':
+            consumerRef.current.style.height = `${producerRect.height}px`
+            break
+
+          default:
+            consumerRef.current.style.width = `${producerRect.width}px`
+            break
+        }
+      }
     }
   }, [position])
 }

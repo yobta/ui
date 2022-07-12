@@ -76,6 +76,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
 
     let position = usePopoverCoordinates({
       ...placementProps,
+      disabled: !visible,
       producerNode: producerRef?.current,
       consumerNode: tooltipRef.current,
       offset

@@ -27,7 +27,7 @@ export type YobtaInputProps = YobtaProps & InputNodeProps
 type InputFactory = (
   config: Partial<YobtaInputProps>
 ) => ForwardRefExoticComponent<
-  PropsWithoutRef<YobtaInputProps> & RefAttributes<YobtaProps>
+  PropsWithoutRef<YobtaInputProps> & RefAttributes<HTMLInputElement>
 >
 
 export const createInput: InputFactory = ({
@@ -35,7 +35,7 @@ export const createInput: InputFactory = ({
   style: configStyle,
   ...config
 }) => {
-  let Input: ForwardRefRenderFunction<YobtaInputProps, InputNodeProps> = (
+  let Input: ForwardRefRenderFunction<HTMLInputElement, YobtaInputProps> = (
     props,
     forwardedRef
   ) => {
@@ -55,11 +55,11 @@ export const createInput: InputFactory = ({
       ...rest
     } = { ...config, ...props }
 
-    let { combinedRef, isFilled } = useInput({
-      forwardedRef,
-      value,
+    let { inputRef, isFilled, labelRef } = useInput({
       defaultValue,
-      placeholder
+      forwardedRef,
+      placeholder,
+      value
     })
 
     return (
@@ -75,6 +75,7 @@ export const createInput: InputFactory = ({
           configClassName,
           className
         )}
+        ref={labelRef}
         style={{ ...configStyle, ...style }}
       >
         {before}
@@ -84,7 +85,7 @@ export const createInput: InputFactory = ({
             defaultValue={defaultValue}
             disabled={disabled}
             placeholder={placeholder}
-            ref={combinedRef}
+            ref={inputRef}
             type={type}
             value={value}
           />

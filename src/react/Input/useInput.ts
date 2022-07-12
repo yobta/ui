@@ -1,19 +1,27 @@
-import { ForwardedRef, Ref, useEffect, useRef, useState } from 'react'
+import {
+  ForwardedRef,
+  Ref,
+  RefObject,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react'
 
 import { subscribe } from '../helpers/index.js'
 import { useCombineRefs } from '../hooks/index.js'
 import { useTimeout } from '../hooks/useTimeout/useTimeout.js'
-import { YobtaInputProps } from './createInput.js'
 
 interface InputHook {
   (props: {
     defaultValue?: string | number | readonly string[]
-    forwardedRef: ForwardedRef<YobtaInputProps>
+    forwardedRef: ForwardedRef<HTMLInputElement>
     placeholder?: string
     value?: string | number | readonly string[]
   }): {
     isFilled: boolean
-    combinedRef: Ref<HTMLInputElement>
+    inputRef: Ref<HTMLInputElement>
+    labelRef: RefObject<HTMLLabelElement>
   }
 }
 
@@ -35,12 +43,24 @@ export const useInput: InputHook = ({
   value
 }) => {
   let inputRef = useRef<HTMLInputElement>(null)
+  let labelRef = useRef<HTMLLabelElement>(null)
   let combinedRef = useCombineRefs<HTMLInputElement>(forwardedRef, inputRef)
   let [state, setState] = useState<string | undefined>(
     getFirstValueAsString(value, defaultValue)
   )
 
   let inputNode = inputRef.current
+
+  useImperativeHandle(forwardedRef, () =>
+    Object.assign(labelRef.current as unknown as HTMLInputElement, {
+      addEventListener: (
+        ...args: Parameters<HTMLInputElement['addEventListener']>
+      ) => inputNode?.addEventListener(...args),
+      removeEventListener: (
+        ...args: Parameters<HTMLInputElement['removeEventListener']>
+      ) => inputNode?.removeEventListener(...args)
+    })
+  )
 
   useTimeout(
     64,
@@ -66,5 +86,5 @@ export const useInput: InputHook = ({
 
   let isFilled = !!getFirstValueAsString(state, placeholder, inputNode?.value)
 
-  return { isFilled, combinedRef }
+  return { isFilled, inputRef: combinedRef, labelRef }
 }

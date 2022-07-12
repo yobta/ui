@@ -8,7 +8,10 @@ interface SuggestMode {
 }
 
 export const suggestMode: SuggestMode = (producerNode, consumerNode) => {
-  if (producerNode?.nodeName === 'INPUT') {
+  if (
+    producerNode?.nodeName === 'INPUT' ||
+    producerNode?.classList.contains('yobta-input')
+  ) {
     return 'focus'
   }
 

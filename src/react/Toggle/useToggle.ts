@@ -4,6 +4,7 @@ import {
   RefObject,
   useContext,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState
 } from 'react'
@@ -40,7 +41,6 @@ export const useToggle: ToggleHook = ({
   mode
 }) => {
   let [producer, consumer] = Children.toArray(children)
-
   let producerRef = useRef<HTMLElement | null>(null)
   let consumerRef = useRef<HTMLElement | null>(null)
   let consumerProps = getComponentProps(consumer)
@@ -48,11 +48,13 @@ export const useToggle: ToggleHook = ({
   let [hasCursor, setHasCursor] = useState(
     Boolean(consumerProps.visible) || false
   )
+  let [, update] = useState({})
   let context = useContext(ToggleContext)
   let [childToggleIsVisible, setChildToggleIsVisible] =
     useState<null | boolean>(null)
 
   let visible = hasFocus || hasCursor
+
   let resultingMode =
     mode || suggestMode(producerRef.current, consumerRef.current)
 
@@ -67,6 +69,10 @@ export const useToggle: ToggleHook = ({
       setHasCursor(false)
     }
   })
+
+  useLayoutEffect(() => {
+    update({})
+  }, [])
 
   useEscapeKey(() => {
     if (visible && !childToggleIsVisible) {

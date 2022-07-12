@@ -5,11 +5,11 @@ import { useObserveChanges } from './useObserveChanges.js'
 
 const renderCountMock = vi.fn()
 const observeMock = vi.fn()
-const unobserveMock = vi.fn()
+const disconnectMock = vi.fn()
 
 const resizeObserverMock = vi.fn(() => ({
   observe: observeMock,
-  unobserve: unobserveMock
+  disconnect: disconnectMock
 }))
 const addEventListenerMock = vi.fn()
 const removeEventListenerMock = vi.fn()
@@ -24,7 +24,7 @@ afterEach(() => {
   renderCountMock.mockClear()
   resizeObserverMock.mockClear()
   observeMock.mockClear()
-  unobserveMock.mockClear()
+  disconnectMock.mockClear()
   addEventListenerMock.mockClear()
   removeEventListenerMock.mockClear()
 })
@@ -43,7 +43,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(0)
-    expect(unobserveMock).toBeCalledTimes(0)
+    expect(disconnectMock).toBeCalledTimes(0)
     expect(addEventListenerMock).toBeCalledTimes(0)
     expect(removeEventListenerMock).toBeCalledTimes(0)
 
@@ -52,7 +52,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(0)
-    expect(unobserveMock).toBeCalledTimes(0)
+    expect(disconnectMock).toBeCalledTimes(1)
     expect(addEventListenerMock).toBeCalledTimes(0)
     expect(removeEventListenerMock).toBeCalledTimes(0)
   })
@@ -70,7 +70,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(0)
-    expect(unobserveMock).toBeCalledTimes(0)
+    expect(disconnectMock).toBeCalledTimes(0)
     expect(addEventListenerMock).toBeCalledTimes(0)
     expect(removeEventListenerMock).toBeCalledTimes(0)
 
@@ -79,7 +79,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(0)
-    expect(unobserveMock).toBeCalledTimes(0)
+    expect(disconnectMock).toBeCalledTimes(1)
     expect(addEventListenerMock).toBeCalledTimes(0)
     expect(removeEventListenerMock).toBeCalledTimes(0)
   })
@@ -97,7 +97,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(1)
-    expect(unobserveMock).toBeCalledTimes(0)
+    expect(disconnectMock).toBeCalledTimes(0)
     expect(addEventListenerMock).toBeCalledTimes(2)
     expect(addEventListenerMock.mock.calls).toEqual([
       [
@@ -122,7 +122,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(1)
-    expect(unobserveMock).toBeCalledTimes(1)
+    expect(disconnectMock).toBeCalledTimes(1)
     expect(addEventListenerMock).toBeCalledTimes(2)
     expect(removeEventListenerMock).toBeCalledTimes(2)
   })
@@ -140,7 +140,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(1)
-    expect(unobserveMock).toBeCalledTimes(0)
+    expect(disconnectMock).toBeCalledTimes(0)
     expect(addEventListenerMock).toBeCalledTimes(2)
     expect(removeEventListenerMock).toBeCalledTimes(0)
 
@@ -149,7 +149,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(observeMock).toBeCalledTimes(2)
     expect(renderCountMock).toBeCalledTimes(2)
-    expect(unobserveMock).toBeCalledTimes(1)
+    expect(disconnectMock).toBeCalledTimes(1)
     expect(addEventListenerMock).toBeCalledTimes(4)
     expect(removeEventListenerMock).toBeCalledTimes(2)
 
@@ -158,7 +158,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(2)
     expect(observeMock).toBeCalledTimes(2)
-    expect(unobserveMock).toBeCalledTimes(2)
+    expect(disconnectMock).toBeCalledTimes(2)
     expect(addEventListenerMock).toBeCalledTimes(4)
     expect(removeEventListenerMock).toBeCalledTimes(4)
   })
@@ -177,7 +177,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(1)
     expect(observeMock).toBeCalledTimes(1)
-    expect(unobserveMock).toBeCalledTimes(0)
+    expect(disconnectMock).toBeCalledTimes(0)
     expect(addEventListenerMock).toBeCalledTimes(2)
     expect(removeEventListenerMock).toBeCalledTimes(0)
 
@@ -186,7 +186,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(2)
     expect(observeMock).toBeCalledTimes(1)
-    expect(unobserveMock).toBeCalledTimes(1)
+    expect(disconnectMock).toBeCalledTimes(1)
     expect(addEventListenerMock).toBeCalledTimes(2)
     expect(removeEventListenerMock).toBeCalledTimes(2)
 
@@ -195,7 +195,7 @@ describe('ObserveChangesHook', () => {
     expect(ref.result.current).toBe(0)
     expect(renderCountMock).toBeCalledTimes(2)
     expect(observeMock).toBeCalledTimes(1)
-    expect(unobserveMock).toBeCalledTimes(1)
+    expect(disconnectMock).toBeCalledTimes(2)
     expect(addEventListenerMock).toBeCalledTimes(2)
     expect(removeEventListenerMock).toBeCalledTimes(2)
   })

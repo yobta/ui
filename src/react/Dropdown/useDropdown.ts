@@ -87,10 +87,6 @@ export const useDropdown: DropDownHook = ({
 
   let placementProps = placement ? { placement } : { preferredPlacement }
 
-  let hasHiddenClassName: boolean =
-    forceHide ||
-    Boolean(consumerRef.current?.classList.contains(hiddenClassName))
-
   useEffect(() => {
     if (isTriggered && visible && consumerRef.current) {
       consumerRef.current.classList.remove(hiddenClassName)
@@ -117,15 +113,13 @@ export const useDropdown: DropDownHook = ({
     return unsubscribe
   }, [visible])
 
-  let position = usePopoverCoordinates(
-    {
-      ...placementProps,
-      producerNode: producerRef?.current,
-      consumerNode: consumerRef.current,
-      offset
-    },
-    hasHiddenClassName
-  )
+  let position = usePopoverCoordinates({
+    ...placementProps,
+    disabled: !visible,
+    producerNode: producerRef?.current,
+    consumerNode: consumerRef.current,
+    offset
+  })
 
   useDropdownStyle({ blockLevel, consumerRef, producerRef, position })
 

@@ -39,7 +39,12 @@ import { Input } from '../Input'
   <Story name="Toggling Input">
     <Toggle>
       <Input caption="Focus Me" />
-      <Dropdown blockLevel id="suggest" preferredPlacement="bottom-left">
+      <Dropdown
+        blockLevel
+        id="suggest"
+        preferredPlacement="bottom-left"
+        offset={1}
+      >
         <div className="yobta-menu-item">Item 1</div>
         <div className="yobta-menu-item">Item 2</div>
       </Dropdown>

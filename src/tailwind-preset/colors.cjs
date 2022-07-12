@@ -127,10 +127,18 @@ const tooltipTextDark = 'var(--yobta-color-tooltip-text-dark, #414141)'
 module.exports = {
   current: 'currentColor',
   selected: {
-    DEFAULT: pale16,
-    dark: pale16Dark,
-    2: { DEFAULT: pale12, dark: pale12Dark },
-    3: { DEFAULT: pale11, dark: pale11Dark }
+    1: {
+      paper: { DEFAULT: pale16, dark: pale16Dark },
+      ink: { DEFAULT: paperText, dark: paperDarkText }
+    },
+    2: {
+      paper: { DEFAULT: pale12, dark: pale12Dark },
+      ink: { DEFAULT: paper2Text, dark: paper2DarkText }
+    },
+    3: {
+      paper: { DEFAULT: pale11, dark: pale11Dark },
+      ink: { DEFAULT: paper3Text, dark: paper3DarkText }
+    }
   },
   paper: {
     DEFAULT: paper,
@@ -183,17 +191,14 @@ module.exports = {
   },
   yobta: {
     'paper': {
-      selected: { DEFAULT: pale16, dark: pale16Dark },
       paper: { DEFAULT: paper, dark: paperDark },
       ink: { DEFAULT: paperText, dark: paperDarkText }
     },
     'paper-2': {
-      selected: { DEFAULT: pale12, dark: pale12Dark },
       paper: { DEFAULT: paper2, dark: paper2Dark },
       ink: { DEFAULT: paper2Text, dark: paper2DarkText }
     },
     'paper-3': {
-      selected: { DEFAULT: pale11, dark: pale11Dark },
       paper: { DEFAULT: paper3, dark: paper3Dark },
       ink: { DEFAULT: paper3Text, dark: paper3DarkText }
     },

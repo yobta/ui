@@ -122,20 +122,20 @@ const tooltipTextDark = 'var(--yobta-color-tooltip-text-dark, #414141)'
 
 // #region  Selected
 
-const selected = pale16
-const selectedDark = pale16Dark
-const selectedText = paperText
-const selectedDarkText = paperDarkText
+const selected = 'var(--yobta-color-selected, #CBE6FF)'
+const selectedDark = 'var(--yobta-color-selected-dark, #4B6278)'
+const selectedText = 'var(--yobta-color-selected-text, #414141)'
+const selectedDarkText = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
 
-const selected2 = pale12
-const selectedDark2 = pale12Dark
-const selectedText2 = paper2Text
-const selectedDarkText2 = paper2DarkText
+const selected2 = 'var(--yobta-color-selected-2, #AED5FA)'
+const selectedDark2 = 'var(--yobta-color-selected-2-dark, #5B81A5)'
+const selectedText2 = 'var(--yobta-color-selected-text, #414141)'
+const selectedDarkText2 = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
 
-const selected3 = pale11
-const selectedDark3 = pale11Dark
-const selectedText3 = paper3Text
-const selectedDarkText3 = paper3DarkText
+const selected3 = 'var(--yobta-color-selected-3, #A8C2DC)'
+const selectedDark3 = 'var(--yobta-color-selected-3-dark, #4B7194)'
+const selectedText3 = 'var(--yobta-color-selected-text, #414141)'
+const selectedDarkText3 = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
 
 // #endregion
 

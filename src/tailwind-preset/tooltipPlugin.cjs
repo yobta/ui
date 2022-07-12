@@ -11,7 +11,7 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
   ]
   addComponents({
     '.yobta-tooltip__spot': {
-      ...applyPrefixed(prefix, ...common, '.rounded-full')
+      ...applyPrefixed(prefix, ...common, '.rounded-full', '.z-yobta-tooltip')
     },
     '.yobta-tooltip': {
       ...applyPrefixed(
@@ -21,7 +21,8 @@ module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
         '.px-2',
         '.py-1',
         '.text-center',
-        '.text-xs'
+        '.text-xs',
+        '.z-yobta-tooltip'
       )
     },
     '.yobta-tooltip--animated': {

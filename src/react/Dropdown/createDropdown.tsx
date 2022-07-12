@@ -74,7 +74,7 @@ export const createDropdown: YobtaMenuFactory = defaultProps => {
       <nav
         {...rest}
         className={clsx(
-          'yobta-dropdown-menu',
+          'yobta-dropdown',
           hiddenClassName,
           animationClassName,
           className

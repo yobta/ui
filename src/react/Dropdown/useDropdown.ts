@@ -36,7 +36,7 @@ interface DropDownHook {
   }
 }
 
-const hiddenClassName = 'yobta-dropdown-menu--hidden'
+const hiddenClassName = 'yobta-dropdown--hidden'
 
 export const useDropdown: DropDownHook = ({
   blockLevel,

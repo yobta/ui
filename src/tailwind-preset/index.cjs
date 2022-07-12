@@ -78,6 +78,11 @@ module.exports = {
             transform: 'rotate(1800deg)'
           }
         }
+      },
+      zIndex: {
+        'yobta-overlay': 1000,
+        'yobta-dropdown': 2000,
+        'yobta-tooltip': 3000
       }
     }
   },

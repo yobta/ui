@@ -76,6 +76,7 @@ export const createTooltip: TooltipFactory = defaultProps => {
 
     let position = usePopoverCoordinates({
       ...placementProps,
+      disabled: !visible,
       producerNode: producerRef?.current,
       consumerNode: tooltipRef.current,
       offset
@@ -101,8 +102,8 @@ export const createTooltip: TooltipFactory = defaultProps => {
         />
         <div
           className={clsx(
-            'yobta-tooltip__content',
-            isActive && 'yobta-tooltip__content--visible',
+            'yobta-tooltip',
+            isActive && 'yobta-tooltip--visible',
             animate && 'yobta-tooltip--animated',
             className
           )}

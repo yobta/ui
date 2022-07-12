@@ -36,10 +36,7 @@ export const useObserveChanges: ObserveChangesHook = ({
 
     return () => {
       batch(...unsubsribe)
-
-      if (shouldObserve) {
-        resizeObzerver?.unobserve(producerNode as HTMLElement)
-      }
+      resizeObzerver?.disconnect()
     }
   }, [disabled, producerNode])
 

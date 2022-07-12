@@ -29,6 +29,7 @@ describe('usePopoverCoordinates Hook', () => {
   it('is undefined when consumerNode and producerNode are null', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
+        disabled: false,
         placement: 'top',
         preferredPlacement: undefined,
         consumerNode: null,
@@ -41,6 +42,7 @@ describe('usePopoverCoordinates Hook', () => {
   it('is undefined when placement and preferredPlacement are undefined', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
+        disabled: false,
         placement: undefined,
         preferredPlacement: undefined,
         consumerNode: null,
@@ -53,6 +55,7 @@ describe('usePopoverCoordinates Hook', () => {
   it('is when consumerNode and producerNode are defined', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
+        disabled: false,
         placement: 'right',
         preferredPlacement: undefined,
         consumerNode,
@@ -68,6 +71,7 @@ describe('usePopoverCoordinates Hook', () => {
   it('is when offset is undefined', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
+        disabled: false,
         placement: 'right',
         preferredPlacement: undefined,
         consumerNode,
@@ -83,6 +87,7 @@ describe('usePopoverCoordinates Hook', () => {
   it('is when placement is undefined', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
+        disabled: false,
         placement: undefined,
         preferredPlacement: 'right',
         consumerNode,
@@ -98,6 +103,7 @@ describe('usePopoverCoordinates Hook', () => {
   it('is when placement is undefined, x and y equals 0', () => {
     let { result } = renderHook(() => {
       return usePopoverCoordinates({
+        disabled: false,
         placement: 'left',
         preferredPlacement: undefined,
         consumerNode: { ...consumerNode, ...{ x: 0, y: 0 } },

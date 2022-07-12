@@ -1,0 +1,53 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Dropdown } from '../Dropdown'
+import { Toggle } from '../Toggle'
+import { Tooltip } from '../Tooltip'
+import { Input } from '../Input'
+
+<Meta title="MDX/Toggle" />
+
+# Toggle
+
+## Toggling Dropdowns
+
+<Canvas>
+  <Story name="Toggling Dropdowns">
+    <Toggle>
+      <button className="yobta-button-primary">Click me</button>
+      <Dropdown id="dropdown">
+        <div className="yobta-menu-item">Item 1</div>
+        <div className="yobta-menu-item">Item 2</div>
+      </Dropdown>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## Toggling Tooltips
+
+<Canvas>
+  <Story name="Toggling Tooltips">
+    <Toggle>
+      <button className="yobta-button-primary">Hover me</button>
+      <Tooltip id="tooltip">Tooltip</Tooltip>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## Toggling Input
+
+<Canvas>
+  <Story name="Toggling Input">
+    <Toggle>
+      <Input caption="Focus Me" />
+      <Dropdown
+        blockLevel
+        id="suggest"
+        preferredPlacement="bottom-left"
+        offset={1}
+      >
+        <div className="yobta-menu-item">Item 1</div>
+        <div className="yobta-menu-item">Item 2</div>
+      </Dropdown>
+    </Toggle>
+  </Story>
+</Canvas>

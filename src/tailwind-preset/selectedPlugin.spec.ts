@@ -31,14 +31,14 @@ test('selectedPlugin', async () => {
     '.yobta-selected': {
       '@apply bg-selected-1-paper dark:bg-selected-1-paper-dark text-selected-1-ink dark:text-selected-1-ink-dark':
         {}
-    },
-    '.yobta-selected-2': {
-      '@apply bg-selected-2-paper dark:bg-selected-2-paper-dark text-selected-2-ink dark:text-selected-2-ink-dark':
-        {}
-    },
-    '.yobta-selected-3': {
-      '@apply bg-selected-3-paper dark:bg-selected-3-paper-dark text-selected-3-ink dark:text-selected-3-ink-dark':
-        {}
     }
+    // '.yobta-selected-2': {
+    //   '@apply bg-selected-2-paper dark:bg-selected-2-paper-dark text-selected-2-ink dark:text-selected-2-ink-dark':
+    //     {}
+    // },
+    // '.yobta-selected-3': {
+    //   '@apply bg-selected-3-paper dark:bg-selected-3-paper-dark text-selected-3-ink dark:text-selected-3-ink-dark':
+    //     {}
+    // }
   })
 })

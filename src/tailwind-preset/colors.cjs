@@ -125,18 +125,31 @@ const tooltipTextDark = 'var(--yobta-color-tooltip-text-dark, #414141)'
 const selected = 'var(--yobta-color-selected, #CBE6FF)'
 const selectedDark = 'var(--yobta-color-selected-dark, #4B6278)'
 const selectedText = 'var(--yobta-color-selected-text, #414141)'
-const selectedDarkText = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
+const selectedTextDark = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
 
 const selected2 = 'var(--yobta-color-selected-2, #AED5FA)'
-const selectedDark2 = 'var(--yobta-color-selected-2-dark, #5B81A5)'
-const selectedText2 = 'var(--yobta-color-selected-text, #414141)'
-const selectedDarkText2 = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
+const selected2Dark = 'var(--yobta-color-selected-2-dark, #5B81A5)'
+const selected2Text = 'var(--yobta-color-selected-2-text, #414141)'
+const selected2TextDark = 'var(--yobta-color-selected-2-text-dark, #FCFCFC)'
 
 const selected3 = 'var(--yobta-color-selected-3, #A8C2DC)'
-const selectedDark3 = 'var(--yobta-color-selected-3-dark, #4B7194)'
-const selectedText3 = 'var(--yobta-color-selected-text, #414141)'
-const selectedDarkText3 = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
+const selected3Dark = 'var(--yobta-color-selected-3-dark, #4B7194)'
+const selected3Text = 'var(--yobta-color-selected-3-text, #414141)'
+const selected3TextDark = 'var(--yobta-color-selected-3-text-dark, #FCFCFC)'
 
+const selectedPrimary = 'var(--yobta-color-primary-selected, #FFF0AB)'
+const selectedPrimaryDark = 'var(--yobta-color-primary-selected-dark, #F0DE8B)'
+const selectedPrimaryText = 'var(--yobta-color-primary-selected-text, #414141)'
+const selectedPrimaryTextDark =
+  'var(--yobta-color-primary-selected-text-dark, #414141)'
+
+const selectedSecondary = 'var(--yobta-color-secondary-selected, #716CFF)'
+const selectedSecondaryDark =
+  'var(--yobta-color-secondary-selected-dark, #7F7DF1)'
+const selectedSecondaryText =
+  'var(--yobta-color-secondary-selected-text, #FCFCFC)'
+const selectedSecondaryTextDark =
+  'var(--yobta-color-secondary-selected-text-dark, #FCFCFC)'
 // #endregion
 
 // yobta-paper
@@ -148,15 +161,23 @@ module.exports = {
   selected: {
     1: {
       paper: { DEFAULT: selected, dark: selectedDark },
-      ink: { DEFAULT: selectedText, dark: selectedDarkText }
+      ink: { DEFAULT: selectedText, dark: selectedTextDark }
     },
     2: {
-      paper: { DEFAULT: selected2, dark: selectedDark2 },
-      ink: { DEFAULT: selectedText2, dark: selectedDarkText2 }
+      paper: { DEFAULT: selected2, dark: selected2Dark },
+      ink: { DEFAULT: selected2Text, dark: selected2TextDark }
     },
     3: {
-      paper: { DEFAULT: selected3, dark: selectedDark3 },
-      ink: { DEFAULT: selectedText3, dark: selectedDarkText3 }
+      paper: { DEFAULT: selected3, dark: selected3Dark },
+      ink: { DEFAULT: selected3Text, dark: selected3TextDark }
+    },
+    primary: {
+      paper: { DEFAULT: selectedPrimary, dark: selectedPrimaryDark },
+      ink: { DEFAULT: selectedPrimaryText, dark: selectedPrimaryTextDark }
+    },
+    secondary: {
+      paper: { DEFAULT: selectedSecondary, dark: selectedSecondaryDark },
+      ink: { DEFAULT: selectedSecondaryText, dark: selectedSecondaryTextDark }
     }
   },
   paper: {

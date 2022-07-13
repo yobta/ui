@@ -21,7 +21,7 @@ test('selectedPlugin', async () => {
 
   expect(addSelected).toBeCalledWith({
     '.yobta-selected-2': {
-      '@apply yobta-selected-2-paper yobta-selected-2-ink dark:yobta-yobta-selected-2-paper dark:yobta-selected-2-ink':
+      '@apply yobta-selected-2-paper yobta-selected-2-ink dark:yobta-selected-2-paper-dark dark:yobta-selected-2-ink-dark':
         {}
     }
   })

@@ -146,8 +146,10 @@ const selectedDarkText3 = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
 module.exports = {
   current: 'currentColor',
   selected: {
-    DEFAULT: { paper: selected, ink: selectedText },
-    dark: { paper: selectedDark, ink: selectedDarkText },
+    1: {
+      paper: { DEFAULT: selected, dark: selectedDark },
+      ink: { DEFAULT: selectedText, dark: selectedDarkText }
+    },
     2: {
       paper: { DEFAULT: selected2, dark: selectedDark2 },
       ink: { DEFAULT: selectedText2, dark: selectedDarkText2 }

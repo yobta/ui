@@ -100,6 +100,7 @@ module.exports = {
     require('./menuPlugin.cjs'),
     require('./radioButtonPlugin.cjs'),
     require('./scrollBoxPlugin.cjs'),
+    require('./selectedPlugin.cjs'),
     require('./spinnerPlugin.cjs'),
     require('./switchPlugin.cjs'),
     require('./textAreaPlugin.cjs'),

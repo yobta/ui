@@ -2,22 +2,21 @@ const plugin = require('tailwindcss/plugin')
 
 const applyPrefixed = require('./applyPrefixed.cjs')
 
-module.exports = plugin(({ addSelected, prefix, theme }) => {
+module.exports = plugin(({ addUtilities, prefix, theme }) => {
   let colors = theme('colors')
-  let classes = Object.keys(colors.selected).reduce(
-    (acc, item) => ({
-      ...acc,
-      [`.yobta-selected-${item}`]: {
+  Object.keys(colors.selected).forEach((key, index) => {
+    let selectedClassName =
+      index === 0 ? '.yobta-selected' : `.yobta-selected-${key}`
+    addUtilities({
+      [selectedClassName]: {
         ...applyPrefixed(
           prefix,
-          `.yobta-selected-${item}-paper`,
-          `.yobta-selected-${item}-ink`,
-          `.dark:yobta-selected-${item}-paper-dark`,
-          `.dark:yobta-selected-${item}-ink-dark`
+          `.bg-selected-${key}-paper`,
+          `.dark:bg-selected-${key}-paper-dark`,
+          `.text-selected-${key}-ink`,
+          `.dark:text-selected-${key}-ink-dark`
         )
       }
-    }),
-    {}
-  )
-  addSelected(classes)
+    })
+  })
 })

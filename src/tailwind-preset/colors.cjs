@@ -120,12 +120,66 @@ const tooltipText = 'var(--yobta-color-tooltip-text, #FCFCFC)'
 const tooltipTextDark = 'var(--yobta-color-tooltip-text-dark, #414141)'
 /* #endregion */
 
+// #region  Selected
+
+const selected = 'var(--yobta-color-selected, #CBE6FF)'
+const selectedDark = 'var(--yobta-color-selected-dark, #4B6278)'
+const selectedText = 'var(--yobta-color-selected-text, #414141)'
+const selectedTextDark = 'var(--yobta-color-selected-text-dark, #FCFCFC)'
+
+const selected2 = 'var(--yobta-color-selected-2, #AED5FA)'
+const selected2Dark = 'var(--yobta-color-selected-2-dark, #5B81A5)'
+const selected2Text = 'var(--yobta-color-selected-2-text, #414141)'
+const selected2TextDark = 'var(--yobta-color-selected-2-text-dark, #FCFCFC)'
+
+const selected3 = 'var(--yobta-color-selected-3, #A8C2DC)'
+const selected3Dark = 'var(--yobta-color-selected-3-dark, #4B7194)'
+const selected3Text = 'var(--yobta-color-selected-3-text, #414141)'
+const selected3TextDark = 'var(--yobta-color-selected-3-text-dark, #FCFCFC)'
+
+const selectedPrimary = 'var(--yobta-color-primary-selected, #FFF0AB)'
+const selectedPrimaryDark = 'var(--yobta-color-primary-selected-dark, #F0DE8B)'
+const selectedPrimaryText = 'var(--yobta-color-primary-selected-text, #414141)'
+const selectedPrimaryTextDark =
+  'var(--yobta-color-primary-selected-text-dark, #414141)'
+
+const selectedSecondary = 'var(--yobta-color-secondary-selected, #716CFF)'
+const selectedSecondaryDark =
+  'var(--yobta-color-secondary-selected-dark, #7F7DF1)'
+const selectedSecondaryText =
+  'var(--yobta-color-secondary-selected-text, #FCFCFC)'
+const selectedSecondaryTextDark =
+  'var(--yobta-color-secondary-selected-text-dark, #FCFCFC)'
+// #endregion
+
 // yobta-paper
 // bg-paper
 // text-paper
 
 module.exports = {
   current: 'currentColor',
+  selected: {
+    1: {
+      paper: { DEFAULT: selected, dark: selectedDark },
+      ink: { DEFAULT: selectedText, dark: selectedTextDark }
+    },
+    2: {
+      paper: { DEFAULT: selected2, dark: selected2Dark },
+      ink: { DEFAULT: selected2Text, dark: selected2TextDark }
+    },
+    3: {
+      paper: { DEFAULT: selected3, dark: selected3Dark },
+      ink: { DEFAULT: selected3Text, dark: selected3TextDark }
+    },
+    primary: {
+      paper: { DEFAULT: selectedPrimary, dark: selectedPrimaryDark },
+      ink: { DEFAULT: selectedPrimaryText, dark: selectedPrimaryTextDark }
+    },
+    secondary: {
+      paper: { DEFAULT: selectedSecondary, dark: selectedSecondaryDark },
+      ink: { DEFAULT: selectedSecondaryText, dark: selectedSecondaryTextDark }
+    }
+  },
   paper: {
     DEFAULT: paper,
     dark: paperDark,
@@ -177,40 +231,60 @@ module.exports = {
   },
   yobta: {
     'paper': {
+      ink: { DEFAULT: paperText, dark: paperDarkText },
       paper: { DEFAULT: paper, dark: paperDark },
-      ink: { DEFAULT: paperText, dark: paperDarkText }
+      selected: {
+        paper: { DEFAULT: selected, dark: selectedDark },
+        ink: { DEFAULT: selectedText, dark: selectedTextDark }
+      }
     },
     'paper-2': {
+      ink: { DEFAULT: paper2Text, dark: paper2DarkText },
       paper: { DEFAULT: paper2, dark: paper2Dark },
-      ink: { DEFAULT: paper2Text, dark: paper2DarkText }
+      selected: {
+        paper: { DEFAULT: selected2, dark: selected2Dark },
+        ink: { DEFAULT: selected2Text, dark: selected2TextDark }
+      }
     },
     'paper-3': {
+      ink: { DEFAULT: paper3Text, dark: paper3DarkText },
       paper: { DEFAULT: paper3, dark: paper3Dark },
-      ink: { DEFAULT: paper3Text, dark: paper3DarkText }
+      selected: {
+        paper: { DEFAULT: selected3, dark: selected3Dark },
+        ink: { DEFAULT: selected3Text, dark: selected3TextDark }
+      }
     },
     'primary': {
+      ink: { DEFAULT: paperPrimaryText, dark: paperPrimaryDarkText },
       paper: { DEFAULT: paperPrimary, dark: paperPrimaryDark },
-      ink: { DEFAULT: paperPrimaryText, dark: paperPrimaryDarkText }
+      selected: {
+        paper: { DEFAULT: selectedPrimary, dark: selectedPrimaryDark },
+        ink: { DEFAULT: selectedPrimaryText, dark: selectedPrimaryTextDark }
+      }
     },
     'secondary': {
+      ink: { DEFAULT: paperSecondaryText, dark: paperSecondaryDarkText },
       paper: { DEFAULT: paperSecondary, dark: paperSecondaryDark },
-      ink: { DEFAULT: paperSecondaryText, dark: paperSecondaryDarkText }
+      selected: {
+        paper: { DEFAULT: selectedSecondary, dark: selectedSecondaryDark },
+        ink: { DEFAULT: selectedSecondaryText, dark: selectedSecondaryTextDark }
+      }
     },
     'error': {
-      paper: { DEFAULT: paperError, dark: paperErrorDark },
-      ink: { DEFAULT: paperErrorText, dark: paperErrorDarkText }
+      ink: { DEFAULT: paperErrorText, dark: paperErrorDarkText },
+      paper: { DEFAULT: paperError, dark: paperErrorDark }
     },
     'success': {
-      paper: { DEFAULT: paperSuccess, dark: paperSuccessDark },
-      ink: { DEFAULT: paperSuccessText, dark: paperSuccessDarkText }
+      ink: { DEFAULT: paperSuccessText, dark: paperSuccessDarkText },
+      paper: { DEFAULT: paperSuccess, dark: paperSuccessDark }
     },
     'warning': {
-      paper: { DEFAULT: paperWarning, dark: paperWarningDark },
-      ink: { DEFAULT: paperWarningText, dark: paperWarningDarkText }
+      ink: { DEFAULT: paperWarningText, dark: paperWarningDarkText },
+      paper: { DEFAULT: paperWarning, dark: paperWarningDark }
     },
     'info': {
-      paper: { DEFAULT: paperInfo, dark: paperInfoDark },
-      ink: { DEFAULT: paperInfoText, dark: paperInfoDarkText }
+      ink: { DEFAULT: paperInfoText, dark: paperInfoDarkText },
+      paper: { DEFAULT: paperInfo, dark: paperInfoDark }
     }
   },
   tooltip: {

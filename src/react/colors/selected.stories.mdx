@@ -1,69 +1,158 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
 
-<Meta title="Colors/Selected" />
+<Meta title="Colors/Selection" />
 
-# Selected Colors
+# Selection Colors
+
+Yobta Selected utility plugin helps you to highlight selected menu
+items concerning their background color and dark mode setting.
 
 ## Basic Example
 
+To apply selection colors to a menu item, you need to add the
+`.yobta-selected` class to it.
+
 <Canvas>
   <Story name="Basic Example">
-    <nav className="yobta-menu yobta-paper">
+    <nav className="yobta-menu  yobta-paper shadow">
       <h4 className="yobta-menu-header">Menu</h4>
       <button className="yobta-menu-item yobta-selected">Selected</button>
-      <button className="yobta-menu-item">Usual</button>
+      <button className="yobta-menu-item">Normal</button>
     </nav>
   </Story>
 </Canvas>
 
-## Selected 2
+## Contextual Colors
+
+When you nest `.yobta-selected` inside `.yobta-paper`, `.yobta-paper-2`,
+`.yobta-paper-3`, `.yobta-primary` or `.yobta-secondary` it will adjust
+to the context automatically
 
 <Canvas>
-  <Story name="Selected 2">
-    <nav className="yobta-menu yobta-paper-2">
-      <h4 className="yobta-menu-header">Menu</h4>
-      <button className="yobta-menu-item yobta-selected-2">Selected</button>
-      <button className="yobta-menu-item">Usual</button>
-    </nav>
+  <Story name="Contextual Colors">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <nav className="yobta-menu yobta-paper">
+        <h4 className="yobta-menu-header">.yobta-paper</h4>
+        <button className="yobta-menu-item yobta-selected">Selected</button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+      <nav className="yobta-menu yobta-paper-2">
+        <h4 className="yobta-menu-header">.yobta-paper-2</h4>
+        <button className="yobta-menu-item yobta-selected">Selected</button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+      <nav className="yobta-menu yobta-paper-3">
+        <h4 className="yobta-menu-header">.yobta-paper-3</h4>
+        <button className="yobta-menu-item yobta-selected">Selected</button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+      <nav className="yobta-menu yobta-primary">
+        <h4 className="yobta-menu-header">.yobta-primary</h4>
+        <button className="yobta-menu-item yobta-selected">Selected</button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+      <nav className="yobta-menu yobta-secondary">
+        <h4 className="yobta-menu-header">.yobta-secondary</h4>
+        <button className="yobta-menu-item yobta-selected">Selected</button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+    </div>
   </Story>
 </Canvas>
 
-## Selected 3
+## Ignoring the Context
+
+You have following utility class names for presize control of selection colors:
+`.yobta-selected-2` `.yobta-selected-3`, `.yobta-selected-primary`,
+`.yobta-selected-secondary`
 
 <Canvas>
-  <Story name="Selected 3">
-    <nav className="yobta-menu yobta-paper-3">
-      <h4 className="yobta-menu-header">Menu</h4>
-      <button className="yobta-menu-item yobta-selected-2">Selected</button>
-      <button className="yobta-menu-item">Usual</button>
-    </nav>
+  <Story name="Ignoring the Context">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <nav className="yobta-menu yobta-paper shadow">
+        <h4 className="yobta-menu-header">Menu</h4>
+        <button className="yobta-menu-item yobta-selected-2">Selected</button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+      <nav className="yobta-menu yobta-paper shadow">
+        <h4 className="yobta-menu-header">Menu</h4>
+        <button className="yobta-menu-item yobta-selected-3">Selected</button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+      <nav className="yobta-menu yobta-paper shadow">
+        <h4 className="yobta-menu-header">Menu</h4>
+        <button className="yobta-menu-item yobta-selected-primary">
+          Selected
+        </button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+      <nav className="yobta-menu yobta-paper shadow">
+        <h4 className="yobta-menu-header">Menu</h4>
+        <button className="yobta-menu-item yobta-selected-secondary">
+          Selected
+        </button>
+        <button className="yobta-menu-item">Normal</button>
+      </nav>
+    </div>
   </Story>
 </Canvas>
 
-## Primary Selected
+## Configuring Colors
 
-<Canvas>
-  <Story name="Primary Selected">
-    <nav className="yobta-menu yobta-primary">
-      <h4 className="yobta-menu-header">Menu</h4>
-      <button className="yobta-menu-item yobta-selected-primary">
-        Selected
-      </button>
-      <button className="yobta-menu-item">Usual</button>
-    </nav>
-  </Story>
-</Canvas>
+The best way to customize selection colors is to use the CSS variables.
+Below is the default configuration of the `.yobta-selected` utility classes.
 
-## Scondary Selected
+`.yobta-selected`, `.yobta-paper .yobta-selected`
 
-<Canvas>
-  <Story name="Scondary Selected">
-    <nav className="yobta-menu yobta-secondary">
-      <h4 className="yobta-menu-header">Menu</h4>
-      <button className="yobta-menu-item yobta-selected-secondary">
-        Selected
-      </button>
-      <button className="yobta-menu-item">Usual</button>
-    </nav>
-  </Story>
-</Canvas>
+```css
+:root {
+  --yobta-color-selected: #cbe6ff;
+  --yobta-color-selected-dark: #4b6278;
+  --yobta-color-selected-text: #414141;
+  --yobta-color-selected-text-dark: #fcfcfc;
+}
+```
+
+`.yobta-selected-2`, `.yobta-paper-2 .yobta-selected`
+
+```css
+:root {
+  --yobta-color-selected-2: #aed5fa;
+  --yobta-color-selected-2-dark: #5b81a5;
+  --yobta-color-selected-2-text: #414141;
+  --yobta-color-selected-2-text-dark: #fcfcfc;
+}
+```
+
+`.yobta-selected-3`, `.yobta-paper-3 .yobta-selected`
+
+```css
+:root {
+  --yobta-color-selected-3: #a8c2dc;
+  --yobta-color-selected-3-dark: #4b7194;
+  --yobta-color-selected-3-text: #414141;
+  --yobta-color-selected-3-text-dark: #fcfcfc;
+}
+```
+
+`.yobta-selected-primary`, `.yobta-primary .yobta-selected`
+
+```css
+:root {
+  --yobta-color-primary-selected: #fff0ab;
+  --yobta-color-primary-selected-dark: #f0de8b;
+  --yobta-color-primary-selected-text: #414141;
+  --yobta-color-primary-selected-text-dark: #414141;
+}
+```
+
+`.yobta-selected-secondary`, `.yobta-secondary .yobta-selected`
+
+```css
+:root {
+  --yobta-color-secondary-selected: #716cff;
+  --yobta-color-secondary-selected-dark: #7f7df1;
+  --yobta-color-secondary-selected-text: #fcfcfc;
+  --yobta-color-secondary-selected-text-dark: #fcfcfc;
+}
+```

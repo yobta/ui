@@ -5,7 +5,7 @@ import checkboxPlugin from './checkboxPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('checkboxPlugin', async () => {
+test('checkboxPlugin', () => {
   let addBase = vi.fn()
 
   checkboxPlugin.handler({ addBase, prefix })

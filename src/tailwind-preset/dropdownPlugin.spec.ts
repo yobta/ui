@@ -5,7 +5,7 @@ import dropdownPlugin from './dropdownPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('dropdownPlugin', async () => {
+test('dropdownPlugin', () => {
   let addComponents = vi.fn()
   let addUtilities = vi.fn()
 

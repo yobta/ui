@@ -5,7 +5,7 @@ import buttonVariantsPlugin from './buttonVariantsPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('buttonVariantsPlugin', async () => {
+test('buttonVariantsPlugin', () => {
   let addUtilities = vi.fn()
   let colors = {
     yobta: {

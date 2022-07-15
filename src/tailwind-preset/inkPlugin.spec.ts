@@ -5,29 +5,51 @@ import inkPlugin from './inkPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('inkPlugin1', () => {
+test('inkPlugin colors is {}', () => {
   let addUtilities = vi.fn()
-  let colors = {
-    ink: {
-      DEFAULT: 'ink',
-      dark: 'inkDark'
-    }
-  }
+  let colors = {}
   let theme = (): typeof colors => colors
 
   inkPlugin.handler({ addUtilities, prefix, theme })
 
-  expect(addUtilities).toBeCalledWith({
-    '.yobta-ink': {
-      '@apply border-current text-ink dark:text-ink-dark': {}
-    }
-  })
+  expect(addUtilities()).toEqual(undefined)
+  expect(theme()).toEqual({})
 })
 
-test('inkPlugin2', async () => {
+test('inkPlugin theme is null', () => {
+  let addUtilities = vi.fn()
+  let theme = (): null => null
+
+  inkPlugin.handler({ addUtilities, prefix, theme })
+
+  expect(addUtilities()).toEqual(undefined)
+})
+
+// test('inkPlugin2', () => {
+//   let addUtilities = vi.fn()
+//   let colors = {
+//     ink: {
+//       DEFAULT: 'ink',
+//       dark: 'inkDark'
+//     }
+//   }
+//   let theme = (): typeof colors => colors
+
+//   inkPlugin.handler({ addUtilities, prefix, theme })
+
+//   expect(addUtilities).toBeCalledWith({
+//     '.yobta-ink': {
+//       '@apply border-current text-ink dark:text-ink-dark': {}
+//     }
+//   })
+// })
+
+test('inkPlugin3', async () => {
   let addUtilities = vi.fn()
   let colors = {
     ink: {
+      DEFAULT: 'ink',
+      dark: 'inkDark',
       2: { DEFAULT: 'ink2', dark: 'ink2Dark' },
       primary: { DEFAULT: 'inkPrimary', dark: 'inkPrimaryDark' },
       secondary: { DEFAULT: 'inkSecondary', dark: 'inkSecondaryDark' },
@@ -41,6 +63,12 @@ test('inkPlugin2', async () => {
   let theme = (): typeof colors => colors
 
   inkPlugin.handler({ addUtilities, prefix, theme })
+
+  expect(addUtilities).toBeCalledWith({
+    '.yobta-ink': {
+      '@apply border-current text-ink dark:text-ink-dark': {}
+    }
+  })
 
   expect(addUtilities).toBeCalledWith({
     '.yobta-ink-2': {

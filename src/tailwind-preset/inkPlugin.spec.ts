@@ -5,7 +5,7 @@ import inkPlugin from './inkPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('inkPlugin1', async () => {
+test('inkPlugin1', () => {
   let addUtilities = vi.fn()
   let colors = {
     ink: {

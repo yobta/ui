@@ -3,7 +3,7 @@ import { test, expect, vi } from 'vitest'
 // @ts-ignore
 import dividerPlugin from './dividerPlugin.cjs'
 
-test('dividerPlugin', async () => {
+test('dividerPlugin', () => {
   let addBase = vi.fn()
 
   dividerPlugin.handler({ addBase })

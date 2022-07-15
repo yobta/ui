@@ -5,7 +5,7 @@ import entypoPlugin from './entypoPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('entypoPlugin', async () => {
+test('entypoPlugin', () => {
   let addBase = vi.fn()
 
   entypoPlugin.handler({ addBase, prefix })

@@ -3,9 +3,13 @@ const plugin = require('tailwindcss/plugin')
 const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addUtilities, prefix, theme }) => {
-  let colors = theme('colors') || {}
+  let colors = theme('colors')
 
-  let { DEFAULT, dark, ...inkColors } = colors.ink || {}
+  if (!colors?.ink) {
+    throw new Error('Yobta inkPlugin: theme.colors.ink is required')
+  }
+
+  let { DEFAULT, dark, ...inkColors } = colors.ink
 
   if (DEFAULT && dark) {
     addUtilities({

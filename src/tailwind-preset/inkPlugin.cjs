@@ -14,6 +14,12 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
 
   let { DEFAULT, dark, ...inkColors } = colors.ink
 
+  if (typeof (DEFAULT && dark) !== 'string') {
+    throw new Error(
+      'Yobta inkPlugin: theme.colors.ink.DEFAULT should be a string'
+    )
+  }
+
   try {
     stringSchema.validateSync(DEFAULT)
   } catch (_e) {

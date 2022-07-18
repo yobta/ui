@@ -22,6 +22,23 @@ test('inkPlugin theme is null', () => {
   }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
 })
 
+test('inkPlugin default/dark is not string', () => {
+  expect(() => {
+    let addUtilities = vi.fn()
+    let colors = {
+      ink: {
+        DEFAULT: 123,
+        dark: 123
+      }
+    }
+    let theme = (): typeof colors => colors
+
+    inkPlugin.handler({ addUtilities, prefix, theme })
+  }).toThrowError(
+    'Yobta inkPlugin: theme.colors.ink.DEFAULT should be a string'
+  )
+})
+
 test('inkPlugin', () => {
   let addUtilities = vi.fn()
   let colors = {

@@ -6,7 +6,6 @@ import { ToggleContext } from './ToggleContext.js'
 
 interface ToogleFC {
   (props: ToggleProps): JSX.Element
-  displayName: string
 }
 
 export const Toggle: ToogleFC = props => {
@@ -35,5 +34,3 @@ export const Toggle: ToogleFC = props => {
     </ToggleContext.Provider>
   )
 }
-
-Toggle.displayName = 'YobtaToggle'

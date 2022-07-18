@@ -10,7 +10,7 @@ import {
 } from 'react'
 
 import { batch, subscribe } from '../helpers/index.js'
-import { useClickAway, useEscapeKey } from '../hooks/index.js'
+import { useClickAway, useEscapeKey, useLatestRef } from '../hooks/index.js'
 import { getComponentProps } from './getComponentProps.js'
 import { suggestMode } from './suggestMode.js'
 import { ToggleContext } from './ToggleContext.js'
@@ -18,8 +18,9 @@ import { ToggleContext } from './ToggleContext.js'
 interface ToggleHook {
   (props: {
     children: [ReactNode, ReactNode]
-    mode?: 'click' | 'rollover' | 'focus'
     activeProducerClassName?: string
+    mode?: 'click' | 'rollover' | 'focus'
+    onToggle?: (isOn: boolean) => void
   }): {
     consumer: ReactNode
     consumerId?: string
@@ -38,8 +39,10 @@ export type ToggleMode = ToggleProps['mode']
 export const useToggle: ToggleHook = ({
   activeProducerClassName,
   children,
-  mode
+  mode,
+  onToggle
 }) => {
+  let callbackRef = useLatestRef(onToggle)
   let [producer, consumer] = Children.toArray(children)
   let producerRef = useRef<HTMLElement | null>(null)
   let consumerRef = useRef<HTMLElement | null>(null)
@@ -149,6 +152,9 @@ export const useToggle: ToggleHook = ({
       } else {
         producerRef.current.classList.remove(activeProducerClassName)
       }
+    }
+    if (callbackRef.current) {
+      callbackRef.current(visible)
     }
   }, [visible])
 

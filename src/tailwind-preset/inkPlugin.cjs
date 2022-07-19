@@ -1,9 +1,6 @@
 const plugin = require('tailwindcss/plugin')
-const { string } = require('yup')
 
 const applyPrefixed = require('./applyPrefixed.cjs')
-
-const stringSchema = string().required()
 
 module.exports = plugin(({ addUtilities, prefix, theme }) => {
   let colors = theme('colors')
@@ -18,19 +15,6 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
     throw new Error(
       'Yobta inkPlugin: theme.colors.ink.DEFAULT should be a string'
     )
-  }
-
-  try {
-    stringSchema.validateSync(DEFAULT)
-  } catch (_e) {
-    throw new Error(
-      'Yobta inkPlugin: theme.colors.ink.DEFAULT should be a string'
-    )
-  }
-  try {
-    stringSchema.validateSync(dark)
-  } catch (_e) {
-    throw new Error('Yobta inkPlugin: theme.colors.ink.dark should be a string')
   }
 
   if (DEFAULT && dark) {

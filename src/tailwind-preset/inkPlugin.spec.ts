@@ -25,15 +25,14 @@ test('inkPlugin theme is null', () => {
 test('inkPlugin default/dark is not string', () => {
   let addUtilities = vi.fn()
   let theme = (): typeof colors => colors
-  let message: string =
-    'Yobta inkPlugin: theme.colors.ink.DEFAULT should be a string'
-  let values: (number | null | undefined)[] = [123, null, undefined]
+  let values: [number, null, undefined] = [123, null, undefined]
   let valueString: string = 'abc'
+  type Field = string | number | null | undefined
 
   interface Colors {
     ink: {
-      DEFAULT: string | number | null | undefined
-      dark: string | number | null | undefined
+      DEFAULT: Field
+      dark: Field
     }
   }
 
@@ -44,21 +43,22 @@ test('inkPlugin default/dark is not string', () => {
     }
   }
 
-  values.forEach(item => {
-    expect(() => {
-      colors.ink.DEFAULT = valueString
-      colors.ink.dark = item
-      inkPlugin.handler({ addUtilities, prefix, theme })
-    }).toThrowError(message)
-  })
-
-  values.forEach(item => {
-    expect(() => {
-      colors.ink.DEFAULT = item
-      colors.ink.dark = valueString
-      inkPlugin.handler({ addUtilities, prefix, theme })
-    }).toThrowError(message)
-  })
+  for (let color in colors.ink) {
+    values.forEach(item => {
+      expect(() => {
+        for (let key in colors.ink) {
+          if (key === color) {
+            colors.ink[key] = valueString
+          } else {
+            colors.ink[key] = item
+          }
+        }
+        inkPlugin.handler({ addUtilities, prefix, theme })
+      }).toThrowError(
+        'Yobta inkPlugin: theme.colors.ink.DEFAULT should be a string'
+      )
+    })
+  }
 })
 
 test('inkPlugin', () => {

@@ -130,3 +130,81 @@ test('inkPlugin', () => {
     }
   })
 })
+
+test('inkPlugin inkColors invalid values', () => {
+  let addUtilities = vi.fn()
+  let theme = (): typeof colors => colors
+  let values: [number, null, undefined, object] = [123, null, undefined, {}]
+  type Field = string | number | null | undefined | object
+
+  interface Colors {
+    ink: {
+      DEFAULT: string
+      dark: string
+      primary: {
+        DEFAULT: Field
+        dark: Field
+      }
+    }
+  }
+
+  let colors: Colors = {
+    ink: {
+      DEFAULT: 'abc',
+      dark: 'abc',
+      primary: {
+        DEFAULT: 'abc',
+        dark: 'abc'
+      }
+    }
+  }
+
+  values.forEach(item => {
+    expect(() => {
+      colors.ink.primary.DEFAULT = item
+      inkPlugin.handler({ addUtilities, prefix, theme })
+    }).toThrowError(
+      `Yobta inkPlugin: theme.colors.ink.primary: DEFAULT should be a string`
+    )
+
+    colors.ink.primary.DEFAULT = 'abc'
+
+    expect(() => {
+      colors.ink.primary.dark = item
+      inkPlugin.handler({ addUtilities, prefix, theme })
+    }).toThrowError(
+      `Yobta inkPlugin: theme.colors.ink.primary: dark should be a string`
+    )
+  })
+})
+
+test('inkPlugin inkColors invalid types of fields', () => {
+  let addUtilities = vi.fn()
+  let theme = (): typeof colors => colors
+  let values: string[] = ['one', 'tester', 'three', '']
+
+  interface Colors {
+    ink: {
+      DEFAULT: string
+      dark: string
+      primary: object
+    }
+  }
+
+  let colors: Colors = {
+    ink: {
+      DEFAULT: 'default',
+      dark: 'dark',
+      primary: {}
+    }
+  }
+
+  values.forEach(item => {
+    expect(() => {
+      colors.ink.primary[item] = 'value'
+      inkPlugin.handler({ addUtilities, prefix, theme })
+    }).toThrowError(
+      `Yobta inkPlugin: theme.colors.ink.primary have invalid field`
+    )
+  })
+})

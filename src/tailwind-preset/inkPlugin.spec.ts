@@ -1,16 +1,13 @@
-import { test, expect, vi } from 'vitest'
+import { test, expect, vi, it } from 'vitest'
 
 // @ts-ignore
 import inkPlugin from './inkPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('inkPlugin colors is {}', () => {
+it('requires theme.colors.ink', () => {
   expect(() => {
-    let colors = {}
-    let theme = (): typeof colors => colors
-
-    inkPlugin.handler({ theme })
+    inkPlugin.handler({ theme: () => {} })
   }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
 })
 

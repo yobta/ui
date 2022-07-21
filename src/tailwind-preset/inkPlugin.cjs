@@ -40,18 +40,16 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
     }
   })
 
-  if (DEFAULT && dark) {
-    addUtilities({
-      '.yobta-ink': {
-        ...applyPrefixed(
-          prefix,
-          '.border-current',
-          '.text-ink',
-          '.dark:text-ink-dark'
-        )
-      }
-    })
-  }
+  addUtilities({
+    '.yobta-ink': {
+      ...applyPrefixed(
+        prefix,
+        '.border-current',
+        '.text-ink',
+        '.dark:text-ink-dark'
+      )
+    }
+  })
 
   Object.keys(inkColors).forEach(key => {
     addUtilities({

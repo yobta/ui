@@ -6,25 +6,39 @@ import inkPlugin from './inkPlugin.cjs'
 const prefix = (str: string): string => str
 
 it('requires theme.colors.ink', () => {
-  expect(() => {
-    inkPlugin.handler({ theme: () => ({}) })
-  }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
+  ;[
+    {},
+    {
+      ink: null
+    },
+    {
+      ink: NaN
+    }
+  ].forEach(colors => {
+    expect(() => {
+      inkPlugin.handler({ theme: () => colors })
+    }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
+  })
+})
 
-  expect(() => {
-    inkPlugin.handler({
-      theme: () => ({
-        ink: null
+it('requires theme.colors.ink.DEFAULT to be a string', () => {
+  ;[
+    {},
+    { DEFAULT: null },
+    { DEFAULT: 0 },
+    { DEFAULT: new Date() },
+    { DEFAULT: new RegExp() }
+  ].forEach(ink => {
+    expect(() => {
+      inkPlugin.handler({
+        theme: () => ({
+          ink
+        })
       })
-    })
-  }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
-
-  expect(() => {
-    inkPlugin.handler({
-      theme: () => ({
-        ink: NaN
-      })
-    })
-  }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
+    }).toThrowError(
+      'Yobta inkPlugin: theme.colors.ink.DEFAULT should be a string'
+    )
+  })
 })
 
 test('inkPlugin DEFAULT/dark is not string', () => {

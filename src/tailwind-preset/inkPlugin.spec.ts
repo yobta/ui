@@ -66,6 +66,36 @@ it('requires theme.colors.ink to have more enrties', () => {
   })
 })
 
+it('requires theme.colors.ink.x.DEFAULT to be a string', () => {
+  ;[{ DEFAULT: '#123', dark: '#456', 2: { DEFAULT: 1 } }].forEach(ink => {
+    expect(() => {
+      inkPlugin.handler({
+        theme: () => ({
+          ink
+        })
+      })
+    }).toThrowError(
+      'Yobta inkPlugin: theme.colors.ink.2.DEFAULT should be a string'
+    )
+  })
+})
+
+it('requires theme.colors.ink.x.dark to be a string', () => {
+  ;[{ DEFAULT: '#123', dark: '#456', 2: { DEFAULT: '#789', dark: 1 } }].forEach(
+    ink => {
+      expect(() => {
+        inkPlugin.handler({
+          theme: () => ({
+            ink
+          })
+        })
+      }).toThrowError(
+        'Yobta inkPlugin: theme.colors.ink.2.dark should be a string'
+      )
+    }
+  )
+})
+
 // test('inkPlugin DEFAULT/dark is not string', () => {
 //   let addUtilities = vi.fn()
 //   let theme = (): typeof colors => colors

@@ -27,19 +27,17 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
     )
   }
 
-  Object.entries(inkColors).forEach(item => {
-    Object.entries(item[1]).forEach(key => {
-      if (key[0] !== 'DEFAULT' && key[0] !== 'dark') {
-        throw new Error(
-          `Yobta inkPlugin: theme.colors.ink.${item[0]} have invalid field`
-        )
-      }
-      if (typeof key[1] !== 'string') {
-        throw new Error(
-          `Yobta inkPlugin: theme.colors.ink.${item[0]}: ${key[0]} should be a string`
-        )
-      }
-    })
+  Object.entries(inkColors).forEach(([key, item]) => {
+    if (typeof item?.DEFAULT !== 'string') {
+      throw new Error(
+        `Yobta inkPlugin: theme.colors.ink.${key}.DEFAULT should be a string`
+      )
+    }
+    if (typeof item?.dark !== 'string') {
+      throw new Error(
+        `Yobta inkPlugin: theme.colors.ink.${key}.dark should be a string`
+      )
+    }
   })
 
   if (DEFAULT && dark) {

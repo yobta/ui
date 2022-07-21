@@ -21,6 +21,12 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
     throw new Error('Yobta inkPlugin: theme.colors.ink.dark should be a string')
   }
 
+  if (!Object.keys(inkColors).length) {
+    throw new Error(
+      'Yobta inkPlugin: theme.colors.ink should have more entries'
+    )
+  }
+
   Object.entries(inkColors).forEach(item => {
     Object.entries(item[1]).forEach(key => {
       if (key[0] !== 'DEFAULT' && key[0] !== 'dark') {

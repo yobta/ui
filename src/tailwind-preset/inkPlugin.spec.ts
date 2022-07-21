@@ -1,4 +1,4 @@
-import { test, expect, vi, it } from 'vitest'
+import { expect, vi, it } from 'vitest'
 
 // @ts-ignore
 import inkPlugin from './inkPlugin.cjs'

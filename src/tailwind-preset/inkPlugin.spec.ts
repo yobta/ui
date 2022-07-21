@@ -13,9 +13,15 @@ it('requires theme.colors.ink', () => {
   expect(() => {
     inkPlugin.handler({
       theme: () => ({
-        colors: {
-          ink: null
-        }
+        ink: null
+      })
+    })
+  }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
+
+  expect(() => {
+    inkPlugin.handler({
+      theme: () => ({
+        ink: NaN
       })
     })
   }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')

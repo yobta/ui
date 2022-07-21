@@ -7,15 +7,17 @@ const prefix = (str: string): string => str
 
 it('requires theme.colors.ink', () => {
   expect(() => {
-    inkPlugin.handler({ theme: () => {} })
+    inkPlugin.handler({ theme: () => ({}) })
   }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
-})
 
-test('inkPlugin theme is null', () => {
   expect(() => {
-    let theme = (): null => null
-
-    inkPlugin.handler({ theme })
+    inkPlugin.handler({
+      theme: () => ({
+        colors: {
+          ink: null
+        }
+      })
+    })
   }).toThrowError('Yobta inkPlugin: theme.colors.ink is required')
 })
 

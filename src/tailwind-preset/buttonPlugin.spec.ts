@@ -5,7 +5,7 @@ import buttonPlugin from './buttonPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('bagePlugin', () => {
+test('buttonPlugin', () => {
   let addComponents = vi.fn()
 
   buttonPlugin.handler({ addComponents, prefix })

@@ -1,11 +1,29 @@
-import { test, expect, vi } from 'vitest'
+import { it, expect, vi } from 'vitest'
 
 // @ts-ignore
 import buttonVariantsPlugin from './buttonVariantsPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('buttonVariantsPlugin', () => {
+it('requires theme.colors.yobta', () => {
+  ;[
+    {},
+    {
+      yobta: null
+    },
+    {
+      yobta: NaN
+    }
+  ].forEach(colors => {
+    expect(() => {
+      buttonVariantsPlugin.handler({ theme: () => colors })
+    }).toThrowError(
+      'Yobta buttonVariantsPlugin: theme.colors.yobta is required'
+    )
+  })
+})
+
+it('addUtilities', () => {
   let addUtilities = vi.fn()
   let colors = {
     yobta: {

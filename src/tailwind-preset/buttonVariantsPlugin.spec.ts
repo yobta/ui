@@ -35,6 +35,34 @@ it('requires theme.colors.yobta to have more enrties', () => {
   )
 })
 
+it('requires theme.colors.yobta.primary.ink.DEFAULT to be a string', () => {
+  ;[{ primary: { ink: { DEFAULT: 1 } } }].forEach(yobta => {
+    expect(() => {
+      buttonVariantsPlugin.handler({
+        theme: () => ({
+          yobta
+        })
+      })
+    }).toThrowError(
+      'Yobta buttonVariantsPlugin: theme.colors.yobta.primary.ink.DEFAULT should be a string'
+    )
+  })
+})
+
+it('requires theme.colors.yobta.ink.dark to be a string', () => {
+  ;[{ primary: { ink: { DEFAULT: '#123', dark: 1 } } }].forEach(yobta => {
+    expect(() => {
+      buttonVariantsPlugin.handler({
+        theme: () => ({
+          yobta
+        })
+      })
+    }).toThrowError(
+      'Yobta buttonVariantsPlugin: theme.colors.yobta.primary.ink.dark should be a string'
+    )
+  })
+})
+
 it('addUtilities', () => {
   let addUtilities = vi.fn()
   let colors = {

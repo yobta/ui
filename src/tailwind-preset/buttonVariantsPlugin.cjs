@@ -11,6 +11,12 @@ module.exports = plugin(({ addUtilities, prefix, theme }) => {
     )
   }
 
+  if (!Object.keys(colors?.yobta).length) {
+    throw new Error(
+      'Yobta buttonVariantsPlugin: theme.colors.yobta should have more entries'
+    )
+  }
+
   let classes = Object.entries(colors.yobta).reduce(
     (acc, [key]) => ({
       ...acc,

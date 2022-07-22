@@ -23,6 +23,18 @@ it('requires theme.colors.yobta', () => {
   })
 })
 
+it('requires theme.colors.yobta to have more enrties', () => {
+  expect(() => {
+    buttonVariantsPlugin.handler({
+      theme: () => ({
+        yobta: {}
+      })
+    })
+  }).toThrowError(
+    'Yobta buttonVariantsPlugin: theme.colors.yobta should have more entries'
+  )
+})
+
 it('addUtilities', () => {
   let addUtilities = vi.fn()
   let colors = {

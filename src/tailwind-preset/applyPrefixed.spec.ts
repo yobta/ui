@@ -1,13 +1,14 @@
-import { test, expect } from 'vitest'
+import { test, expect, vi } from 'vitest'
 
 // @ts-ignore
 import applyPrefixed from './applyPrefixed.cjs'
 
-const prefix = (str: string): string => str
-
 test('applyPrefixed', async () => {
-  let classes: string[]
-  classes = ['.pointer-events-none', '.class', '12345']
+  let prefix = vi.fn((str: string) => str)
 
-  expect(applyPrefixed(prefix, ...classes)).toEqual({ '@apply pointer-events-none class 2345': {} })
+  let classes: string[] = ['.pointer-events-none', '.class', '12345']
+
+  applyPrefixed(prefix, classes)
+
+  expect(prefix).toBeCalled()
 })

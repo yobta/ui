@@ -8,7 +8,7 @@ test('applyPrefixed', async () => {
 
   let classes: string[] = ['.pointer-events-none', '.class', '12345']
 
-  applyPrefixed(prefix, classes)
+  applyPrefixed(prefix, ...classes)
 
   expect(prefix).toBeCalled()
 })

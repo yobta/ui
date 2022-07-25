@@ -27,6 +27,17 @@ it('yobtaColorsPlugin', () => {
     })
   })
 
-  expect(addComponents).toBeCalled()
+  expect(addComponents).toBeCalledWith({
+    '.yobta-paper': {
+      '@apply bg-yobta-paper-paper text-yobta-paper-ink dark:bg-yobta-paper-paper-dark dark:text-yobta-paper-ink-dark':
+        {},
+      'borderColor': 'currentcolor'
+    },
+    '.yobta-paper-inversed': {
+      '@apply bg-yobta-paper-paper-dark text-yobta-paper-ink-dark dark:bg-yobta-paper-paper dark:text-yobta-paper-ink':
+        {},
+      'borderColor': 'currentcolor'
+    }
+  })
   expect(addUtilities).toBeCalled()
 })

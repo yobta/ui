@@ -39,5 +39,10 @@ it('yobtaColorsPlugin', () => {
       'borderColor': 'currentcolor'
     }
   })
-  expect(addUtilities).toBeCalled()
+  expect(addUtilities).toBeCalledWith({
+    '.yobta-paper .yobta-selected': {
+      '@apply bg-yobta-paper-selected-paper dark:bg-yobta-paper-selected-paper-dark text-yobta-paper-selected-ink dark:text-yobta-paper-selected-ink-dark':
+        {}
+    }
+  })
 })

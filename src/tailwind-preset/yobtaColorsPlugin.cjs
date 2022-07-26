@@ -23,13 +23,13 @@ module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
         'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.dark should be a string'
       )
     }
-  })
 
-  // if (typeof paper.DEFAULT !== 'string') {
-  //   throw new Error(
-  //     'Yobta yobtaColorsPlugin: theme.colors.yobta.paper.DEFAULT should be a string'
-  //   )
-  // }
+    if (typeof paper.DEFAULT !== 'string') {
+      throw new Error(
+        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.paper.DEFAULT should be a string'
+      )
+    }
+  })
 
   // if (typeof paper.dark !== 'string') {
   //   throw new Error(

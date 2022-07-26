@@ -29,13 +29,21 @@ module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
         'Yobta yobtaColorsPlugin: theme.colors.yobta.***.paper.DEFAULT should be a string'
       )
     }
-  })
 
-  // if (typeof paper.dark !== 'string') {
-  //   throw new Error(
-  //     'Yobta yobtaColorsPlugin: theme.colors.yobta.paper.dark should be a string'
-  //   )
-  // }
+    if (typeof paper.dark !== 'string') {
+      throw new Error(
+        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.paper.dark should be a string'
+      )
+    }
+
+    if (selected) {
+      if (typeof selected.paper.DEFAULT !== 'string') {
+        throw new Error(
+          'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.DEFAULT should be a string'
+        )
+      }
+    }
+  })
 
   // if (!Object.keys(colors?.yobta).length) {
   //   throw new Error(

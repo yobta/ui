@@ -82,6 +82,53 @@ it('requires theme.colors.yobta.***.paper.DEFAULT to be a string', () => {
   )
 })
 
+it('requires theme.colors.yobta.***.paper.dark to be a string', () => {
+  ;[
+    { DEFAULT: '#123', dark: null },
+    { DEFAULT: '#123', dark: 0 },
+    { DEFAULT: '#123', dark: new Date() }
+  ].forEach(paper => {
+    expect(() => {
+      yobtaColorsPlugin.handler({
+        theme: () => ({
+          yobta: {
+            primary: {
+              ink: { DEFAULT: '#123', dark: '#123' },
+              paper
+            }
+          }
+        })
+      })
+    }).toThrowError(
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.paper.dark should be a string'
+    )
+  })
+})
+
+it('requires theme.colors.yobta.***.selected.paper.DEFAULT to be a string', () => {
+  ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(
+    paper => {
+      expect(() => {
+        yobtaColorsPlugin.handler({
+          theme: () => ({
+            yobta: {
+              primary: {
+                ink: { DEFAULT: '#123', dark: '#123' },
+                paper: { DEFAULT: '#123', dark: '#123' },
+                selected: {
+                  paper
+                }
+              }
+            }
+          })
+        })
+      }).toThrowError(
+        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.DEFAULT should be a string'
+      )
+    }
+  )
+})
+
 // it('requires theme.colors.yobta should should not be empty', () => {
 //   ;[{}].forEach(yobta => {
 //     expect(() => {

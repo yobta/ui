@@ -21,6 +21,20 @@ it('requires theme.colors.yobta', () => {
   })
 })
 
+it('requires theme.colors.yobta should should not be empty', () => {
+  ;[{}].forEach(yobta => {
+    expect(() => {
+      yobtaColorsPlugin.handler({
+        theme: () => ({
+          yobta
+        })
+      })
+    }).toThrowError(
+      'Yobta inkyobtaColorsPluginPlugin: theme.colors.yobta should should not be empty'
+    )
+  })
+})
+
 it('yobtaColorsPlugin', () => {
   let addComponents = vi.fn()
   let addUtilities = vi.fn()

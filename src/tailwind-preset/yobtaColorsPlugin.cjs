@@ -9,6 +9,12 @@ module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
     throw new Error('Yobta yobtaColorsPlugin: theme.colors.yobta is required')
   }
 
+  if (!Object.keys(colors?.yobta).length) {
+    throw new Error(
+      'Yobta inkyobtaColorsPluginPlugin: theme.colors.yobta should should not be empty'
+    )
+  }
+
   Object.entries(colors.yobta).forEach(([key, value]) => {
     addComponents({
       [`.yobta-${key}`]: {

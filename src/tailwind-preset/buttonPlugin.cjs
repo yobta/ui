@@ -7,6 +7,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
     '.yobta-button': {
       ...applyPrefixed(
         prefix,
+        '.border-current',
         '.flex',
         '.font-medium',
         '.gap-x-2',
@@ -17,9 +18,9 @@ module.exports = plugin(({ addComponents, prefix }) => {
         '.px-4',
         '.relative',
         '.rounded',
-        '.text-current',
         '.text-sm'
       ),
+      'color': 'inherit',
       'transition': 'filter',
       '&:before': {
         ...applyPrefixed(

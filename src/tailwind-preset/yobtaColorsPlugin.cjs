@@ -4,6 +4,11 @@ const applyPrefixed = require('./applyPrefixed.cjs')
 
 module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
   let colors = theme('colors')
+
+  if (!colors?.yobta) {
+    throw new Error('Yobta yobtaColorsPlugin: theme.colors.yobta is required')
+  }
+
   Object.entries(colors.yobta).forEach(([key, value]) => {
     addComponents({
       [`.yobta-${key}`]: {

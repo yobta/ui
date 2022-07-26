@@ -5,6 +5,22 @@ import yobtaColorsPlugin from './yobtaColorsPlugin.cjs'
 
 const prefix = (str: string): string => str
 
+it('requires theme.colors.yobta', () => {
+  ;[
+    {},
+    {
+      ink: null
+    },
+    {
+      ink: NaN
+    }
+  ].forEach(colors => {
+    expect(() => {
+      yobtaColorsPlugin.handler({ theme: () => colors })
+    }).toThrowError('Yobta yobtaColorsPlugin: theme.colors.yobta is required')
+  })
+})
+
 it('yobtaColorsPlugin', () => {
   let addComponents = vi.fn()
   let addUtilities = vi.fn()

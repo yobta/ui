@@ -129,19 +129,81 @@ it('requires theme.colors.yobta.***.selected.paper.DEFAULT to be a string', () =
   )
 })
 
-// it('requires theme.colors.yobta should should not be empty', () => {
-//   ;[{}].forEach(yobta => {
-//     expect(() => {
-//       yobtaColorsPlugin.handler({
-//         theme: () => ({
-//           yobta
-//         })
-//       })
-//     }).toThrowError(
-//       'Yobta inkyobtaColorsPluginPlugin: theme.colors.yobta should should not be empty'
-//     )
-//   })
-// })
+it('requires theme.colors.yobta.***.selected.paper.dark to be a string', () => {
+  ;[
+    { DEFAULT: '#123', dark: null },
+    { DEFAULT: '#123', dark: 0 },
+    { DEFAULT: '#123', dark: new Date() }
+  ].forEach(paper => {
+    expect(() => {
+      yobtaColorsPlugin.handler({
+        theme: () => ({
+          yobta: {
+            primary: {
+              ink: { DEFAULT: '#123', dark: '#123' },
+              paper: { DEFAULT: '#123', dark: '#123' },
+              selected: {
+                paper
+              }
+            }
+          }
+        })
+      })
+    }).toThrowError(
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.dark should be a string'
+    )
+  })
+})
+
+it('requires theme.colors.yobta.***.selected.ink.DEFAULT to be a string', () => {
+  ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(ink => {
+    expect(() => {
+      yobtaColorsPlugin.handler({
+        theme: () => ({
+          yobta: {
+            primary: {
+              ink: { DEFAULT: '#123', dark: '#123' },
+              paper: { DEFAULT: '#123', dark: '#123' },
+              selected: {
+                paper: { DEFAULT: '#123', dark: '#123' },
+                ink
+              }
+            }
+          }
+        })
+      })
+    }).toThrowError(
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.ink.DEFAULT should be a string'
+    )
+  })
+})
+
+it('requires theme.colors.yobta.***.selected.ink.dark to be a string', () => {
+  ;[
+    { DEFAULT: '#123', dark: null },
+    { DEFAULT: '#123', dark: 0 },
+    { DEFAULT: '#123', dark: new Date() }
+  ].forEach(ink => {
+    expect(() => {
+      yobtaColorsPlugin.handler({
+        theme: () => ({
+          yobta: {
+            primary: {
+              ink: { DEFAULT: '#123', dark: '#123' },
+              paper: { DEFAULT: '#123', dark: '#123' },
+              selected: {
+                paper: { DEFAULT: '#123', dark: '#123' },
+                ink
+              }
+            }
+          }
+        })
+      })
+    }).toThrowError(
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.ink.dark should be a string'
+    )
+  })
+})
 
 it('yobtaColorsPlugin', () => {
   let addComponents = vi.fn()

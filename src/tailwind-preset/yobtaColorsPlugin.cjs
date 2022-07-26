@@ -42,14 +42,26 @@ module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
           'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.DEFAULT should be a string'
         )
       }
+
+      if (typeof selected.paper.dark !== 'string') {
+        throw new Error(
+          'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.dark should be a string'
+        )
+      }
+
+      if (typeof selected.ink.DEFAULT !== 'string') {
+        throw new Error(
+          'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.ink.DEFAULT should be a string'
+        )
+      }
+
+      if (typeof selected.ink.dark !== 'string') {
+        throw new Error(
+          'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.ink.dark should be a string'
+        )
+      }
     }
   })
-
-  // if (!Object.keys(colors?.yobta).length) {
-  //   throw new Error(
-  //     'Yobta inkyobtaColorsPluginPlugin: theme.colors.yobta should should not be empty'
-  //   )
-  // }
 
   Object.entries(colors.yobta).forEach(([key, value]) => {
     addComponents({

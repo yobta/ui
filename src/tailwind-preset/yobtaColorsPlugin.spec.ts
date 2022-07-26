@@ -21,19 +21,59 @@ it('requires theme.colors.yobta', () => {
   })
 })
 
-it('requires theme.colors.yobta should should not be empty', () => {
-  ;[{}].forEach(yobta => {
+it('requires theme.colors.yobta.***.ink.DEFAULT to be a string', () => {
+  ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(ink => {
     expect(() => {
       yobtaColorsPlugin.handler({
         theme: () => ({
-          yobta
+          yobta: {
+            paper: {
+              ink
+            }
+          }
         })
       })
     }).toThrowError(
-      'Yobta inkyobtaColorsPluginPlugin: theme.colors.yobta should should not be empty'
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.DEFAULT should be a string'
     )
   })
 })
+
+it('requires theme.colors.yobta.***.ink.dark to be a string', () => {
+  ;[
+    { DEFAULT: '#123', dark: null },
+    { DEFAULT: '#123', dark: 0 },
+    { DEFAULT: '#123', dark: new Date() }
+  ].forEach(ink => {
+    expect(() => {
+      yobtaColorsPlugin.handler({
+        theme: () => ({
+          yobta: {
+            paper: {
+              ink
+            }
+          }
+        })
+      })
+    }).toThrowError(
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.dark should be a string'
+    )
+  })
+})
+
+// it('requires theme.colors.yobta should should not be empty', () => {
+//   ;[{}].forEach(yobta => {
+//     expect(() => {
+//       yobtaColorsPlugin.handler({
+//         theme: () => ({
+//           yobta
+//         })
+//       })
+//     }).toThrowError(
+//       'Yobta inkyobtaColorsPluginPlugin: theme.colors.yobta should should not be empty'
+//     )
+//   })
+// })
 
 it('yobtaColorsPlugin', () => {
   let addComponents = vi.fn()

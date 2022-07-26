@@ -9,11 +9,39 @@ module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
     throw new Error('Yobta yobtaColorsPlugin: theme.colors.yobta is required')
   }
 
-  if (!Object.keys(colors?.yobta).length) {
-    throw new Error(
-      'Yobta inkyobtaColorsPluginPlugin: theme.colors.yobta should should not be empty'
-    )
-  }
+  Object.values(colors.yobta).forEach(value => {
+    let { ink, paper, selected } = value
+
+    if (typeof ink.DEFAULT !== 'string') {
+      throw new Error(
+        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.DEFAULT should be a string'
+      )
+    }
+
+    if (typeof ink.dark !== 'string') {
+      throw new Error(
+        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.dark should be a string'
+      )
+    }
+  })
+
+  // if (typeof paper.DEFAULT !== 'string') {
+  //   throw new Error(
+  //     'Yobta yobtaColorsPlugin: theme.colors.yobta.paper.DEFAULT should be a string'
+  //   )
+  // }
+
+  // if (typeof paper.dark !== 'string') {
+  //   throw new Error(
+  //     'Yobta yobtaColorsPlugin: theme.colors.yobta.paper.dark should be a string'
+  //   )
+  // }
+
+  // if (!Object.keys(colors?.yobta).length) {
+  //   throw new Error(
+  //     'Yobta inkyobtaColorsPluginPlugin: theme.colors.yobta should should not be empty'
+  //   )
+  // }
 
   Object.entries(colors.yobta).forEach(([key, value]) => {
     addComponents({

@@ -110,7 +110,7 @@ module.exports = {
     require('./dropdownPlugin/dropdownPlugin.cjs'),
     require('./entypoPlugin/entypoPlugin.cjs'),
     require('./inkPlugin/inkPlugin.cjs'),
-    require('./inputPlugin.cjs'),
+    require('./inputPlugin/inputPlugin.cjs'),
     require('./linearProgressPlugin.cjs'),
     require('./linkPlugin.cjs'),
     require('./listPlugin.cjs'),

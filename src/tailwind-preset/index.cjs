@@ -109,7 +109,7 @@ module.exports = {
     require('./dividerPlugin/dividerPlugin.cjs'),
     require('./dropdownPlugin/dropdownPlugin.cjs'),
     require('./entypoPlugin/entypoPlugin.cjs'),
-    require('./inkPlugin.cjs'),
+    require('./inkPlugin/inkPlugin.cjs'),
     require('./inputPlugin.cjs'),
     require('./linearProgressPlugin.cjs'),
     require('./linkPlugin.cjs'),

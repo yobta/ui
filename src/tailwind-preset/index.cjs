@@ -108,7 +108,7 @@ module.exports = {
     require('./checkboxPlugin/checkboxPlugin.cjs'),
     require('./dividerPlugin/dividerPlugin.cjs'),
     require('./dropdownPlugin/dropdownPlugin.cjs'),
-    require('./entypoPlugin.cjs'),
+    require('./entypoPlugin/entypoPlugin.cjs'),
     require('./inkPlugin.cjs'),
     require('./inputPlugin.cjs'),
     require('./linearProgressPlugin.cjs'),

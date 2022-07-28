@@ -1,0 +1,57 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Placeholder } from '../Placeholder'
+
+<Meta title="MDX/Placeholder" />
+
+# Menu
+
+Placeholder component renders a line when it's `children` property is `undefined`.
+
+## Importing
+
+```js
+import { Placeholder } from '@yobta/ui'
+```
+
+## Basic Usage
+
+<Canvas>
+  <Story name="Basic Usage">
+    <div className="grid grid-cols-2 gap-2">
+      <Placeholder>{undefined}</Placeholder>
+      <span>Some text</span>
+    </div>
+  </Story>
+</Canvas>
+
+## Multiline
+
+<Canvas>
+  <Story name="Multiline">
+    <Placeholder>{undefined}</Placeholder>
+    <Placeholder>{undefined}</Placeholder>
+    <Placeholder className="w-2/3">{undefined}</Placeholder>
+  </Story>
+</Canvas>
+
+## Color
+
+<Canvas>
+  <Story name="Color">
+    <div className="grid grid-cols-2 gap-2 yobta-ink-secondary">
+      <Placeholder>{undefined}</Placeholder>
+      <span>Some text</span>
+    </div>
+  </Story>
+</Canvas>
+
+## Size
+
+<Canvas>
+  <Story name="Size">
+    <div className="grid grid-cols-2 gap-2 text-3xl">
+      <Placeholder>{undefined}</Placeholder>
+      <span>Some text</span>
+    </div>
+  </Story>
+</Canvas>

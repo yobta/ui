@@ -16,9 +16,21 @@ module.exports = {
         'yobta-dropdown-in-top': 'yobtaDropdownInTop 0.40s ease forwards',
         'yobta-dropdown-out-top': 'yobtaDropdownOutTop 0.32s ease forwards',
         'yobta-spinner':
-          'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite'
+          'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite',
+        'yobta-placeholder': 'yobta-placeholder 4.4s ease 0.32s infinite'
       },
       keyframes: {
+        'yobta-placeholder': {
+          '0%': {
+            opacity: '0.08'
+          },
+          '50%': {
+            opacity: '0.48'
+          },
+          '100%': {
+            opacity: '0.08'
+          }
+        },
         'yobta-linear-progress': {
           '0%': {
             backgroundSize: '200% 100%',
@@ -103,6 +115,7 @@ module.exports = {
     require('./linkPlugin.cjs'),
     require('./listPlugin.cjs'),
     require('./menuPlugin.cjs'),
+    require('./placeholderPlugin/placeholderPlugin.cjs'),
     require('./radioButtonPlugin.cjs'),
     require('./scrollBoxPlugin.cjs'),
     require('./selectedPlugin.cjs'),

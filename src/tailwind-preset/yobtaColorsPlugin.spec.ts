@@ -34,7 +34,7 @@ it('requires theme.colors.yobta.***.ink.DEFAULT to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.DEFAULT should be a string'
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.ink.DEFAULT should be a string'
     )
   })
 })
@@ -56,7 +56,7 @@ it('requires theme.colors.yobta.***.ink.dark to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.dark should be a string'
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.ink.dark should be a string'
     )
   })
 })
@@ -76,7 +76,7 @@ it('requires theme.colors.yobta.***.paper.DEFAULT to be a string', () => {
           })
         })
       }).toThrowError(
-        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.paper.DEFAULT should be a string'
+        'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.paper.DEFAULT should be a string'
       )
     }
   )
@@ -100,7 +100,7 @@ it('requires theme.colors.yobta.***.paper.dark to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.paper.dark should be a string'
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.paper.dark should be a string'
     )
   })
 })
@@ -123,7 +123,7 @@ it('requires theme.colors.yobta.***.selected.paper.DEFAULT to be a string', () =
           })
         })
       }).toThrowError(
-        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.DEFAULT should be a string'
+        'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.selected.paper.DEFAULT should be a string'
       )
     }
   )
@@ -150,7 +150,7 @@ it('requires theme.colors.yobta.***.selected.paper.dark to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.dark should be a string'
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.selected.paper.dark should be a string'
     )
   })
 })
@@ -173,7 +173,7 @@ it('requires theme.colors.yobta.***.selected.ink.DEFAULT to be a string', () => 
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.ink.DEFAULT should be a string'
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.selected.ink.DEFAULT should be a string'
     )
   })
 })
@@ -200,7 +200,7 @@ it('requires theme.colors.yobta.***.selected.ink.dark to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.ink.dark should be a string'
+      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.selected.ink.dark should be a string'
     )
   })
 })

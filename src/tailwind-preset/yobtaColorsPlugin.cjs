@@ -9,55 +9,55 @@ module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
     throw new Error('Yobta yobtaColorsPlugin: theme.colors.yobta is required')
   }
 
-  Object.values(colors.yobta).forEach(value => {
+  Object.entries(colors.yobta).forEach(([key, value]) => {
     let { ink, paper, selected } = value
 
     if (typeof ink.DEFAULT !== 'string') {
       throw new Error(
-        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.DEFAULT should be a string'
+        `Yobta yobtaColorsPlugin: theme.colors.yobta.${key}.ink.DEFAULT should be a string`
       )
     }
 
     if (typeof ink.dark !== 'string') {
       throw new Error(
-        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.ink.dark should be a string'
+        `Yobta yobtaColorsPlugin: theme.colors.yobta.${key}.ink.dark should be a string`
       )
     }
 
     if (typeof paper.DEFAULT !== 'string') {
       throw new Error(
-        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.paper.DEFAULT should be a string'
+        `Yobta yobtaColorsPlugin: theme.colors.yobta.${key}.paper.DEFAULT should be a string`
       )
     }
 
     if (typeof paper.dark !== 'string') {
       throw new Error(
-        'Yobta yobtaColorsPlugin: theme.colors.yobta.***.paper.dark should be a string'
+        `Yobta yobtaColorsPlugin: theme.colors.yobta.${key}.paper.dark should be a string`
       )
     }
 
     if (selected) {
       if (typeof selected.paper.DEFAULT !== 'string') {
         throw new Error(
-          'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.DEFAULT should be a string'
+          `Yobta yobtaColorsPlugin: theme.colors.yobta.${key}.selected.paper.DEFAULT should be a string`
         )
       }
 
       if (typeof selected.paper.dark !== 'string') {
         throw new Error(
-          'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.paper.dark should be a string'
+          `Yobta yobtaColorsPlugin: theme.colors.yobta.${key}.selected.paper.dark should be a string`
         )
       }
 
       if (typeof selected.ink.DEFAULT !== 'string') {
         throw new Error(
-          'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.ink.DEFAULT should be a string'
+          `Yobta yobtaColorsPlugin: theme.colors.yobta.${key}.selected.ink.DEFAULT should be a string`
         )
       }
 
       if (typeof selected.ink.dark !== 'string') {
         throw new Error(
-          'Yobta yobtaColorsPlugin: theme.colors.yobta.***.selected.ink.dark should be a string'
+          `Yobta yobtaColorsPlugin: theme.colors.yobta.${key}.selected.ink.dark should be a string`
         )
       }
     }

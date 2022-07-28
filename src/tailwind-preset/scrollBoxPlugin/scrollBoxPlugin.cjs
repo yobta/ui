@@ -1,6 +1,6 @@
 const plugin = require('tailwindcss/plugin')
 
-const applyPrefixed = require('./applyPrefixed/applyPrefixed.cjs')
+const applyPrefixed = require('../applyPrefixed/applyPrefixed.cjs')
 
 // NOTE: In case we want visible and fancy scrollbars https://www.filamentgroup.com/lab/scrollbars/
 

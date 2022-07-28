@@ -1,24 +1,31 @@
 import clsx from 'clsx'
-import { ReactNode, ComponentProps } from 'react'
+import {
+  ReactNode,
+  ComponentProps,
+  forwardRef,
+  ForwardRefRenderFunction
+} from 'react'
 
-interface PlaceholderFC {
-  (
-    props: ComponentProps<'span'> & {
-      children?: ReactNode
-      className?: string
-      visible?: boolean
-    }
-  ): JSX.Element
+type PlaceholderProps = {
+  children?: ReactNode
+  className?: string
+  visible?: boolean
 }
 
-export const Placeholder: PlaceholderFC = ({
-  children,
-  className,
-  visible,
-  ...rest
-}) => {
+const PlaceholderWithoutRef: ForwardRefRenderFunction<
+  HTMLSpanElement,
+  PlaceholderProps & ComponentProps<'span'>
+> = ({ children, className, visible, ...rest }, forwarderRef) => {
   if (typeof children === 'undefined' || visible) {
-    return <span {...rest} className={clsx('yobta-placeholder', className)} />
+    return (
+      <span
+        {...rest}
+        className={clsx('yobta-placeholder', className)}
+        ref={forwarderRef}
+      />
+    )
   }
   return children as unknown as JSX.Element
 }
+
+export const Placeholder = forwardRef(PlaceholderWithoutRef)

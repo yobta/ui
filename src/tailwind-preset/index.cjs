@@ -111,7 +111,7 @@ module.exports = {
     require('./entypoPlugin/entypoPlugin.cjs'),
     require('./inkPlugin/inkPlugin.cjs'),
     require('./inputPlugin/inputPlugin.cjs'),
-    require('./linearProgressPlugin.cjs'),
+    require('./linearProgressPlugin/linearProgressPlugin.cjs'),
     require('./linkPlugin.cjs'),
     require('./listPlugin.cjs'),
     require('./menuPlugin.cjs'),

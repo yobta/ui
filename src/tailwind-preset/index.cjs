@@ -116,7 +116,7 @@ module.exports = {
     require('./listPlugin/listPlugin.cjs'),
     require('./placeholderPlugin/placeholderPlugin.cjs'),
     require('./menuPlugin/menuPlugin.cjs'),
-    require('./radioButtonPlugin.cjs'),
+    require('./radioButtonPlugin/radioButtonPlugin.cjs'),
     require('./scrollBoxPlugin.cjs'),
     require('./selectedPlugin.cjs'),
     require('./spinnerPlugin.cjs'),

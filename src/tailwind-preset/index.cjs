@@ -124,7 +124,7 @@ module.exports = {
     require('./textAreaPlugin/textAreaPlugin.cjs'),
     require('./textColorPlugin/textColorPlugin.cjs'),
     require('./tooltipPlugin/tooltipPlugin.cjs'),
-    require('./yobtaColorsPlugin.cjs')
+    require('./yobtaColorsPlugin/yobtaColorsPlugin.cjs')
   ],
   variants: {
     extend: {

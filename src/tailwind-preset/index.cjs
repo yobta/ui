@@ -123,7 +123,7 @@ module.exports = {
     require('./switchPlugin/switchPlugin.cjs'),
     require('./textAreaPlugin/textAreaPlugin.cjs'),
     require('./textColorPlugin/textColorPlugin.cjs'),
-    require('./tooltipPlugin.cjs'),
+    require('./tooltipPlugin/tooltipPlugin.cjs'),
     require('./yobtaColorsPlugin.cjs')
   ],
   variants: {

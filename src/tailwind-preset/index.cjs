@@ -106,7 +106,7 @@ module.exports = {
     require('./buttonPlugin/buttonPlugin.cjs'),
     require('./buttonVariantsPlugin/buttonVariantsPlugin.cjs'),
     require('./checkboxPlugin/checkboxPlugin.cjs'),
-    require('./dividerPlugin.cjs'),
+    require('./dividerPlugin/dividerPlugin.cjs'),
     require('./dropdownPlugin.cjs'),
     require('./entypoPlugin.cjs'),
     require('./inkPlugin.cjs'),

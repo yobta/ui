@@ -113,7 +113,7 @@ module.exports = {
     require('./inputPlugin/inputPlugin.cjs'),
     require('./linearProgressPlugin/linearProgressPlugin.cjs'),
     require('./linkPlugin/linkPlugin.cjs'),
-    require('./listPlugin.cjs'),
+    require('./listPlugin/listPlugin.cjs'),
     require('./menuPlugin.cjs'),
     require('./placeholderPlugin/placeholderPlugin.cjs'),
     require('./radioButtonPlugin.cjs'),

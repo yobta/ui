@@ -1,7 +1,7 @@
 import { test, expect, vi } from 'vitest'
 
 // @ts-ignore
-import applyPrefixed from './applyPrefixed/applyPrefixed.cjs'
+import applyPrefixed from './applyPrefixed.cjs'
 
 test('applyPrefixed', async () => {
   let prefix = vi.fn((str: string) => str)

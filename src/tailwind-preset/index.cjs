@@ -121,7 +121,7 @@ module.exports = {
     require('./selectedPlugin/selectedPlugin.cjs'),
     require('./spinnerPlugin/spinnerPlugin.cjs'),
     require('./switchPlugin/switchPlugin.cjs'),
-    require('./textAreaPlugin.cjs'),
+    require('./textAreaPlugin/textAreaPlugin.cjs'),
     require('./textColorPlugin.cjs'),
     require('./tooltipPlugin.cjs'),
     require('./yobtaColorsPlugin.cjs')

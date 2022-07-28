@@ -120,7 +120,7 @@ module.exports = {
     require('./scrollBoxPlugin/scrollBoxPlugin.cjs'),
     require('./selectedPlugin/selectedPlugin.cjs'),
     require('./spinnerPlugin/spinnerPlugin.cjs'),
-    require('./switchPlugin.cjs'),
+    require('./switchPlugin/switchPlugin.cjs'),
     require('./textAreaPlugin.cjs'),
     require('./textColorPlugin.cjs'),
     require('./tooltipPlugin.cjs'),

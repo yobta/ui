@@ -102,7 +102,7 @@ module.exports = {
     require('./badgePlugin/badgePlugin.cjs'),
     require('./basePlugin/basePlugin.cjs'),
     require('./bgPlugin/bgPlugin.cjs'),
-    require('./borderPlugin.cjs'),
+    require('./borderPlugin/borderPlugin.cjs'),
     require('./buttonPlugin.cjs'),
     require('./buttonVariantsPlugin.cjs'),
     require('./checkboxPlugin.cjs'),

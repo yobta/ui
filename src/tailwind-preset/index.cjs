@@ -112,7 +112,7 @@ module.exports = {
     require('./inkPlugin/inkPlugin.cjs'),
     require('./inputPlugin/inputPlugin.cjs'),
     require('./linearProgressPlugin/linearProgressPlugin.cjs'),
-    require('./linkPlugin.cjs'),
+    require('./linkPlugin/linkPlugin.cjs'),
     require('./listPlugin.cjs'),
     require('./menuPlugin.cjs'),
     require('./placeholderPlugin/placeholderPlugin.cjs'),

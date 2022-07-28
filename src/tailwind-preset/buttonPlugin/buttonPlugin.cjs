@@ -1,6 +1,6 @@
 const plugin = require('tailwindcss/plugin')
 
-const applyPrefixed = require('./applyPrefixed/applyPrefixed.cjs')
+const applyPrefixed = require('../applyPrefixed/applyPrefixed.cjs')
 
 module.exports = plugin(({ addComponents, prefix }) => {
   addComponents({

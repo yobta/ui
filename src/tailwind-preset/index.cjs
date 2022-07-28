@@ -99,8 +99,8 @@ module.exports = {
     }
   },
   plugins: [
-    require('./badgePlugin.cjs'),
-    require('./basePlugin.cjs'),
+    require('./badgePlugin/badgePlugin.cjs'),
+    require('./basePlugin/basePlugin.cjs'),
     require('./bgPlugin.cjs'),
     require('./borderPlugin.cjs'),
     require('./buttonPlugin.cjs'),

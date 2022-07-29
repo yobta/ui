@@ -11,7 +11,8 @@ test('bagePlugin', async () => {
   badgePlugin.handler({ addBase, prefix })
   expect(addBase).toBeCalledWith({
     '.yobta-badge': {
-      '@apply font-medium inline-block leading-6 px-2 rounded-full text-sm': {}
+      '@apply yobta-primary font-medium inline-block leading-6 px-2 rounded-full text-sm':
+        {}
     }
   })
 })

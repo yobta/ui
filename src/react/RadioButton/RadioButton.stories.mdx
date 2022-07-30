@@ -1,0 +1,59 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="MDX/Radio Button" />
+
+# Radio Button
+
+RadioButton plugin adds '.yobta-radio' class name to the base @layer of tailwind styles.
+
+## Basic Usage
+
+<Canvas>
+  <Story name="Basic Usage">
+    <div className="yobta-paper">
+      <input type="radio" className="yobta-radio" />
+    </div>
+  </Story>
+</Canvas>
+
+## Colors
+
+<Canvas>
+  <Story name="Secondary">
+    <div className="yobta-paper">
+      <input type="radio" className="yobta-radio yobta-ink-secondary" />
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Error">
+    <div className="yobta-paper">
+      <input type="radio" className="yobta-radio yobta-ink-error" />
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Success">
+    <div className="yobta-paper">
+      <input type="radio" className="yobta-radio yobta-ink-success" />
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Warning">
+    <div className="yobta-paper">
+      <input type="radio" className="yobta-radio yobta-ink-warning" />
+    </div>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Info">
+    <div className="yobta-paper">
+      <input type="radio" className="yobta-radio yobta-ink-info" />
+    </div>
+  </Story>
+</Canvas>

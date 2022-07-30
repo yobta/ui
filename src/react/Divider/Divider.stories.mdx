@@ -1,0 +1,23 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="MDX/Divider" />
+
+# Divider
+
+Divider plugin adds 'hr, .yobta-divider' class name to the base @layer of tailwind styles.
+
+## Basic Usage
+
+<Canvas>
+  <Story name="Basic Usage">
+    <hr className="yobta-ink" />
+  </Story>
+</Canvas>
+
+## Advanced
+
+<Canvas>
+  <Story name="Advanced">
+    <hr className="border-dotted border-t-8 yobta-ink-primary opacity-100" />
+  </Story>
+</Canvas>

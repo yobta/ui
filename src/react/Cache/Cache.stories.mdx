@@ -1,0 +1,33 @@
+import { Canvas, Meta, Story, ComponentStory } from '@storybook/addon-docs'
+import { useState, useEffect } from 'react'
+
+import { Cache } from './Cache'
+
+const Checkbox: ComponentStory<typeof Cache> = () => {
+let [date, setDate] = useState(new Date())
+
+useEffect(() => {
+let interval = setInterval(() => {
+setDate(new Date())
+}, 1000)
+return () => {
+clearInterval(interval)
+}
+}, [])
+
+return <Cache Enabled>Time: {date.toLocaleTimeString()}</Cache>
+}
+
+<Meta title="MDX/Cache" />
+
+# Cache
+
+<!-- add a plugin description -->
+
+## Enable
+
+<Canvas>
+  <Story name="Enable">
+    <Checkbox />
+  </Story>
+</Canvas>

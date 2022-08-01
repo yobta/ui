@@ -7,6 +7,7 @@ module.exports = plugin(({ addBase, prefix }) => {
     '.yobta-badge': {
       ...applyPrefixed(
         prefix,
+        '.yobta-primary',
         '.font-medium',
         '.inline-block',
         '.leading-6',

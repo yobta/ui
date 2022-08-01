@@ -1,0 +1,109 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="MDX/Switch" />
+
+# Radio Button
+
+Switch plugin adds '.yobta-switch', '.yobta-switch-small' and '.yobta-switch-big' class names to the base @layer of tailwind styles.
+
+## Basic Usage
+
+<Canvas>
+  <Story name="Basic Usage">
+    <input type="checkbox" className="yobta-switch" />
+  </Story>
+</Canvas>
+
+## Small
+
+<Canvas>
+  <Story name="Small">
+    <input type="checkbox" className="yobta-switch-small" />
+  </Story>
+</Canvas>
+
+## Big
+
+<Canvas>
+  <Story name="Big">
+    <input type="checkbox" className="yobta-switch-big" />
+  </Story>
+</Canvas>
+
+## Colors
+
+<Canvas>
+  <Story name="Primary">
+    <input type="checkbox" className="yobta-switch checked:yobta-bg-primary" />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Secondary">
+    <input
+      type="checkbox"
+      className="yobta-switch checked:yobta-bg-secondary"
+    />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Error">
+    <input type="checkbox" className="yobta-switch checked:yobta-bg-error" />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Success">
+    <input type="checkbox" className="yobta-switch checked:yobta-bg-success" />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Warning">
+    <input type="checkbox" className="yobta-switch checked:yobta-bg-warning" />
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Info">
+    <input type="checkbox" className="yobta-switch checked:yobta-bg-info" />
+  </Story>
+</Canvas>
+
+## MutiallyExclusive
+
+<Canvas>
+  <Story name="MutiallyExclusive">
+    <form className="yobta-menu yobta-bg-paper-2 yobta-ink shadow max-w-sm">
+      <header className="yobta-list-header">Choose one</header>
+      <label className="yobta-menu-item">
+        <span>One</span>
+        <input
+          type="radio"
+          name="option"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
+          value="1"
+        />
+      </label>
+      <label className="yobta-menu-item">
+        <span>Two</span>
+        <input
+          type="radio"
+          name="option"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
+          value="2"
+        />
+      </label>
+      <label className="yobta-menu-item">
+        <span>Three</span>
+        <input
+          type="radio"
+          name="option"
+          className="yobta-switch checked:yobta-bg-success yobta-menu-icon"
+          value="3"
+        />
+      </label>
+    </form>
+  </Story>
+</Canvas>

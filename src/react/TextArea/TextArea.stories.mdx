@@ -2,16 +2,66 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs'
 
 import { TextArea } from './TextArea.tsx'
 
-<Meta title="MDX/TextArea" />
+<Meta title="MDX/Textarea" />
 
-# TextArea
+# Textarea
 
-TextArea plugin adds ".yobta-textarea" class name to the base @layer of tailwind styles.
+Textarea plugin adds ".yobta-textarea" class name to the base @layer of tailwind styles.
 
-## TextArea Usage
+## Textarea Basic Usage
 
 <Canvas>
   <Story name="TextArea Usage">
-    <TextArea>Text</TextArea>
+    <TextArea>Textarea</TextArea>
+  </Story>
+</Canvas>
+
+## Colors
+
+<Canvas>
+  <Story name="2">
+    <TextArea className="border-2 yobta-ink-2">Textarea</TextArea>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Primary">
+    <TextArea className="border-2 yobta-ink-primary">Textarea</TextArea>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Secondary">
+    <TextArea className="border-2 yobta-ink-secondary">Textarea</TextArea>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Error">
+    <TextArea className="border-2 yobta-ink-error">Textarea</TextArea>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Success">
+    <TextArea className="border-2 yobta-ink-success">Textarea</TextArea>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Warning">
+    <TextArea className="border-2 yobta-ink-warning">Textarea</TextArea>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Info">
+    <TextArea className="border-2 yobta-ink-info">Textarea</TextArea>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Border">
+    <TextArea className="border-2 yobta-ink-border">Textarea</TextArea>
   </Story>
 </Canvas>

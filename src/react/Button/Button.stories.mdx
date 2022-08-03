@@ -1,26 +1,53 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
 
+import { Button } from './Button'
+import { createButton } from './createButton'
+
 <Meta title="MDX/Button" />
 
 # Button
 
-Button plugin adds following class names to the components `@layer`
-of tailwind styles: `.yobta-list`, `.yobta-list-header`,
-`.yobta-list-item`.
-
-To work with list you only need to add those class names to html tags.
+Button plugin adds `.yobta-button` class name to the components `@layer`.
 
 ## Basic Usage
 
 Default button has transparent background and inherits text color
 from it's parent.
 
-Border and .
+Unless you don't need a `busy` state of your buttons it's OK to use an HTML tag with a class name.
 
 <Canvas>
   <Story name="Basic Usage">
     <button className="yobta-button" type="button">
       Button
     </button>
+  </Story>
+</Canvas>
+
+## Busy
+
+<Canvas>
+  <Story name="Busy">
+    <Button busy>Button</Button>
+  </Story>
+</Canvas>
+
+## Variants
+
+export const RoundButton = createButton({
+  className: 'yobta-button yobta-primary rounded-full w-24 h-24',
+  children: 'Button'
+})
+
+```jsx
+export const RoundButton = createButton({
+  className: 'yobta-button yobta-primary rounded-full w-24 h-24',
+  children: 'Button'
+})
+```
+
+<Canvas>
+  <Story name="Variants">
+    <RoundButton>Button</RoundButton>
   </Story>
 </Canvas>

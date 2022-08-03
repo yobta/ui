@@ -11,8 +11,9 @@ test('buttonPlugin', () => {
   buttonPlugin.handler({ addComponents, prefix })
   expect(addComponents).toBeCalledWith({
     '.yobta-button': {
-      '@apply flex font-medium gap-x-2 h-10 items-center justify-center leading-6 px-4 relative rounded text-current text-sm':
+      '@apply border-current flex font-medium gap-x-2 h-10 items-center justify-center leading-6 px-4 relative rounded text-sm':
         {},
+      'color': 'inherit',
       'transition': 'filter',
       '&:before': {
         '@apply absolute top-0 left-0 right-0 bottom-0 opacity-0 transition duration-150':

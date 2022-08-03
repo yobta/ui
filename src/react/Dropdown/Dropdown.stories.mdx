@@ -1,0 +1,103 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { Toggle } from '../Toggle/Toggle.tsx'
+import { Dropdown } from './Dropdown.tsx'
+
+<Meta title="MDX/Dropdown" />
+
+# Dropdown
+
+Dropdown plugin adds '.yobta-dropdown' class name to the base @layer of tailwind styles.
+
+## Dropdown Simple
+
+<Canvas>
+  <Story name="Dropdown Simple">
+    {() => {
+      let placementOptions = [
+        'top-left',
+        'top',
+        'top-right',
+        'right-top',
+        'right',
+        'right-bottom',
+        'bottom-left',
+        'bottom',
+        'bottom-right',
+        'left-top',
+        'left',
+        'left-bottom'
+      ]
+      return (
+        <div className="grid p-16 gap-16 grid-cols-3">
+          {placementOptions.map(option => (
+            <Toggle key={option}>
+              <button className="yobta-button-primary">{option}</button>
+              <Dropdown
+                className="w-56"
+                placement={option}
+                id={`dropdown-menu-${option}`}
+                offset={8}
+              >
+                <button className="yobta-menu-item">Option 1</button>
+                <button className="yobta-menu-item">Option 2</button>
+                <button className="yobta-menu-item">Option 3</button>
+              </Dropdown>
+            </Toggle>
+          ))}
+        </div>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Dropdown Nested
+
+<Canvas>
+  <Story name="Dropdown Nested">
+    {() => {
+      let placementOptions = [
+        'top-left',
+        'top',
+        'top-right',
+        'right-top',
+        'right',
+        'right-bottom',
+        'bottom-left',
+        'bottom',
+        'bottom-right',
+        'left-top',
+        'left',
+        'left-bottom'
+      ]
+      return (
+        <Toggle>
+          <button className="yobta-button-primary">Toggle 1</button>
+          <Dropdown
+            className="w-56"
+            placement="bottom-left"
+            id="nested-toggle-1"
+            visible
+          >
+            <Toggle activeProducerClassName="yobta-info">
+              <button className="yobta-menu-item">
+                <span>Option 1</span>
+                <ChevronSmallRight className="yobta-addon" />
+              </button>
+              <Dropdown
+                className="w-56 -mt-2"
+                id="nested-dropdown"
+                placement="right-top"
+              >
+                <button className="yobta-menu-item">Option 1.1</button>
+                <button className="yobta-menu-item">Option 1.2</button>
+              </Dropdown>
+            </Toggle>
+            <button className="yobta-menu-item">Option 2</button>
+            <button className="yobta-menu-item">Option 3</button>
+          </Dropdown>
+        </Toggle>
+      )
+    }}
+  </Story>
+</Canvas>

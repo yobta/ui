@@ -1,0 +1,44 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useState, useEffect } from 'react'
+
+import { Cache } from './Cache'
+
+<Meta title="MDX/Cache" />
+
+# Cache
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="Cache">
+    {() => {
+      let [isOn, setIsOn] = useState(true)
+      let [date, setDate] = useState(new Date())
+      useEffect(() => {
+        let interval = setInterval(() => {
+          setDate(new Date())
+        }, 1000)
+        return () => {
+          clearInterval(interval)
+        }
+      }, [])
+      return (
+        <>
+          <Cache disabled={isOn}>Time: {date.toLocaleTimeString()}</Cache>
+          <hr />
+          <label className="yobta-menu-item">
+            <input
+              type="checkbox"
+              value={isOn}
+              className="yobta-switch"
+              onClick={() => {
+                setIsOn(last => !last)
+              }}
+            />{' '}
+            Caching
+          </label>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

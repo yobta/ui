@@ -1,75 +1,80 @@
-import { useCallback, useEffect, useState } from 'react'
+import { RefObject, useEffect, useRef } from 'react'
+import { machineYobta, lazyYobta } from '@yobta/stores'
+import { useObservable } from '@yobta/stores/react'
 
-export type ShowHideState = 'entering' | 'visible' | 'exiting' | 'invisible'
+import { useLatestRef } from './useLatestRef/index.js'
+import { useEscapeKey } from './useEscapeKey/useEscapeKey.js'
+import { subscribe } from '../helpers/index.js'
+
+export const INVISIBLE = 'invisible'
+export const SHOWING = 'showing'
+export const VISIBLE = 'visible'
+export const HIDING = 'hiding'
+
+const visibleStates = new Set([VISIBLE, SHOWING])
 
 type Config = {
-  initialState: boolean
+  visible: boolean
   onClose?: VoidFunction
 }
 
 interface ShowHideHook {
-  (config: Config): {
-    state: ShowHideState
-    handleAnimationEnd: VoidFunction
-    handleClick: VoidFunction
+  <RefType extends HTMLElement>(config: Config): {
+    animationState: boolean
+    handleClose: VoidFunction
+    ref: RefObject<RefType>
+    state: typeof INVISIBLE | typeof SHOWING | typeof VISIBLE | typeof HIDING
   }
 }
 
-export const visibleStates = new Set(['entering', 'visible'])
+export type ShowHideState = ReturnType<ShowHideHook>['state']
 
-export const useShowHide: ShowHideHook = ({
-  initialState,
-  onClose: handleClose
-}) => {
-  let [state, setState] = useState<ShowHideState>('invisible')
+const lazyMachine = machineYobta({
+  [INVISIBLE]: new Set([SHOWING]),
+  [SHOWING]: new Set([VISIBLE]),
+  [VISIBLE]: new Set([HIDING]),
+  [HIDING]: new Set([INVISIBLE])
+})(INVISIBLE, lazyYobta)
 
-  let hasVisibleState = visibleStates.has(state)
+export const useShowHide: ShowHideHook = ({ visible, onClose }) => {
+  let ref = useRef(null)
+  let state = useObservable<ShowHideState>(lazyMachine)
+  let closeRef = useLatestRef(onClose)
 
+  let handleClose = (): void => {
+    lazyMachine.next(HIDING)
+    closeRef.current?.()
+  }
+
+  useEscapeKey(handleClose, [])
   useEffect(() => {
-    if (initialState) {
-      setState('entering')
-    }
-  }, [])
+    lazyMachine.next(visible ? SHOWING : HIDING)
+  }, [visible])
+  useEffect(
+    () =>
+      subscribe(ref.current, 'animationend', () => {
+        let lastState = lazyMachine.last()
+        switch (lastState) {
+          case SHOWING: {
+            lazyMachine.next(VISIBLE)
+            break
+          }
+          case HIDING: {
+            lazyMachine.next(INVISIBLE)
+            break
+          }
 
-  let handleClick: VoidFunction = useCallback(() => {
-    if (state === 'visible') {
-      setState('exiting')
-    }
-  }, [state])
+          default:
+            break
+        }
+      }),
+    []
+  )
 
-  let handleAnimationEnd: VoidFunction = useCallback(() => {
-    if (state === 'entering') {
-      setState('visible')
-    }
-    if (state === 'exiting') {
-      setState('invisible')
-      if (handleClose) {
-        handleClose()
-      }
-    }
-  }, [state, handleClose])
-
-  useEffect(() => {
-    let keyListener = (event: KeyboardEvent): void => {
-      if (hasVisibleState && event.key === 'Escape') {
-        setState('exiting')
-        event.stopImmediatePropagation()
-      }
-    }
-    window.addEventListener('keydown', keyListener)
-    return () => {
-      window.removeEventListener('keydown', keyListener)
-    }
-  }, [hasVisibleState])
-
-  useEffect(() => {
-    if (initialState && state === 'invisible') {
-      setState('entering')
-    }
-    if (!initialState && hasVisibleState) {
-      setState('exiting')
-    }
-  }, [initialState, hasVisibleState])
-
-  return { state, handleAnimationEnd, handleClick }
+  return {
+    animationState: visibleStates.has(state),
+    handleClose,
+    ref,
+    state
+  }
 }

@@ -5,14 +5,14 @@ import { ShowHideState } from '../hooks/useShowHide.js'
 type ToastContext = {
   autoHide: boolean
   countdown: number
-  handleClick: VoidFunction
+  handleClose: VoidFunction
   state: ShowHideState
 }
 
 const toastContext = createContext<ToastContext>({
   autoHide: false,
   countdown: 0,
-  handleClick() {},
+  handleClose() {},
   state: 'invisible'
 })
 

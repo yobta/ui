@@ -1,78 +1,79 @@
 import clsx from 'clsx'
-import {
-  ComponentProps,
-  forwardRef,
-  ForwardRefExoticComponent,
-  PropsWithoutRef,
-  RefAttributes
-} from 'react'
+import { ComponentProps } from 'react'
 
-import { Cache } from '../Cache/index.js'
 import { useCountdown } from '../hooks/useCountDown.js'
-import {
-  ShowHideState,
-  useShowHide,
-  visibleStates
-} from '../hooks/useShowHide.js'
+import { INVISIBLE, ShowHideState, useShowHide } from '../hooks/useShowHide.js'
 import { ToastContextProvider } from './toastContext.js'
 
 type BaseProps = ComponentProps<'div'>
 
-interface ClassNameGetter {
-  (state: ShowHideState): string
-}
-
-type Props = Omit<BaseProps, 'className'> & {
-  className?: string | ClassNameGetter
-  delayInSeconds?: number
-  onClose?: VoidFunction
-  visible: boolean
-}
-
-export const Toast: ForwardRefExoticComponent<
-  PropsWithoutRef<Props> & RefAttributes<HTMLDivElement>
-> = forwardRef(
+interface ToastFC {
   (
-    { className, children, delayInSeconds = 0, onClose, visible, ...rest },
-    ref
-  ) => {
-    let autoHide = delayInSeconds > 0
+    props: Omit<BaseProps, 'className'> & {
+      className?: string | ((state: ShowHideState) => string)
+      delayInSeconds?: number
+      onClose?: VoidFunction
+      placement?:
+        | 'top'
+        | 'bottom'
+        | 'left'
+        | 'right'
+        | 'bottom-left'
+        | 'bottom-right'
+        | 'top-left'
+        | 'top-right'
+      visible: boolean
+    }
+  ): JSX.Element
+}
 
-    let { state, handleClick, handleAnimationEnd } = useShowHide({
-      initialState: visible,
+export const Toast: ToastFC = ({
+  className,
+  children,
+  delayInSeconds = 0,
+  onClose,
+  visible,
+  ...rest
+}) => {
+  let autoHide = delayInSeconds > 0
+
+  let { animationState, state, handleClose, ref } = useShowHide<HTMLDivElement>(
+    {
+      visible,
       onClose
-    })
+    }
+  )
+  console.log('state: ', state)
 
-    let countdown = useCountdown({
-      callback: handleClick,
-      delayInSeconds,
-      disabled: !autoHide || !visible
-    })
+  let countdown = useCountdown({
+    callback: handleClose,
+    delayInSeconds,
+    disabled: !autoHide || !visible
+  })
 
-    return (
-      <ToastContextProvider
-        value={{
-          autoHide,
-          countdown,
-          handleClick,
-          state
-        }}
+  return (
+    <ToastContextProvider
+      value={{
+        autoHide,
+        countdown,
+        handleClose,
+        state
+      }}
+    >
+      <div
+        {...rest}
+        className={clsx(
+          typeof className === 'function' ? className(state) : className,
+          animationState
+            ? 'animate-slide-in-bottom'
+            : 'animate-slide-out-bottom pointer-events-none',
+          state === INVISIBLE && 'hidden'
+        )}
+        ref={ref}
       >
-        <div
-          {...rest}
-          className={clsx(
-            typeof className === 'function' ? className(state) : className,
-            visibleStates.has(state)
-              ? 'animate-slide-in-bottom'
-              : 'animate-slide-out-bottom pointer-events-none',
-            state === 'invisible' && 'hidden'
-          )}
-          onAnimationEnd={handleAnimationEnd}
-          ref={ref}
-        >
-          <Cache disabled={visible}>{children}</Cache>
-        </div>
-      </ToastContextProvider>
-    )
-  }
-)
+        {children}
+        {state}
+      </div>
+    </ToastContextProvider>
+  )
+}

@@ -1,9 +1,8 @@
 import clsx from 'clsx'
-import { ComponentProps } from 'react'
+import { ComponentProps, ReactNode } from 'react'
 
 import { useCountdown } from '../hooks/useCountDown.js'
 import { INVISIBLE, ShowHideState, useShowHide } from '../hooks/useShowHide.js'
-import { ToastContextProvider } from './toastContext.js'
 
 type BaseProps = ComponentProps<'div'>
 
@@ -11,13 +10,19 @@ interface ToastFC {
   (
     props: Omit<BaseProps, 'className'> & {
       className?: string | ((state: ShowHideState) => string)
-      delayInSeconds?: number
+      hideAfterSeconds?: number
+      children:
+        | ReactNode
+        | ((context: {
+            autoHide: boolean
+            countdown: number
+            close: VoidFunction
+            state: ShowHideState
+          }) => ReactNode)
       onClose?: VoidFunction
       placement?:
         | 'top'
         | 'bottom'
-        | 'left'
-        | 'right'
         | 'bottom-left'
         | 'bottom-right'
         | 'top-left'
@@ -30,50 +35,48 @@ interface ToastFC {
 export const Toast: ToastFC = ({
   className,
   children,
-  delayInSeconds = 0,
+  hideAfterSeconds: delayInSeconds = 0,
   onClose,
   visible,
   ...rest
 }) => {
   let autoHide = delayInSeconds > 0
 
-  let { animationState, state, handleClose, ref } = useShowHide<HTMLDivElement>(
-    {
-      visible,
-      onClose
-    }
-  )
+  let {
+    animationState,
+    state,
+    onClose: callback,
+    ref
+  } = useShowHide<HTMLDivElement>({
+    visible,
+    onClose
+  })
   console.log('state: ', state)
 
   let countdown = useCountdown({
-    callback: handleClose,
+    callback,
     delayInSeconds,
     disabled: !autoHide || !visible
   })
 
+  let content =
+    typeof children === 'function'
+      ? children({ autoHide, countdown, close: callback, state })
+      : children
+
   return (
-    <ToastContextProvider
-      value={{
-        autoHide,
-        countdown,
-        handleClose,
-        state
-      }}
+    <div
+      {...rest}
+      className={clsx(
+        typeof className === 'function' ? className(state) : className,
+        animationState
+          ? 'animate-slide-in-bottom'
+          : 'animate-slide-out-bottom pointer-events-none',
+        state === INVISIBLE && 'hidden'
+      )}
+      ref={ref}
     >
-      <div
-        {...rest}
-        className={clsx(
-          typeof className === 'function' ? className(state) : className,
-          animationState
-            ? 'animate-slide-in-bottom'
-            : 'animate-slide-out-bottom pointer-events-none',
-          state === INVISIBLE && 'hidden'
-        )}
-        ref={ref}
-      >
-        {children}
-        {state}
-      </div>
-    </ToastContextProvider>
+      {content}
+    </div>
   )
 }

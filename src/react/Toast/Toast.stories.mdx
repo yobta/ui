@@ -10,6 +10,14 @@ import { Toast } from './Toast.tsx'
 
 <Canvas>
   <Story name="Basic Usage">
-    <Toast visible>Toast!</Toast>
+    <Toast visible hideAfterSeconds={90}>
+      {({ countdown, state }) => {
+        return (
+          <p>
+            This is a toast: {state}. {countdown}
+          </p>
+        )
+      }}
+    </Toast>
   </Story>
 </Canvas>

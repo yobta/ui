@@ -7,11 +7,11 @@ import { useEscapeKey } from './useEscapeKey/useEscapeKey.js'
 import { subscribe } from '../helpers/index.js'
 
 export const INVISIBLE = 'invisible'
-export const SHOWING = 'showing'
 export const VISIBLE = 'visible'
-export const HIDING = 'hiding'
+export const ENTERING = 'entering'
+export const EXITING = 'exiting'
 
-const visibleStates = new Set([VISIBLE, SHOWING])
+const visibleStates = new Set([VISIBLE, ENTERING])
 
 type Config = {
   visible: boolean
@@ -21,19 +21,19 @@ type Config = {
 interface ShowHideHook {
   <RefType extends HTMLElement>(config: Config): {
     animationState: boolean
-    handleClose: VoidFunction
+    onClose: VoidFunction
     ref: RefObject<RefType>
-    state: typeof INVISIBLE | typeof SHOWING | typeof VISIBLE | typeof HIDING
+    state: typeof INVISIBLE | typeof ENTERING | typeof VISIBLE | typeof EXITING
   }
 }
 
 export type ShowHideState = ReturnType<ShowHideHook>['state']
 
 const lazyMachine = machineYobta({
-  [INVISIBLE]: new Set([SHOWING]),
-  [SHOWING]: new Set([VISIBLE]),
-  [VISIBLE]: new Set([HIDING]),
-  [HIDING]: new Set([INVISIBLE])
+  [INVISIBLE]: new Set([ENTERING]),
+  [ENTERING]: new Set([VISIBLE]),
+  [VISIBLE]: new Set([EXITING]),
+  [EXITING]: new Set([INVISIBLE])
 })(INVISIBLE, lazyYobta)
 
 export const useShowHide: ShowHideHook = ({ visible, onClose }) => {
@@ -42,24 +42,24 @@ export const useShowHide: ShowHideHook = ({ visible, onClose }) => {
   let closeRef = useLatestRef(onClose)
 
   let handleClose = (): void => {
-    lazyMachine.next(HIDING)
+    lazyMachine.next(EXITING)
     closeRef.current?.()
   }
 
   useEscapeKey(handleClose, [])
   useEffect(() => {
-    lazyMachine.next(visible ? SHOWING : HIDING)
+    lazyMachine.next(visible ? ENTERING : EXITING)
   }, [visible])
   useEffect(
     () =>
       subscribe(ref.current, 'animationend', () => {
         let lastState = lazyMachine.last()
         switch (lastState) {
-          case SHOWING: {
+          case ENTERING: {
             lazyMachine.next(VISIBLE)
             break
           }
-          case HIDING: {
+          case EXITING: {
             lazyMachine.next(INVISIBLE)
             break
           }
@@ -73,7 +73,7 @@ export const useShowHide: ShowHideHook = ({ visible, onClose }) => {
 
   return {
     animationState: visibleStates.has(state),
-    handleClose,
+    onClose: handleClose,
     ref,
     state
   }

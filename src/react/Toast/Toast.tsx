@@ -1,8 +1,9 @@
 import clsx from 'clsx'
-import { ComponentProps, ReactNode } from 'react'
+import { ComponentProps, ReactNode, useMemo } from 'react'
 
 import { useCountdown } from '../hooks/useCountDown.js'
 import { INVISIBLE, ShowHideState, useShowHide } from '../hooks/useShowHide.js'
+import { usePlacementStyle } from './usePlacementStyle.js'
 
 type BaseProps = ComponentProps<'div'>
 
@@ -22,6 +23,7 @@ interface ToastFC {
       onClose?: VoidFunction
       onEnter?: VoidFunction
       onExit?: VoidFunction
+      offset?: number
       placement?:
         | 'top'
         | 'bottom'
@@ -34,6 +36,8 @@ interface ToastFC {
   ): JSX.Element
 }
 
+export type ToastPlacement = Parameters<ToastFC>[0]['placement']
+
 export const Toast: ToastFC = ({
   className,
   children,
@@ -41,7 +45,10 @@ export const Toast: ToastFC = ({
   onClose,
   onEnter,
   onExit,
+  offset = 0,
+  placement,
   visible,
+  style,
   ...rest
 }) => {
   let autoHide = delayInSeconds > 0
@@ -64,6 +71,8 @@ export const Toast: ToastFC = ({
     disabled: !autoHide || !visible
   })
 
+  let placementStyle = usePlacementStyle(placement, offset)
+
   let content =
     typeof children === 'function'
       ? children({ autoHide, countdown, close: callback, state })
@@ -73,6 +82,7 @@ export const Toast: ToastFC = ({
     <div
       {...rest}
       className={clsx(
+        'yobta-toast',
         typeof className === 'function' ? className(state) : className,
         animationState
           ? 'animate-slide-in-bottom'
@@ -80,6 +90,7 @@ export const Toast: ToastFC = ({
         state === INVISIBLE && 'hidden'
       )}
       ref={ref}
+      style={{ ...placementStyle, ...style }}
     >
       {content}
     </div>

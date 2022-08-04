@@ -17,7 +17,11 @@ module.exports = {
         'yobta-dropdown-out-top': 'yobtaDropdownOutTop 0.32s ease forwards',
         'yobta-spinner':
           'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite',
-        'yobta-placeholder': 'yobta-placeholder 4.4s ease 0.32s infinite'
+        'yobta-placeholder': 'yobta-placeholder 4.4s ease 0.32s infinite',
+        '.yobta-toast--in-up': '.yobtaToastInUp 0.72s easy forward',
+        '.yobta-toast--out-up': '.yobtaToastOutUp 0.72s easy forward',
+        '.yobta-toast--in-down': '.yobtaToastInDown 0.72s easy forward',
+        '.yobta-toast--out-down': '.yobtaToastOutDown 0.72s easy forward'
       },
       keyframes: {
         'yobta-placeholder': {
@@ -89,6 +93,22 @@ module.exports = {
           '100%': {
             transform: 'rotate(1800deg)'
           }
+        },
+        'yobtaToastInUp': {
+          from: { transform: 'translateY(-6rem)', opacity: 0 },
+          to: { transform: 'translateY(0)', opacity: 100 }
+        },
+        'yobtaToastOutUp': {
+          from: { transform: 'translateY(0)', opacity: 100 },
+          to: { transform: 'translateY(-6rem)', opacity: 0 }
+        },
+        'yobtaToastInDown': {
+          from: { transform: 'translateY(6rem)', opacity: 0 },
+          to: { transform: 'translateY(0)', opacity: 100 }
+        },
+        'yobtaToastOutDown': {
+          from: { transform: 'translateY(0)', opacity: 100 },
+          to: { transform: 'translateY(6rem)', opacity: 0 }
         }
       },
       zIndex: {

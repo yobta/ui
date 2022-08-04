@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react'
 
-import { batch } from '../../helpers/batch/index.js'
+import { bulk } from '../../helpers/bulk/index.js'
 import { subscribe } from '../../helpers/subscribe/index.js'
 
 const defaultEventTypes = ['mousedown', 'touchstart']
@@ -28,7 +28,7 @@ export const useClickAway = <E extends Event = Event>(
       subscribe(document, eventType, handler)
     )
     return () => {
-      batch(...unsubscribe)
+      bulk(...unsubscribe)
     }
   }, [eventTypes, ref])
 }

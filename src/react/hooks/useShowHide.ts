@@ -54,7 +54,15 @@ export const useShowHide: ShowHideHook = ({
     closeRef.current?.()
   }
 
-  useEscapeKey(handleClose)
+  useEscapeKey(
+    event => {
+      if (state === VISIBLE) {
+        handleClose()
+        event.stopImmediatePropagation()
+      }
+    },
+    [state]
+  )
 
   useEffect(() => {
     next(visible ? ENTERING : EXITING)

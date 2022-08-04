@@ -1,8 +1,8 @@
-interface Batch {
+interface Bulk {
   (...args: VoidFunction[]): void
 }
 
-export const batch: Batch = (...args) => {
+export const bulk: Bulk = (...args) => {
   args.forEach(run => {
     run()
   })

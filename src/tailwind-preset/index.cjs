@@ -19,9 +19,9 @@ module.exports = {
           'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite',
         'yobta-placeholder': 'yobta-placeholder 4.4s ease 0.32s infinite',
         '.yobta-toast--in-up': '.yobtaToastInUp 0.72s easy forward',
-        '.yobta-toast--out-up': '.yobtaToastOutUp 0.72s easy forward',
+        '.yobta-toast--out-up': '.yobtaToastOutUp 0.56s easy forward',
         '.yobta-toast--in-down': '.yobtaToastInDown 0.72s easy forward',
-        '.yobta-toast--out-down': '.yobtaToastOutDown 0.72s easy forward'
+        '.yobta-toast--out-down': '.yobtaToastOutDown 0.56s easy forward'
       },
       keyframes: {
         'yobta-placeholder': {

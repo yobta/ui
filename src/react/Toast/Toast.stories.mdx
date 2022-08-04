@@ -31,7 +31,7 @@ import { Cross } from '../entypo'
               setVisible(last => !last)
             }}
           >
-            Toggle: {visible ? 'off' : 'on'}
+            Toast: {visible ? 'on' : 'off'}
           </button>
         </>
       )
@@ -54,13 +54,56 @@ import { Cross } from '../entypo'
               setVisible(false)
             }}
           >
+            {({ countdown, close }) => (
+              <div>
+                <p>A toast with a countdown.</p>
+                <p className="yobta-badge yobta-paper-2-inversed">
+                  {countdown}
+                </p>
+              </div>
+            )}
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {visible ? 'on' : 'off'}
+          </button>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Caching
+
+For performance reasons, the toast is not updating it's children during animation phase. Set `noCache={true}` to force a re-render.
+
+Please notice that the toast content flickers when exiting and not cached. Default setup prevents flcikering.
+
+<Canvas>
+  <Story name="Caching">
+    {() => {
+      const [errors, setErrors] = useState([])
+      const [noCache, setNoCache] = useState(false)
+      const [, setVisible] = useState(false)
+      const visible = errors.length > 0
+      const popError = () => setErrors(([, ...nextErrors]) => nextErrors)
+      const pushError = newError =>
+        setErrors(lastErrors => [...lastErrors, newError])
+      return (
+        <>
+          <Toast visible={visible} noCache={noCache} onClose={popError}>
             {({ countdown, state, close }) => {
               return (
                 <>
                   <div>
-                    <p>This is a toast.</p>
+                    <p>{errors[0]}.</p>
                     <p className="yobta-badge yobta-paper-2-inversed">
-                      {countdown}
+                      {state}
                     </p>
                   </div>
                   <button
@@ -73,15 +116,26 @@ import { Cross } from '../entypo'
               )
             }}
           </Toast>
-          <button
-            className="yobta-button-primary"
-            type="button"
-            onClick={() => {
-              setVisible(last => !last)
-            }}
-          >
-            Toggle: {visible ? 'off' : 'on'}
-          </button>
+          <div className="flex gap-x-2">
+            <button
+              className="yobta-button-primary"
+              type="button"
+              onClick={() => {
+                pushError(`Created: ${Date.now()}`)
+              }}
+            >
+              Toasts: {errors.length}
+            </button>
+            <button
+              className="yobta-button-secondary"
+              type="button"
+              onClick={() => {
+                setNoCache(last => !last)
+              }}
+            >
+              Cache: {noCache ? 'off' : 'on'}
+            </button>
+          </div>
         </>
       )
     }}

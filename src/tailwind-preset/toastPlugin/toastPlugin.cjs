@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin')
 
 const applyPrefixed = require('../applyPrefixed/applyPrefixed.cjs')
 
-module.exports = plugin(({ addComponents, prefix }) => {
+module.exports = plugin(({ addComponents, addUtilities, prefix }) => {
   addComponents({
     '.yobta-toast': {
       ...applyPrefixed(
@@ -18,7 +18,9 @@ module.exports = plugin(({ addComponents, prefix }) => {
         '.gap-x-2',
         '.shadow'
       )
-    },
+    }
+  })
+  addUtilities({
     '.yobta-toast--in-up': {
       ...applyPrefixed(prefix, '.yobtaToastInUp 0.72s easy forward')
     },

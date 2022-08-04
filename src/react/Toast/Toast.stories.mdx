@@ -1,6 +1,8 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useState } from 'react'
 
 import { Toast } from './Toast.tsx'
+import { Cross } from '../entypo'
 
 <Meta title="MDX/Toast" />
 
@@ -10,14 +12,81 @@ import { Toast } from './Toast.tsx'
 
 <Canvas>
   <Story name="Basic Usage">
-    <Toast visible hideAfterSeconds={90}>
-      {({ countdown, state }) => {
-        return (
-          <p>
-            This is a toast: {state}. {countdown}
-          </p>
-        )
-      }}
-    </Toast>
+    {() => {
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            visible={visible}
+            offset={40}
+            onClose={() => {
+              setVisible(false)
+            }}
+          >
+            This is a toast.
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toggle: {visible ? 'off' : 'on'}
+          </button>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Autohiding
+
+<Canvas>
+  <Story name="Autohiding">
+    {() => {
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            visible={visible}
+            hideAfterSeconds={9}
+            placement="top"
+            onClose={() => {
+              setVisible(false)
+            }}
+            offset={8}
+          >
+            {({ countdown, state, close }) => {
+              return (
+                <>
+                  <div>
+                    <p>This is a toast.</p>
+                    <p className="yobta-badge yobta-paper-2-inversed">
+                      {countdown} {state}
+                    </p>
+                  </div>
+                  <button
+                    className="yobta-button p-0 rounded-full w-8 h-8"
+                    onClick={close}
+                  >
+                    <Cross />
+                  </button>
+                </>
+              )
+            }}
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toggle: {visible ? 'off' : 'on'}
+          </button>
+        </>
+      )
+    }}
   </Story>
 </Canvas>

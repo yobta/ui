@@ -6,22 +6,26 @@ module.exports = {
       colors: require('./colors.cjs'),
       animation: {
         'yobta-linear-progress': 'yobta-linear-progress 2s infinite linear',
-        'yobta-dropdown-in-bottom': 'yobtaDropdownInBottom 0.40s ease forwards',
+        'yobta-dropdown-in-bottom':
+          'yobta-dropdown-in-bottom 0.40s ease forwards',
         'yobta-dropdown-out-bottom':
-          'yobtaDropdownOutBottom 0.32s ease forwards',
-        'yobta-dropdown-in-left': 'yobtaDropdownInLeft 0.40s ease forwards',
-        'yobta-dropdown-out-left': 'yobtaDropdownOutLeft 0.32s ease forwards',
-        'yobta-dropdown-in-right': 'yobtaDropdownInRight 0.40s ease forwards',
-        'yobta-dropdown-out-right': 'yobtaDropdownOutRight 0.32s ease forwards',
-        'yobta-dropdown-in-top': 'yobtaDropdownInTop 0.40s ease forwards',
-        'yobta-dropdown-out-top': 'yobtaDropdownOutTop 0.32s ease forwards',
+          'yobta-dropdown-out-bottom 0.32s ease forwards',
+        'yobta-dropdown-in-left': 'yobta-dropdown-in-left 0.40s ease forwards',
+        'yobta-dropdown-out-left':
+          'yobta-dropdown-out-left 0.32s ease forwards',
+        'yobta-dropdown-in-right':
+          'yobta-dropdown-in-right 0.40s ease forwards',
+        'yobta-dropdown-out-right':
+          'yobta-dropdown-out-right 0.32s ease forwards',
+        'yobta-dropdown-in-top': 'yobta-dropdown-in-top 0.40s ease forwards',
+        'yobta-dropdown-out-top': 'yobta-dropdown-out-top 0.32s ease forwards',
         'yobta-spinner':
           'yobta-spinner 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite',
         'yobta-placeholder': 'yobta-placeholder 4.4s ease 0.32s infinite',
-        '.yobta-toast--in-up': '.yobtaToastInUp 0.72s easy forward',
-        '.yobta-toast--out-up': '.yobtaToastOutUp 0.56s easy forward',
-        '.yobta-toast--in-down': '.yobtaToastInDown 0.72s easy forward',
-        '.yobta-toast--out-down': '.yobtaToastOutDown 0.56s easy forward'
+        'yobta-toast--in-up': 'yobta-toast-in-up 0.64s ease forwards',
+        'yobta-toast--out-up': 'yobta-toast-out-up 0.56s ease forwards',
+        'yobta-toast--in-down': 'yobta-toast-in-down 0.64s ease forwards',
+        'yobta-toast--out-down': 'yobta-toast-out-down 0.56s ease forwards'
       },
       keyframes: {
         'yobta-placeholder': {
@@ -49,35 +53,35 @@ module.exports = {
             backgroundPosition: 'left -102% top 0%'
           }
         },
-        'yobtaDropdownInBottom': {
+        'yobta-dropdown-in-bottom': {
           from: { transform: 'translateY(3rem)', opacity: 0 },
           to: { transform: 'translateY(0)', opacity: 100 }
         },
-        'yobtaDropdownOutBottom': {
+        'yobta-dropdown-out-bottom': {
           from: { transform: 'translateY(0)', opacity: 100 },
           to: { transform: 'translateY(3rem)', opacity: 0 }
         },
-        'yobtaDropdownInLeft': {
+        'yobta-dropdown-in-left': {
           from: { transform: 'translateX(-3rem)', opacity: 0 },
           to: { transform: 'translateX(0)', opacity: 100 }
         },
-        'yobtaDropdownOutLeft': {
+        'yobta-dropdown-out-left': {
           from: { transform: 'translateX(0)', opacity: 100 },
           to: { transform: 'translateX(-3rem)', opacity: 0 }
         },
-        'yobtaDropdownInRight': {
+        'yobta-dropdown-in-right': {
           from: { transform: 'translateX(3rem)', opacity: 0 },
           to: { transform: 'translateX(0)', opacity: 100 }
         },
-        'yobtaDropdownOutRight': {
+        'yobta-dropdown-out-right': {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(3rem)', opacity: 0 }
         },
-        'yobtaDropdownInTop': {
+        'yobta-dropdown-in-top': {
           from: { transform: 'translateY(-3rem)', opacity: 0 },
           to: { transform: 'translateY(0)', opacity: 100 }
         },
-        'yobtaDropdownOutTop': {
+        'yobta-dropdown-out-top': {
           from: { transform: 'translateY(0)', opacity: 100 },
           to: { transform: 'translateY(-3rem)', opacity: 0 }
         },
@@ -94,27 +98,32 @@ module.exports = {
             transform: 'rotate(1800deg)'
           }
         },
-        'yobtaToastInUp': {
-          from: { transform: 'translateY(-6rem)', opacity: 0 },
-          to: { transform: 'translateY(0)', opacity: 100 }
+        'yobta-toast-in-up': {
+          '0%': { opacity: 0, transform: 'translateY(-56px)' },
+          '24%': { opacity: 100 },
+          '100%': { transform: 'translateY(0)', opacity: 100 }
         },
-        'yobtaToastOutUp': {
-          from: { transform: 'translateY(0)', opacity: 100 },
-          to: { transform: 'translateY(-6rem)', opacity: 0 }
+        'yobta-toast-out-up': {
+          '0%': { opacity: 100, transform: 'translateY(0)' },
+          '24%': { opacity: 0 },
+          '100%': { transform: 'translateY(-56px)', opacity: 0 }
         },
-        'yobtaToastInDown': {
-          from: { transform: 'translateY(6rem)', opacity: 0 },
-          to: { transform: 'translateY(0)', opacity: 100 }
+        'yobta-toast-in-down': {
+          '0%': { opacity: 0, transform: 'translateY(56px)' },
+          '24%': { opacity: 100 },
+          '100%': { transform: 'translateY(0)', opacity: 100 }
         },
-        'yobtaToastOutDown': {
-          from: { transform: 'translateY(0)', opacity: 100 },
-          to: { transform: 'translateY(6rem)', opacity: 0 }
+        'yobta-toast-out-down': {
+          '0%': { opacity: 100, transform: 'translateY(0)' },
+          '24%': { opacity: 0 },
+          '100%': { transform: 'translateY(56px)', opacity: 0 }
         }
       },
       zIndex: {
         'yobta-overlay': 1000,
         'yobta-dropdown': 2000,
-        'yobta-tooltip': 3000
+        'yobta-tooltip': 3000,
+        'yobta-toast': 4000
       }
     }
   },

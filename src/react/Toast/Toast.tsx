@@ -1,8 +1,17 @@
 import clsx from 'clsx'
-import { ComponentProps, ReactNode, useMemo } from 'react'
+import { ComponentProps, ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 
+import { Cache } from '../Cache/index.js'
 import { useCountdown } from '../hooks/useCountDown.js'
-import { INVISIBLE, ShowHideState, useShowHide } from '../hooks/useShowHide.js'
+import { usePortalNode } from '../hooks/usePortalNode.js'
+import {
+  INVISIBLE,
+  ShowHideState,
+  useShowHide,
+  VISIBLE
+} from '../hooks/useShowHide.js'
+import { useAnimationClassName } from './useAnimationClassName.js'
 import { usePlacementStyle } from './usePlacementStyle.js'
 
 type BaseProps = ComponentProps<'div'>
@@ -38,6 +47,8 @@ interface ToastFC {
 
 export type ToastPlacement = Parameters<ToastFC>[0]['placement']
 
+const contentStates = new Set([INVISIBLE, VISIBLE])
+
 export const Toast: ToastFC = ({
   className,
   children,
@@ -48,10 +59,11 @@ export const Toast: ToastFC = ({
   offset = 0,
   placement,
   visible,
-  style,
   ...rest
 }) => {
   let autoHide = delayInSeconds > 0
+
+  let protalNode = usePortalNode()
 
   let {
     animationState,
@@ -73,26 +85,29 @@ export const Toast: ToastFC = ({
 
   let placementStyle = usePlacementStyle(placement, offset)
 
-  let content =
-    typeof children === 'function'
-      ? children({ autoHide, countdown, close: callback, state })
-      : children
-
-  return (
+  let content = (
     <div
-      {...rest}
-      className={clsx(
-        'yobta-toast',
-        typeof className === 'function' ? className(state) : className,
-        animationState
-          ? 'animate-slide-in-bottom'
-          : 'animate-slide-out-bottom pointer-events-none',
-        state === INVISIBLE && 'hidden'
-      )}
-      ref={ref}
-      style={{ ...placementStyle, ...style }}
+      className={clsx('yobta-toast', state === INVISIBLE && 'hidden')}
+      style={placementStyle}
     >
-      {content}
+      <div
+        {...rest}
+        className={clsx(
+          'yobta-toast__content',
+          typeof className === 'function' ? className(state) : className,
+          !animationState && 'pointer-events-none',
+          useAnimationClassName(animationState, placement)
+        )}
+        ref={ref}
+      >
+        <Cache disabled={contentStates.has(state)}>
+          {typeof children === 'function'
+            ? children({ autoHide, countdown, close: callback, state })
+            : children}
+        </Cache>
+      </div>
     </div>
   )
+
+  return protalNode ? createPortal(content, protalNode) : content
 }

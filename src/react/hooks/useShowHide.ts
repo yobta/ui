@@ -1,10 +1,9 @@
 import { RefObject, useEffect, useRef } from 'react'
-import { machineYobta, lazyYobta } from '@yobta/stores'
-import { useObservable } from '@yobta/stores/react'
 
 import { useLatestRef } from './useLatestRef/index.js'
 import { useEscapeKey } from './useEscapeKey/useEscapeKey.js'
 import { subscribe } from '../helpers/index.js'
+import { createMachine } from './createMachine/createMachine.js'
 
 export const INVISIBLE = 'invisible'
 export const VISIBLE = 'visible'
@@ -31,12 +30,12 @@ interface ShowHideHook {
 
 export type ShowHideState = ReturnType<ShowHideHook>['state']
 
-const lazyMachine = machineYobta({
+const useMachine = createMachine({
   [INVISIBLE]: new Set([ENTERING]),
   [ENTERING]: new Set([VISIBLE]),
   [VISIBLE]: new Set([EXITING]),
   [EXITING]: new Set([INVISIBLE])
-})(INVISIBLE, lazyYobta)
+})
 
 export const useShowHide: ShowHideHook = ({
   visible,
@@ -45,36 +44,33 @@ export const useShowHide: ShowHideHook = ({
   onExit
 }) => {
   let ref = useRef(null)
-  let state = useObservable<ShowHideState>(lazyMachine)
+  let [state, next] = useMachine(INVISIBLE)
   let closeRef = useLatestRef(onClose)
   let enterRef = useLatestRef(onEnter)
   let exitRef = useLatestRef(onExit)
 
   let handleClose = (): void => {
-    lazyMachine.next(EXITING)
+    next(EXITING)
     closeRef.current?.()
   }
 
   useEscapeKey(handleClose)
 
-  // NOTE: this one should run on every update, no dependencies is on purpose
-  // do not add dependecies to this one
   useEffect(() => {
-    lazyMachine.next(visible ? ENTERING : EXITING)
-  })
+    next(visible ? ENTERING : EXITING)
+  }, [visible, state])
 
   useEffect(
     () =>
       subscribe(ref.current, 'animationend', () => {
-        let lastState = lazyMachine.last()
-        switch (lastState) {
+        switch (state) {
           case ENTERING: {
-            lazyMachine.next(VISIBLE)
+            next(VISIBLE)
             enterRef.current?.()
             break
           }
           case EXITING: {
-            lazyMachine.next(INVISIBLE)
+            next(INVISIBLE)
             exitRef.current?.()
             break
           }
@@ -83,7 +79,7 @@ export const useShowHide: ShowHideHook = ({
             break
         }
       }),
-    []
+    [ref.current, state]
   )
 
   return {

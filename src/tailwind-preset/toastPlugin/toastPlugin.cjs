@@ -20,22 +20,32 @@ module.exports = plugin(({ addComponents, prefix }) => {
       )
     },
     '.yobta-toast--in-up': {
-      ...applyPrefixed(prefix)
+      ...applyPrefixed(prefix, '.yobtaToastInUp 0.72s easy forward')
     },
     '.yobta-toast--out-up': {
-      ...applyPrefixed(prefix)
+      ...applyPrefixed(prefix, '.yobtaToastOutUp 0.72s easy forward')
     },
     '.yobta-toast--in-down': {
-      ...applyPrefixed(prefix)
+      ...applyPrefixed(prefix, '.yobtaToastInDown 0.72s easy forward')
     },
     '.yobta-toast--out-down': {
-      ...applyPrefixed(prefix)
+      ...applyPrefixed(prefix, '.yobtaToastOutDown 0.72s easy forward')
     },
-    '.animate-yobta-toast-in-up': {
-      ...applyPrefixed(prefix, '.transition-transform', '.duration-500')
+    'yobtaToastInUp': {
+      from: { transform: 'translateY(-6rem)', opacity: 0 },
+      to: { transform: 'translateY(0)', opacity: 100 }
     },
-    '.animate-yobta-toast-out-up': {
-      ...applyPrefixed(prefix, '.transition-transform', '.duration-500')
+    'yobtaToastOutUp': {
+      from: { transform: 'translateY(0)', opacity: 100 },
+      to: { transform: 'translateY(-6rem)', opacity: 0 }
+    },
+    'yobtaToastInDown': {
+      from: { transform: 'translateY(6rem)', opacity: 0 },
+      to: { transform: 'translateY(0)', opacity: 100 }
+    },
+    'yobtaToastOutDown': {
+      from: { transform: 'translateY(0)', opacity: 100 },
+      to: { transform: 'translateY(6rem)', opacity: 0 }
     }
   })
 })

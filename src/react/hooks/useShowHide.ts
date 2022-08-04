@@ -14,8 +14,10 @@ export const EXITING = 'exiting'
 const visibleStates = new Set([VISIBLE, ENTERING])
 
 type Config = {
-  visible: boolean
   onClose?: VoidFunction
+  onEnter?: VoidFunction
+  onExit?: VoidFunction
+  visible: boolean
 }
 
 interface ShowHideHook {
@@ -36,20 +38,31 @@ const lazyMachine = machineYobta({
   [EXITING]: new Set([INVISIBLE])
 })(INVISIBLE, lazyYobta)
 
-export const useShowHide: ShowHideHook = ({ visible, onClose }) => {
+export const useShowHide: ShowHideHook = ({
+  visible,
+  onClose,
+  onEnter,
+  onExit
+}) => {
   let ref = useRef(null)
   let state = useObservable<ShowHideState>(lazyMachine)
   let closeRef = useLatestRef(onClose)
+  let enterRef = useLatestRef(onEnter)
+  let exitRef = useLatestRef(onExit)
 
   let handleClose = (): void => {
     lazyMachine.next(EXITING)
     closeRef.current?.()
   }
 
-  useEscapeKey(handleClose, [])
+  useEscapeKey(handleClose)
+
+  // NOTE: this one should run on every update, no dependencies is on purpose
+  // do not add dependecies to this one
   useEffect(() => {
     lazyMachine.next(visible ? ENTERING : EXITING)
-  }, [visible])
+  })
+
   useEffect(
     () =>
       subscribe(ref.current, 'animationend', () => {
@@ -57,10 +70,12 @@ export const useShowHide: ShowHideHook = ({ visible, onClose }) => {
         switch (lastState) {
           case ENTERING: {
             lazyMachine.next(VISIBLE)
+            enterRef.current?.()
             break
           }
           case EXITING: {
             lazyMachine.next(INVISIBLE)
+            exitRef.current?.()
             break
           }
 

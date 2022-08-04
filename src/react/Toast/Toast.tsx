@@ -20,6 +20,8 @@ interface ToastFC {
             state: ShowHideState
           }) => ReactNode)
       onClose?: VoidFunction
+      onEnter?: VoidFunction
+      onExit?: VoidFunction
       placement?:
         | 'top'
         | 'bottom'
@@ -37,6 +39,8 @@ export const Toast: ToastFC = ({
   children,
   hideAfterSeconds: delayInSeconds = 0,
   onClose,
+  onEnter,
+  onExit,
   visible,
   ...rest
 }) => {
@@ -48,10 +52,11 @@ export const Toast: ToastFC = ({
     onClose: callback,
     ref
   } = useShowHide<HTMLDivElement>({
-    visible,
-    onClose
+    onClose,
+    onEnter,
+    onExit,
+    visible
   })
-  console.log('state: ', state)
 
   let countdown = useCountdown({
     callback,

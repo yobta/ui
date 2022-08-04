@@ -18,6 +18,18 @@ module.exports = plugin(({ addComponents, prefix }) => {
         '.gap-x-2',
         '.shadow'
       )
+    },
+    '.yobta-toast--in-up': {
+      ...applyPrefixed(prefix)
+    },
+    '.yobta-toast--out-up': {
+      ...applyPrefixed(prefix)
+    },
+    '.yobta-toast--in-down': {
+      ...applyPrefixed(prefix)
+    },
+    '.yobta-toast--out-down': {
+      ...applyPrefixed(prefix)
     }
   })
 })

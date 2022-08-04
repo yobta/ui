@@ -30,6 +30,12 @@ module.exports = plugin(({ addComponents, prefix }) => {
     },
     '.yobta-toast--out-down': {
       ...applyPrefixed(prefix)
+    },
+    '.animate-yobta-toast-in-up': {
+      ...applyPrefixed(prefix, '.transition-transform', '.duration-500')
+    },
+    '.animate-yobta-toast-out-up': {
+      ...applyPrefixed(prefix, '.transition-transform', '.duration-500')
     }
   })
 })

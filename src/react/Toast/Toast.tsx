@@ -29,6 +29,7 @@ interface ToastFC {
             close: VoidFunction
             state: ShowHideState
           }) => ReactNode)
+      noCache?: boolean
       onClose?: VoidFunction
       onEnter?: VoidFunction
       onExit?: VoidFunction
@@ -53,10 +54,11 @@ export const Toast: ToastFC = ({
   className,
   children,
   hideAfterSeconds: delayInSeconds = 0,
+  noCache,
   onClose,
   onEnter,
   onExit,
-  offset = 0,
+  offset = 8,
   placement,
   visible,
   ...rest
@@ -100,7 +102,7 @@ export const Toast: ToastFC = ({
         )}
         ref={ref}
       >
-        <Cache disabled={contentStates.has(state)}>
+        <Cache disabled={noCache || contentStates.has(state)}>
           {typeof children === 'function'
             ? children({ autoHide, countdown, close: callback, state })
             : children}

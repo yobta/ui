@@ -17,7 +17,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
         '.flex',
         '.items-center',
         '.justify-between',
-        '.gap-x-2',
+        '.gap-x-8',
         '.shadow',
         '.transform-gpu',
         '.z-yobta-toast'

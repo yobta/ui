@@ -18,7 +18,6 @@ import { Cross } from '../entypo'
         <>
           <Toast
             visible={visible}
-            offset={40}
             onClose={() => {
               setVisible(false)
             }}
@@ -51,11 +50,9 @@ import { Cross } from '../entypo'
           <Toast
             visible={visible}
             hideAfterSeconds={9}
-            placement="top"
             onClose={() => {
               setVisible(false)
             }}
-            offset={8}
           >
             {({ countdown, state, close }) => {
               return (
@@ -63,7 +60,7 @@ import { Cross } from '../entypo'
                   <div>
                     <p>This is a toast.</p>
                     <p className="yobta-badge yobta-paper-2-inversed">
-                      {countdown} {state}
+                      {countdown}
                     </p>
                   </div>
                   <button

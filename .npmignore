@@ -3,6 +3,7 @@ yarn.lock
 
 test/
 **/*.test.*
+**/*.spec.*
 **/types.ts
 **/errors.ts
 tsconfig.json

@@ -63,21 +63,23 @@ export const useShowHide: ShowHideHook = ({
 
   useEffect(
     () =>
-      subscribe(ref.current, 'animationend', () => {
-        switch (state) {
-          case ENTERING: {
-            next(VISIBLE)
-            enterRef.current?.()
-            break
-          }
-          case EXITING: {
-            next(INVISIBLE)
-            exitRef.current?.()
-            break
-          }
+      subscribe(ref.current, 'animationend', event => {
+        if (event.target === ref.current) {
+          switch (state) {
+            case ENTERING: {
+              next(VISIBLE)
+              enterRef.current?.()
+              break
+            }
+            case EXITING: {
+              next(INVISIBLE)
+              exitRef.current?.()
+              break
+            }
 
-          default:
-            break
+            default:
+              break
+          }
         }
       }),
     [ref.current, state]

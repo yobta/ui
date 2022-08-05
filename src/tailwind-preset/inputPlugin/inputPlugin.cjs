@@ -93,7 +93,8 @@ module.exports = plugin(({ addBase, prefix }) => {
             '.h-full',
             '.left-0',
             '.m-0',
-            '.w-full'
+            '.w-full',
+            '.outline-none'
           ),
           'backgroundColor': 'transparent',
           'borderRadius': 'inherit',

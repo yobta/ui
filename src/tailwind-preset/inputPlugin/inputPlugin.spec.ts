@@ -71,6 +71,7 @@ test('inputPlugin', async () => {
           'font': 'inherit',
           'padding': 'inherit',
           '-webkit-tap-highlight-color': 'transparent',
+          'transition': 'background 999999s ease 0s !important',
           '&::placeholder': {
             color: 'inherit',
             opacity: 0.4

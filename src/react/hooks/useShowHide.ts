@@ -15,7 +15,7 @@ const visibleStates = new Set([VISIBLE, ENTERING])
 type Config = {
   onClose?: VoidFunction
   onEnter?: VoidFunction
-  onExit?: VoidFunction
+  onLeave?: VoidFunction
   visible: boolean
 }
 
@@ -42,13 +42,13 @@ export const useShowHide: ShowHideHook = ({
   visible,
   onClose,
   onEnter,
-  onExit
+  onLeave
 }) => {
   let ref = useRef(null)
   let [state, next] = useMachine(INVISIBLE)
   let closeRef = useLatestRef(onClose)
   let enterRef = useLatestRef(onEnter)
-  let exitRef = useLatestRef(onExit)
+  let leaveRef = useLatestRef(onLeave)
 
   let handleClose = (): void => {
     next(EXITING)
@@ -73,7 +73,7 @@ export const useShowHide: ShowHideHook = ({
             }
             case EXITING: {
               next(INVISIBLE)
-              exitRef.current?.()
+              leaveRef.current?.()
               break
             }
 

@@ -16,3 +16,10 @@ it('is stays the same after rerender', () => {
   ref.rerender()
   expect(ref.result.current).toBe(result)
 })
+
+it('has size argument', () => {
+  let ref = renderHook(({ size }) => useNanoId(size), {
+    initialProps: { size: 4 }
+  })
+  expect(ref.result.current.length).toBe(4)
+})

@@ -78,7 +78,7 @@ import { Cross } from '../entypo'
   </Story>
 </Canvas>
 
-<!-- ## Caching
+## Caching
 
 For performance reasons, the toast is not updating it's children during animation phase. Set `noCache={true}` to force a re-render.
 
@@ -140,4 +140,85 @@ Please notice that the toast content flickers when exiting and not cached. Defau
       )
     }}
   </Story>
-</Canvas> -->
+</Canvas>
+
+## Visiblity State
+
+<Canvas>
+  <Story name="Visiblity State">
+    {() => {
+      const [state, setState] = useState('idle')
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            visible={visible}
+            onClose={() => {
+              setVisible(false)
+            }}
+            onEnter={() => {
+              setState('entered')
+            }}
+            onLeave={() => {
+              setState('left')
+            }}
+          >
+            See the console
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {state}
+          </button>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Offset
+
+<Canvas>
+  <Story name="Offset">
+    {() => {
+      const [offset, setOffset] = useState(8)
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            onClose={() => {
+              setVisible(false)
+            }}
+            offset={offset}
+            visible={visible}
+          >
+            See the console
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {offset}
+          </button>
+          <br />
+          <input
+            defaultValue={offset}
+            min={0}
+            max={240}
+            onChange={event => {
+              setOffset(Number(event.target.value))
+            }}
+            type="range"
+          />
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

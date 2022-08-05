@@ -1,8 +1,5 @@
 import { useMemo } from 'react'
 import { nanoid } from 'nanoid'
 
-interface NanoidHook {
-  (): string
-}
-
-export const useNanoId: NanoidHook = () => useMemo(nanoid, [])
+export const useNanoId: typeof nanoid = (...args) =>
+  useMemo(() => nanoid(...args), [])

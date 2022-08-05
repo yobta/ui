@@ -16,6 +16,7 @@ export const useEscapeKey: UseEscapeKey = (callback, active) => {
   let callbackRef = useLatestRef(callback)
   let id = useNanoId()
   let lastId = useObservable(stack)
+
   useEffect(() => {
     if (active) {
       stack.add(id)
@@ -23,6 +24,7 @@ export const useEscapeKey: UseEscapeKey = (callback, active) => {
       stack.remove(id)
     }
   }, [active])
+
   useEffect(() => {
     let handler = (event: KeyboardEvent): void => {
       if (event.key === 'Escape' && id === stack.last()) {

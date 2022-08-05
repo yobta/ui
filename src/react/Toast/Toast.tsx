@@ -32,7 +32,7 @@ interface ToastFC {
       noCache?: boolean
       onClose?: VoidFunction
       onEnter?: VoidFunction
-      onExit?: VoidFunction
+      onLeave?: VoidFunction
       offset?: number
       placement?:
         | 'top'
@@ -57,7 +57,7 @@ export const Toast: ToastFC = ({
   noCache,
   onClose,
   onEnter,
-  onExit,
+  onLeave,
   offset = 8,
   placement,
   visible,
@@ -76,7 +76,7 @@ export const Toast: ToastFC = ({
   } = useShowHide<HTMLDivElement>({
     onClose,
     onEnter,
-    onExit,
+    onLeave,
     visible
   })
 

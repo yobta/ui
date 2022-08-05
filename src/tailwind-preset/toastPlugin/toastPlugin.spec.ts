@@ -6,10 +6,10 @@ import toastPlugin from './toastPlugin.cjs'
 const prefix = (str: string): string => str
 
 test('toastPlugin', () => {
-  let addComponents = vi.fn()
+  let addBase = vi.fn()
 
-  toastPlugin.handler({ addComponents, prefix })
-  expect(addComponents).toBeCalledWith({
+  toastPlugin.handler({ addBase, prefix })
+  expect(addBase).toBeCalledWith({
     '.yobta-toast': {
       '@apply fixed z-yobta-toast': {}
     },

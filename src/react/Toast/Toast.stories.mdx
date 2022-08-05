@@ -55,7 +55,7 @@ import { Cross } from '../entypo'
             }}
             placement={placement}
           >
-            This is a toast.
+            Placement: {placement}
           </Toast>
           <button
             className="yobta-button-primary"
@@ -64,7 +64,7 @@ import { Cross } from '../entypo'
               setVisible(last => !last)
             }}
           >
-            Toast: {placement}
+            Toast: {visible ? 'on' : 'off'}
           </button>
           <br />
           <select
@@ -80,6 +80,38 @@ import { Cross } from '../entypo'
             <option>bottom-left</option>
             <option>bottom-right</option>
           </select>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Styling
+
+<Canvas>
+  <Story name="Styling">
+    {() => {
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            className="yobta-error"
+            visible={visible}
+            onClose={() => {
+              setVisible(false)
+            }}
+          >
+            This is a toast.
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {visible ? 'on' : 'off'}
+          </button>
         </>
       )
     }}
@@ -127,7 +159,7 @@ import { Cross } from '../entypo'
 
 ## Caching
 
-For performance reasons, the toast is not updating it's children during animation phase. Set `noCache={true}` to force a re-render.
+For performance reasons, the toast is not updating it's children during animation exit phase. Set `noCache={true}` to force a re-render.
 
 Please notice that the toast content flickers when exiting and not cached. Default setup prevents flcikering.
 
@@ -243,7 +275,7 @@ Please notice that the toast content flickers when exiting and not cached. Defau
             offset={offset}
             visible={visible}
           >
-            See the console
+            Offset: {offset}
           </Toast>
           <button
             className="yobta-button-primary"
@@ -252,7 +284,7 @@ Please notice that the toast content flickers when exiting and not cached. Defau
               setVisible(last => !last)
             }}
           >
-            Toast: {offset}
+            Toast: {visible ? 'on' : 'off'}
           </button>
           <br />
           <input

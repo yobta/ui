@@ -6,6 +6,7 @@ import { Cache } from '../Cache/index.js'
 import { useCountdown } from '../hooks/useCountDown.js'
 import { usePortalNode } from '../hooks/usePortalNode.js'
 import {
+  ENTERING,
   INVISIBLE,
   ShowHideState,
   useShowHide,
@@ -48,7 +49,7 @@ interface ToastFC {
 
 export type ToastPlacement = Parameters<ToastFC>[0]['placement']
 
-const contentStates = new Set([INVISIBLE, VISIBLE])
+const contentStates = new Set([INVISIBLE, VISIBLE, ENTERING])
 
 export const Toast: ToastFC = ({
   className,
@@ -100,8 +101,8 @@ export const Toast: ToastFC = ({
       <div
         {...rest}
         className={clsx(
-          'yobta-toast__content',
           typeof className === 'function' ? className(state) : className,
+          'yobta-toast__content',
           !animationState && 'pointer-events-none',
           useAnimationClassName(animationState, placement)
         )}

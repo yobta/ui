@@ -69,6 +69,7 @@ export const Toast: ToastFC = ({
 
   let {
     animationState,
+    isOnTop,
     state,
     onClose: callback,
     ref
@@ -89,7 +90,11 @@ export const Toast: ToastFC = ({
 
   let content = (
     <div
-      className={clsx('yobta-toast', state === INVISIBLE && 'hidden')}
+      className={clsx(
+        'yobta-toast',
+        state === INVISIBLE && 'hidden',
+        isOnTop && 'yobta-toast--top'
+      )}
       style={placementStyle}
     >
       <div

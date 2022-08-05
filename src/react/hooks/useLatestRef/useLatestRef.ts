@@ -1,4 +1,4 @@
-import { RefObject, useLayoutEffect, useRef } from 'react'
+import { RefObject, useEffect, useRef } from 'react'
 
 interface LatestRefHook {
   <Ref>(ref: Ref): RefObject<Ref>
@@ -6,7 +6,7 @@ interface LatestRefHook {
 
 export const useLatestRef: LatestRefHook = ref => {
   let callbackRef = useRef(ref)
-  useLayoutEffect(() => {
+  useEffect(() => {
     callbackRef.current = ref
   })
   return callbackRef

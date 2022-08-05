@@ -5,7 +5,10 @@ const applyPrefixed = require('../applyPrefixed/applyPrefixed.cjs')
 module.exports = plugin(({ addComponents, prefix }) => {
   addComponents({
     '.yobta-toast': {
-      ...applyPrefixed(prefix, '.fixed')
+      ...applyPrefixed(prefix, '.fixed', '.z-yobta-toast')
+    },
+    '.yobta-toast--top': {
+      ...applyPrefixed(prefix, '.z-yobta-toast--top')
     },
     '.yobta-toast__content': {
       ...applyPrefixed(
@@ -19,8 +22,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
         '.justify-between',
         '.gap-x-8',
         '.shadow',
-        '.transform-gpu',
-        '.z-yobta-toast'
+        '.transform-gpu'
       )
     }
   })

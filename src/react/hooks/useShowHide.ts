@@ -22,6 +22,7 @@ type Config = {
 interface ShowHideHook {
   <RefType extends HTMLElement>(config: Config): {
     animationState: boolean
+    isOnTop: boolean
     onClose: VoidFunction
     ref: RefObject<RefType>
     state: typeof INVISIBLE | typeof ENTERING | typeof VISIBLE | typeof EXITING
@@ -54,15 +55,7 @@ export const useShowHide: ShowHideHook = ({
     closeRef.current?.()
   }
 
-  useEscapeKey(
-    event => {
-      if (state === VISIBLE) {
-        handleClose()
-        event.stopImmediatePropagation()
-      }
-    },
-    [state]
-  )
+  let isOnTop = useEscapeKey(handleClose, state !== INVISIBLE)
 
   useEffect(() => {
     next(visible ? ENTERING : EXITING)
@@ -92,6 +85,7 @@ export const useShowHide: ShowHideHook = ({
 
   return {
     animationState: visibleStates.has(state),
+    isOnTop,
     onClose: handleClose,
     ref,
     state

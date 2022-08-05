@@ -78,11 +78,9 @@ export const useToggle: ToggleHook = ({
   }, [])
 
   useEscapeKey(() => {
-    if (visible && !childToggleIsVisible) {
-      setHasFocus(false)
-      setHasCursor(false)
-    }
-  }, [visible, childToggleIsVisible])
+    setHasFocus(false)
+    setHasCursor(false)
+  }, visible && !childToggleIsVisible)
 
   useEffect(() => {
     let focusLock: boolean = false

@@ -123,7 +123,8 @@ module.exports = {
         'yobta-overlay': 1000,
         'yobta-dropdown': 2000,
         'yobta-tooltip': 3000,
-        'yobta-toast': 4000
+        'yobta-toast': 4000,
+        'yobta-toast--top': 4001
       }
     }
   },

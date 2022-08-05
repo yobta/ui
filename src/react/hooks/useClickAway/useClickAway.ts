@@ -14,16 +14,24 @@ export const useClickAway = <E extends Event = Event>(
   let callbackRef = useLatestRef(onClickAway)
 
   useEffect(() => {
+    let { current: element } = ref
+
     let handler = (event: Event): void => {
-      let { current: element } = ref
       if (!element?.contains(event.target as HTMLElement)) {
         callbackRef.current?.(event as E)
       }
     }
 
-    let unsubscribe = eventTypes.map(eventType =>
-      subscribe(document, eventType, handler)
-    )
+    let unsubscribe = eventTypes.map(eventType => {
+      let documentUnsubscribe = subscribe(document, eventType, handler)
+      let elementUnsubscribe = subscribe(element, eventType, event => {
+        event.stopPropagation()
+      })
+      return () => {
+        documentUnsubscribe()
+        elementUnsubscribe()
+      }
+    })
 
     return () => {
       batch(...unsubscribe)

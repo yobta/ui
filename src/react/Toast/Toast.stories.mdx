@@ -39,6 +39,53 @@ import { Cross } from '../entypo'
   </Story>
 </Canvas>
 
+## Placement Options
+
+<Canvas>
+  <Story name="Placement Options">
+    {() => {
+      const [visible, setVisible] = useState(false)
+      const [placement, setPlacement] = useState('top')
+      return (
+        <>
+          <Toast
+            visible={visible}
+            onClose={() => {
+              setVisible(false)
+            }}
+            placement={placement}
+          >
+            This is a toast.
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {placement}
+          </button>
+          <br />
+          <select
+            value={placement}
+            onChange={() => {
+              setPlacement(event.target.value)
+            }}
+          >
+            <option>top</option>
+            <option>top-left</option>
+            <option>top-right</option>
+            <option>bottom</option>
+            <option>bottom-left</option>
+            <option>bottom-right</option>
+          </select>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
 ## Autohiding
 
 <Canvas>

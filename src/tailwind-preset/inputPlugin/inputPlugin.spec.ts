@@ -63,7 +63,7 @@ test('inputPlugin', async () => {
           transform: 'scaleX(1)'
         },
         '& input': {
-          '@apply absolute appearance-none block box-border h-full left-0 m-0 w-full':
+          '@apply absolute appearance-none block box-border h-full left-0 m-0 w-full outline-none':
             {},
           'backgroundColor': 'transparent',
           'borderRadius': 'inherit',

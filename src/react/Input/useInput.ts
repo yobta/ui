@@ -8,9 +8,8 @@ import {
   useState
 } from 'react'
 
-import { subscribe } from '../helpers/index.js'
+import { bulk, subscribe } from '../helpers/index.js'
 import { useCombineRefs } from '../hooks/index.js'
-import { useTimeout } from '../hooks/useTimeout/useTimeout.js'
 
 interface InputHook {
   (props: {
@@ -62,14 +61,6 @@ export const useInput: InputHook = ({
     })
   )
 
-  useTimeout(
-    64,
-    () => {
-      setState(inputRef.current?.value)
-    },
-    []
-  )
-
   useEffect(() => {
     if (inputNode && state !== inputNode.value) {
       setState(inputNode.value)
@@ -77,11 +68,18 @@ export const useInput: InputHook = ({
   })
 
   useEffect(() => {
-    let handleBlur = (): void => {
-      setState(inputNode?.value)
+    let handleInputEvent = (event: Event): void => {
+      let { value: v } = event.target as HTMLInputElement
+      setState(v)
     }
+    let unsubscribe = [
+      subscribe(inputNode, 'blur', handleInputEvent),
+      subscribe(inputNode, 'input', handleInputEvent)
+    ]
 
-    return subscribe(inputNode, 'blur', handleBlur)
+    return () => {
+      bulk(...unsubscribe)
+    }
   }, [inputNode])
 
   let isFilled = !!getFirstValueAsString(state, placeholder, inputNode?.value)

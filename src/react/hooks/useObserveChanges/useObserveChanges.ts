@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { batch } from '../../helpers/batch/index.js'
+import { bulk } from '../../helpers/bulk/index.js'
 import { subscribe } from '../../helpers/subscribe/index.js'
 
 interface ObserveChangesHook {
@@ -35,7 +35,7 @@ export const useObserveChanges: ObserveChangesHook = ({
     }
 
     return () => {
-      batch(...unsubsribe)
+      bulk(...unsubsribe)
       resizeObzerver?.disconnect()
     }
   }, [disabled, producerNode])

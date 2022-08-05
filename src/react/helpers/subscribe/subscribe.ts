@@ -1,8 +1,12 @@
+interface Unsubscribe {
+  (): void
+}
+
 interface Subscribe {
   <T extends Window | Document | HTMLElement | EventTarget>(
     eventTarget: T | null,
     ...args: Parameters<T['addEventListener']>
-  ): VoidFunction
+  ): Unsubscribe
 }
 
 export const subscribe: Subscribe = (target, eventType, callBack, ...args) => {

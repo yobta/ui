@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
 import { Star } from '../entypo'
-import { Input } from '../Input'
+import { Input, PasswordInput } from '../Input'
 
 <Meta title="MDX/Input" />
 
@@ -27,6 +27,14 @@ import { Input } from '../Input'
 <Canvas>
   <Story name="Default Value">
     <Input caption="Hello" defaultValue="Human" />
+  </Story>
+</Canvas>
+
+## Password Input
+
+<Canvas>
+  <Story name="Password Input">
+    <PasswordInput caption="Password" name="password" />
   </Story>
 </Canvas>
 

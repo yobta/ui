@@ -1,0 +1,303 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useState } from 'react'
+
+import { Toast } from './Toast.tsx'
+import { Cross } from '../entypo'
+
+<Meta title="MDX/Toast" />
+
+# Toast
+
+## Basic Usage
+
+<Canvas>
+  <Story name="Basic Usage">
+    {() => {
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            visible={visible}
+            onClose={() => {
+              setVisible(false)
+            }}
+          >
+            This is a toast.
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {visible ? 'on' : 'off'}
+          </button>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Placement Options
+
+<Canvas>
+  <Story name="Placement Options">
+    {() => {
+      const [visible, setVisible] = useState(false)
+      const [placement, setPlacement] = useState('top')
+      return (
+        <>
+          <Toast
+            visible={visible}
+            onClose={() => {
+              setVisible(false)
+            }}
+            placement={placement}
+          >
+            Placement: {placement}
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {visible ? 'on' : 'off'}
+          </button>
+          <br />
+          <select
+            value={placement}
+            onChange={() => {
+              setPlacement(event.target.value)
+            }}
+          >
+            <option>top</option>
+            <option>top-left</option>
+            <option>top-right</option>
+            <option>bottom</option>
+            <option>bottom-left</option>
+            <option>bottom-right</option>
+          </select>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Styling
+
+<Canvas>
+  <Story name="Styling">
+    {() => {
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            className="yobta-error"
+            visible={visible}
+            onClose={() => {
+              setVisible(false)
+            }}
+          >
+            This is a toast.
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {visible ? 'on' : 'off'}
+          </button>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Autohiding
+
+<Canvas>
+  <Story name="Autohiding">
+    {() => {
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            visible={visible}
+            hideAfterSeconds={9}
+            onClose={() => {
+              setVisible(false)
+            }}
+          >
+            {({ countdown, close }) => (
+              <div>
+                <p>A toast with a countdown.</p>
+                <p className="yobta-badge yobta-paper-2-inversed">
+                  {countdown}
+                </p>
+              </div>
+            )}
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {visible ? 'on' : 'off'}
+          </button>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Caching
+
+For performance reasons, the toast is not updating it's children during animation exit phase. Set `noCache={true}` to force a re-render.
+
+Please notice that the toast content flickers when exiting and not cached. Default setup prevents flcikering.
+
+<Canvas>
+  <Story name="Caching">
+    {() => {
+      const [errors, setErrors] = useState([])
+      const [noCache, setNoCache] = useState(false)
+      const [, setVisible] = useState(false)
+      const visible = errors.length > 0
+      const popError = () => setErrors(([, ...nextErrors]) => nextErrors)
+      const pushError = newError =>
+        setErrors(lastErrors => [...lastErrors, newError])
+      return (
+        <>
+          <Toast visible={visible} noCache={noCache} onClose={popError}>
+            {({ countdown, state, close }) => {
+              return (
+                <>
+                  <div>
+                    <p>{errors[0]}.</p>
+                    <p className="yobta-badge yobta-paper-2-inversed">
+                      {state}
+                    </p>
+                  </div>
+                  <button
+                    className="yobta-button p-0 rounded-full w-8 h-8"
+                    onClick={close}
+                  >
+                    <Cross />
+                  </button>
+                </>
+              )
+            }}
+          </Toast>
+          <div className="flex gap-x-2">
+            <button
+              className="yobta-button-primary"
+              type="button"
+              onClick={() => {
+                pushError(`Created: ${Date.now()}`)
+              }}
+            >
+              Toasts: {errors.length}
+            </button>
+            <button
+              className="yobta-button-secondary"
+              type="button"
+              onClick={() => {
+                setNoCache(last => !last)
+              }}
+            >
+              Cache: {noCache ? 'off' : 'on'}
+            </button>
+          </div>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Visiblity State
+
+<Canvas>
+  <Story name="Visiblity State">
+    {() => {
+      const [state, setState] = useState('idle')
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            visible={visible}
+            onClose={() => {
+              setVisible(false)
+            }}
+            onEnter={() => {
+              setState('entered')
+            }}
+            onLeave={() => {
+              setState('left')
+            }}
+          >
+            See the console
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {state}
+          </button>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+## Offset
+
+<Canvas>
+  <Story name="Offset">
+    {() => {
+      const [offset, setOffset] = useState(8)
+      const [visible, setVisible] = useState(false)
+      return (
+        <>
+          <Toast
+            onClose={() => {
+              setVisible(false)
+            }}
+            offset={offset}
+            visible={visible}
+          >
+            Offset: {offset}
+          </Toast>
+          <button
+            className="yobta-button-primary"
+            type="button"
+            onClick={() => {
+              setVisible(last => !last)
+            }}
+          >
+            Toast: {visible ? 'on' : 'off'}
+          </button>
+          <br />
+          <input
+            defaultValue={offset}
+            min={0}
+            max={240}
+            onChange={event => {
+              setOffset(Number(event.target.value))
+            }}
+            type="range"
+          />
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

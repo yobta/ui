@@ -9,7 +9,7 @@ import {
   useState
 } from 'react'
 
-import { batch, subscribe } from '../helpers/index.js'
+import { bulk, subscribe } from '../helpers/index.js'
 import { useClickAway, useEscapeKey, useLatestRef } from '../hooks/index.js'
 import { getComponentProps } from './getComponentProps.js'
 import { suggestMode } from './suggestMode.js'
@@ -78,11 +78,9 @@ export const useToggle: ToggleHook = ({
   }, [])
 
   useEscapeKey(() => {
-    if (visible && !childToggleIsVisible) {
-      setHasFocus(false)
-      setHasCursor(false)
-    }
-  }, [visible, childToggleIsVisible])
+    setHasFocus(false)
+    setHasCursor(false)
+  }, visible && !childToggleIsVisible)
 
   useEffect(() => {
     let focusLock: boolean = false
@@ -138,7 +136,7 @@ export const useToggle: ToggleHook = ({
         break
     }
     return () => {
-      batch(...unsubscribe)
+      bulk(...unsubscribe)
     }
   }, [resultingMode, producerRef.current, consumerRef.current])
 

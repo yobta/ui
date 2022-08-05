@@ -149,6 +149,10 @@ module.exports = plugin(({ addBase, prefix }) => {
             '.text-ink-error',
             '.dark:text-ink-error-dark'
           )
+        },
+        '& input:-webkit-autofill': {
+          '-webkit-box-shadow': 'inset 0 0 0 50px #fff',
+          '-webkit-text-fill-color': '#000'
         }
       }
     },

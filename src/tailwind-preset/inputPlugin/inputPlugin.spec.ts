@@ -67,7 +67,7 @@ test('inputPlugin', async () => {
             {},
           'backgroundColor': 'transparent',
           'borderRadius': 'inherit',
-          'color': 'inherit',
+          'color': 'currentColor !important',
           'font': 'inherit',
           'padding': 'inherit',
           '-webkit-tap-highlight-color': 'transparent',

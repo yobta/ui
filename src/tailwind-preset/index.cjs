@@ -154,6 +154,7 @@ module.exports = {
     require('./textAreaPlugin/textAreaPlugin.cjs'),
     require('./textColorPlugin/textColorPlugin.cjs'),
     require('./tooltipPlugin/tooltipPlugin.cjs'),
+    require('./webkitTextFillColor/webkitTextFillColor.cjs'),
     require('./yobtaColorsPlugin/yobtaColorsPlugin.cjs'),
     require('./toastPlugin/toastPlugin.cjs')
   ],

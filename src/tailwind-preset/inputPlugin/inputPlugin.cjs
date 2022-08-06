@@ -8,7 +8,7 @@ module.exports = plugin(({ addBase, prefix }) => {
       '.yobta-input': {
         ...applyPrefixed(
           prefix,
-          '.bg-paper-2',
+          '.yobta-paper-2',
           '.cursor-text',
           '.flex',
           '.gap-x-2',
@@ -16,10 +16,7 @@ module.exports = plugin(({ addBase, prefix }) => {
           '.items-center',
           '.relative',
           '.rounded',
-          '.text-ink',
-          '.px-4',
-          '.dark:bg-paper-2-dark',
-          '.dark:text-ink-dark'
+          '.px-4'
         ),
         '& > .yobta-input__wrapper': {
           ...applyPrefixed(
@@ -98,14 +95,17 @@ module.exports = plugin(({ addBase, prefix }) => {
           ),
           'backgroundColor': 'transparent',
           'borderRadius': 'inherit',
+          'caretColor': 'currentColor',
           'color': 'inherit',
           'font': 'inherit',
           'padding': 'inherit',
           '-webkit-tap-highlight-color': 'transparent',
-          'transition': 'background 999999s ease 0s !important',
           '&::placeholder': {
             color: 'inherit',
             opacity: 0.4
+          },
+          '&:-webkit-autofill': {
+            transition: 'background 999999s ease 0s !important'
           }
         },
         '& .yobta-input__bullet': {

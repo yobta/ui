@@ -1,29 +1,27 @@
-import { ForwardedRef, MutableRefObject, Ref, useMemo, useState } from 'react'
+import { ForwardedRef, MutableRefObject, Ref, useMemo } from 'react'
 
 interface CombineRefsHook {
   <E>(
     ...refs: (
-      | Ref<unknown>
-      | ForwardedRef<unknown>
-      | MutableRefObject<unknown>
+      | Ref<unknown | null>
+      | ForwardedRef<unknown | null>
+      | MutableRefObject<unknown | null>
     )[]
   ): Ref<E>
 }
 
-export const useCombineRefs: CombineRefsHook = (...refs) => {
-  let [, update] = useState({})
-  return useMemo(() => {
-    return node => {
+export const useCombineRefs: CombineRefsHook = (...refs) =>
+  useMemo(
+    () => current => {
       refs.forEach(ref => {
         if (ref) {
           if (typeof ref === 'function') {
-            ref(node)
+            ref(current)
           } else {
-            Object.assign(ref, { current: node })
-            update({})
+            Object.assign(ref, { current })
           }
         }
       })
-    }
-  }, refs)
-}
+    },
+    refs
+  )

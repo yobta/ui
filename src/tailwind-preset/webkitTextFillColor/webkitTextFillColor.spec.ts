@@ -3,7 +3,7 @@ import { it, expect, vi } from 'vitest'
 // @ts-ignore
 import webkitTextFillColor from './webkitTextFillColor.cjs'
 
-// const prefix = (str: string): string => str
+const prefix = (str: string): string => str
 
 it('requires theme.colors.yobta', () => {
   ;[
@@ -187,9 +187,35 @@ it('requires theme.colors.yobta.***.selected.ink.dark to be a string', () => {
   })
 })
 
-// it('webkitTextFillColor', () => {
-//   let addComponents = vi.fn()
+it('webkitTextFillColor', () => {
+  let addComponents = vi.fn()
 
-//   webkitTextFillColor.handler({ addComponents, prefix })
-//   expect(addComponents).toBeCalledWith()
-// })
+  webkitTextFillColor.handler({
+    addComponents,
+    prefix,
+    theme: () => ({
+      yobta: {
+        paper: {
+          ink: { DEFAULT: 'paperText', dark: 'paperDarkText' },
+          paper: { DEFAULT: 'paper', dark: 'paperDark' },
+          selected: {
+            paper: { DEFAULT: 'selected', dark: 'selectedDark' },
+            ink: { DEFAULT: 'selectedText', dark: 'selectedTextDark' }
+          }
+        }
+      }
+    })
+  })
+
+  webkitTextFillColor.handler({ addComponents, prefix })
+  expect(addComponents).toBeCalledWith({
+    '.yobta-webkit-text-fill-paper input:-webkit-autofill': {
+      '-webkit-text-fill-color': 'paperText !important',
+      'caretColor': 'paperText'
+    },
+    '.yobta-webkit-text-fill-paper-dark input:-webkit-autofill': {
+      '-webkit-text-fill-color': 'paperDarkText !important',
+      'caretColor': 'paperDarkText'
+    }
+  })
+})

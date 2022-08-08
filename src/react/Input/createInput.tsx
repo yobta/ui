@@ -103,7 +103,5 @@ export const createInput: InputFactory = ({
 
   let YobtaInput = forwardRef(Input)
 
-  YobtaInput.displayName = 'YobtaInput'
-
   return YobtaInput
 }

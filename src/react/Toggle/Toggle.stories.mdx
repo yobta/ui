@@ -5,6 +5,7 @@ import { Dropdown } from '../Dropdown'
 import { Toggle } from '../Toggle'
 import { Tooltip } from '../Tooltip'
 import { Input } from '../Input'
+import { Toast } from '../Toast'
 
 <Meta title="MDX/Toggle" />
 
@@ -84,6 +85,19 @@ import { Input } from '../Input'
         <div className="yobta-menu-item">Item 1</div>
         <div className="yobta-menu-item">Item 2</div>
       </Dropdown>
+    </Toggle>
+  </Story>
+</Canvas>
+
+## Toggling Toasts
+
+<Canvas>
+  <Story name="Toggling Toasts">
+    <Toggle>
+      <button className="yobta-button-primary" type="button">
+        Toggle the Toast
+      </button>
+      <Toast>This is a toast.</Toast>
     </Toggle>
   </Story>
 </Canvas>

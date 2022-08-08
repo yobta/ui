@@ -96,7 +96,7 @@ it('requires theme.colors.ink.x.dark to be a string', () => {
   )
 })
 
-it('adds utilities', () => {
+it('adds styles to utilities @layer', () => {
   let addUtilities = vi.fn()
   inkPlugin.handler({
     addUtilities,

@@ -70,8 +70,10 @@ module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
           prefix,
           `.bg-yobta-${key}-paper`,
           `.text-yobta-${key}-ink`,
+          `.yobta-webkit-text-fill-${key}`,
           `.dark:bg-yobta-${key}-paper-dark`,
-          `.dark:text-yobta-${key}-ink-dark`
+          `.dark:text-yobta-${key}-ink-dark`,
+          `.dark:yobta-webkit-text-fill-${key}-dark`
         ),
         borderColor: 'currentcolor'
       },
@@ -80,8 +82,10 @@ module.exports = plugin(({ addComponents, addUtilities, prefix, theme }) => {
           prefix,
           `.bg-yobta-${key}-paper-dark`,
           `.text-yobta-${key}-ink-dark`,
+          `.yobta-webkit-text-fill-${key}-dark`,
           `.dark:bg-yobta-${key}-paper`,
-          `.dark:text-yobta-${key}-ink`
+          `.dark:text-yobta-${key}-ink`,
+          `.dark:yobta-webkit-text-fill-${key}`
         ),
         borderColor: 'currentcolor'
       }

@@ -1,30 +1,28 @@
 import { it, expect, vi } from 'vitest'
 
 // @ts-ignore
-import yobtaColorsPlugin from './yobtaColorsPlugin.cjs'
-
-const prefix = (str: string): string => str
+import webkitTextFillColor from './webkitTextFillColor.cjs'
 
 it('requires theme.colors.yobta', () => {
   ;[
     {},
     {
-      ink: null
+      yobta: null
     },
     {
-      ink: NaN
+      yobta: NaN
     }
   ].forEach(colors => {
     expect(() => {
-      yobtaColorsPlugin.handler({ theme: () => colors })
-    }).toThrowError('Yobta yobtaColorsPlugin: theme.colors.yobta is required')
+      webkitTextFillColor.handler({ theme: () => colors })
+    }).toThrowError('Yobta webkitTextFillColor: theme.colors.yobta is required')
   })
 })
 
 it('requires theme.colors.yobta.***.ink.DEFAULT to be a string', () => {
   ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(ink => {
     expect(() => {
-      yobtaColorsPlugin.handler({
+      webkitTextFillColor.handler({
         theme: () => ({
           yobta: {
             primary: {
@@ -34,7 +32,7 @@ it('requires theme.colors.yobta.***.ink.DEFAULT to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.ink.DEFAULT should be a string'
+      'Yobta webkitTextFillColor: theme.colors.yobta.primary.ink.DEFAULT should be a string'
     )
   })
 })
@@ -46,7 +44,7 @@ it('requires theme.colors.yobta.***.ink.dark to be a string', () => {
     { DEFAULT: '#123', dark: new Date() }
   ].forEach(ink => {
     expect(() => {
-      yobtaColorsPlugin.handler({
+      webkitTextFillColor.handler({
         theme: () => ({
           yobta: {
             primary: {
@@ -56,7 +54,7 @@ it('requires theme.colors.yobta.***.ink.dark to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.ink.dark should be a string'
+      'Yobta webkitTextFillColor: theme.colors.yobta.primary.ink.dark should be a string'
     )
   })
 })
@@ -65,7 +63,7 @@ it('requires theme.colors.yobta.***.paper.DEFAULT to be a string', () => {
   ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(
     paper => {
       expect(() => {
-        yobtaColorsPlugin.handler({
+        webkitTextFillColor.handler({
           theme: () => ({
             yobta: {
               primary: {
@@ -76,7 +74,7 @@ it('requires theme.colors.yobta.***.paper.DEFAULT to be a string', () => {
           })
         })
       }).toThrowError(
-        'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.paper.DEFAULT should be a string'
+        'Yobta webkitTextFillColor: theme.colors.yobta.primary.paper.DEFAULT should be a string'
       )
     }
   )
@@ -89,7 +87,7 @@ it('requires theme.colors.yobta.***.paper.dark to be a string', () => {
     { DEFAULT: '#123', dark: new Date() }
   ].forEach(paper => {
     expect(() => {
-      yobtaColorsPlugin.handler({
+      webkitTextFillColor.handler({
         theme: () => ({
           yobta: {
             primary: {
@@ -100,7 +98,7 @@ it('requires theme.colors.yobta.***.paper.dark to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.paper.dark should be a string'
+      'Yobta webkitTextFillColor: theme.colors.yobta.primary.paper.dark should be a string'
     )
   })
 })
@@ -109,7 +107,7 @@ it('requires theme.colors.yobta.***.selected.paper.DEFAULT to be a string', () =
   ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(
     paper => {
       expect(() => {
-        yobtaColorsPlugin.handler({
+        webkitTextFillColor.handler({
           theme: () => ({
             yobta: {
               primary: {
@@ -123,7 +121,7 @@ it('requires theme.colors.yobta.***.selected.paper.DEFAULT to be a string', () =
           })
         })
       }).toThrowError(
-        'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.selected.paper.DEFAULT should be a string'
+        'Yobta webkitTextFillColor: theme.colors.yobta.primary.selected.paper.DEFAULT should be a string'
       )
     }
   )
@@ -136,7 +134,7 @@ it('requires theme.colors.yobta.***.selected.paper.dark to be a string', () => {
     { DEFAULT: '#123', dark: new Date() }
   ].forEach(paper => {
     expect(() => {
-      yobtaColorsPlugin.handler({
+      webkitTextFillColor.handler({
         theme: () => ({
           yobta: {
             primary: {
@@ -150,7 +148,7 @@ it('requires theme.colors.yobta.***.selected.paper.dark to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.selected.paper.dark should be a string'
+      'Yobta webkitTextFillColor: theme.colors.yobta.primary.selected.paper.dark should be a string'
     )
   })
 })
@@ -158,7 +156,7 @@ it('requires theme.colors.yobta.***.selected.paper.dark to be a string', () => {
 it('requires theme.colors.yobta.***.selected.ink.DEFAULT to be a string', () => {
   ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(ink => {
     expect(() => {
-      yobtaColorsPlugin.handler({
+      webkitTextFillColor.handler({
         theme: () => ({
           yobta: {
             primary: {
@@ -173,7 +171,7 @@ it('requires theme.colors.yobta.***.selected.ink.DEFAULT to be a string', () => 
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.selected.ink.DEFAULT should be a string'
+      'Yobta webkitTextFillColor: theme.colors.yobta.primary.selected.ink.DEFAULT should be a string'
     )
   })
 })
@@ -185,7 +183,7 @@ it('requires theme.colors.yobta.***.selected.ink.dark to be a string', () => {
     { DEFAULT: '#123', dark: new Date() }
   ].forEach(ink => {
     expect(() => {
-      yobtaColorsPlugin.handler({
+      webkitTextFillColor.handler({
         theme: () => ({
           yobta: {
             primary: {
@@ -200,19 +198,16 @@ it('requires theme.colors.yobta.***.selected.ink.dark to be a string', () => {
         })
       })
     }).toThrowError(
-      'Yobta yobtaColorsPlugin: theme.colors.yobta.primary.selected.ink.dark should be a string'
+      'Yobta webkitTextFillColor: theme.colors.yobta.primary.selected.ink.dark should be a string'
     )
   })
 })
 
-it('yobtaColorsPlugin', () => {
+it('adds styles to the component @layer', () => {
   let addComponents = vi.fn()
-  let addUtilities = vi.fn()
 
-  yobtaColorsPlugin.handler({
+  webkitTextFillColor.handler({
     addComponents,
-    addUtilities,
-    prefix,
     theme: () => ({
       yobta: {
         paper: {
@@ -228,21 +223,13 @@ it('yobtaColorsPlugin', () => {
   })
 
   expect(addComponents).toBeCalledWith({
-    '.yobta-paper': {
-      '@apply bg-yobta-paper-paper text-yobta-paper-ink yobta-webkit-text-fill-paper dark:bg-yobta-paper-paper-dark dark:text-yobta-paper-ink-dark dark:yobta-webkit-text-fill-paper-dark':
-        {},
-      'borderColor': 'currentcolor'
+    '.yobta-webkit-text-fill-paper input:-webkit-autofill': {
+      '-webkit-text-fill-color': 'paperText !important',
+      'caretColor': 'paperText'
     },
-    '.yobta-paper-inversed': {
-      '@apply bg-yobta-paper-paper-dark text-yobta-paper-ink-dark yobta-webkit-text-fill-paper-dark dark:bg-yobta-paper-paper dark:text-yobta-paper-ink dark:yobta-webkit-text-fill-paper':
-        {},
-      'borderColor': 'currentcolor'
-    }
-  })
-  expect(addUtilities).toBeCalledWith({
-    '.yobta-paper .yobta-selected': {
-      '@apply bg-yobta-paper-selected-paper dark:bg-yobta-paper-selected-paper-dark text-yobta-paper-selected-ink dark:text-yobta-paper-selected-ink-dark':
-        {}
+    '.yobta-webkit-text-fill-paper-dark input:-webkit-autofill': {
+      '-webkit-text-fill-color': 'paperDarkText !important',
+      'caretColor': 'paperDarkText'
     }
   })
 })

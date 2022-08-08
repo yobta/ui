@@ -1,6 +1,6 @@
 import { cloneElement, ReactElement, ReactNode } from 'react'
 
-import { CLICK, FOCUS, ROLLOVER, useToggle } from './useToggle.js'
+import { CLICK, FOCUS, ROLLOVER, TOAST, useToggle } from './useToggle.js'
 import { getProducerAriaProps } from './getProducerAriaProps.js'
 import { ToggleContext } from './ToggleContext.js'
 
@@ -9,7 +9,7 @@ interface ToogleFC {
     children: [ReactNode, ReactNode]
     activeProducerClassName?: string
     disabled?: boolean
-    mode?: typeof CLICK | typeof FOCUS | typeof ROLLOVER
+    mode?: typeof CLICK | typeof FOCUS | typeof ROLLOVER | typeof TOAST
     onToggle?: (isOn: boolean) => void
   }): JSX.Element
 }

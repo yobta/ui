@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { ToastPlacement } from './Toast.js'
+import { ToastPlacement } from './createToast.js'
 
 interface AnimationClassNameHook {
   (animationState: boolean, placement: ToastPlacement): string

@@ -19,6 +19,7 @@ import { ToggleContext } from './ToggleContext.js'
 export const CLICK = 'click'
 export const FOCUS = 'focus'
 export const ROLLOVER = 'rollover'
+export const TOAST = 'toast'
 
 interface ToggleHook {
   (props: ToggleProps): {
@@ -145,6 +146,7 @@ export const useToggle: ToggleHook = ({
         )
         break
       case CLICK:
+      case TOAST:
       default:
         unsubscribe.push(subscribe(producerRef.current, CLICK, toggle))
         break

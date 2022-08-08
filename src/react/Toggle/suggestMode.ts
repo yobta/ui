@@ -1,4 +1,4 @@
-import { ToggleMode } from './useToggle.js'
+import { CLICK, FOCUS, ROLLOVER, TOAST, ToggleMode } from './useToggle.js'
 
 interface SuggestMode {
   (
@@ -12,12 +12,15 @@ export const suggestMode: SuggestMode = (producerNode, consumerNode) => {
     producerNode?.nodeName === 'INPUT' ||
     producerNode?.classList.contains('yobta-input')
   ) {
-    return 'focus'
+    return FOCUS
   }
 
   if (consumerNode?.classList.contains('yobta-tooltip')) {
-    return 'rollover'
+    return ROLLOVER
+  }
+  if (consumerNode?.classList.contains('yobta-toast')) {
+    return TOAST
   }
 
-  return 'click'
+  return CLICK
 }

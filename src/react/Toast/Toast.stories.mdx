@@ -1,7 +1,8 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
 import { useState } from 'react'
 
-import { Toast } from './Toast.tsx'
+import { Toast } from './Toast'
+import { Toggle } from '../Toggle'
 import { Cross } from '../entypo'
 
 <Meta title="MDX/Toast" />
@@ -12,30 +13,12 @@ import { Cross } from '../entypo'
 
 <Canvas>
   <Story name="Basic Usage">
-    {() => {
-      const [visible, setVisible] = useState(false)
-      return (
-        <>
-          <Toast
-            visible={visible}
-            onClose={() => {
-              setVisible(false)
-            }}
-          >
-            This is a toast.
-          </Toast>
-          <button
-            className="yobta-button-primary"
-            type="button"
-            onClick={() => {
-              setVisible(last => !last)
-            }}
-          >
-            Toast: {visible ? 'on' : 'off'}
-          </button>
-        </>
-      )
-    }}
+    <Toggle>
+      <button className="yobta-button-primary" type="button">
+        Toggle the Toast
+      </button>
+      <Toast>This is a toast.</Toast>
+    </Toggle>
   </Story>
 </Canvas>
 
@@ -44,28 +27,15 @@ import { Cross } from '../entypo'
 <Canvas>
   <Story name="Placement Options">
     {() => {
-      const [visible, setVisible] = useState(false)
       const [placement, setPlacement] = useState('top')
       return (
         <>
-          <Toast
-            visible={visible}
-            onClose={() => {
-              setVisible(false)
-            }}
-            placement={placement}
-          >
-            Placement: {placement}
-          </Toast>
-          <button
-            className="yobta-button-primary"
-            type="button"
-            onClick={() => {
-              setVisible(last => !last)
-            }}
-          >
-            Toast: {visible ? 'on' : 'off'}
-          </button>
+          <Toggle>
+            <button className="yobta-button-primary" type="button">
+              Toggle the Toast
+            </button>
+            <Toast placement={placement}>Placement: {placement}</Toast>
+          </Toggle>
           <br />
           <select
             value={placement}

@@ -63,7 +63,7 @@ it('requires theme.colors.yobta.ink.dark to be a string', () => {
   })
 })
 
-it('adds Utilities', () => {
+it('adds styles to utilities @layer', () => {
   let addUtilities = vi.fn()
   let colors = {
     yobta: {

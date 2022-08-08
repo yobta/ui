@@ -1,44 +1,57 @@
-import { it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { it, expect, vi, beforeEach, afterAll } from 'vitest'
 import { renderHook, render, fireEvent, screen } from '@testing-library/react'
 import React, { MutableRefObject, useRef } from 'react'
 
-import { useClickAway } from './useClickAway.js'
+import { defaultEventTypes, useClickAway } from './useClickAway.js'
 
 type HookProps = {
+  ref?: MutableRefObject<HTMLDivElement | null>
   onClickAway?: typeof useClickAwayCallback
   eventTypes?: string[]
 }
 
 let useClickAwayCallback = vi.fn()
+
 let awayTargetRef: MutableRefObject<HTMLDivElement | null>
+let awaySecondTargetRef: MutableRefObject<HTMLDivElement | null>
 let awayHook = (props?: HookProps): void => {
-  let { onClickAway = useClickAwayCallback, eventTypes } = props || {}
-  useClickAway(awayTargetRef, onClickAway, eventTypes)
+  let {
+    ref = awayTargetRef,
+    onClickAway = useClickAwayCallback,
+    eventTypes
+  } = props || {}
+  useClickAway(ref, onClickAway, eventTypes)
 }
 
+let addEventListenerMock = vi.spyOn(document, 'addEventListener')
+let removeEventListenerMock = vi.spyOn(document, 'removeEventListener')
+
+let createRef = (): MutableRefObject<HTMLDivElement | null> =>
+  renderHook<MutableRefObject<HTMLDivElement | null>, HTMLDivElement | null>(
+    useRef,
+    { initialProps: null }
+  ).result.current
+
 beforeEach(async () => {
-  let {
-    result: { current: targetRef }
-  } = renderHook<
-    MutableRefObject<HTMLDivElement | null>,
-    HTMLDivElement | null
-  >(useRef, {
-    initialProps: null
-  })
-  awayTargetRef = targetRef
+  awayTargetRef = createRef()
+  awaySecondTargetRef = createRef()
   render(
     <div data-testid="wrapper">
       <div>
         <div data-testid="target" ref={awayTargetRef}>
-          Click area
+          Click area 1
+        </div>
+        <div data-testid="secondtarget" ref={awaySecondTargetRef}>
+          Click area 2
         </div>
       </div>
     </div>
   )
+  vi.clearAllMocks()
 })
 
-afterEach(() => {
-  useClickAwayCallback.mockClear()
+afterAll(() => {
+  vi.restoreAllMocks()
 })
 
 it('fires click event when clicked outside', async () => {
@@ -73,25 +86,83 @@ it('updates onClickAway instance when changed', async () => {
   expect(nextClickAwayCallback).toBeCalledTimes(2)
 })
 it('has default eventTypes', () => {
-  let addEventListener = vi.fn()
-  let removeEventListener = vi.fn()
-  vi.stubGlobal('addEventListener', addEventListener)
-  vi.stubGlobal('removeEventListener', removeEventListener)
-
   renderHook<void, HookProps>(awayHook)
 
-  // expect(addEventListener).toBeCalledTimes(0)
-  // expect(nextClickAwayCallback).toBeCalledTimes(2)
+  defaultEventTypes.forEach((eventType, order) => {
+    expect(addEventListenerMock).toHaveBeenNthCalledWith(
+      order + 1,
+      eventType,
+      expect.anything()
+    )
+  })
 })
 it('taked custom eventTypes', () => {
-  // проверить что на стаб добавляются кастомные типы
+  let eventTypes = ['focus', 'blur']
+  renderHook<void, HookProps>(awayHook, { initialProps: { eventTypes } })
+  eventTypes.forEach((eventType, order) => {
+    expect(addEventListenerMock).toHaveBeenNthCalledWith(
+      order + 1,
+      eventType,
+      expect.anything()
+    )
+  })
 })
 it('unsubscribes on exit', () => {
-  // проверить что со стаба сносятся подписки при анмаунте
+  let { unmount } = renderHook<void, HookProps>(awayHook)
+
+  unmount()
+
+  defaultEventTypes.forEach((eventType, order) => {
+    expect(removeEventListenerMock).toHaveBeenNthCalledWith(
+      order + 1,
+      eventType,
+      expect.anything()
+    )
+  })
 })
 it('resubscribes on eventTypes change', () => {
-  // проверить что со стаба сносятся и добавляются подписки при смене eventTypes
+  let { rerender } = renderHook<void, HookProps>(awayHook)
+
+  addEventListenerMock.mockClear()
+
+  let nextEventTypes = ['click', 'doubleclick']
+  rerender({ eventTypes: nextEventTypes })
+
+  defaultEventTypes.forEach((eventType, order) => {
+    expect(removeEventListenerMock).toHaveBeenNthCalledWith(
+      order + 1,
+      eventType,
+      expect.anything()
+    )
+  })
+
+  nextEventTypes.forEach((eventType, order) => {
+    expect(addEventListenerMock).toHaveBeenNthCalledWith(
+      order + 1,
+      eventType,
+      expect.anything()
+    )
+  })
 })
 it('resubscribes on ref.current change', () => {
-  // проверить что со стаба сносятся и добавляются подписки при смене ref.current
+  let { rerender } = renderHook<void, HookProps>(awayHook)
+  addEventListenerMock.mockClear()
+
+  rerender({ ref: awaySecondTargetRef })
+
+  defaultEventTypes.forEach((eventType, order) => {
+    expect(removeEventListenerMock).toHaveBeenNthCalledWith(
+      order + 1,
+      eventType,
+      expect.anything()
+    )
+  })
+
+  defaultEventTypes.forEach((eventType, order) => {
+    expect(addEventListenerMock).toHaveBeenNthCalledWith(
+      order + 1,
+      eventType,
+      expect.anything()
+    )
+  })
 })

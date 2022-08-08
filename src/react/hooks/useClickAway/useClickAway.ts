@@ -4,7 +4,7 @@ import { batch } from '../../helpers/batch/index.js'
 import { subscribe } from '../../helpers/subscribe/index.js'
 import { useLatestRef } from '../useLatestRef/useLatestRef.js'
 
-const defaultEventTypes = ['mousedown', 'touchstart']
+export const defaultEventTypes = ['mousedown', 'touchstart']
 
 export const useClickAway = <E extends Event = Event>(
   ref: RefObject<HTMLElement | null>,

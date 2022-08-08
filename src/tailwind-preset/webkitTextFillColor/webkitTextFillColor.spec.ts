@@ -7,7 +7,7 @@ import webkitTextFillColor from './webkitTextFillColor.cjs'
 
 it('requires theme.colors.yobta', () => {
   ;[
-    // {},
+    {},
     {
       yobta: null
     },

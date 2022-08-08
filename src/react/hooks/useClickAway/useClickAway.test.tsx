@@ -1,5 +1,6 @@
 import { it, expect, vi, beforeEach, afterAll } from 'vitest'
 import { renderHook, render, fireEvent, screen } from '@testing-library/react'
+// @ts-expect-error
 import React, { MutableRefObject, useRef } from 'react'
 
 import { defaultEventTypes, useClickAway } from './useClickAway.js'

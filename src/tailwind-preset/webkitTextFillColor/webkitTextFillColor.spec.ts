@@ -19,6 +19,24 @@ it('requires theme.colors.yobta', () => {
   })
 })
 
+it('requires theme.colors.yobta.***.ink.DEFAULT to be a string', () => {
+  ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(ink => {
+    expect(() => {
+      webkitTextFillColor.handler({
+        theme: () => ({
+          yobta: {
+            primary: {
+              ink
+            }
+          }
+        })
+      })
+    }).toThrowError(
+      'Yobta webkitTextFillColor: theme.colors.yobta.primary.ink.DEFAULT should be a string'
+    )
+  })
+})
+
 it('requires theme.colors.yobta.***.ink.dark to be a string', () => {
   ;[
     { DEFAULT: '#123', dark: null },

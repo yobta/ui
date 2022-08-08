@@ -3,8 +3,6 @@ import { it, expect, vi } from 'vitest'
 // @ts-ignore
 import webkitTextFillColor from './webkitTextFillColor.cjs'
 
-const prefix = (str: string): string => str
-
 it('requires theme.colors.yobta', () => {
   ;[
     {},
@@ -192,7 +190,6 @@ it('webkitTextFillColor', () => {
 
   webkitTextFillColor.handler({
     addComponents,
-    prefix,
     theme: () => ({
       yobta: {
         paper: {
@@ -207,7 +204,7 @@ it('webkitTextFillColor', () => {
     })
   })
 
-  webkitTextFillColor.handler({ addComponents, prefix })
+  webkitTextFillColor.handler({ addComponents })
   expect(addComponents).toBeCalledWith({
     '.yobta-webkit-text-fill-paper input:-webkit-autofill': {
       '-webkit-text-fill-color': 'paperText !important',

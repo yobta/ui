@@ -55,6 +55,7 @@ export const useInput: InputHook = ({
       addEventListener: (
         ...args: Parameters<HTMLInputElement['addEventListener']>
       ) => inputNode?.addEventListener(...args),
+      blur: () => inputNode?.blur(),
       removeEventListener: (
         ...args: Parameters<HTMLInputElement['removeEventListener']>
       ) => inputNode?.removeEventListener(...args)

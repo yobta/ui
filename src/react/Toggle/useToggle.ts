@@ -15,11 +15,15 @@ import { getComponentProps } from './getComponentProps.js'
 import { suggestMode } from './suggestMode.js'
 import { ToggleContext } from './ToggleContext.js'
 
+const CLICK = 'click'
+const FOCUS = 'focus'
+const ROLLOVER = 'rollover'
+
 interface ToggleHook {
   (props: {
     children: [ReactNode, ReactNode]
     activeProducerClassName?: string
-    mode?: 'click' | 'rollover' | 'focus'
+    mode?: typeof CLICK | typeof FOCUS | typeof ROLLOVER
     onToggle?: (isOn: boolean) => void
   }): {
     consumer: ReactNode
@@ -64,7 +68,7 @@ export const useToggle: ToggleHook = ({
   useClickAway(consumerRef, event => {
     if (
       visible &&
-      resultingMode === 'click' &&
+      resultingMode === CLICK &&
       event.target !== producerRef.current &&
       !childToggleIsVisible
     ) {
@@ -80,6 +84,9 @@ export const useToggle: ToggleHook = ({
   useEscapeKey(() => {
     setHasFocus(false)
     setHasCursor(false)
+    if (resultingMode === FOCUS) {
+      producerRef.current?.blur()
+    }
   }, visible && !childToggleIsVisible)
 
   useEffect(() => {
@@ -115,7 +122,7 @@ export const useToggle: ToggleHook = ({
     let unsubscribe: VoidFunction[] = []
 
     switch (resultingMode) {
-      case 'rollover':
+      case ROLLOVER:
         unsubscribe.push(
           subscribe(producerRef.current, 'mouseover', handleMouseOver),
           subscribe(producerRef.current, 'mouseout', handleMouseOut),
@@ -123,16 +130,16 @@ export const useToggle: ToggleHook = ({
           subscribe(producerRef.current, 'blur', handleBlur)
         )
         break
-      case 'focus':
+      case FOCUS:
         unsubscribe.push(
           subscribe(producerRef.current, 'focus', handleFocus),
           subscribe(producerRef.current, 'blur', handleBlur),
           subscribe(consumerRef.current, 'mousedown', lockFocus)
         )
         break
-      case 'click':
+      case CLICK:
       default:
-        unsubscribe.push(subscribe(producerRef.current, 'click', toggle))
+        unsubscribe.push(subscribe(producerRef.current, CLICK, toggle))
         break
     }
     return () => {

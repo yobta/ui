@@ -12,7 +12,7 @@ test('inputPlugin', async () => {
   expect(addBase).toBeCalledWith(
     {
       '.yobta-input': {
-        '@apply bg-paper-2 cursor-text flex gap-x-2 h-12 items-center relative rounded text-ink px-4 dark:bg-paper-2-dark dark:text-ink-dark':
+        '@apply yobta-paper-2 cursor-text flex gap-x-2 h-12 items-center relative rounded px-4':
           {},
         '& > .yobta-input__wrapper': {
           '@apply flex flex-1 items-center min-w-0 overflow-hidden relative self-stretch':
@@ -67,14 +67,17 @@ test('inputPlugin', async () => {
             {},
           'backgroundColor': 'transparent',
           'borderRadius': 'inherit',
-          'color': 'currentColor !important',
+          'caretColor': 'currentColor',
+          'color': 'inherit',
           'font': 'inherit',
           'padding': 'inherit',
           '-webkit-tap-highlight-color': 'transparent',
-          'transition': 'background 999999s ease 0s !important',
           '&::placeholder': {
             color: 'inherit',
             opacity: 0.4
+          },
+          '&:-webkit-autofill': {
+            transition: 'background 999999s ease 0s !important'
           }
         },
         '& .yobta-input__bullet': {

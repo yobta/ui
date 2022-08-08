@@ -229,12 +229,12 @@ it('yobtaColorsPlugin', () => {
 
   expect(addComponents).toBeCalledWith({
     '.yobta-paper': {
-      '@apply bg-yobta-paper-paper text-yobta-paper-ink dark:bg-yobta-paper-paper-dark dark:text-yobta-paper-ink-dark':
+      '@apply bg-yobta-paper-paper text-yobta-paper-ink yobta-webkit-text-fill-paper dark:bg-yobta-paper-paper-dark dark:text-yobta-paper-ink-dark dark:yobta-webkit-text-fill-paper-dark':
         {},
       'borderColor': 'currentcolor'
     },
     '.yobta-paper-inversed': {
-      '@apply bg-yobta-paper-paper-dark text-yobta-paper-ink-dark dark:bg-yobta-paper-paper dark:text-yobta-paper-ink':
+      '@apply bg-yobta-paper-paper-dark text-yobta-paper-ink-dark yobta-webkit-text-fill-paper-dark dark:bg-yobta-paper-paper dark:text-yobta-paper-ink dark:yobta-webkit-text-fill-paper':
         {},
       'borderColor': 'currentcolor'
     }

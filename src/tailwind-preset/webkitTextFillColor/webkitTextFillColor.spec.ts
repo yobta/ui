@@ -204,7 +204,6 @@ it('webkitTextFillColor', () => {
     })
   })
 
-  webkitTextFillColor.handler({ addComponents })
   expect(addComponents).toBeCalledWith({
     '.yobta-webkit-text-fill-paper input:-webkit-autofill': {
       '-webkit-text-fill-color': 'paperText !important',

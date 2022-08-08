@@ -1,4 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useState } from 'react'
+
 import { Dropdown } from '../Dropdown'
 import { Toggle } from '../Toggle'
 import { Tooltip } from '../Tooltip'
@@ -19,6 +21,40 @@ import { Input } from '../Input'
         <div className="yobta-menu-item">Item 2</div>
       </Dropdown>
     </Toggle>
+  </Story>
+</Canvas>
+
+## Disabling the Toggles
+
+<Canvas>
+  <Story name="Disabling the Toggles">
+    {() => {
+      const [disabled, setDisabled] = useState(true)
+      return (
+        <>
+          <Toggle disabled={disabled}>
+            <button className="yobta-button-primary">
+              {disabled && "Don't "} Click me
+            </button>
+            <Dropdown id="dropdown">
+              <div className="yobta-menu-item">Item 1</div>
+              <div className="yobta-menu-item">Item 2</div>
+            </Dropdown>
+          </Toggle>
+          <div className="yobta-menu">
+            <label className="yobta-menu-item">
+              <span className="flex-1">Disabled</span>
+              <input
+                className="yobta-switch yobta-primary checked:yobta-error"
+                type="checkbox"
+                checked={disabled}
+                onChange={() => setDisabled(last => !last)}
+              />
+            </label>
+          </div>
+        </>
+      )
+    }}
   </Story>
 </Canvas>
 

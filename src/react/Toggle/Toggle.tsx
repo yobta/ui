@@ -1,12 +1,20 @@
-import { cloneElement, ReactElement } from 'react'
+import { cloneElement, ReactElement, ReactNode } from 'react'
 
-import { ToggleProps, useToggle } from './useToggle.js'
+import { CLICK, FOCUS, ROLLOVER, useToggle } from './useToggle.js'
 import { getProducerAriaProps } from './getProducerAriaProps.js'
 import { ToggleContext } from './ToggleContext.js'
 
 interface ToogleFC {
-  (props: ToggleProps): JSX.Element
+  (props: {
+    children: [ReactNode, ReactNode]
+    activeProducerClassName?: string
+    disabled?: boolean
+    mode?: typeof CLICK | typeof FOCUS | typeof ROLLOVER
+    onToggle?: (isOn: boolean) => void
+  }): JSX.Element
 }
+
+export type ToggleProps = Parameters<ToogleFC>[0]
 
 export const Toggle: ToogleFC = props => {
   let {

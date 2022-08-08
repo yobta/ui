@@ -13,19 +13,15 @@ import { bulk, subscribe } from '../helpers/index.js'
 import { useClickAway, useEscapeKey, useLatestRef } from '../hooks/index.js'
 import { getComponentProps } from './getComponentProps.js'
 import { suggestMode } from './suggestMode.js'
+import { ToggleProps } from './Toggle.js'
 import { ToggleContext } from './ToggleContext.js'
 
-const CLICK = 'click'
-const FOCUS = 'focus'
-const ROLLOVER = 'rollover'
+export const CLICK = 'click'
+export const FOCUS = 'focus'
+export const ROLLOVER = 'rollover'
 
 interface ToggleHook {
-  (props: {
-    children: [ReactNode, ReactNode]
-    activeProducerClassName?: string
-    mode?: typeof CLICK | typeof FOCUS | typeof ROLLOVER
-    onToggle?: (isOn: boolean) => void
-  }): {
+  (props: ToggleProps): {
     consumer: ReactNode
     consumerId?: string
     consumerRef: RefObject<HTMLElement | null>
@@ -37,12 +33,12 @@ interface ToggleHook {
   }
 }
 
-export type ToggleProps = Parameters<ToggleHook>[0]
 export type ToggleMode = ToggleProps['mode']
 
 export const useToggle: ToggleHook = ({
   activeProducerClassName,
   children,
+  disabled,
   mode,
   onToggle
 }) => {
@@ -65,6 +61,17 @@ export const useToggle: ToggleHook = ({
   let resultingMode =
     mode || suggestMode(producerRef.current, consumerRef.current)
 
+  let setFocus: typeof setHasFocus = nextState => {
+    if (!disabled) {
+      setHasFocus(nextState)
+    }
+  }
+  let setCursor: typeof setHasCursor = nextState => {
+    if (!disabled) {
+      setHasCursor(nextState)
+    }
+  }
+
   useClickAway(consumerRef, event => {
     if (
       visible &&
@@ -72,8 +79,8 @@ export const useToggle: ToggleHook = ({
       event.target !== producerRef.current &&
       !childToggleIsVisible
     ) {
-      setHasFocus(false)
-      setHasCursor(false)
+      setFocus(false)
+      setCursor(false)
     }
   })
 
@@ -82,8 +89,8 @@ export const useToggle: ToggleHook = ({
   }, [])
 
   useEscapeKey(() => {
-    setHasFocus(false)
-    setHasCursor(false)
+    setFocus(false)
+    setCursor(false)
     if (resultingMode === FOCUS) {
       producerRef.current?.blur()
     }
@@ -92,21 +99,21 @@ export const useToggle: ToggleHook = ({
   useEffect(() => {
     let focusLock: boolean = false
     let toggle = (): void => {
-      setHasFocus(lastState => !lastState)
+      setFocus(lastState => !lastState)
     }
     let handleFocus = (): void => {
-      setHasFocus(true)
+      setFocus(true)
     }
     let handleBlur = (): void => {
       if (!focusLock) {
-        setHasFocus(false)
+        setFocus(false)
       }
     }
     let handleMouseOver = (): void => {
-      setHasCursor(true)
+      setCursor(true)
     }
     let handleMouseOut = (): void => {
-      setHasCursor(false)
+      setCursor(false)
     }
 
     let lockFocus = (): void => {
@@ -114,7 +121,7 @@ export const useToggle: ToggleHook = ({
       let unlockFocus = (): void => {
         unsubscribe()
         focusLock = false
-        setHasFocus(false)
+        setFocus(false)
       }
       let unsubscribe = subscribe(document, 'mouseup', unlockFocus)
     }
@@ -145,7 +152,7 @@ export const useToggle: ToggleHook = ({
     return () => {
       bulk(...unsubscribe)
     }
-  }, [resultingMode, producerRef.current, consumerRef.current])
+  }, [resultingMode, producerRef.current, consumerRef.current, disabled])
 
   useEffect(() => {
     if (setChildToggleIsVisible !== context.setChildToggleIsVisible) {

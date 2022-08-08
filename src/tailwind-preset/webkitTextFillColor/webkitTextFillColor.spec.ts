@@ -185,7 +185,7 @@ it('requires theme.colors.yobta.***.selected.ink.dark to be a string', () => {
   })
 })
 
-it('webkitTextFillColor', () => {
+it('webkitTextFillColor add component', () => {
   let addComponents = vi.fn()
 
   webkitTextFillColor.handler({

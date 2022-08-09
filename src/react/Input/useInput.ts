@@ -9,7 +9,7 @@ import {
 } from 'react'
 
 import { bulk, subscribe } from '../helpers/index.js'
-import { useCombineRefs } from '../hooks/index.js'
+import { useCombineRefs, useDetectAutofill } from '../hooks/index.js'
 
 interface InputHook {
   (props: {
@@ -47,6 +47,7 @@ export const useInput: InputHook = ({
   let [state, setState] = useState<string | undefined>(
     getFirstValueAsString(value, defaultValue)
   )
+  let autofilled = useDetectAutofill(inputRef)
 
   let inputNode = inputRef.current
 
@@ -70,25 +71,13 @@ export const useInput: InputHook = ({
   })
 
   useEffect(() => {
-    let timeoutId = setTimeout(() => {
-      let currentValue = inputRef.current?.value
-      if (state !== currentValue) {
-        setState(currentValue)
-      }
-    }, 620)
-    return () => {
-      clearTimeout(timeoutId)
-    }
-  }, [state])
-
-  useEffect(() => {
-    let handleInputEvent = (event: Event): void => {
+    let handleEvent = (event: Event): void => {
       let { value: v } = event.target as HTMLInputElement
       setState(v)
     }
     let unsubscribe = [
-      subscribe(inputNode, 'blur', handleInputEvent),
-      subscribe(inputNode, 'input', handleInputEvent)
+      subscribe(inputNode, 'blur', handleEvent),
+      subscribe(inputNode, 'input', handleEvent)
     ]
 
     return () => {
@@ -96,7 +85,8 @@ export const useInput: InputHook = ({
     }
   }, [inputNode])
 
-  let isFilled = !!getFirstValueAsString(state, placeholder, inputNode?.value)
+  let isFilled =
+    !!getFirstValueAsString(state, placeholder, inputNode?.value) || autofilled
 
   return { isFilled, inputRef: combinedRef, labelRef }
 }

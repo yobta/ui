@@ -63,14 +63,15 @@ module.exports = plugin(({ addComponents, theme }) => {
 
   Object.entries(colors.yobta).forEach(([key, value]) => {
     addComponents({
-      [`.yobta-webkit-text-fill-${key} input:-webkit-autofill`]: {
+      [`.yobta-webkit-text-fill-${key} input:-internal-autofill-selected`]: {
         '-webkit-text-fill-color': `${value.ink.DEFAULT} !important`,
         'caretColor': value.ink.DEFAULT
       },
-      [`.yobta-webkit-text-fill-${key}-dark input:-webkit-autofill`]: {
-        '-webkit-text-fill-color': `${value.ink.dark} !important`,
-        'caretColor': value.ink.dark
-      }
+      [`.yobta-webkit-text-fill-${key}-dark input:-internal-autofill-selected`]:
+        {
+          '-webkit-text-fill-color': `${value.ink.dark} !important`,
+          'caretColor': value.ink.dark
+        }
     })
   })
 })

@@ -11,7 +11,6 @@ import {
 } from 'react'
 import clsx from 'clsx'
 
-import { getRefCurrent } from '../helpers/index.js'
 import { subscribe } from '../helpers/subscribe/index.js'
 
 type BaseProps = Omit<ComponentProps<'textarea'>, 'children'>
@@ -60,7 +59,7 @@ export const createTextArea: TextAreaFactory = ({
     let [state, setState] = useState<string>()
 
     useEffect(() => {
-      let node = getRefCurrent(ref)
+      let node = 'current' in ref ? ref.current : null
       let handleBlur = (): void => {
         setState(node?.value)
       }

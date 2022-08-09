@@ -5,22 +5,22 @@ import textColorPlugin from './textColorPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('color', async () => {
+test('color', () => {
   let addUtilities = vi.fn()
   let colors = {
     ink: {
       DEFAULT: '#414141',
       dark: '#FCFCFC',
       2: { DEFAULT: '#7B8B99', dark: '#5B6772' },
-      primary: { DEFAULT: '#C7A713', dark: '#DCCA76' },
+      primary: { DEFAULT: '#C7A713', dark: '#DCCA76' }
     },
     link: {
       DEFAULT: '#120EED',
       dark: '#9C9AFF',
-      hover: { DEFAULT: '#5F5CFF', dark: '#ACAAF0' },
+      hover: { DEFAULT: '#5F5CFF', dark: '#ACAAF0' }
     },
     color: {
-      1: { DEFAULT: '#FAD8C2', dark: '#4C474B' },
+      1: { DEFAULT: '#FAD8C2', dark: '#4C474B' }
     },
     thisUserColorShouldBeFiltered: '#ccc',
     thisUserColorSetShouldBeFiltered: {},

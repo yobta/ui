@@ -5,7 +5,7 @@ import tooltipPlugin from './tooltipPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('tooltipPlugin', async () => {
+test('tooltipPlugin', () => {
   let addComponents = vi.fn()
   let addUtilities = vi.fn()
 

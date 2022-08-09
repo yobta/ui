@@ -5,7 +5,7 @@ import borderPlugin from './borderPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('colors', async () => {
+test('colors', () => {
   let addUtilities = vi.fn()
   let colors = {
     paper: {

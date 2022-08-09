@@ -5,7 +5,7 @@ import badgePlugin from './badgePlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('bagePlugin', async () => {
+test('bagePlugin', () => {
   let addBase = vi.fn()
 
   badgePlugin.handler({ addBase, prefix })

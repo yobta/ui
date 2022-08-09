@@ -49,24 +49,25 @@ export const useInput: InputHook = ({
   )
   let autofilled = useDetectAutofill(inputRef)
 
-  let inputNode = inputRef.current
-
-  useImperativeHandle(forwardedRef, () =>
-    Object.assign(labelRef.current as unknown as HTMLInputElement, {
-      addEventListener: (
-        ...args: Parameters<HTMLInputElement['addEventListener']>
-      ) => inputNode?.addEventListener(...args),
-      blur: () => inputNode?.blur(),
-      focus: () => inputNode?.focus(),
-      removeEventListener: (
-        ...args: Parameters<HTMLInputElement['removeEventListener']>
-      ) => inputNode?.removeEventListener(...args)
-    })
+  useImperativeHandle(
+    forwardedRef,
+    () =>
+      Object.assign(labelRef.current as unknown as HTMLInputElement, {
+        addEventListener: (
+          ...args: Parameters<HTMLInputElement['addEventListener']>
+        ) => inputRef.current?.addEventListener(...args),
+        blur: () => inputRef.current?.blur(),
+        focus: () => inputRef.current?.focus(),
+        removeEventListener: (
+          ...args: Parameters<HTMLInputElement['removeEventListener']>
+        ) => inputRef.current?.removeEventListener(...args)
+      }),
+    []
   )
 
   useEffect(() => {
-    if (inputNode && state !== inputNode.value) {
-      setState(inputNode.value)
+    if (inputRef.current && state !== inputRef.current.value) {
+      setState(inputRef.current.value)
     }
   })
 
@@ -76,17 +77,18 @@ export const useInput: InputHook = ({
       setState(v)
     }
     let unsubscribe = [
-      subscribe(inputNode, 'blur', handleEvent),
-      subscribe(inputNode, 'input', handleEvent)
+      subscribe(inputRef.current, 'blur', handleEvent),
+      subscribe(inputRef.current, 'input', handleEvent)
     ]
 
     return () => {
       bulk(...unsubscribe)
     }
-  }, [inputNode])
+  }, [])
 
   let isFilled =
-    !!getFirstValueAsString(state, placeholder, inputNode?.value) || autofilled
+    !!getFirstValueAsString(state, placeholder, inputRef.current?.value) ||
+    autofilled
 
   return { isFilled, inputRef: combinedRef, labelRef }
 }

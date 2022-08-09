@@ -3,6 +3,8 @@ import { it, expect, vi } from 'vitest'
 // @ts-ignore
 import webkitTextFillColor from './webkitTextFillColor.cjs'
 
+const prefix = (str: string): string => str
+
 it('requires theme.colors.yobta', () => {
   ;[
     {},
@@ -14,7 +16,7 @@ it('requires theme.colors.yobta', () => {
     }
   ].forEach(colors => {
     expect(() => {
-      webkitTextFillColor.handler({ theme: () => colors })
+      webkitTextFillColor.handler({ theme: () => colors, prefix })
     }).toThrowError('Yobta webkitTextFillColor: theme.colors.yobta is required')
   })
 })
@@ -23,6 +25,7 @@ it('requires theme.colors.yobta.***.ink.DEFAULT to be a string', () => {
   ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(ink => {
     expect(() => {
       webkitTextFillColor.handler({
+        prefix,
         theme: () => ({
           yobta: {
             primary: {
@@ -45,6 +48,7 @@ it('requires theme.colors.yobta.***.ink.dark to be a string', () => {
   ].forEach(ink => {
     expect(() => {
       webkitTextFillColor.handler({
+        prefix,
         theme: () => ({
           yobta: {
             primary: {
@@ -64,6 +68,7 @@ it('requires theme.colors.yobta.***.paper.DEFAULT to be a string', () => {
     paper => {
       expect(() => {
         webkitTextFillColor.handler({
+          prefix,
           theme: () => ({
             yobta: {
               primary: {
@@ -88,6 +93,7 @@ it('requires theme.colors.yobta.***.paper.dark to be a string', () => {
   ].forEach(paper => {
     expect(() => {
       webkitTextFillColor.handler({
+        prefix,
         theme: () => ({
           yobta: {
             primary: {
@@ -108,6 +114,7 @@ it('requires theme.colors.yobta.***.selected.paper.DEFAULT to be a string', () =
     paper => {
       expect(() => {
         webkitTextFillColor.handler({
+          prefix,
           theme: () => ({
             yobta: {
               primary: {
@@ -135,6 +142,7 @@ it('requires theme.colors.yobta.***.selected.paper.dark to be a string', () => {
   ].forEach(paper => {
     expect(() => {
       webkitTextFillColor.handler({
+        prefix,
         theme: () => ({
           yobta: {
             primary: {
@@ -157,6 +165,7 @@ it('requires theme.colors.yobta.***.selected.ink.DEFAULT to be a string', () => 
   ;[{ DEFAULT: null }, { DEFAULT: 0 }, { DEFAULT: new Date() }].forEach(ink => {
     expect(() => {
       webkitTextFillColor.handler({
+        prefix,
         theme: () => ({
           yobta: {
             primary: {
@@ -184,6 +193,7 @@ it('requires theme.colors.yobta.***.selected.ink.dark to be a string', () => {
   ].forEach(ink => {
     expect(() => {
       webkitTextFillColor.handler({
+        prefix,
         theme: () => ({
           yobta: {
             primary: {
@@ -208,6 +218,7 @@ it('adds styles to the component @layer', () => {
 
   webkitTextFillColor.handler({
     addComponents,
+    prefix,
     theme: () => ({
       yobta: {
         paper: {
@@ -225,10 +236,12 @@ it('adds styles to the component @layer', () => {
   expect(addComponents).toBeCalledWith({
     '.yobta-webkit-text-fill-paper input:-internal-autofill-selected': {
       '-webkit-text-fill-color': 'paperText !important',
+      '@apply animate-pulse': {},
       'caretColor': 'paperText'
     },
     '.yobta-webkit-text-fill-paper-dark input:-internal-autofill-selected': {
       '-webkit-text-fill-color': 'paperDarkText !important',
+      '@apply animate-pulse': {},
       'caretColor': 'paperDarkText'
     }
   })

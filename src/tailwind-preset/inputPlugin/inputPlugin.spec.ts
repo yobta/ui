@@ -78,7 +78,11 @@ test('inputPlugin', () => {
           },
           '&:-internal-autofill-selected': {
             transition: 'background 999999s ease 0s !important'
-          }
+          },
+          '&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active':
+            {
+              transition: 'background 999999s ease 0s !important'
+            }
         },
         '& .yobta-input__bullet': {
           '@apply hidden': {}

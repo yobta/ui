@@ -104,7 +104,7 @@ module.exports = plugin(({ addBase, prefix }) => {
             color: 'inherit',
             opacity: 0.4
           },
-          ', &:-webkit-autofill': {
+          '&:-internal-autofill-selected': {
             transition: 'background 999999s ease 0s !important'
           },
           '&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active':

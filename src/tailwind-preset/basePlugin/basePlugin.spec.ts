@@ -5,7 +5,7 @@ import basePlugin from './basePlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('basePlugin', async () => {
+test('basePlugin', () => {
   let addBase = vi.fn()
 
   basePlugin.handler({ addBase, prefix })

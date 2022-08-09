@@ -5,7 +5,7 @@ import placeholderPlugin from './placeholderPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('placeholderPlugin', async () => {
+test('placeholderPlugin', () => {
   let addBase = vi.fn()
 
   placeholderPlugin.handler({ addBase, prefix })

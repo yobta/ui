@@ -5,7 +5,7 @@ import textAreaPlugin from './textAreaPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('textAreaPlugin', async () => {
+test('textAreaPlugin', () => {
   let addBase = vi.fn()
 
   textAreaPlugin.handler({ addBase, prefix })

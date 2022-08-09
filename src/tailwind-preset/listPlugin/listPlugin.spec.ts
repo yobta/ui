@@ -5,7 +5,7 @@ import listPlugin from './listPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('listPlugin', async () => {
+test('listPlugin', () => {
   let addComponents = vi.fn()
 
   listPlugin.handler({ addComponents, prefix })

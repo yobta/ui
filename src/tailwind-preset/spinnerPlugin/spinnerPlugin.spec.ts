@@ -5,7 +5,7 @@ import spinnerPlugin from './spinnerPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('spinnerPlugin', async () => {
+test('spinnerPlugin', () => {
   let addBase = vi.fn()
 
   spinnerPlugin.handler({ addBase, prefix })

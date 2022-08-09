@@ -5,7 +5,7 @@ import switchPlugin from './switchPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('switchPlugin', async () => {
+test('switchPlugin', () => {
   let addBase = vi.fn()
 
   switchPlugin.handler({ addBase, prefix })

@@ -5,7 +5,7 @@ import inputPlugin from './inputPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('inputPlugin', async () => {
+test('inputPlugin', () => {
   let addBase = vi.fn()
 
   inputPlugin.handler({ addBase, prefix })

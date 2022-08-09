@@ -5,7 +5,7 @@ import radioButtonPlugin from './radioButtonPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('radioButtonPlugin', async () => {
+test('radioButtonPlugin', () => {
   let addBase = vi.fn()
 
   radioButtonPlugin.handler({ addBase, prefix })

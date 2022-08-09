@@ -5,7 +5,7 @@ import menuPlugin from './menuPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('menuPlugin', async () => {
+test('menuPlugin', () => {
   let addComponents = vi.fn()
 
   menuPlugin.handler({ addComponents, prefix })

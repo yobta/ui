@@ -5,7 +5,7 @@ import linearProgressPlugin from './linearProgressPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('linearProgressPlugin', async () => {
+test('linearProgressPlugin', () => {
   let addBase = vi.fn()
 
   linearProgressPlugin.handler({ addBase, prefix })

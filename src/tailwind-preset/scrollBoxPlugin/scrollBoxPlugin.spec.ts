@@ -5,7 +5,7 @@ import scrollBoxPlugin from './scrollBoxPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('scrollBoxPlugin', async () => {
+test('scrollBoxPlugin', () => {
   let addUtilities = vi.fn()
 
   scrollBoxPlugin.handler({ addUtilities, prefix })

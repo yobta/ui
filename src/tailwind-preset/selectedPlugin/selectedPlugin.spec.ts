@@ -5,7 +5,7 @@ import selectedPlugin from './selectedPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('selectedPlugin', async () => {
+test('selectedPlugin', () => {
   let addUtilities = vi.fn()
   let colors = {
     selected: {

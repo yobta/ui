@@ -5,7 +5,7 @@ import bgPlugin from './bgPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('bagePlugin', async () => {
+test('bagePlugin', () => {
   let addUtilities = vi.fn()
 
   bgPlugin.handler({ addUtilities, prefix })

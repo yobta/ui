@@ -5,7 +5,7 @@ import linkPlugin from './linkPlugin.cjs'
 
 const prefix = (str: string): string => str
 
-test('linkPlugin', async () => {
+test('linkPlugin', () => {
   let addBase = vi.fn()
 
   linkPlugin.handler({ addBase, prefix })

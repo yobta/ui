@@ -11,7 +11,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "test": "vitest src --coverage --run",
-    "test:watch": "vitest src --coverage",
+    "test:watch": "vitest --coverage src",
     "check-all": "npm run test && eslint src && check-dts && size-limit && yaspeller *.md",
     "spellcheck": "yaspeller *.md",
     "typecheck": "tsc --noEmit",

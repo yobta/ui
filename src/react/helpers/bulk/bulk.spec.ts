@@ -1,12 +1,11 @@
-import { test, expect } from 'vitest'
+import { test, expect, vi } from 'vitest'
 
 import { bulk } from './bulk.js'
 
 test('bulk', () => {
-  let func: VoidFunction = (): void => {}
-  let func1: VoidFunction = (): void => {}
-  let func2: VoidFunction = (): void => {}
-  // let args: VoidFunction[] = [func, func1, func2]
+  let func: VoidFunction = vi.fn()
+  let func1: VoidFunction = vi.fn()
+  let func2: VoidFunction = vi.fn()
   bulk(func, func1, func2)
   expect(func).toBeCalled()
   expect(func1).toBeCalled()

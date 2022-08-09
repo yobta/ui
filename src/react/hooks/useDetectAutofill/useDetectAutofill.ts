@@ -15,9 +15,12 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
       clearTimeout(timeoutId)
     }
     let intervalId = setInterval(() => {
-      let currentValue = ref.current?.matches(':-internal-autofill-selected')
-      if (currentValue) {
-        setAutofilled(currentValue)
+      try {
+        let currentValue = ref.current?.matches(':-internal-autofill-selected')
+        if (currentValue) {
+          setAutofilled(currentValue)
+        }
+      } finally {
         clear()
       }
     }, 64)

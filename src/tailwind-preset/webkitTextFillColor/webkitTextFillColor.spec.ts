@@ -223,11 +223,11 @@ it('adds styles to the component @layer', () => {
   })
 
   expect(addComponents).toBeCalledWith({
-    '.yobta-webkit-text-fill-paper input:-webkit-autofill': {
+    '.yobta-webkit-text-fill-paper input:-internal-autofill-selected': {
       '-webkit-text-fill-color': 'paperText !important',
       'caretColor': 'paperText'
     },
-    '.yobta-webkit-text-fill-paper-dark input:-webkit-autofill': {
+    '.yobta-webkit-text-fill-paper-dark input:-internal-autofill-selected': {
       '-webkit-text-fill-color': 'paperDarkText !important',
       'caretColor': 'paperDarkText'
     }

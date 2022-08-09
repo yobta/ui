@@ -1,6 +1,8 @@
 const plugin = require('tailwindcss/plugin')
 
-module.exports = plugin(({ addComponents, theme }) => {
+const applyPrefixed = require('../applyPrefixed/applyPrefixed.cjs')
+
+module.exports = plugin(({ addComponents, prefix, theme }) => {
   let colors = theme('colors')
 
   if (!colors?.yobta) {
@@ -65,12 +67,14 @@ module.exports = plugin(({ addComponents, theme }) => {
     addComponents({
       [`.yobta-webkit-text-fill-${key} input:-internal-autofill-selected`]: {
         '-webkit-text-fill-color': `${value.ink.DEFAULT} !important`,
-        'caretColor': value.ink.DEFAULT
+        'caretColor': value.ink.DEFAULT,
+        ...applyPrefixed(prefix, '.animate-pulse')
       },
       [`.yobta-webkit-text-fill-${key}-dark input:-internal-autofill-selected`]:
         {
           '-webkit-text-fill-color': `${value.ink.dark} !important`,
-          'caretColor': value.ink.dark
+          'caretColor': value.ink.dark,
+          ...applyPrefixed(prefix, '.animate-pulse')
         }
     })
   })

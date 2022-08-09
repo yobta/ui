@@ -56,6 +56,7 @@ export const useInput: InputHook = ({
         ...args: Parameters<HTMLInputElement['addEventListener']>
       ) => inputNode?.addEventListener(...args),
       blur: () => inputNode?.blur(),
+      focus: () => inputNode?.focus(),
       removeEventListener: (
         ...args: Parameters<HTMLInputElement['removeEventListener']>
       ) => inputNode?.removeEventListener(...args)
@@ -67,6 +68,17 @@ export const useInput: InputHook = ({
       setState(inputNode.value)
     }
   })
+
+  useEffect(() => {
+    let timeoutId = setTimeout(() => {
+      if (inputRef.current?.matches(':-internal-autofill-selected')) {
+        setState(inputRef.current.value)
+      }
+    }, 620)
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [])
 
   useEffect(() => {
     let handleInputEvent = (event: Event): void => {

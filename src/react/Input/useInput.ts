@@ -71,14 +71,15 @@ export const useInput: InputHook = ({
 
   useEffect(() => {
     let timeoutId = setTimeout(() => {
-      if (inputRef.current?.matches(':-internal-autofill-selected')) {
-        setState(inputRef.current.value)
+      let currentValue = inputRef.current?.value
+      if (state !== currentValue) {
+        setState(currentValue)
       }
     }, 620)
     return () => {
       clearTimeout(timeoutId)
     }
-  }, [])
+  }, [state])
 
   useEffect(() => {
     let handleInputEvent = (event: Event): void => {

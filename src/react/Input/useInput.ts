@@ -76,14 +76,14 @@ export const useInput: InputHook = ({
       setState(v)
     }
     let unsubscribe = [
-      subscribe(inputNode, 'blur', handleEvent),
-      subscribe(inputNode, 'input', handleEvent)
+      subscribe(inputRef.current, 'blur', handleEvent),
+      subscribe(inputRef.current, 'input', handleEvent)
     ]
 
     return () => {
       bulk(...unsubscribe)
     }
-  }, [inputNode])
+  }, [inputRef.current])
 
   let isFilled =
     !!getFirstValueAsString(state, placeholder, inputNode?.value) || autofilled

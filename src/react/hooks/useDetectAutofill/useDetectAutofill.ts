@@ -10,15 +10,20 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
   let [autofilled, setAutofilled] = useState(false)
 
   useEffect(() => {
+    let clear = (): void => {
+      clearInterval(intervalId)
+      clearTimeout(timeoutId)
+    }
     let intervalId = setInterval(() => {
       let currentValue = ref.current?.matches(':-internal-autofill-selected')
       if (currentValue) {
         setAutofilled(currentValue)
+        clear()
       }
     }, 64)
 
     let timeoutId = setTimeout(() => {
-      clearInterval(intervalId)
+      clear()
     }, 2600)
 
     let unsubscribe = subscribe(ref.current, 'input', () => {
@@ -26,8 +31,7 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
     })
 
     return () => {
-      clearInterval(intervalId)
-      clearTimeout(timeoutId)
+      clear()
       unsubscribe()
     }
   }, [ref])

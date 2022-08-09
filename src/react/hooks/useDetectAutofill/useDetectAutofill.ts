@@ -19,8 +19,9 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
         let currentValue = ref.current?.matches(':-internal-autofill-selected')
         if (currentValue) {
           setAutofilled(currentValue)
+          clear()
         }
-      } finally {
+      } catch (_error) {
         clear()
       }
     }, 64)

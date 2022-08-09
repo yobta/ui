@@ -60,15 +60,13 @@ it('fires click event when clicked outside', async () => {
 
   let wrapper = await screen.findByTestId('wrapper')
   fireEvent.mouseDown(wrapper)
-  fireEvent.mouseDown(wrapper)
 
-  expect(useClickAwayCallback).toBeCalledTimes(2)
+  expect(useClickAwayCallback).toBeCalledTimes(1)
 })
 it('does not fires click event when clicked inside', async () => {
   renderHook<void, HookProps>(awayHook)
 
   let wrapper = await screen.findByTestId('target')
-  fireEvent.mouseDown(wrapper)
   fireEvent.mouseDown(wrapper)
 
   expect(useClickAwayCallback).toBeCalledTimes(0)
@@ -81,10 +79,9 @@ it('updates onClickAway instance when changed', async () => {
 
   let wrapper = await screen.findByTestId('wrapper')
   fireEvent.mouseDown(wrapper)
-  fireEvent.mouseDown(wrapper)
 
   expect(useClickAwayCallback).toBeCalledTimes(0)
-  expect(nextClickAwayCallback).toBeCalledTimes(2)
+  expect(nextClickAwayCallback).toBeCalledTimes(1)
 })
 it('has default eventTypes', () => {
   renderHook<void, HookProps>(awayHook)

@@ -23,6 +23,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
         '.relative',
         '.cursor-pointer'
       ),
+      '-webkit-tap-highlight-color': 'rgb(0, 0, 0, 0)',
       '&:before': {
         ...applyPrefixed(
           prefix,
@@ -38,9 +39,6 @@ module.exports = plugin(({ addComponents, prefix }) => {
         content: '""',
         backgroundColor: 'currentColor',
         borderRadius: 'inherit'
-      },
-      '&:hover::before': {
-        opacity: 0.08
       },
       '&:active::before': {
         opacity: 0.16
@@ -59,6 +57,11 @@ module.exports = plugin(({ addComponents, prefix }) => {
       '& > .yobta-entypo:first-child': {
         marginLeft: '2px',
         marginRight: 'calc(1.5rem + 2px)'
+      }
+    },
+    '@media (hover: hover)': {
+      '.yobta-menu-item:hover::before': {
+        opacity: 0.08
       }
     }
   })

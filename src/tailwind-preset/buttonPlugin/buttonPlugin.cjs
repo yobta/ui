@@ -22,6 +22,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
       ),
       'color': 'inherit',
       'transition': 'filter',
+      '-webkit-tap-highlight-color': 'rgb(0, 0, 0, 0)',
       '&:before': {
         ...applyPrefixed(
           prefix,
@@ -38,14 +39,16 @@ module.exports = plugin(({ addComponents, prefix }) => {
         backgroundColor: 'currentColor',
         borderRadius: 'inherit'
       },
-      '&:hover::before': {
-        opacity: 0.08
-      },
       '&:active::before': {
         opacity: 0.16
       },
       '&:disabled': {
         ...applyPrefixed(prefix, '.yobta-disabled')
+      }
+    },
+    '@media (hover: hover)': {
+      '.yobta-button:hover::before': {
+        opacity: 0.08
       }
     },
     '.yobta-button--busy': {

@@ -1,7 +1,7 @@
 plugins that don't have documentation:
   * apply prefixed
   * base plugin
-  * bgPlugin
+  * bg plugin
   * border plugin
   * entypo plugin
   * scroll box plugin

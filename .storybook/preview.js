@@ -1,6 +1,8 @@
 import 'tailwindcss/tailwind.css'
 import { themes } from '@storybook/theming'
 
+import { DocsContainer } from './DocsContainer'
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -27,5 +29,8 @@ export const parameters = {
     lightClass: 'light',
     classTarget: 'html',
     stylePreview: true
+  },
+  docs: {
+    container: DocsContainer
   }
 }

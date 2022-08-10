@@ -2,7 +2,7 @@ import { test, expect, vi } from 'vitest'
 
 import { bulk } from './bulk.js'
 
-test('checks that the functions have been called', () => {
+test('calls the arguments sequentially', () => {
   let func = vi.fn()
   let func1 = vi.fn()
   let func2 = vi.fn()

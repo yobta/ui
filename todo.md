@@ -1,11 +1,13 @@
 plugins that don't have documentation:
   * apply prefixed
   * base plugin
+  * bgPlugin
+  * border plugin
   * entypo plugin
-  * linear progress plugin
-  * link plugin
   * scroll box plugin
-  * spinner plugin
+  * text color plugin
+  * webkit text fill color
+  * yobta colors plugin
 
 hooks without tests:
   * get optimal popover placement

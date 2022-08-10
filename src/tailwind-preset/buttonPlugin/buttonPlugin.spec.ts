@@ -15,6 +15,7 @@ test('buttonPlugin', () => {
         {},
       'color': 'inherit',
       'transition': 'filter',
+      '-webkit-tap-highlight-color': 'rgb(0, 0, 0, 0)',
       '&:before': {
         '@apply absolute top-0 left-0 right-0 bottom-0 opacity-0 transition duration-150':
           {},
@@ -22,14 +23,16 @@ test('buttonPlugin', () => {
         'backgroundColor': 'currentColor',
         'borderRadius': 'inherit'
       },
-      '&:hover::before': {
-        opacity: 0.08
-      },
       '&:active::before': {
         opacity: 0.16
       },
       '&:disabled': {
         '@apply yobta-disabled': {}
+      }
+    },
+    '@media (hover: hover)': {
+      '.yobta-button:hover::before': {
+        opacity: 0.08
       }
     },
     '.yobta-button--busy': {

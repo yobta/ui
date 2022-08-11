@@ -2,6 +2,7 @@ import 'tailwindcss/tailwind.css'
 import { themes } from '@storybook/theming'
 
 import { DocsContainer } from './DocsContainer'
+import { StoryDecorator } from './StoryDecorator'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -25,8 +26,6 @@ export const parameters = {
       appContentBg: '#FCFCFC',
       barSelectedColor: '#4C9BE4'
     },
-    darkClass: 'dark',
-    lightClass: 'light',
     classTarget: 'html',
     stylePreview: true
   },
@@ -34,3 +33,5 @@ export const parameters = {
     container: DocsContainer
   }
 }
+
+export const decorators = [StoryDecorator]

@@ -11,3 +11,6 @@ hooks without tests:
   * get optimal popover placement
   * use patch state
   * use portal node
+
+make corrections to plugins
+  * fix alignment in menu and switch plugins

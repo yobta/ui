@@ -4,11 +4,11 @@ import { useDarkMode } from 'storybook-dark-mode'
 import { themes } from '@storybook/theming'
 
 const styles = /* CSS */ `
-  .yobta-paper.improve > .sbdocs.sbdocs-wrapper {
+  .yobta-paper.docs-container > .sbdocs.sbdocs-wrapper {
     background: inherit;
   }
 
-  .yobta-paper.improve .sbdocs.sbdocs-preview {
+  .yobta-paper.docs-container .sbdocs.sbdocs-preview {
     background: inherit;
   }
 `
@@ -19,7 +19,7 @@ export const DocsContainer = ({ children, context }) => {
   return (
     <>
       <style>{styles}</style>
-      <div className="yobta-paper improve">
+      <div className="yobta-paper docs-container">
         <BaseContainer
           context={{
             ...context,

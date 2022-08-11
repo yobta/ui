@@ -129,7 +129,10 @@
     "ignoreText": [
       " \\(by [^)]+\\).",
       "entypo",
-      "popover"
+      "popover",
+      "webkit",
+      "yobta",
+      "bg"
     ],
     "dictionary": [
       "Yobta",

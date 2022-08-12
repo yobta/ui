@@ -13,8 +13,6 @@ test('basePlugin', () => {
     '.yobta-disabled': {
       '@apply pointer-events-none opacity-50': {}
     },
-    '.yobta-no-tap': {
-      '@apply rgb(0, 0, 0, 0)': {}
-    }
+    '.yobta-no-tap': 'rgb(0, 0, 0, 0)'
   })
 })

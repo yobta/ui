@@ -11,6 +11,7 @@ module.exports = plugin(({ addBase, prefix }) => {
         '.font-medium',
         '.gap-x-1',
         '.inline-flex',
+        '.items-center',
         '.leading-6',
         '.px-2',
         '.rounded-full',

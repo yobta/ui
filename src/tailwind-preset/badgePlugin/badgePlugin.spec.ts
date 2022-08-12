@@ -11,7 +11,7 @@ test('bagePlugin', () => {
   badgePlugin.handler({ addBase, prefix })
   expect(addBase).toBeCalledWith({
     '.yobta-badge': {
-      '@apply bg-ink-border font-medium gap-x-1 inline-flex leading-6 px-2 rounded-full text-current text-sm':
+      '@apply bg-ink-border font-medium gap-x-1 inline-flex items-center leading-6 px-2 rounded-full text-current text-sm':
         {}
     }
   })

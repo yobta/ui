@@ -132,7 +132,14 @@
       "popover",
       "webkit",
       "yobta",
-      "bg"
+      "bg",
+      "MUI",
+      "Chakra",
+      "Reactstrap",
+      "Grommet",
+      "Reakit",
+      "Mantine",
+      "Rebass"
     ],
     "dictionary": [
       "Yobta",

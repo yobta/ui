@@ -8,7 +8,7 @@ module.exports = plugin(({ addBase, prefix }) => {
       ...applyPrefixed(prefix, '.pointer-events-none', '.opacity-50')
     },
     '.yobta-no-tap': {
-      ...applyPrefixed(prefix, 'rgb(0, 0, 0, 0)')
+      ...applyPrefixed(prefix, '.rgb(0, 0, 0, 0)')
     }
   })
 })

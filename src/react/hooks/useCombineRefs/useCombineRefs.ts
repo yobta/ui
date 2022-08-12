@@ -23,5 +23,5 @@ export const useCombineRefs: CombineRefsHook = (...refs) =>
         }
       })
     },
-    refs
+    [refs.length]
   )

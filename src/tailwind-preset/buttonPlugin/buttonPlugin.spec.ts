@@ -33,6 +33,9 @@ test('buttonPlugin', () => {
     '@media (hover: hover)': {
       '.yobta-button:hover::before': {
         opacity: 0.08
+      },
+      '.yobta-button:active::before': {
+        opacity: 0.16
       }
     },
     '.yobta-button--busy': {

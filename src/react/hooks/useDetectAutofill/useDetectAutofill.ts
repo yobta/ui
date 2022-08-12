@@ -6,6 +6,18 @@ interface DetectAutofillHook {
   (ref: RefObject<HTMLInputElement | HTMLTextAreaElement>): boolean
 }
 
+export const isAutofilled = (
+  node: Parameters<DetectAutofillHook>[0]['current'],
+  matchers: string[]
+): boolean => {
+  if (!node) return false
+  try {
+    return matchers.some(matcher => node.matches(matcher))
+  } catch (error) {
+    return false
+  }
+}
+
 export const useDetectAutofill: DetectAutofillHook = ref => {
   let [autofilled, setAutofilled] = useState(false)
 
@@ -16,9 +28,11 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
     }
     let intervalId = setInterval(() => {
       try {
-        let currentValue = ref.current?.matches(
-          ':-internal-autofill-selected, :-webkit-autofill, :autofill'
-        )
+        let currentValue = isAutofilled(ref.current, [
+          ':-internal-autofill-selected',
+          ':-webkit-autofill',
+          ':autofill'
+        ])
         if (currentValue) {
           setAutofilled(currentValue)
           clear()

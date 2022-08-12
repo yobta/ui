@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-type Transitions<T> = {
+export type Transitions<T> = {
   [K in keyof T]: Set<keyof Omit<T, K>>
 }
 

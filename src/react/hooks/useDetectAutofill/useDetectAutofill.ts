@@ -17,7 +17,7 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
     let intervalId = setInterval(() => {
       try {
         let currentValue = ref.current?.matches(
-          ':-internal-autofill-selected, :-webkit-autofill'
+          ':-internal-autofill-selected, :-webkit-autofill, :autofill'
         )
         if (currentValue) {
           setAutofilled(currentValue)

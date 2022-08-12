@@ -49,6 +49,9 @@ test('menuPlugin', () => {
     '@media (hover: hover)': {
       '.yobta-menu-item:hover::before': {
         opacity: 0.08
+      },
+      '.yobta-menu-item:active::before': {
+        opacity: 0.16
       }
     }
   })

@@ -6,13 +6,13 @@
 * [React Bootstrap](https://react-bootstrap.github.io/ "https://react-bootstrap.github.io/")
 * [Semantic UI React](https://react.semantic-ui.com/ "https://react.semantic-ui.com/")
 * [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/ "https://developer.microsoft.com/en-us/fluentui#/")
-* Evergreen
-* Reactstrap
-* Grommet
-* Reakit
-* Mantine
-* Theme UI
-* Rebass
-* Blueprint
-* Svelte UI
-* Next UI
+* [Evergreen](https://evergreen.segment.com/ "https://evergreen.segment.com/")
+* [Reactstrap](https://reactstrap.github.io "https://reactstrap.github.io")
+* [Grommet](https://v2.grommet.io/ "https://v2.grommet.io/")
+* [Reakit](https://reakit.io/ "https://reakit.io/")
+* [Mantine](https://ui.mantine.dev/ "https://ui.mantine.dev/")
+* [Theme UI](https://theme-ui.com/ "https://theme-ui.com/")
+* [Rebass](https://rebassjs.org/ "https://rebassjs.org/")
+* [Blueprint](https://blueprintjs.com/ "https://blueprintjs.com/")
+* [Svelte Material UI](https://sveltematerialui.com/ "https://sveltematerialui.com/")
+* [Next UI](https://nextui.org/ "https://nextui.org/")

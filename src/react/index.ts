@@ -7,6 +7,7 @@ export * from './Placeholder/index.js'
 export * from './PolymorphicComponent/index.js'
 export * from './Spinner/index.js'
 export * from './TextArea/index.js'
+export * from './Toast/index.js'
 export * from './Toggle/index.js'
 export * from './Tooltip/index.js'
 

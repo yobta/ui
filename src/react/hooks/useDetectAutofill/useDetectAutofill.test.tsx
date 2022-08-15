@@ -1,4 +1,4 @@
-import { it, expect, beforeEach, vi } from 'vitest'
+import { it, expect, beforeEach, vi, beforeAll, afterAll } from 'vitest'
 import {
   renderHook,
   render,
@@ -9,13 +9,39 @@ import {
 // @ts-expect-error
 import React, { MutableRefObject, useRef } from 'react'
 
-import { useDetectAutofill, isAutofilled } from './useDetectAutofill.js'
+import { useDetectAutofill } from './useDetectAutofill.js'
 
 type HookProps = Parameters<typeof useDetectAutofill>[0]
 
 let inputRef: MutableRefObject<HTMLInputElement | null>
 
+let intervalCallback: any
+let setIntervalMock = vi.fn(callback => {
+  intervalCallback = callback
+})
+
+let setTimeoutCallback: any
+let setTimeoutMock = vi.fn(callback => {
+  setTimeoutCallback = callback
+})
+
+let clearTimeoutMock = vi.fn()
+let clearIntervalMock = vi.fn()
+
+beforeAll(() => {
+  vi.useFakeTimers()
+})
+
 beforeEach(async () => {
+  vi.clearAllMocks()
+  vi.clearAllTimers()
+  intervalCallback = null
+  setTimeoutCallback = null
+  vi.stubGlobal('setInterval', setIntervalMock)
+  vi.stubGlobal('setTimeout', setTimeoutMock)
+  vi.stubGlobal('clearInterval', clearIntervalMock)
+  vi.stubGlobal('clearTimeout', clearTimeoutMock)
+
   inputRef = renderHook<typeof inputRef, HTMLInputElement | null>(useRef, {
     initialProps: null
   }).result.current
@@ -23,114 +49,89 @@ beforeEach(async () => {
   render(<input data-testid="target" ref={inputRef} />)
 })
 
-it('enough only one selector in isAutofilled', async () => {
-  let matchesMock = vi
-    .spyOn<HTMLInputElement, 'matches'>(inputRef.current!, 'matches')
-    .mockImplementation(matcher => matcher === ':-webkit-autofill')
-
-  let result = isAutofilled(inputRef.current, [
-    ':-internal-autofill-selected',
-    ':-webkit-autofill',
-    ':autofill'
-  ])
-
-  expect(matchesMock).toBeCalled()
-  expect(result).toBe(true)
-})
-
-it('return false when matcher throw error in isAutofilled', async () => {
-  let matchesMock = vi
-    .spyOn<HTMLInputElement, 'matches'>(inputRef.current!, 'matches')
-    .mockImplementation(() => {
-      throw new Error('Test error')
-    })
-
-  let result = isAutofilled(inputRef.current, [':-webkit-autofill'])
-
-  expect(matchesMock).toBeCalledWith(':-webkit-autofill')
-  expect(result).toBe(false)
-})
-
-it('return false unless node in isAutofilled', async () => {
-  let result = isAutofilled(null, [':-webkit-autofill'])
-
-  expect(result).toBe(false)
+afterAll(() => {
+  vi.clearAllMocks()
+  vi.clearAllTimers()
 })
 
 it('is false when not matсhes', async () => {
-  let { result } = renderHook<boolean, HookProps>(useDetectAutofill, {
-    initialProps: inputRef
-  })
-
   let matchesMock = vi
     .spyOn<HTMLInputElement, 'matches'>(inputRef.current!, 'matches')
     .mockImplementation(() => false)
 
+  let { result } = renderHook<boolean, HookProps>(useDetectAutofill, {
+    initialProps: inputRef
+  })
+
+  expect(setTimeoutMock).toBeCalledTimes(1)
+  expect(setIntervalMock).toBeCalledTimes(1)
+  expect(matchesMock).not.toBeCalled()
   expect(result.current).toBe(false)
 
-  await new Promise(resolve => setTimeout(resolve, 3000))
+  intervalCallback()
+  intervalCallback()
+  intervalCallback()
 
   expect(matchesMock).toBeCalled()
+
   expect(result.current).toBe(false)
 })
 
 it('returns true when matches', async () => {
+  vi.spyOn<HTMLInputElement, 'matches'>(
+    inputRef.current!,
+    'matches'
+  ).mockImplementation(matcher => matcher === ':-internal-autofill-selected')
+
   let { result } = renderHook<boolean, HookProps>(useDetectAutofill, {
     initialProps: inputRef
   })
-  expect(result.current).toBe(false)
-
-  let matchesMock = vi
-    .spyOn<HTMLInputElement, 'matches'>(inputRef.current!, 'matches')
-    .mockImplementation(() => false)
 
   await act(async () => {
-    await new Promise(resolve => setTimeout(resolve, 100))
-    matchesMock.mockImplementation(() => true)
-    await new Promise(resolve => setTimeout(resolve, 500))
+    intervalCallback()
   })
 
   expect(result.current).toBe(true)
+  expect(clearIntervalMock).toBeCalled()
+  expect(clearTimeoutMock).toBeCalled()
 })
 
 it('resets after timeout', async () => {
+  vi.spyOn<HTMLInputElement, 'matches'>(
+    inputRef.current!,
+    'matches'
+  ).mockImplementation(() => false)
+
   let { result } = renderHook<boolean, HookProps>(useDetectAutofill, {
     initialProps: inputRef
   })
-  expect(result.current).toBe(false)
-
-  let matchesMock = vi
-    .spyOn<HTMLInputElement, 'matches'>(inputRef.current!, 'matches')
-    .mockImplementation(() => false)
 
   await act(async () => {
-    await new Promise(resolve => setTimeout(resolve, 3000))
-    matchesMock.mockImplementation(() => true)
-    await new Promise(resolve => setTimeout(resolve, 500))
+    setTimeoutCallback()
   })
 
-  expect(matchesMock).toBeCalled()
   expect(result.current).toBe(false)
+  expect(clearIntervalMock).toBeCalled()
+  expect(clearTimeoutMock).toBeCalled()
 })
 
 it('resets on input', async () => {
+  vi.spyOn<HTMLInputElement, 'matches'>(
+    inputRef.current!,
+    'matches'
+  ).mockImplementation(() => false)
+
   let { result } = renderHook<boolean, HookProps>(useDetectAutofill, {
     initialProps: inputRef
   })
-  expect(result.current).toBe(false)
-
-  let matchesMock = vi
-    .spyOn<HTMLInputElement, 'matches'>(inputRef.current!, 'matches')
-    .mockImplementation(() => false)
 
   await act(async () => {
+    intervalCallback()
     let inputField = await screen.findByTestId('target')
     fireEvent.input(inputField)
-    await new Promise(resolve => setTimeout(resolve, 200))
-    matchesMock.mockImplementation(() => true)
-    await new Promise(resolve => setTimeout(resolve, 200))
   })
 
-  expect(matchesMock).not.toBeCalled()
   expect(result.current).toBe(false)
+  expect(clearIntervalMock).toBeCalled()
+  expect(clearTimeoutMock).toBeCalled()
 })

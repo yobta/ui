@@ -11,7 +11,7 @@ test('switchPlugin', () => {
   switchPlugin.handler({ addBase, prefix })
   expect(addBase).toBeCalledWith({
     '.yobta-switch': {
-      '@apply appearance-none relative transition duration-300 rounded-full cursor-pointer yobta-bg-paper-3':
+      '@apply yobta-no-tap appearance-none relative transition duration-300 rounded-full cursor-pointer yobta-bg-paper-3':
         {},
       'height': '1.5rem',
       'width': '2.25rem',

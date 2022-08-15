@@ -7,6 +7,7 @@ module.exports = plugin(({ addBase, prefix }) => {
     '.yobta-radio': {
       ...applyPrefixed(
         prefix,
+        '.yobta-no-tap',
         '.appearance-none',
         '.border-2',
         '.border-current',

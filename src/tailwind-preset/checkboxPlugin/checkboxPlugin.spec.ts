@@ -11,7 +11,7 @@ test('checkboxPlugin', () => {
   checkboxPlugin.handler({ addBase, prefix })
   expect(addBase).toBeCalledWith({
     '.yobta-checkbox': {
-      '@apply appearance-none border-2 border-current rounded cursor-pointer relative':
+      '@apply yobta-no-tap appearance-none border-2 border-current rounded cursor-pointer relative':
         {},
       'height': '1.5rem',
       'width': '1.5rem',

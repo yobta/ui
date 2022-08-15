@@ -7,6 +7,7 @@ module.exports = plugin(({ addBase, prefix }) => {
     '.yobta-switch': {
       ...applyPrefixed(
         prefix,
+        '.yobta-no-tap',
         '.appearance-none',
         '.relative',
         '.transition',

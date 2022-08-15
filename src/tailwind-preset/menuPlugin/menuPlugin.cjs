@@ -13,6 +13,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
     '.yobta-menu-item': {
       ...applyPrefixed(
         prefix,
+        '.yobta-no-tap',
         '.px-4',
         '.py-2',
         '.m-0',
@@ -23,7 +24,6 @@ module.exports = plugin(({ addComponents, prefix }) => {
         '.relative',
         '.cursor-pointer'
       ),
-      '-webkit-tap-highlight-color': 'rgb(0, 0, 0, 0)',
       '&:before': {
         ...applyPrefixed(
           prefix,

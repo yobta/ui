@@ -12,6 +12,9 @@ test('basePlugin', () => {
   expect(addBase).toBeCalledWith({
     '.yobta-disabled': {
       '@apply pointer-events-none opacity-50': {}
+    },
+    '.yobta-no-tap': {
+      '-webkit-tap-highlight-color': 'rgb(0, 0, 0, 0)'
     }
   })
 })

@@ -17,9 +17,8 @@ test('menuPlugin', () => {
       '@apply yobta-list-header': {}
     },
     '.yobta-menu-item': {
-      '@apply px-4 py-2 m-0 flex items-center justify-start gap-x-2 relative cursor-pointer':
+      '@apply yobta-no-tap px-4 py-2 m-0 flex items-center justify-start gap-x-2 relative cursor-pointer':
         {},
-      '-webkit-tap-highlight-color': 'rgb(0, 0, 0, 0)',
       '&:before': {
         '@apply absolute top-0 left-0 right-0 bottom-0 opacity-0 transition duration-150':
           {},

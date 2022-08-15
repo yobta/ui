@@ -11,13 +11,13 @@ test('menuPlugin', () => {
   menuPlugin.handler({ addComponents, prefix })
   expect(addComponents).toBeCalledWith({
     '.yobta-menu': {
-      '@apply yobta-no-tap yobta-list rounded flex flex-col': {}
+      '@apply yobta-list rounded flex flex-col': {}
     },
     '.yobta-menu-header': {
       '@apply yobta-list-header': {}
     },
     '.yobta-menu-item': {
-      '@apply px-4 py-2 m-0 flex items-center justify-start gap-x-2 relative cursor-pointer':
+      '@apply yobta-no-tap px-4 py-2 m-0 flex items-center justify-start gap-x-2 relative cursor-pointer':
         {},
       '&:before': {
         '@apply absolute top-0 left-0 right-0 bottom-0 opacity-0 transition duration-150':

@@ -1,4 +1,4 @@
-import { it, expect, beforeEach } from 'vitest'
+import { it, expect, beforeEach, vi } from 'vitest'
 import { renderHook, render, act } from '@testing-library/react'
 // @ts-expect-error
 import React, { MutableRefObject, useRef } from 'react'
@@ -17,10 +17,12 @@ beforeEach(async () => {
   render(<input data-testid="target" ref={inputRef} />)
 })
 
-it('doesn`t flag autofill', async () => {
+it('is false when not matсhes', async () => {
   let { result } = renderHook<boolean, HookProps>(useDetectAutofill, {
     initialProps: inputRef
   })
+
+  Object.assign(inputRef.current as object, { matches: () => false })
 
   expect(result.current).toBe(false)
 
@@ -29,7 +31,7 @@ it('doesn`t flag autofill', async () => {
   expect(result.current).toBe(false)
 })
 
-it('sets flag autofill', async () => {
+it('returns true when matches', async () => {
   let { result } = renderHook<boolean, HookProps>(useDetectAutofill, {
     initialProps: inputRef
   })
@@ -44,7 +46,7 @@ it('sets flag autofill', async () => {
   expect(result.current).toBe(true)
 })
 
-it('don`t sets autofill flga after timeout', async () => {
+it('resets after timeout', async () => {
   let { result } = renderHook<boolean, HookProps>(useDetectAutofill, {
     initialProps: inputRef
   })

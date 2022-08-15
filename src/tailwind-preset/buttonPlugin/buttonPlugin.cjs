@@ -7,6 +7,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
     '.yobta-button': {
       ...applyPrefixed(
         prefix,
+        // '.yobta-no-tap',
         '.border-current',
         '.flex',
         '.font-medium',
@@ -22,7 +23,7 @@ module.exports = plugin(({ addComponents, prefix }) => {
       ),
       'color': 'inherit',
       'transition': 'filter',
-      '-webkit-tap-highlight-color': 'rgb(0, 0, 0, 0)',
+      // '-webkit-tap-highlight-color': 'rgb(0, 0, 0, 0)',
       '&:before': {
         ...applyPrefixed(
           prefix,

@@ -10,7 +10,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs'
 
 <Canvas>
   <Story name="Base Disabled">
-    <button className="p-2 rounded bg-paper-secondary ui-text-ink-primary yobta-disabled">
+    <button className="p-2 rounded border yobta-border-ink ui-text-ink yobta-disabled">
       yobta-disabled
     </button>
   </Story>
@@ -21,10 +21,10 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs'
 <Canvas>
   <Story name="Base No Tap">
     <div className="">
-      <button className="p-2 bg-paper-primary rounded block yobta-no-tap mb-2">
+      <button className="p-2 bg-paper-primary ui-text-ink rounded block yobta-no-tap mb-2">
         yobta-no-tap
       </button>
-      <button className="p-2 bg-paper-error rounded block">
+      <button className="p-2 bg-paper-error ui-text-ink rounded block">
         without yobta-no-tap
       </button>
     </div>

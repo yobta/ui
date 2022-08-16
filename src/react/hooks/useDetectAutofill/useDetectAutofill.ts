@@ -27,17 +27,13 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
       clearTimeout(timeoutId)
     }
     let intervalId = setInterval(() => {
-      try {
-        let currentValue = isAutofilled(ref.current, [
-          ':-internal-autofill-selected',
-          ':-webkit-autofill',
-          ':autofill'
-        ])
-        if (currentValue) {
-          setAutofilled(currentValue)
-          clear()
-        }
-      } catch (_error) {
+      let currentValue = isAutofilled(ref.current, [
+        ':-internal-autofill-selected',
+        ':-webkit-autofill',
+        ':autofill'
+      ])
+      if (currentValue) {
+        setAutofilled(currentValue)
         clear()
       }
     }, 64)
@@ -48,6 +44,7 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
 
     let unsubscribe = subscribe(ref.current, 'input', () => {
       setAutofilled(false)
+      clear()
     })
 
     return () => {

@@ -1,0 +1,32 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta title="MDX/Base" />
+
+# Base
+
+---
+
+## Base Disabled
+
+<Canvas>
+  <Story name="Base Disabled">
+    <button className="p-2 rounded bg-paper-secondary ui-text-ink-primary yobta-disabled">
+      yobta-disabled
+    </button>
+  </Story>
+</Canvas>
+
+## Base No Tap
+
+<Canvas>
+  <Story name="Base No Tap">
+    <div className="">
+      <button className="p-2 bg-paper-primary rounded block yobta-no-tap mb-2">
+        yobta-no-tap
+      </button>
+      <button className="p-2 bg-paper-error rounded block">
+        without yobta-no-tap
+      </button>
+    </div>
+  </Story>
+</Canvas>

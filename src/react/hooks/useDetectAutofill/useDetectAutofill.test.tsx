@@ -1,4 +1,4 @@
-import { it, expect, beforeEach, vi, beforeAll, afterAll } from 'vitest'
+import { it, expect, beforeEach, vi, afterAll } from 'vitest'
 import {
   renderHook,
   render,
@@ -28,11 +28,7 @@ let setTimeoutMock = vi.fn(callback => {
 let clearTimeoutMock = vi.fn()
 let clearIntervalMock = vi.fn()
 
-beforeAll(() => {
-  vi.useFakeTimers()
-})
-
-beforeEach(async () => {
+beforeEach(() => {
   vi.clearAllMocks()
   vi.clearAllTimers()
   intervalCallback = null
@@ -54,7 +50,7 @@ afterAll(() => {
   vi.clearAllTimers()
 })
 
-it('is false when not matсhes', async () => {
+it('is false when not matсhes', () => {
   let matchesMock = vi
     .spyOn<HTMLInputElement, 'matches'>(inputRef.current!, 'matches')
     .mockImplementation(() => false)
@@ -68,16 +64,18 @@ it('is false when not matсhes', async () => {
   expect(matchesMock).not.toBeCalled()
   expect(result.current).toBe(false)
 
-  intervalCallback()
-  intervalCallback()
-  intervalCallback()
+  act(() => {
+    intervalCallback()
+    intervalCallback()
+    intervalCallback()
+  })
 
   expect(matchesMock).toBeCalled()
 
   expect(result.current).toBe(false)
 })
 
-it('returns true when matches', async () => {
+it('returns true when matches', () => {
   vi.spyOn<HTMLInputElement, 'matches'>(
     inputRef.current!,
     'matches'
@@ -87,7 +85,7 @@ it('returns true when matches', async () => {
     initialProps: inputRef
   })
 
-  await act(async () => {
+  act(() => {
     intervalCallback()
   })
 
@@ -96,7 +94,7 @@ it('returns true when matches', async () => {
   expect(clearTimeoutMock).toBeCalled()
 })
 
-it('resets after timeout', async () => {
+it('resets after timeout', () => {
   vi.spyOn<HTMLInputElement, 'matches'>(
     inputRef.current!,
     'matches'
@@ -106,7 +104,7 @@ it('resets after timeout', async () => {
     initialProps: inputRef
   })
 
-  await act(async () => {
+  act(() => {
     setTimeoutCallback()
   })
 

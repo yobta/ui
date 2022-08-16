@@ -24,12 +24,12 @@ beforeEach(() => {
   )
 })
 
-it('return false when element is null', async () => {
+it('returns false when element is null', async () => {
   let result = matchElement(null, [])
   expect(result).toBe(false)
 })
 
-it('return true when any matcher return true', async () => {
+it('returns true when any matcher return true', async () => {
   let matchesSpy = vi
     .spyOn(targetRef.current!, 'matches')
     .mockImplementation(matcher => matcher === matchers[1])
@@ -39,7 +39,7 @@ it('return true when any matcher return true', async () => {
   expect(result).toBe(true)
 })
 
-it('return false when all matchers return false', async () => {
+it('returns false when all matchers return false', async () => {
   let matchesSpy = vi
     .spyOn(targetRef.current!, 'matches')
     .mockImplementation(() => false)
@@ -49,7 +49,7 @@ it('return false when all matchers return false', async () => {
   expect(result).toBe(false)
 })
 
-it('return true when any matcher return true and other throw errors', async () => {
+it('returns true when any matcher return true and other throw errors', async () => {
   let matchesSpy = vi
     .spyOn(targetRef.current!, 'matches')
     .mockImplementation(matcher => {

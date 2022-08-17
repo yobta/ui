@@ -18,7 +18,7 @@ import {
   ShowHideState,
   useShowHide,
   VISIBLE
-} from '../hooks/useShowHide.js'
+} from '../hooks/useShowHide/index.js'
 import { useAnimationClassName } from './useAnimationClassName.js'
 import { usePlacementStyle } from './usePlacementStyle.js'
 

@@ -1,9 +1,9 @@
 import { RefObject, useEffect, useRef } from 'react'
 
-import { useLatestRef } from './useLatestRef/index.js'
-import { useEscapeKey } from './useEscapeKey/useEscapeKey.js'
-import { subscribe } from '../helpers/index.js'
-import { createMachine } from './createMachine/createMachine.js'
+import { useLatestRef } from '../useLatestRef/index.js'
+import { useEscapeKey } from '../useEscapeKey/useEscapeKey.js'
+import { subscribe } from '../../helpers/index.js'
+import { createMachine } from '../createMachine/createMachine.js'
 
 export const INVISIBLE = 'invisible'
 export const VISIBLE = 'visible'
@@ -87,7 +87,6 @@ export const useShowHide: ShowHideHook = ({
       }),
     [ref.current, state]
   )
-
   return {
     animationState: visibleStates.has(state),
     isOnTop,

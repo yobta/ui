@@ -1,15 +1,24 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
 
+import { bulk } from './bulk.ts'
+
 <Meta title="MDX/Helpers/Bulk" />
 
 # Bulk
 
----
-
-## Bulk Usage
-
 <Canvas>
-  <Story name="Bulk Usage">
-    <div>Bulk</div>
+  <Story name="Bulk">
+    {() => {
+      let str = ''
+      let func = () => str + ' ' + 'func'
+      let func1 = () => str + ' ' + 'func1'
+      let func2 = () => str + ' ' + 'func2'
+      bulk(func, func1, funk2)
+      return (
+        <>
+          <div>{str}</div>
+        </>
+      )
+    }}
   </Story>
 </Canvas>

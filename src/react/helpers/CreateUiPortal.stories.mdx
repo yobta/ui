@@ -11,13 +11,17 @@ import { createUiPortal } from './createUiPortal.tsx'
 <Canvas>
   <Story name="create Ui Portal Usage">
     {() => {
-      createUiPortal('portal', 'nodeid')
       return (
         <>
-          <div>Node first</div>
-          <div>Node second</div>
-          <div id="nodeid">Node third</div>
-          <div>Node fourth</div>
+          {createUiPortal(<div>portal</div>, 'nodeid')}
+          <div className="flex flex-col gap-2">
+            <div className="yobta-paper-2 p-4 rounded">First node</div>
+            <div className="yobta-paper-3 p-4 rounded">Second Node</div>
+            <div className="yobta-primary p-4 rounded" id="nodeid">
+              Third node
+            </div>
+            <div className="yobta-secondary p-4 rounded">Fourth node</div>
+          </div>
         </>
       )
     }}

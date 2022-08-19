@@ -6,14 +6,16 @@ import { bulk } from './bulk.ts'
 
 # Bulk
 
+<!-- add a plugin description -->
+
 <Canvas>
-  <Story name="Bulk">
+  <Story name="Bulk Usage">
     {() => {
       let str = ''
-      let func = () => str + ' ' + 'func'
-      let func1 = () => str + ' ' + 'func1'
-      let func2 = () => str + ' ' + 'func2'
-      bulk(func, func1, funk2)
+      let func = () => (str = str + 'one')
+      let func1 = () => (str = str + ' ' + 'two')
+      let func2 = () => (str = str + ' ' + 'three')
+      bulk(func, func1, func2)
       return (
         <>
           <div>{str}</div>

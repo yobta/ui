@@ -1,0 +1,25 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { createUiPortal } from './createUiPortal.tsx'
+
+<Meta title="MDX/Helpers/Create Ui Portal" />
+
+# Create Ui Portal
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="create Ui Portal Usage">
+    {() => {
+      createUiPortal('portal', 'nodeid')
+      return (
+        <>
+          <div>Node first</div>
+          <div>Node second</div>
+          <div id="nodeid">Node third</div>
+          <div>Node fourth</div>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

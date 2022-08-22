@@ -12,7 +12,7 @@ import { useCountdown } from './useCountDown.ts'
   <Story name="Use Count Down Usage">
     {() => {
       let num = 5
-      useCountdown(5, (num = 0), false)
+      useCountdown(num, num--, true)
       return <div>{num}</div>
     }}
   </Story>

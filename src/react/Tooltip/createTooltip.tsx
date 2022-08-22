@@ -12,7 +12,7 @@ import {
 } from 'react'
 import { createPortal } from 'react-dom'
 
-import { usePortalNode } from '../hooks/usePortalNode.js'
+import { usePortalNode } from '../hooks/usePortalNode/index.js'
 import { useCombineRefs, usePopoverCoordinates } from '../hooks/index.js'
 import { getTooltipStyle } from './getTooltipStyle.js'
 import { PopoverPlacementOptions } from '../hooks/usePopoverCoordinates/getOptimalPopoverPlacement.js'

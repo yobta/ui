@@ -1,7 +1,7 @@
 import { createContext, ReactNode, ReactPortal } from 'react'
 import { createPortal } from 'react-dom'
 
-import { usePortalNode } from '../hooks/usePortalNode.js'
+import { usePortalNode } from '../hooks/usePortalNode/index.js'
 
 type Context = { addToPortal(children: ReactNode): void }
 

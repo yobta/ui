@@ -1,4 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useEffect, useState } from 'react'
 
 import { whenOnline } from './whenOnline.ts'
 
@@ -11,13 +12,13 @@ import { whenOnline } from './whenOnline.ts'
 <Canvas>
   <Story name="When Online Usage">
     {() => {
-      return (
-        <div>
-          {whenOnline()
-            .then(data => 'then')
-            .catch(data => 'catch')}
-        </div>
-      )
+      let [online, setOnline] = useState('resolve')
+      useEffect(() => {
+        let res = whenOnline()
+          .then(data => setOnline(`${data}`))
+          .catch(e => setOnline(`${e}`))
+      }, [])
+      return <div>{online}</div>
     }}
   </Story>
 </Canvas>

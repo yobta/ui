@@ -1,0 +1,23 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { whenOnline } from './whenOnline.ts'
+
+<Meta title="MDX/Helpers/When Online" />
+
+# When Online
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="When Online Usage">
+    {() => {
+      return (
+        <div>
+          {whenOnline()
+            .then(data => 'then')
+            .catch(data => 'catch')}
+        </div>
+      )
+    }}
+  </Story>
+</Canvas>

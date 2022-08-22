@@ -10,7 +10,7 @@ import {
 import { createPortal } from 'react-dom'
 
 import { Cache } from '../Cache/index.js'
-import { useCountdown } from '../hooks/useCountDown.js'
+import { useCountdown } from '../hooks/useCountDown/index.js'
 import { usePortalNode } from '../hooks/usePortalNode.js'
 import {
   ENTERING,

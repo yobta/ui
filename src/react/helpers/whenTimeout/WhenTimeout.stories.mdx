@@ -1,0 +1,28 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useEffect, useState } from 'react'
+
+import { whenTimeout } from './whenTimeout.ts'
+
+<Meta title="MDX/Helpers/When Timeout" />
+
+# When Timeout
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="When Timeout Usage">
+    {() => {
+      let [state, setState] = useState('The Timer Is Running')
+      let [style, setStyle] = useState('')
+      useEffect(() => {
+        let res = whenTimeout(5000)
+          .then(() => {
+            setState('Time Has Run Out')
+            setStyle('ui-text-ink-error')
+          })
+          .catch(e => setState(`${e}`))
+      }, [])
+      return <div className={style}>{state}</div>
+    }}
+  </Story>
+</Canvas>

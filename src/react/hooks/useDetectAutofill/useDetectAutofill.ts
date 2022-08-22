@@ -1,12 +1,24 @@
 import { RefObject, useEffect, useState } from 'react'
 
-import { subscribe } from '../../helpers/index.js'
+import { matchElement, subscribe } from '../../helpers/index.js'
 
 interface DetectAutofillHook {
-  (ref: RefObject<HTMLInputElement | HTMLTextAreaElement>): boolean
+  (
+    ref: RefObject<HTMLInputElement | HTMLTextAreaElement>,
+    matchers?: string[]
+  ): boolean
 }
 
-export const useDetectAutofill: DetectAutofillHook = ref => {
+const defaultMatchers = [
+  ':autofill',
+  ':-internal-autofill-selected',
+  ':-webkit-autofill'
+]
+
+export const useDetectAutofill: DetectAutofillHook = (
+  ref,
+  matchers = defaultMatchers
+) => {
   let [autofilled, setAutofilled] = useState(false)
 
   useEffect(() => {
@@ -15,15 +27,9 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
       clearTimeout(timeoutId)
     }
     let intervalId = setInterval(() => {
-      try {
-        let currentValue = ref.current?.matches(
-          ':-internal-autofill-selected, :-webkit-autofill'
-        )
-        if (currentValue) {
-          setAutofilled(currentValue)
-          clear()
-        }
-      } catch (_error) {
+      let matched = matchElement(ref.current, matchers)
+      if (matched) {
+        setAutofilled(matched)
         clear()
       }
     }, 64)
@@ -34,6 +40,7 @@ export const useDetectAutofill: DetectAutofillHook = ref => {
 
     let unsubscribe = subscribe(ref.current, 'input', () => {
       setAutofilled(false)
+      clear()
     })
 
     return () => {

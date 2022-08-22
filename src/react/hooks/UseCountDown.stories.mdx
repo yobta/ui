@@ -1,0 +1,19 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { useCountdown } from './useCountDown.ts'
+
+<Meta title="MDX/Hooks/Use Count Down" />
+
+# Use Count Down
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="Use Count Down Usage">
+    {() => {
+      let num = 5
+      useCountdown(5, (num = 0), false)
+      return <div>{num}</div>
+    }}
+  </Story>
+</Canvas>

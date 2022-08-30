@@ -6,26 +6,25 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs'
 
 ---
 
-## Basic Usage
+## Selected Usage
 
 <Canvas>
-  <Story name="Basic Usage">
-    <div className="yobta-selected p-4 rounded w-fit">yobta-selected</div>
-  </Story>
-</Canvas>
-
-## Colors
-
-<Canvas>
-  <Story name="Colors">
+  <Story name="Selected Usage">
     <div className="flex flex-col gap-2">
-      <div className="yobta-selected-2 p-4 rounded w-fit">yobta-selected-2</div>
-      <div className="yobta-selected-3 p-4 rounded w-fit">yobta-selected-3</div>
-      <div className="yobta-selected-primary p-4 rounded w-fit">
-        yobta-selected-primary
-      </div>
-      <div className="yobta-selected-secondary p-4 rounded w-fit">
-        yobta-selected-secondary
+      <div className="yobta-list" role="group">
+        <div className="yobta-list-header">List Header</div>
+        <div className="yobta-list-item p-4 ml-4 rounded w-fit" role="listitem">
+          List Item 1
+        </div>
+        <div className="yobta-list-item p-4 ml-4 rounded w-fit" role="listitem">
+          List Item 2
+        </div>
+        <div
+          className="yobta-list-item yobta-selected p-4 ml-4 rounded w-fit"
+          role="listitem"
+        >
+          List Item 3 selected
+        </div>
       </div>
     </div>
   </Story>

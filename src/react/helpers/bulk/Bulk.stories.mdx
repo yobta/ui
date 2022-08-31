@@ -17,9 +17,14 @@ import { bulk } from './bulk.ts'
       let func2 = () => (str = str + ' ' + 'three')
       bulk(func, func1, func2)
       return (
-        <>
-          <div>{str}</div>
-        </>
+        <div className="yobta-bg-paper-2 w-max">
+          <p>let str = ''</p>
+          <p>let func = () => (str = str + 'one')</p>
+          <p>let func1 = () => (str = str + ' ' + 'two')</p>
+          <p>let func2 = () => (str = str + ' ' + 'three')</p>
+          <p>bulk(func, func1, func2)</p>
+          <p className="yobta-ink-2">// str = '{str}'</p>
+        </div>
       )
     }}
   </Story>

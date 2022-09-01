@@ -22,7 +22,21 @@ import { whenTimeout } from './whenTimeout.ts'
           })
           .catch(e => setState(`${e}`))
       }, [])
-      return <div className={style}>{state}</div>
+      return (
+        <>
+          <div className={style}>{state}</div>
+          <div>
+            <p>let state = 'The Timer Is Running'</p>
+            <p>
+              {`let res = whenTimeout(5000)
+                .then(
+                    () => state = 'Time Has Run Out'
+                  )`}
+            </p>
+            <p>// state = 'Time Has Run Out'</p>
+          </div>
+        </>
+      )
     }}
   </Story>
 </Canvas>

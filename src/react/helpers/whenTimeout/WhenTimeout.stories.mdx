@@ -12,14 +12,15 @@ import { whenTimeout } from './whenTimeout.ts'
 <Canvas>
   <Story name="When Timeout Usage">
     {() => {
-      let [state, setState] = useState('the timer is started')
+      let [state, setState] = useState('')
       let [style, setStyle] = useState('')
       useEffect(() => {
         let res = whenTimeout(5000)
           .then(() => {
-            setState(state + ', then time has run out')
+            setState(state => (state += ', then time has run out'))
           })
           .catch(e => setState(`${e}`))
+        setState(state => (state += 'the timer is started'))
       }, [])
       return (
         <>
@@ -29,9 +30,9 @@ import { whenTimeout } from './whenTimeout.ts'
                 {`let variable = ""
 let res = whenTimeout(5000)
   .then(
-      () => variable = variable + ",then time has run out"
+      () => variable += ",then time has run out"
     )
-variable = variable + "the timer is started"`}
+variable += "the timer is started"`}
               </code>
             </pre>
             <p>// variable = '{state}'</p>

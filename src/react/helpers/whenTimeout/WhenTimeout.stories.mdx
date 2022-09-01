@@ -23,21 +23,19 @@ import { whenTimeout } from './whenTimeout.ts'
         setState(state => (state += 'the timer is started'))
       }, [])
       return (
-        <>
-          <div>
-            <pre>
-              <code>
-                {`let variable = ""
+        <div>
+          <pre>
+            <code>
+              {`let variable = ""
 let res = whenTimeout(5000)
   .then(
       () => variable += ",then time has run out"
     )
 variable += "the timer is started"`}
-              </code>
-            </pre>
-            <p>// variable = '{state}'</p>
-          </div>
-        </>
+            </code>
+          </pre>
+          <p>// variable = '{state}'</p>
+        </div>
       )
     }}
   </Story>

@@ -15,7 +15,7 @@ import { whenTimeout } from './whenTimeout.ts'
       let [state, setState] = useState('')
       let [style, setStyle] = useState('')
       useEffect(() => {
-        let res = whenTimeout(5000)
+        let res = whenTimeout(1000)
           .then(() => {
             setState(state => (state += ', then time has run out'))
           })
@@ -27,7 +27,7 @@ import { whenTimeout } from './whenTimeout.ts'
           <pre>
             <code>
               {`let variable = ""
-let res = whenTimeout(5000)
+let res = whenTimeout(1000)
   .then(
       () => variable += ",then time has run out"
     )

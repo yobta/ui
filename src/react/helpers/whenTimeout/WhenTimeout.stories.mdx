@@ -25,19 +25,26 @@ import { whenTimeout } from './whenTimeout.ts'
       return (
         <>
           <div>
-            Arguments
+            <span className="font-bold">Description</span>
+            <p className="p-2">
+              the function creates a promise, in resolve which passes setTimeout
+              with the specified time interval
+            </p>
+          </div>
+          <div>
+            <span className="font-bold">Arguments</span>
             <p className="p-2">
               <span className="ui-text-ink-secondary">number (Number)</span>:
               time interval in milliseconds
             </p>
           </div>
           <div>
-            Returns
+            <span className="font-bold">Returns</span>
             <p className="p-2">
               <span className="ui-text-ink-secondary">void</span>
             </p>
           </div>
-          <p>Example</p>
+          <span className="font-bold">Example</span>
           <div className="yobta-bg-paper-2 w-max p-4">
             <pre>
               <code>

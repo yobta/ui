@@ -4,27 +4,61 @@ import { bulk } from './bulk.ts'
 
 <Meta title="MDX/Helpers/Bulk" />
 
-# Bulk
-
-<!-- add a plugin description -->
-
 <Canvas>
   <Story name="Bulk Usage">
     {() => {
       let str = ''
-      let func = () => (str = str + 'one')
-      let func1 = () => (str = str + ' ' + 'two')
-      let func2 = () => (str = str + ' ' + 'three')
+      const func = () => {
+        str += 'one'
+      }
+      const func1 = () => {
+        str += ' ' + 'two'
+      }
+      const func2 = () => {
+        str += ' ' + 'three'
+      }
       bulk(func, func1, func2)
       return (
-        <div className="yobta-bg-paper-2 w-max">
-          <p>let str = ''</p>
-          <p>let func = () => (str = str + 'one')</p>
-          <p>let func1 = () => (str = str + ' ' + 'two')</p>
-          <p>let func2 = () => (str = str + ' ' + 'three')</p>
-          <p>bulk(func, func1, func2)</p>
-          <p className="yobta-bg-paper yobta-ink-2">// str = '{str}'</p>
-        </div>
+        <>
+          <div>
+            <span className="font-bold">Description</span>
+            <p className="p-2 pb-4">
+              the function sequentially runs the functions passed to it
+            </p>
+          </div>
+          <div>
+            <span className="font-bold">Arguments</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">function</span> : one or
+              more functions
+            </p>
+          </div>
+          <div>
+            <span className="font-bold">Returns</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">void</span>
+            </p>
+          </div>
+          <span className="font-bold">Example</span>
+          <div className="yobta-bg-paper-2 w-max p-4">
+            <pre>
+              <code>
+                {`let str = ""
+const func = () => {
+  str += 'one'
+}
+const func1 = () => {
+  str += ' ' + 'two'
+}
+const func2 = () => {
+  str += ' ' + 'three'
+}
+bulk(func, func1, func2)`}
+              </code>
+            </pre>
+            <p className="ui-text-color-14 p-4">// str = "{str}"</p>
+          </div>
+        </>
       )
     }}
   </Story>

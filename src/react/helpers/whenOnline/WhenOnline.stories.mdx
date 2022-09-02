@@ -12,10 +12,12 @@ import { whenOnline } from './whenOnline.ts'
 <Canvas>
   <Story name="When Online Usage">
     {() => {
-      let [online, setOnline] = useState('resolve')
+      let [online, setOnline] = useState(null)
       useEffect(() => {
         let res = whenOnline()
-          .then(data => setOnline(`${data}`))
+          .then(data => {
+            setOnline(`${data}`)
+          })
           .catch(e => setOnline(`${e}`))
       }, [])
       return (
@@ -46,9 +48,24 @@ import { whenOnline } from './whenOnline.ts'
           <span className="font-bold">Example</span>
           <div className="yobta-bg-paper-2 w-max p-4">
             <pre>
-              <code>{`let res = whenOnline().then(data => `}</code>
+              <code>{`let res = whenOnline()`}</code>
             </pre>
-            <p className="ui-text-color-14 p-4">// variable = '{online}'</p>
+            <p className="ui-text-color-14 p-4">
+              // if window.navigator.onLine is true, res returns
+              Promise.resolve()
+            </p>
+            <div className="ui-text-color-14 p-4">
+              // if window.navigator.onLine is false, res returns:
+              <pre className="p-4">
+                <code>{`new Promise(resolve => {
+    let unsubscribe = subscribe(window, 'online', () => {
+      unsubscribe()
+      resolve()
+    })
+  })
+`}</code>
+              </pre>
+            </div>
           </div>
         </>
       )

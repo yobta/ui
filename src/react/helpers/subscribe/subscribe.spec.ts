@@ -14,6 +14,7 @@ it('call callback with click on button', () => {
   }
 
   subscribe(target, eventType, callBack)
+  expect(str).toBe('')
 
   target?.click()
   expect(str).toBe('123')
@@ -29,6 +30,7 @@ it('call callback with DOMContentLoaded', () => {
   let event = new Event(eventType)
 
   subscribe(target, eventType, callBack)
+  expect(str).toBe('')
 
   target.dispatchEvent(event)
   expect(str).toBe('123')

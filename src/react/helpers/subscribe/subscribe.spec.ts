@@ -27,7 +27,4 @@ it('call callback with click on button', () => {
 
   subscribe(target, eventType, callBack)
   expect(str).toBe('123')
-
-  target?.click()
-  expect(str).toBe('123')
 })

@@ -1,0 +1,67 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useEffect, useState } from 'react'
+
+import { subscribe } from './subscribe.ts'
+
+<Meta title="MDX/Helpers/Subscribe" />
+
+# When Online
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="Subscribe usage">
+    {() => {
+      return (
+        <>
+          <div>
+            <span className="font-bold">Description</span>
+            <div className="p-2 pb-4">
+              <p>
+                higher-order function: subscribes target to events, returns a
+                function describing target from an event.
+              </p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Arguments</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">
+                target (T extends Window | Document | HTMLElement | EventTarget)
+              </span>
+            </p>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">eventType (String)</span>
+            </p>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">callBack (Function)</span>
+            </p>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">...args ([options])</span>
+            </p>
+          </div>
+          <div>
+            <span className="font-bold">Returns</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">function: void</span>
+            </p>
+          </div>
+          <span className="font-bold">Example</span>
+          <div className="yobta-bg-paper-2 w-max p-4">
+            <pre>
+              <code>{`let target = document.querySelector<HTMLButtonElement>('button')
+let eventType = 'click'
+let target = document
+let callBack = vi.fn()
+let unsubscribe = subscribe(target, eventType, callBack)
+target?.click()
+unsubscribe()
+target?.click()`}</code>
+            </pre>
+            <p className="ui-text-color-14 p-4">// </p>
+          </div>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

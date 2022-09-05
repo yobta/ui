@@ -1,5 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import { useEffect, useState } from 'react'
+import { useState, useEffect, useRef, createRef } from 'react'
 
 import { subscribe } from './subscribe.ts'
 
@@ -12,8 +12,21 @@ import { subscribe } from './subscribe.ts'
 <Canvas>
   <Story name="Subscribe usage">
     {() => {
+      const btnRef = useRef(null)
+      const init = 0
+      const [state, setState] = useState(init)
+      useEffect(() => {
+        const unsubscribe = subscribe(btnRef.current, 'click', callBack)
+        btnRef.current.click()
+        unsubscribe()
+        btnRef.current.click()
+      }, [])
+      const callBack = () => setState(state => state + 1)
       return (
         <>
+          <button ref={btnRef} style={{ display: 'none' }}>
+            button
+          </button>
           <div>
             <span className="font-bold">Description</span>
             <div className="p-2 pb-4">
@@ -25,20 +38,14 @@ import { subscribe } from './subscribe.ts'
           </div>
           <div>
             <span className="font-bold">Arguments</span>
-            <p className="p-2 pb-4">
-              <span className="ui-text-ink-secondary">
-                target (T extends Window | Document | HTMLElement | EventTarget)
-              </span>
-            </p>
-            <p className="p-2 pb-4">
-              <span className="ui-text-ink-secondary">eventType (String)</span>
-            </p>
-            <p className="p-2 pb-4">
-              <span className="ui-text-ink-secondary">callBack (Function)</span>
-            </p>
-            <p className="p-2 pb-4">
-              <span className="ui-text-ink-secondary">...args ([options])</span>
-            </p>
+            <div className="p-2 pb-4">
+              <p className="ui-text-ink-secondary">
+                target (Window | Document | HTMLElement | EventTarget)
+              </p>
+              <p className="ui-text-ink-secondary">eventType (String)</p>
+              <p className="ui-text-ink-secondary">callBack (Function)</p>
+              <p className="ui-text-ink-secondary">...args ( [options] )</p>
+            </div>
           </div>
           <div>
             <span className="font-bold">Returns</span>
@@ -50,15 +57,19 @@ import { subscribe } from './subscribe.ts'
           <div className="yobta-bg-paper-2 w-max p-4">
             <pre>
               <code>{`let target = document.querySelector<HTMLButtonElement>('button')
-let eventType = 'click'
-let target = document
-let callBack = vi.fn()
+let clickCount = 0`}</code>
+              <p className="ui-text-color-14 p-4">// clickCount = {init}</p>
+              <code>{`let eventType = 'click'
+let callBack = (): void => {
+  clickCount += 1
+}
 let unsubscribe = subscribe(target, eventType, callBack)
-target?.click()
-unsubscribe()
 target?.click()`}</code>
+              <p className="ui-text-color-14 p-4">// clickCount = {state}</p>
+              <code>{`unsubscribe()
+target?.click()`}</code>
+              <p className="ui-text-color-14 p-4">// clickCount = {state}</p>
             </pre>
-            <p className="ui-text-color-14 p-4">// </p>
           </div>
         </>
       )

@@ -13,9 +13,13 @@ it('call callback with click on button', () => {
     str += '123'
   }
 
-  subscribe(target, eventType, callBack)
+  let unsubscribe = subscribe(target, eventType, callBack)
   expect(str).toBe('')
 
+  target?.click()
+  expect(str).toBe('123')
+
+  unsubscribe()
   target?.click()
   expect(str).toBe('123')
 })

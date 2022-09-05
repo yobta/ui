@@ -2,7 +2,7 @@ import { it, expect, vi } from 'vitest'
 
 import { subscribe } from './subscribe.js'
 
-it('call callback with click on button', () => {
+it('call callback with click on button and unsubscribe from the event', () => {
   expect(document.querySelector('button')).toBeNull()
   document.body.innerHTML = `<div><button/></div>`
   let target = document.querySelector<HTMLButtonElement>('button')

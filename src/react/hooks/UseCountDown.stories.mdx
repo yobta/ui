@@ -1,4 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useState, useEffect } from 'react'
 
 import { useCountdown } from './useCountDown.ts'
 
@@ -11,12 +12,28 @@ import { useCountdown } from './useCountDown.ts'
 <Canvas>
   <Story name="Use Count Down Usage">
     {() => {
+      const init = 'start'
+      const [state, setState] = useState(init)
+      const [counter, setCounter] = useState(null)
+      const callBack = () => {
+        setState('finish')
+      }
+      const hook = useCountdown({
+        delayInSeconds: 5,
+        callback: callBack,
+        disabled: false
+      })
+      useEffect(() => {
+        setCounter(hook)
+      }, [hook])
       return (
         <>
+          <div>{counter}</div>
+          <div>{state}</div>
           <div>
             <span className="font-bold">Description</span>
             <div className="p-2 pb-4">
-              <p>123</p>
+              <p>Hook</p>
             </div>
           </div>
           <div>
@@ -38,19 +55,21 @@ import { useCountdown } from './useCountDown.ts'
           <span className="font-bold">Example</span>
           <div className="yobta-bg-paper-2 w-max p-4">
             <pre>
-              <code>{`let target = document.querySelector<HTMLButtonElement>('button')
-let clickCount = 0`}</code>
-              <p className="ui-text-color-14 p-4">// clickCount </p>
-              <code>{`let eventType = 'click'
-let callBack = (): void => {
-  clickCount += 1
-}
-let unsubscribe = subscribe(target, eventType, callBack)
-target?.click()`}</code>
-              <p className="ui-text-color-14 p-4">// clickCount </p>
-              <code>{`unsubscribe()
-target?.click()`}</code>
-              <p className="ui-text-color-14 p-4">// clickCount </p>
+              <code>{`let variable = 'start'
+let callback = () => {variable = 'finish'}
+useCountDown({
+  delayInSeconds: 5,
+  callback: callBack,
+  disabled: false
+})`}</code>
+              <p className="ui-text-color-14 p-4">
+                // if document.document.hasFocus() === true, the counter is
+                being started, and after 5 seconds the callback is called
+              </p>
+              <code>{`code`}</code>
+              <p className="ui-text-color-14 p-4">// variable </p>
+              <code>{`code`}</code>
+              <p className="ui-text-color-14 p-4">// variable </p>
             </pre>
           </div>
         </>

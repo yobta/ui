@@ -10,22 +10,11 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs'
 
 <Canvas>
   <Story name="Selected Usage">
-    <div className="flex flex-col gap-2">
-      <div className="yobta-list" role="group">
-        <div className="yobta-list-header">List Header</div>
-        <div className="yobta-list-item p-4 ml-4 rounded w-fit" role="listitem">
-          List Item 1
-        </div>
-        <div className="yobta-list-item p-4 ml-4 rounded w-fit" role="listitem">
-          List Item 2
-        </div>
-        <div
-          className="yobta-list-item yobta-selected p-4 ml-4 rounded w-fit"
-          role="listitem"
-        >
-          List Item 3 selected
-        </div>
-      </div>
+    <div className="yobta-list">
+      <div className="yobta-list-header">List Header</div>
+      <div className="yobta-list-item">List Item 1</div>
+      <div className="yobta-list-item">List Item 2</div>
+      <div className="yobta-list-item yobta-selected">List Item 3 selected</div>
     </div>
   </Story>
 </Canvas>

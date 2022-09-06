@@ -13,13 +13,17 @@ import { useCountdown } from './useCountDown.ts'
   <Story name="Use Count Down Usage">
     {() => {
       const init = 'start'
-      const [state, setState] = useState(init)
+      const delay = 5
+      const [state, setState] = useState('')
       const [counter, setCounter] = useState(null)
       const callBack = () => {
-        setState('finish')
+        setState('callback')
+        setTimeout(() => {
+          setState('')
+        }, 900)
       }
       const hook = useCountdown({
-        delayInSeconds: 5,
+        delayInSeconds: delay,
         callback: callBack,
         disabled: false
       })
@@ -28,8 +32,10 @@ import { useCountdown } from './useCountDown.ts'
       }, [hook])
       return (
         <>
-          <div>{counter}</div>
-          <div>{state}</div>
+          <div className="p-4">
+            <span className="yobta-badge yobta-primary mr-2">{counter}</span>
+            <span className="yobta-badge yobta-secondary">{state}</span>
+          </div>
           <div>
             <span className="font-bold">Description</span>
             <div className="p-2 pb-4">
@@ -39,9 +45,15 @@ import { useCountdown } from './useCountDown.ts'
           <div>
             <span className="font-bold">Arguments</span>
             <div className="p-2 pb-4">
-              <p className="ui-text-ink-secondary">delayInSeconds (Number)</p>
-              <p className="ui-text-ink-secondary">callback (Function)</p>
-              <p className="ui-text-ink-secondary">disabled (Boolean)</p>
+              <pre>
+                <code className="ui-text-ink-secondary">
+                  {`{
+  delayInSeconds: (Number),
+  callback: (Function),
+  disabled: (Boolean)
+} (Object)`}
+                </code>
+              </pre>
             </div>
           </div>
           <div>
@@ -66,10 +78,6 @@ useCountDown({
                 // if document.document.hasFocus() === true, the counter is
                 being started, and after 5 seconds the callback is called
               </p>
-              <code>{`code`}</code>
-              <p className="ui-text-color-14 p-4">// variable </p>
-              <code>{`code`}</code>
-              <p className="ui-text-color-14 p-4">// variable </p>
             </pre>
           </div>
         </>

@@ -11,9 +11,50 @@ import { useCountdown } from './useCountDown.ts'
 <Canvas>
   <Story name="Use Count Down Usage">
     {() => {
-      let num = 5
-      useCountdown(num, num--, true)
-      return <button>{num}</button>
+      return (
+        <>
+          <div>
+            <span className="font-bold">Description</span>
+            <div className="p-2 pb-4">
+              <p>123</p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Arguments</span>
+            <div className="p-2 pb-4">
+              <p className="ui-text-ink-secondary">delayInSeconds (Number)</p>
+              <p className="ui-text-ink-secondary">callback (Function)</p>
+              <p className="ui-text-ink-secondary">disabled (Boolean)</p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Returns</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">
+                Math.round(state / 1000) (Number)
+              </span>
+            </p>
+          </div>
+          <span className="font-bold">Example</span>
+          <div className="yobta-bg-paper-2 w-max p-4">
+            <pre>
+              <code>{`let target = document.querySelector<HTMLButtonElement>('button')
+let clickCount = 0`}</code>
+              <p className="ui-text-color-14 p-4">// clickCount </p>
+              <code>{`let eventType = 'click'
+let callBack = (): void => {
+  clickCount += 1
+}
+let unsubscribe = subscribe(target, eventType, callBack)
+target?.click()`}</code>
+              <p className="ui-text-color-14 p-4">// clickCount </p>
+              <code>{`unsubscribe()
+target?.click()`}</code>
+              <p className="ui-text-color-14 p-4">// clickCount </p>
+            </pre>
+          </div>
+        </>
+      )
     }}
   </Story>
 </Canvas>

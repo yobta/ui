@@ -1,0 +1,48 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { matchElement } from './matchElement'
+
+<Meta title="MDX/Helpers/Match Element" />
+
+# Match Element Usage
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="Match Element Usage">
+    {() => {
+      return (
+        <>
+          <div>
+            <span className="font-bold">Description</span>
+            <div className="p-2 pb-4">
+              <p>***</p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Arguments</span>
+            <div className="p-2 pb-4">
+              <p className="ui-text-ink-secondary">
+                element (HTMLElement | Null)
+              </p>
+              <p className="ui-text-ink-secondary">matchers (String)</p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Returns</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">Boolean</span>
+            </p>
+          </div>
+          <span className="font-bold">Example</span>
+          <div className="yobta-bg-paper-2 w-max p-4">
+            <pre>
+              <code>{`some code`}</code>
+              <p className="ui-text-color-14 p-4">// ***</p>
+            </pre>
+          </div>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

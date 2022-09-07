@@ -1,5 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import { createElement } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { matchElement } from './matchElement'
 
@@ -12,13 +12,17 @@ import { matchElement } from './matchElement'
 <Canvas>
   <Story name="Match Element Usage">
     {() => {
+      const elemRef = useRef('elem2')
+      useEffect(() => {
+        console.log(elemRef.current)
+      }, [])
       const arr = ['elem', 'elem1', 'elem2']
-      const elem = createElement('div', { style: { display: 'none' } }, 'Elem')
-      console.log(elem)
-      console.log(matchElement(elem, arr))
+      console.log(matchElement(elemRef, arr))
       return (
         <>
-          {elem}
+          <div ref={elemRef} style={{ display: 'none' }}>
+            elem
+          </div>
           <div>
             <span className="font-bold">Description</span>
             <div className="p-2 pb-4">

@@ -1,4 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { createElement } from 'react'
 
 import { matchElement } from './matchElement'
 
@@ -11,8 +12,13 @@ import { matchElement } from './matchElement'
 <Canvas>
   <Story name="Match Element Usage">
     {() => {
+      const arr = ['elem', 'elem1', 'elem2']
+      const elem = createElement('div', { style: { display: 'none' } }, 'Elem')
+      console.log(elem)
+      console.log(matchElement(elem, arr))
       return (
         <>
+          {elem}
           <div>
             <span className="font-bold">Description</span>
             <div className="p-2 pb-4">
@@ -25,7 +31,7 @@ import { matchElement } from './matchElement'
               <p className="ui-text-ink-secondary">
                 element (HTMLElement | Null)
               </p>
-              <p className="ui-text-ink-secondary">matchers (String)</p>
+              <p className="ui-text-ink-secondary">matchers (String[])</p>
             </div>
           </div>
           <div>

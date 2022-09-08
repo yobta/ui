@@ -13,14 +13,29 @@ import { matchElement } from './matchElement'
   <Story name="Match Element Usage">
     {() => {
       const elemRef = useRef('elem2')
+      const matchers = ['elem', '.elemClass', 'span']
       useEffect(() => {
         console.log(elemRef.current)
+        console.log(matchElement(elemRef.current, matchers))
+        const elemCreated = document.createElement('div')
+        elemCreated.className = 'elemClass'
+        elemCreated.innerHTML = 'Element Created'
+        document.body.append(elemCreated)
+        const match = matchElement(elemCreated, matchers)
+        console.log(match)
+        const elemCreated2 = document.createElement('span')
+        elemCreated2.className = 'elemClass2'
+        elemCreated2.innerHTML = 'Element Created 2'
+        document.body.append(elemCreated2)
+        const match2 = matchElement(elemCreated2, matchers)
+        console.log(match2)
+        {
+          /* const matchElem2 = matchElement(elemRef.current, matchers) */
+        }
       }, [])
-      const arr = ['elem', 'elem1', 'elem2']
-      console.log(matchElement(elemRef, arr))
       return (
         <>
-          <div ref={elemRef} style={{ display: 'none' }}>
+          <div className="elemClass" ref={elemRef} style={{ display: 'none' }}>
             elem
           </div>
           <div>
@@ -47,8 +62,12 @@ import { matchElement } from './matchElement'
           <span className="font-bold">Example</span>
           <div className="yobta-bg-paper-2 w-max p-4">
             <pre>
-              <code>{`some code`}</code>
-              <p className="ui-text-color-14 p-4">// ***</p>
+              <code>{`const matchers = ['elem', '.elemClass', 'span']
+  const elemCreated = document.createElement('div')
+  elemCreated.className = 'elemClass'
+  elemCreated.innerHTML = 'Element Created'
+  const matchElem = matchElement(elemCreated, matchers)`}</code>
+              <p className="ui-text-color-14 p-4">// matchElem is </p>
             </pre>
           </div>
         </>

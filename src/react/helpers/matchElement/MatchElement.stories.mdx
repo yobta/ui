@@ -21,24 +21,21 @@ import { matchElement } from './matchElement'
         setMatchState(elemRef.current)
         setMatchState2(elemRef2.current)
       }, [])
-      console.log(matchState)
-      console.log(matchState2)
       return (
         <>
-          <div className="elemClass" ref={elemRef} style={{ display: 'none' }}>
-            elem
+          <div style={{ display: 'none' }}>
+            <div className="elemClass" ref={elemRef}></div>
+            <span className="elemClass2" ref={elemRef2}></span>
           </div>
-          <span
-            className="elemClass2"
-            ref={elemRef2}
-            style={{ display: 'none' }}
-          >
-            elem
-          </span>
           <div>
             <span className="font-bold">Description</span>
             <div className="p-2 pb-4">
-              <p>***</p>
+              <p>
+                The function gets an HTMLElement as the first argument, and an
+                array of strings as the second. If any of the array strings
+                matches the CSS selector of the element, the function returns
+                true. If no string matches, the function returns false.
+              </p>
             </div>
           </div>
           <div>
@@ -61,20 +58,17 @@ import { matchElement } from './matchElement'
             <pre>
               <code>{`const elemCreated = document.createElement('div')
 elemCreated.className = 'elemClass'
-elemCreated.innerHTML = 'Element Created'
 document.body.append(elemCreated)
 const match = matchElement(elemCreated, matchers)`}</code>
               <p className="ui-text-color-14 p-4">
-                // matchElem is {matchElement(matchState, matchers).toString()}
+                // match is {matchElement(matchState, matchers).toString()}
               </p>
               <code>{`const elemCreated2 = document.createElement('span')
 elemCreated2.className = 'elemClass2'
-elemCreated2.innerHTML = 'Element Created 2'
 document.body.append(elemCreated2)
 const match2 = matchElement(elemCreated2, matchers)`}</code>
               <p className="ui-text-color-14 p-4">
-                // matchElem2 is{' '}
-                {matchElement(matchState2, matchers).toString()}
+                // match2 is {matchElement(matchState2, matchers).toString()}
               </p>
             </pre>
           </div>

@@ -1,5 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { matchElement } from './matchElement'
 
@@ -12,11 +12,14 @@ import { matchElement } from './matchElement'
 <Canvas>
   <Story name="Match Element Usage">
     {() => {
-      const elemRef = useRef('elem2')
       const matchers = ['elem', '.elemClass', 'span']
+      const elemRef = useRef(null)
+      const elemRef2 = useRef(null)
+      const [matchLog, setMatchLog] = useState(null)
+      const [matchLog2, setMatchLog2] = useState(null)
       useEffect(() => {
-        console.log(elemRef.current)
-        console.log(matchElement(elemRef.current, matchers))
+        setMatchLog(elemRef.current)
+        setMatchLog2(elemRef2.current)
         const elemCreated = document.createElement('div')
         elemCreated.className = 'elemClass'
         elemCreated.innerHTML = 'Element Created'
@@ -29,15 +32,19 @@ import { matchElement } from './matchElement'
         document.body.append(elemCreated2)
         const match2 = matchElement(elemCreated2, matchers)
         console.log(match2)
-        {
-          /* const matchElem2 = matchElement(elemRef.current, matchers) */
-        }
       }, [])
       return (
         <>
           <div className="elemClass" ref={elemRef} style={{ display: 'none' }}>
             elem
           </div>
+          <span
+            className="elemClass2"
+            ref={elemRef2}
+            style={{ display: 'none' }}
+          >
+            elem
+          </span>
           <div>
             <span className="font-bold">Description</span>
             <div className="p-2 pb-4">
@@ -62,12 +69,18 @@ import { matchElement } from './matchElement'
           <span className="font-bold">Example</span>
           <div className="yobta-bg-paper-2 w-max p-4">
             <pre>
-              <code>{`const matchers = ['elem', '.elemClass', 'span']
-  const elemCreated = document.createElement('div')
-  elemCreated.className = 'elemClass'
-  elemCreated.innerHTML = 'Element Created'
-  const matchElem = matchElement(elemCreated, matchers)`}</code>
+              <code>{`const elemCreated = document.createElement('div')
+elemCreated.className = 'elemClass'
+elemCreated.innerHTML = 'Element Created'
+document.body.append(elemCreated)
+const match = matchElement(elemCreated, matchers)`}</code>
               <p className="ui-text-color-14 p-4">// matchElem is </p>
+              <code>{`const elemCreated2 = document.createElement('span')
+elemCreated2.className = 'elemClass2'
+elemCreated2.innerHTML = 'Element Created 2'
+document.body.append(elemCreated2)
+const match2 = matchElement(elemCreated2, matchers)`}</code>
+              <p className="ui-text-color-14 p-4">// matchElem2 is </p>
             </pre>
           </div>
         </>

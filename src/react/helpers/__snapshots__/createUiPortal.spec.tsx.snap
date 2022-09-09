@@ -1,0 +1,12 @@
+// Vitest Snapshot v1
+
+exports[`createUiPortal 1`] = `
+<div
+  id="nodeid"
+>
+  Element
+  <span>
+    NewElement
+  </span>
+</div>
+`;

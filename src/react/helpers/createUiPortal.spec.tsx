@@ -4,7 +4,7 @@ import React from 'react'
 
 import { createUiPortal } from './createUiPortal.js'
 
-it('createUiPortal', () => {
+it('creates a component and passes the node from the portal to it', () => {
   let App = (): JSX.Element => {
     return (
       <>

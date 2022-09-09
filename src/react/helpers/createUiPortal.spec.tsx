@@ -17,6 +17,5 @@ it('createUiPortal', () => {
   render(<App />)
   let element = screen.getByText<HTMLElement>('Element')
 
-  screen.debug()
   expect(element).toMatchSnapshot()
 })

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`createUiPortal 1`] = `
+exports[`creates a component and passes the node from the portal to it 1`] = `
 <div
   id="nodeid"
 >

@@ -64,7 +64,7 @@ it('requires theme.colors.yobta.ink.dark to be a string', () => {
 })
 
 it('adds styles to utilities @layer', () => {
-  let addUtilities = vi.fn()
+  let addBase = vi.fn()
   let colors = {
     yobta: {
       'paper': {
@@ -136,9 +136,9 @@ it('adds styles to utilities @layer', () => {
   }
   let theme = (): typeof colors => colors
 
-  buttonVariantsPlugin.handler({ addUtilities, prefix, theme })
+  buttonVariantsPlugin.handler({ addBase, prefix, theme })
 
-  expect(addUtilities).toBeCalledWith({
+  expect(addBase).toBeCalledWith({
     '.yobta-button-paper': {
       '@apply yobta-button yobta-paper': {}
     },

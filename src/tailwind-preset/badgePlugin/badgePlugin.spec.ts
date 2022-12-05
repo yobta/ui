@@ -63,7 +63,6 @@ it('requires theme.colors.yobta.ink.dark to be a string', () => {
 
 it('adds styles to base and utilities @layer', () => {
   let addBase = vi.fn()
-  let addUtilities = vi.fn()
 
   let colors = {
     yobta: {
@@ -136,14 +135,14 @@ it('adds styles to base and utilities @layer', () => {
   }
   let theme = (): typeof colors => colors
 
-  badgePlugin.handler({ addBase, addUtilities, prefix, theme })
+  badgePlugin.handler({ addBase, prefix, theme })
   expect(addBase).toBeCalledWith({
     '.yobta-badge': {
       '@apply bg-ink-border font-medium gap-x-1 inline-flex items-center leading-6 px-2 rounded-full text-current text-sm':
         {}
     }
   })
-  expect(addUtilities).toBeCalledWith({
+  expect(addBase).toBeCalledWith({
     '.yobta-badge-paper': {
       '@apply yobta-badge yobta-paper': {}
     },

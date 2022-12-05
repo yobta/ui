@@ -1,0 +1,95 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useState, useEffect } from 'react'
+
+import { useCountdown } from './useCountDown'
+
+<Meta title="MDX/Hooks/Use Count Down" />
+
+# Use Count Down
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="Use Count Down Usage">
+    {() => {
+      const init = 'start'
+      const delay = 5
+      const [state, setState] = useState('')
+      const [counter, setCounter] = useState(null)
+      const callBack = () => {
+        setState('callback')
+        setTimeout(() => {
+          setState('')
+        }, 900)
+      }
+      const hook = useCountdown({
+        delayInSeconds: delay,
+        callback: callBack,
+        disabled: false
+      })
+      useEffect(() => {
+        setCounter(hook)
+      }, [hook])
+      return (
+        <>
+          <div className="p-4">
+            <span className="yobta-badge yobta-primary mr-2">{counter}</span>
+            <span className="yobta-badge yobta-secondary">{state}</span>
+          </div>
+          <div>
+            <span className="font-bold">Description</span>
+            <div className="p-2 pb-4">
+              <p>
+                A Hook that starts a timer if document is in focus. After the
+                countdown is completed, a callback is ran
+              </p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Arguments</span>
+            <div className="p-2 pb-4">
+              <pre>
+                <code className="ui-text-ink-secondary">
+                  {`{
+  delayInSeconds: (Number),
+  callback: (Function),
+  disabled: (Boolean)
+} (Object)`}
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Returns</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">
+                Math.round(state / 1000) (Number)
+              </span>
+            </p>
+          </div>
+          <span className="font-bold">Example</span>
+          <div className="yobta-bg-paper-2 w-max p-4">
+            <pre>
+              <code>{`let variable = ''
+let callBack = () => {
+    variable = 'callback'
+    setTimeout(() => {
+          variable = ''
+        }, 900)
+  }
+useCountDown({
+  delayInSeconds: 5,
+  callback: callBack,
+  disabled: false
+})`}</code>
+              <p className="ui-text-color-14 p-4">
+                // if document.document.hasFocus() === true, the counter is
+                being started, and after 5 seconds the callback is called
+              </p>
+            </pre>
+          </div>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

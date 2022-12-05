@@ -1,0 +1,74 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useEffect, useState } from 'react'
+
+import { whenOnline } from './whenOnline.ts'
+
+<Meta title="MDX/Helpers/When Online" />
+
+# When Online
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="When Online Usage">
+    {() => {
+      let [online, setOnline] = useState(null)
+      useEffect(() => {
+        let res = whenOnline()
+          .then(data => {
+            setOnline(`${data}`)
+          })
+          .catch(e => setOnline(`${e}`))
+      }, [])
+      return (
+        <>
+          <div>
+            <span className="font-bold">Description</span>
+            <div className="p-2 pb-4">
+              <p>
+                the function creates a promise that returns resolve() if
+                windows.navigator.online is true.
+              </p>
+              <p>
+                if window.navigator.online is false, the function returns a
+                promise, in resolve which passes unsubscribe
+              </p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Arguments</span>
+            <p className="p-2 pb-4">without arguments</p>
+          </div>
+          <div>
+            <span className="font-bold">Returns</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">Promise: void</span>
+            </p>
+          </div>
+          <span className="font-bold">Example</span>
+          <div className="yobta-bg-paper-2 w-max p-4">
+            <pre>
+              <code>{`let res = whenOnline()`}</code>
+            </pre>
+            <p className="ui-text-color-14 p-4">
+              // if window.navigator.onLine is true, res returns
+              Promise.resolve()
+            </p>
+            <div className="ui-text-color-14 p-4">
+              // if window.navigator.onLine is false, res returns:
+              <pre className="p-4">
+                <code>{`new Promise(resolve => {
+    let unsubscribe = subscribe(window, 'online', () => {
+      unsubscribe()
+      resolve()
+    })
+  })
+`}</code>
+              </pre>
+            </div>
+          </div>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

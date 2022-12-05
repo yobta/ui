@@ -1,0 +1,79 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { useState, useEffect, useRef } from 'react'
+
+import { matchElement } from './matchElement'
+
+<Meta title="MDX/Helpers/Match Element" />
+
+# Match Element Usage
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="Match Element Usage">
+    {() => {
+      const matchers = ['elem', '.elemClass', 'span']
+      const elemRef = useRef(null)
+      const elemRef2 = useRef(null)
+      const [matchState, setMatchState] = useState(null)
+      const [matchState2, setMatchState2] = useState(null)
+      useEffect(() => {
+        setMatchState(elemRef.current)
+        setMatchState2(elemRef2.current)
+      }, [])
+      return (
+        <>
+          <div style={{ display: 'none' }}>
+            <div className="elemClass" ref={elemRef}></div>
+            <span className="elemClass2" ref={elemRef2}></span>
+          </div>
+          <div>
+            <span className="font-bold">Description</span>
+            <div className="p-2 pb-4">
+              <p>
+                The function gets an HTMLElement as the first argument, and an
+                array of strings as the second. If any of the array strings
+                matches the CSS selector of the element, the function returns
+                true. If no string matches, the function returns false.
+              </p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Arguments</span>
+            <div className="p-2 pb-4">
+              <p className="ui-text-ink-secondary">
+                element (HTMLElement | Null)
+              </p>
+              <p className="ui-text-ink-secondary">matchers (String[])</p>
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">Returns</span>
+            <p className="p-2 pb-4">
+              <span className="ui-text-ink-secondary">Boolean</span>
+            </p>
+          </div>
+          <span className="font-bold">Example</span>
+          <div className="yobta-bg-paper-2 w-max p-4">
+            <pre>
+              <code>{`const elemCreated = document.createElement('div')
+elemCreated.className = 'elemClass'
+document.body.append(elemCreated)
+const match = matchElement(elemCreated, matchers)`}</code>
+              <p className="ui-text-color-14 p-4">
+                // match is {matchElement(matchState, matchers).toString()}
+              </p>
+              <code>{`const elemCreated2 = document.createElement('span')
+elemCreated2.className = 'elemClass2'
+document.body.append(elemCreated2)
+const match2 = matchElement(elemCreated2, matchers)`}</code>
+              <p className="ui-text-color-14 p-4">
+                // match2 is {matchElement(matchState2, matchers).toString()}
+              </p>
+            </pre>
+          </div>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

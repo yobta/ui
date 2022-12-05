@@ -6,10 +6,10 @@ import buttonPlugin from './buttonPlugin.cjs'
 const prefix = (str: string): string => str
 
 test('buttonPlugin', () => {
-  let addComponents = vi.fn()
+  let addBase = vi.fn()
 
-  buttonPlugin.handler({ addComponents, prefix })
-  expect(addComponents).toBeCalledWith({
+  buttonPlugin.handler({ addBase, prefix })
+  expect(addBase).toBeCalledWith({
     '.yobta-button': {
       '@apply yobta-no-tap border-current flex font-medium gap-x-2 h-10 items-center justify-center leading-6 px-4 relative rounded text-sm':
         {},

@@ -1,0 +1,29 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { createUiPortal } from './createUiPortal.tsx'
+
+<Meta title="MDX/Helpers/Create Ui Portal" />
+
+# Create Ui Portal
+
+<!-- add a plugin description -->
+
+<Canvas>
+  <Story name="Create Ui Portal Usage">
+    {() => {
+      return (
+        <>
+          {createUiPortal(<div className="p-4">portal</div>, 'nodeid')}
+          <div className="flex flex-col gap-2">
+            <div className="yobta-paper-2 p-4 rounded">First node</div>
+            <div className="yobta-paper-3 p-4 rounded">Second Node</div>
+            <div className="yobta-primary p-4 rounded" id="nodeid">
+              Third node
+            </div>
+            <div className="yobta-secondary p-4 rounded">Fourth node</div>
+          </div>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>

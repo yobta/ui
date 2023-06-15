@@ -21,7 +21,6 @@ export type TextAreaProps = {
   error?: ReactNode
   fancy?: boolean
   captionClassName?: string
-  wrapperClassName?: string
 }
 
 type Props = TextAreaProps & BaseProps
@@ -36,7 +35,6 @@ export const createTextArea: TextAreaFactory = ({
   className: configClassName,
   captionClassName: configCaptionClassName,
   style: configStyle,
-  wrapperClassName: configWrapperClassName,
   ...config
 }) =>
   forwardRef((props, externalRef): JSX.Element => {
@@ -51,7 +49,6 @@ export const createTextArea: TextAreaFactory = ({
       placeholder,
       style,
       value,
-      wrapperClassName,
       ...rest
     } = { ...config, ...props }
     let defaultRef = useRef<HTMLTextAreaElement>(null)
@@ -89,13 +86,13 @@ export const createTextArea: TextAreaFactory = ({
           'yobta-textarea',
           isFilled && 'yobta-textarea--filled',
           fancy && 'yobta-textarea--fancy',
-          configWrapperClassName,
-          wrapperClassName
+          configClassName,
+          className
         )}
       >
         <textarea
           {...rest}
-          className={clsx('yobta-textarea__input', configClassName, className)}
+          className={clsx('yobta-textarea__input')}
           defaultValue={defaultValue}
           placeholder={placeholder}
           ref={ref}

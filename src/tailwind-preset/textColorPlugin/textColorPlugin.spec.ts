@@ -36,22 +36,22 @@ test('color', () => {
 
   expect(addUtilities).toBeCalledWith(
     {
-      '.ui-text-ink': {
+      '.yobta-text-ink': {
         '@apply text-ink dark:text-ink-dark': {}
       },
-      '.ui-text-ink-2': {
+      '.yobta-text-ink-2': {
         '@apply text-ink-2 dark:text-ink-2-dark': {}
       },
-      '.ui-text-ink-primary': {
+      '.yobta-text-ink-primary': {
         '@apply text-ink-primary dark:text-ink-primary-dark': {}
       },
-      '.ui-text-link': {
+      '.yobta-text-link': {
         '@apply text-link dark:text-link-dark': {}
       },
-      '.ui-text-link-hover': {
+      '.yobta-text-link-hover': {
         '@apply text-link-hover dark:text-link-hover-dark': {}
       },
-      '.ui-text-color-1': {
+      '.yobta-text-color-1': {
         '@apply text-color-1 dark:text-color-1-dark': {}
       }
     },

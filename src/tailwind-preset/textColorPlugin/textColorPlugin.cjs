@@ -7,7 +7,7 @@ function createClasses(base, colors, prefix) {
   let init =
     DEFAULT && dark
       ? {
-          [`.ui-${base}`]: {
+          [`.yobta-${base}`]: {
             ...applyPrefixed(prefix, `.${base}`, `.dark:${base}-dark`)
           }
         }
@@ -20,7 +20,7 @@ function createClasses(base, colors, prefix) {
     .reduce(
       (acc, [key]) => ({
         ...acc,
-        [`.ui-${base}-${key}`]: {
+        [`.yobta-${base}-${key}`]: {
           ...applyPrefixed(
             prefix,
             `.${base}-${key}`,

@@ -11,7 +11,7 @@ test('textAreaPlugin', () => {
   textAreaPlugin.handler({ addBase, prefix })
   expect(addBase).toBeCalledWith({
     '.yobta-textarea': {
-      '@apply relative flex flex-col-reverse text-ink dark:text-ink-dark': {},
+      '@apply relative flex flex-col-reverse rounded yobta-paper-2': {},
       '&.yobta-textarea--fancy': {
         '&::before, &::after': {
           '@apply absolute pointer-events-none block bottom-0 left-0 right-0':
@@ -31,16 +31,14 @@ test('textAreaPlugin', () => {
         '&:focus-within::after': {
           transform: 'scaleX(1)'
         },
-        '& textarea': {
-          '@apply rounded-b-none px-0 resize-none': {},
+        '& .yobta-textarea__input': {
+          '@apply rounded-b-none resize-none': {},
           'backgroundColor': 'transparent'
         },
-        '& .yobta-textarea__caption': {
-          '@apply px-0': {}
-        }
+        '& .yobta-textarea__caption': {}
       },
       '& .yobta-textarea__caption--error-bullet': {
-        '@apply hidden ml-1 bg-ink-error dark:bg-ink-error-dark': {}
+        '@apply invisible ml-1 yobta-text-ink-error': {}
       },
       '&.yobta-textarea--filled, &:focus-within': {
         '& .yobta-textarea__caption': {
@@ -50,12 +48,13 @@ test('textAreaPlugin', () => {
       }
     },
     '.yobta-textarea__input': {
-      '@apply block box-border appearance-none outline-none rounded bg-paper-2 dark:bg-paper-2-dark w-full px-4 py-2':
-        {},
+      '@apply block box-border appearance-none outline-none w-full px-4': {},
       '-webkit-tap-highlight-color': 'transparent',
+      'backgroundColor': 'transparent',
+      'borderRadius': 'inherit',
       '&:invalid ~ .yobta-textarea__caption .yobta-textarea__caption--error-bullet':
         {
-          '@apply inline': {}
+          '@apply inline visible': {}
         },
       '&::placeholder': {
         color: 'inherit',
@@ -63,9 +62,9 @@ test('textAreaPlugin', () => {
       }
     },
     '.yobta-textarea__caption': {
-      '@apply block truncate py-0 select-none leading-6 px-4': {},
+      '@apply block leading-6 px-4 py-0 select-none truncate': {},
       'transition': 'font 0.32s ease, transform 0.32s ease',
-      'transform': 'translateY(2rem)'
+      'transform': 'translateY(0.64em)'
     }
   })
 })

@@ -8,10 +8,11 @@ module.exports = plugin(({ addBase, prefix }) => {
       ...applyPrefixed(
         prefix,
         '.relative',
+        // a hack to style the error bullet
         '.flex',
         '.flex-col-reverse',
-        '.text-ink',
-        '.dark:text-ink-dark'
+        '.rounded',
+        '.yobta-paper-2'
       ),
       '&.yobta-textarea--fancy': {
         '&::before, &::after': {
@@ -38,22 +39,16 @@ module.exports = plugin(({ addBase, prefix }) => {
         '&:focus-within::after': {
           transform: 'scaleX(1)'
         },
-        '& textarea': {
-          ...applyPrefixed(prefix, '.rounded-b-none', '.px-0', '.resize-none'),
+        '& .yobta-textarea__input': {
+          ...applyPrefixed(prefix, '.rounded-b-none', '.resize-none'),
           backgroundColor: 'transparent'
         },
         '& .yobta-textarea__caption': {
-          ...applyPrefixed(prefix, '.px-0')
+          // ...applyPrefixed(prefix, '.px-0')
         }
       },
       '& .yobta-textarea__caption--error-bullet': {
-        ...applyPrefixed(
-          prefix,
-          '.hidden',
-          '.ml-1',
-          '.bg-ink-error',
-          '.dark:bg-ink-error-dark'
-        )
+        ...applyPrefixed(prefix, '.invisible', '.ml-1', '.yobta-text-ink-error')
       },
       '&.yobta-textarea--filled, &:focus-within': {
         '& .yobta-textarea__caption': {
@@ -69,17 +64,15 @@ module.exports = plugin(({ addBase, prefix }) => {
         '.box-border',
         '.appearance-none',
         '.outline-none',
-        '.rounded',
-        '.bg-paper-2',
-        '.dark:bg-paper-2-dark',
         '.w-full',
-        '.px-4',
-        '.py-2'
+        '.px-4'
       ),
+      'backgroundColor': 'transparent',
+      'borderRadius': 'inherit',
       '-webkit-tap-highlight-color': 'transparent',
       '&:invalid ~ .yobta-textarea__caption .yobta-textarea__caption--error-bullet':
         {
-          ...applyPrefixed(prefix, '.inline')
+          ...applyPrefixed(prefix, '.inline', '.visible')
         },
       '&::placeholder': {
         color: 'inherit',
@@ -90,14 +83,14 @@ module.exports = plugin(({ addBase, prefix }) => {
       ...applyPrefixed(
         prefix,
         '.block',
-        '.truncate',
+        '.leading-6',
+        '.px-4',
         '.py-0',
         '.select-none',
-        '.leading-6',
-        '.px-4'
+        '.truncate'
       ),
       transition: 'font 0.32s ease, transform 0.32s ease',
-      transform: 'translateY(2rem)'
+      transform: 'translateY(0.64em)'
     }
   })
 })

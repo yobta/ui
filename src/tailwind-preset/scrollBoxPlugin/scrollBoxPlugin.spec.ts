@@ -6,10 +6,10 @@ import scrollBoxPlugin from './scrollBoxPlugin.cjs'
 const prefix = (str: string): string => str
 
 test('scrollBoxPlugin', () => {
-  let addUtilities = vi.fn()
+  let addBase = vi.fn()
 
-  scrollBoxPlugin.handler({ addUtilities, prefix })
-  expect(addUtilities).toBeCalledWith({
+  scrollBoxPlugin.handler({ addBase, prefix })
+  expect(addBase).toBeCalledWith({
     '.yobta-scroll-box': {
       'overflow': 'hidden',
       'scroll-behavior': 'smooth',

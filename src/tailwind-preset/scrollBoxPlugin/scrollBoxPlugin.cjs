@@ -4,8 +4,8 @@ const applyPrefixed = require('../applyPrefixed/applyPrefixed.cjs')
 
 // NOTE: In case we want visible and fancy scrollbars https://www.filamentgroup.com/lab/scrollbars/
 
-module.exports = plugin(({ addUtilities, prefix }) => {
-  addUtilities({
+module.exports = plugin(({ addBase, prefix }) => {
+  addBase({
     '.yobta-scroll-box': {
       'overflow': 'hidden',
       'scroll-behavior': 'smooth',

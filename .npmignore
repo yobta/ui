@@ -29,5 +29,6 @@ tailwind.config.cjs
 tsconfig.build.json
 tsconfig.json
 tsconfig.node.json
+vault
 vite.config.ts
 vitest.config.ts

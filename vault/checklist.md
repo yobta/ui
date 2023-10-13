@@ -1,6 +1,94 @@
+#Components
 
 - [ ] Content
+	- [ ] Charts [apple](https://developer.apple.com/design/human-interface-guidelines/charts)
+	- [ ] Image views [apple](https://developer.apple.com/design/human-interface-guidelines/image-views)
+	- [ ] Text views [apple](https://developer.apple.com/design/human-interface-guidelines/text-views)
+	- [ ] Web views [apple](https://developer.apple.com/design/human-interface-guidelines/web-views)
+
+  
+
 - [ ] Layout and organization
-- [ ] Menus and actions
-	- [ ] Buttons [apple](https://developer.apple.com/design/human-interface-guidelines/buttons), [md](https://m3.material.io/components/all-buttons)
-	- [ ] 
+	- [ ] Boxes [apple](https://developer.apple.com/design/human-interface-guidelines/boxes)
+	- [ ] Collections [apple](https://developer.apple.com/design/human-interface-guidelines/collections)
+	- [ ] Column views [apple](https://developer.apple.com/design/human-interface-guidelines/column-views)
+	- [ ] Disclosure controls [apple](https://developer.apple.com/design/human-interface-guidelines/disclosure-controls)
+	- [ ] Labels [apple](https://developer.apple.com/design/human-interface-guidelines/labels)
+	- [ ] Lists and tables [apple](https://developer.apple.com/design/human-interface-guidelines/lists-and-tables)
+	- [ ] Lockups [apple](https://developer.apple.com/design/human-interface-guidelines/lockups)
+	- [ ] Outline views [apple](https://developer.apple.com/design/human-interface-guidelines/outline-views)
+	- [ ] Split views [apple](https://developer.apple.com/design/human-interface-guidelines/split-views)
+	- [ ] Tab views [apple](https://developer.apple.com/design/human-interface-guidelines/tab-views)
+
+  
+
+ - [ ] Menus and actions
+	- [ ] Activity views [apple]( https://developer.apple.com/design/human-interface-guidelines/activity-views)
+	- [ ] Buttons [apple](https://developer.apple.com/design/human-interface-guidelines/buttons)
+	- [ ] Context menus [apple](https://developer.apple.com/design/human-interface-guidelines/context-menus)
+	- [ ] Dock menus [apple](https://developer.apple.com/design/human-interface-guidelines/dock-menus)
+	- [ ] Edit menus [apple](https://developer.apple.com/design/human-interface-guidelines/edit-menus)
+	- [ ] Menus [apple](https://developer
+	- [ ] Ornaments [apple](https://developer.apple.com/design/human-interface-guidelines/ornaments)
+	- [ ] Pop-up buttons [apple](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons)
+	- [ ] Pull-down buttons [apple](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons)
+	- [ ] Toolbars [apple](https://developer.apple.com/design/human-interface-guidelines/toolbars)
+
+  
+
+- [ ] Navigation and search
+	- [ ] Navigation bars [apple](https://developer.apple.com/design/human-interface-guidelines/navigation-bars)
+	- [ ] Path controls [apple](https://developer.apple.com/design/human-interface-guidelines/path-controls)
+	- [ ] Search fields [apple](https://developer.apple.com/design/human-interface-guidelines/search-fields)
+	- [ ] Sidebars [apple](https://developer.apple.com/design/human-interface-guidelines/sidebars)
+	- [ ] Tab bars [apple](https://developer.apple.com/design/human-interface-guidelines/tab-bars)
+	- [ ] Token fields [apple](https://developer.apple.com/design/human-interface-guidelines/token-fields)
+
+  
+
+- [ ] Presentation
+	- [ ] Action sheets [apple](https://developer.apple.com/design/human-interface-guidelines/action-sheets)
+	- [ ] Alerts [apple](https://developer.apple.com/design/human-interface-guidelines/alerts)
+	- [ ] Page controls [apple](https://developer.apple.com/design/human-interface-guidelines/page-controls)
+	- [ ] Panels [apple](https://developer.apple.com/design/human-interface-guidelines/panels)
+	- [ ] Popovers [apple](https://developer.apple.com/design/human-interface-guidelines/popovers)
+	- [ ] Scroll views [apple](https://developer.apple.com/design/human-interface-guidelines/scroll-views)
+	- [ ] Sheets [apple](https://developer.apple.com/design/human-interface-guidelines/sheets)
+	- [ ] Windows [apple](https://developer.apple.com/design/human-interface-guidelines/windows)
+
+  
+
+- [ ] Selection and input
+	- [ ] Color wells [apple](https://developer.apple.com/design/human-interface-guidelines/color-wells)
+	- [ ] Combo boxes [apple](https://developer.apple.com/design/human-interface-guidelines/combo-boxes)
+	- [ ] Digit entry views [apple](https://developer.apple.com/design/human-interface-guidelines/digit-entry-views)
+	- [ ] Image wells [apple](https://developer.apple.com/design/human-interface-guidelines/image-wells)
+	- [ ] Pickers [apple](https://developer.apple.com/design/human-interface-guidelines/pickers)
+	- [ ] Segmented controls [apple](https://developer.apple.com/design/human-interface-guidelines/segmented-controls)
+	- [ ] Sliders [apple](https://developer.apple.com/design/human-interface-guidelines/sliders)
+	- [ ] Steppers [apple](https://developer.apple.com/design/human-interface-guidelines/steppers)
+	- [ ] Text fields [apple](https://developer.apple.com/design/human-interface-guidelines/text-fields)
+	- [ ] Toggles [apple](https://developer.apple.com/design/human-interface-guidelines/toggles)
+	- [ ] Virtual keyboards [apple](https://developer.apple.com/design/human-interface-guidelines/virtual-keyboards)
+
+  
+
+- [ ] Status
+	- [ ] Activity rings [apple](https://developer.apple.com/design/human-interface-guidelines/activity-rings)
+	- [ ] Gauges [apple](https://developer.apple.com/design/human-interface-guidelines/gauges)
+	- [ ] Progress indicators [apple](https://developer.apple.com/design/human-interface-guidelines/progress-indicators)
+	- [ ] Rating indicators [apple](https://developer.apple.com/design/human-interface-guidelines/rating-indicators)
+
+  
+
+- [ ] System experiences
+	- [ ] App Shortcuts [apple](https://developer.apple.com/design/human-interface-guidelines/app-shortcuts)
+	- [ ] Complications [apple](https://developer.apple.com/design/human-interface-guidelines/complications)
+	- [ ] Home Screen quick actions [apple](https://developer.apple.com/design/human-interface-guidelines/home-screen-quick-actions)
+	- [ ] Live Activities [apple](https://developer.apple.com/design/human-interface-guidelines/live-activities)
+	- [ ] The menu bar [apple](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar)
+	- [ ] Notifications [apple](https://developer.apple.com/design/human-interface-guidelines/notifications)
+	- [ ] Status bars [apple](https://developer.apple.com/design/human-interface-guidelines/status-bars)
+	- [ ] Top Shelf [apple](https://developer.apple.com/design/human-interface-guidelines/top-shelf)
+	- [ ] Watch faces [apple](https://developer.apple.com/design/human-interface-guidelines/watch-faces)
+	- [ ] Widgets [apple](https://developer.apple.com/design/human-interface-guidelines/widgets)

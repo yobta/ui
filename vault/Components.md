@@ -1,3 +1,5 @@
+# Components
+
 - [ ] Content
 	- [ ] Charts [apple](https://developer.apple.com/design/human-interface-guidelines/charts)
 	- [ ] Image views [apple](https://developer.apple.com/design/human-interface-guidelines/image-views)
@@ -14,10 +16,7 @@
 	- [ ] Outline views [apple](https://developer.apple.com/design/human-interface-guidelines/outline-views)
 	- [ ] Split views [apple](https://developer.apple.com/design/human-interface-guidelines/split-views)
 	- [ ] Tab views [apple](https://developer.apple.com/design/human-interface-guidelines/tab-views)
-
-  
-
- - [ ] Menus and actions
+- [ ] Menus and actions
 	- [ ] Activity views [apple]( https://developer.apple.com/design/human-interface-guidelines/activity-views)
 	- [ ] Buttons [apple](https://developer.apple.com/design/human-interface-guidelines/buttons)
 	- [ ] Context menus [apple](https://developer.apple.com/design/human-interface-guidelines/context-menus)

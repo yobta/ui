@@ -21,7 +21,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "checklist.md",
+                "file": "Components.md",
                 "mode": "source",
                 "source": false
               }
@@ -74,7 +74,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -94,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "checklist.md",
+                "file": "Components.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "checklist.md",
+                "file": "Components.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "checklist.md"
+                "file": "Components.md"
               }
             }
           }
@@ -157,6 +158,6 @@
   },
   "active": "9c59e362ab70c3d2",
   "lastOpenFiles": [
-    "checklist.md"
+    "Components.md"
   ]
 }

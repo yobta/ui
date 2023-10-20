@@ -26,9 +26,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "440c9556ca731730",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Comparison table.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -74,12 +86,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "66ec1c22c8f900b1",
@@ -95,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Components.md",
+                "file": "Comparison table.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Components.md",
+                "file": "Comparison table.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Components.md"
+                "file": "Comparison table.md"
               }
             }
           }
@@ -156,8 +168,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9c59e362ab70c3d2",
+  "active": "440c9556ca731730",
   "lastOpenFiles": [
-    "Components.md"
+    "Components.md",
+    "Comparison table.md"
   ]
 }
